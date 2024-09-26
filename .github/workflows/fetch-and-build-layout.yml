@@ -49,14 +49,14 @@ jobs:
           git config --local user.name "github-actions"
           git config --local user.email "github-actions@github.com"
           git add .
-          git commit -m "Last layout" || echo "No layout change"
+          git commit -m "✨ latest layout modification made with Oryx" || echo "No layout change"
           git push
 
       - name: Merge Oryx with custom QMK
         run: |
           git fetch origin main
           git checkout -B main origin/main
-          git merge -Xignore-all-space -m "Auto merge" oryx
+          git merge -Xignore-all-space oryx
           git push
 
       - name: Checkout the right firmware branch
