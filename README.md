@@ -15,7 +15,7 @@ Each time you run the GitHub Action, the workflow will:
    - Go to the **Actions** tab.
    - Select **Fetch and build layout**.
    - Click **Run workflow**.
-   - Input your layout ID and keyboard type, then run the workflow.
+   - Input your layout ID and keyboard type (your layout must be public in Oryx), then run the workflow.
    - (To avoid having to input values each time, you can modify the default values at the top of the `.github/workflows/fetch-and-build-layout.yml` file)
 3. A folder containing your layout will be generated at the root of the repository.
 4. You can now add your custom QMK features to this folder.
