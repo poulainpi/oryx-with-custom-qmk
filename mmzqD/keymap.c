@@ -159,22 +159,22 @@ bool achordion_chord(uint16_t tap_hold_keycode,
   // Exceptionally consider the following chords as holds
   switch (tap_hold_keycode) {
     case HOME_D:
-      if (other_keycode == HOME_S || other_keycode == KC_W || other_keycode == KC_Q || other_keycode == HOME_A) { return true; }
+      if (other_keycode == HOME_S || other_keycode == KC_T || other_keycode == KC_W || other_keycode == KC_Z || other_keycode == KC_V || other_keycode == KC_Q || other_keycode == HOME_A) { return true; }
       break;
     case HOME_F: 
-      if (other_keycode == HOME_D)  { return true; }
+      if (other_keycode == HOME_D) { return true; }
       break;
     case HOME_J: 
-      if (other_keycode == HOME_K)  { return true; }
+      if (other_keycode == HOME_K) { return true; }
       break;
-    case HOME_A: 
-      if (other_keycode == KC_A)  { return true; }
+    case HOME_A:
+      if (other_keycode == KC_A) { return true; }
       break;
   }
 
-  // Also allow same-hand holds when the other key is in the rows below the
-  // alphas. I need the `% (MATRIX_ROWS / 2)` because my keyboard is split.
-  if (other_record->event.key.row % (MATRIX_ROWS / 2) >= 4) { return true; }
+  // We want to ignore thumb clusters
+  if (other_record->event.key.row == 4 || other_record->event.key.row == 5) { return true; }
+  if (other_record->event.key.row == 6 && other_record->event.key.col == 0) { return true; }
 
   // Otherwise, follow the opposite hands rule.
   return achordion_opposite_hands(tap_hold_record, other_record);
@@ -205,11 +205,5 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 }
 
 uint16_t achordion_timeout(uint16_t tap_hold_keycode) {
-  switch (tap_hold_keycode) {
-    case KC_C:
-    case KC_V:
-      return 0;  // Bypass Achordion for these keys.
-  }
-
-  return 500;  // Otherwise use a timeout of 500 ms.
+  return 500;  
 }
