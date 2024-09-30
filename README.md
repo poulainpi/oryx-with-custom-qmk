@@ -1,8 +1,9 @@
 # Oryx with custom QMK
 
-This repository allows combining the convenience of Oryx’s graphical layout editing with the power of QMK, allowing you to customize your Oryx layout with advanced QMK features like Achordion and Repeat Key, while automating firmware builds through GitHub Actions.
+This repository allows combining the convenience of [Oryx’s](https://www.zsa.io/oryx) graphical layout editing with the power of [QMK](https://qmk.fm), allowing you to customize your Oryx layout with advanced QMK features like Achordion and Repeat Key, while automating firmware builds through GitHub Actions.
 
 ## How it works
+
 Each time you run the GitHub Action, the workflow will:
 1. Fetch the latest changes made in Oryx.
 2. Merge them with any QMK features you've added in the source code.
@@ -16,10 +17,13 @@ Each time you run the GitHub Action, the workflow will:
    - Select **Fetch and build layout**.
    - Click **Run workflow**.
    - Input your layout ID and keyboard type (your layout must be public in Oryx), then run the workflow.
-   - (To avoid having to input values each time, you can modify the default values at the top of the `.github/workflows/fetch-and-build-layout.yml` file)
+   - (To avoid having to input values each time, you can modify the default values at the top of the `.github/workflows/fetch-and-build-layout.yml` file).
 3. A folder containing your layout will be generated at the root of the repository.
-4. You can now add your custom QMK features to this folder.
-5. You can continue editing your layout through Oryx.
-6. To build the firmware, rerun the GitHub Action. The firmware will be available for download in the action’s artifacts.
+4. You can now add your custom QMK features to this folder:
+   - Edit `config.h`, `keymap.c` and `rules.mk` according to the [QMK documentation](https://github.com/qmk/qmk_firmware/tree/master/docs/features).
+   - Commit and push to the **main** branch.
+5. You can continue editing your layout through Oryx:
+   - Confirm changes by clicking the **Compile this layout** button.
+6. To build the firmware (including both Oryx and code modifications), rerun the GitHub Action. The firmware will be available for download in the action’s artifacts.
 7. Flash your downloaded firmware using [Keymapp](https://www.zsa.io/flash#flash-keymap).
 8. Enjoy!
