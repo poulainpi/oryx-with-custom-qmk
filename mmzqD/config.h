@@ -4,7 +4,7 @@
 */
 
 #undef TAPPING_TERM
-#define TAPPING_TERM 175
+#define TAPPING_TERM 120
 
 #define PERMISSIVE_HOLD
 
