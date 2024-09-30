@@ -5,16 +5,16 @@
 #define ML_SAFE_RANGE SAFE_RANGE
 
 // Left-hand home row mods
-#define HOME_A LGUI_T(KC_A)
-#define HOME_S LALT_T(KC_S)
-#define HOME_D LCTL_T(KC_D)
-#define HOME_F LSFT_T(KC_F)
+#define HOME_A MT(MOD_LCTL, KC_A)
+#define HOME_S MT(MOD_LALT, KC_S)
+#define HOME_D MT(MOD_LGUI, KC_D)
+#define HOME_F MT(MOD_LSFT, KC_F)
 
 // Right-hand home row mods
-#define HOME_J RSFT_T(KC_J)
-#define HOME_K RCTL_T(KC_K)
-#define HOME_L LALT_T(KC_L)
-#define HOME_SCLN RGUI_T(KC_SCLN)
+#define HOME_J MT(MOD_RSFT, KC_J)
+#define HOME_K MT(MOD_RGUI, KC_K)
+#define HOME_L MT(MOD_LALT, KC_L)
+#define HOME_SCLN MT(MOD_RCTL, KC_SCLN)
 
 enum custom_keycodes {
   RGB_SLD = ML_SAFE_RANGE,
@@ -171,10 +171,10 @@ bool achordion_chord(uint16_t tap_hold_keycode,
       if (other_keycode == KC_A) { return true; }
       break;
   }
+  
 
   // We want to ignore thumb clusters
-  if (other_record->event.key.row == 4 || other_record->event.key.row == 5) { return true; }
-  if (other_record->event.key.row == 6 && other_record->event.key.col == 0) { return true; }
+  if (other_record->event.key.row == 5 || other_record->event.key.row == 11) { return true; }
 
   // Otherwise, follow the opposite hands rule.
   return achordion_opposite_hands(tap_hold_record, other_record);
