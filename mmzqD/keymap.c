@@ -205,5 +205,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 }
 
 uint16_t achordion_timeout(uint16_t tap_hold_keycode) {
-  return 500;  
+  switch (tap_hold_keycode) {
+    // Thumb key for enter/layer
+    case LT(1,KC_ENTER):
+      return 0;  // Bypass Achordion for these keys.
+  }
+
+  return 500;  // Otherwise use a timeout of 500 ms.
 }
