@@ -152,6 +152,18 @@ void matrix_scan_user(void) {
   achordion_task();
 }
 
+bool achordion_eager_mod(uint8_t mod) {
+  switch (mod) {
+    case MOD_LSFT:
+    case MOD_RSFT:
+    case MOD_LGUI:
+    case MOD_RGUI:
+      return true;  // Eagerly apply Shift and Cmd mods.
+    default:
+      return false;
+  }
+}
+
 bool achordion_chord(uint16_t tap_hold_keycode,
                      keyrecord_t* tap_hold_record,
                      uint16_t other_keycode,
