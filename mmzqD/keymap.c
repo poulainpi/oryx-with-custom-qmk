@@ -4,6 +4,18 @@
 #define MOON_LED_LEVEL LED_LEVEL
 #define ML_SAFE_RANGE SAFE_RANGE
 
+// Left-hand home row mods
+#define HOME_A LGUI_T(KC_A)
+#define HOME_S LALT_T(KC_S)
+#define HOME_D LCTL_T(KC_D)
+#define HOME_F LSFT_T(KC_F)
+
+// Right-hand home row mods
+#define HOME_J RSFT_T(KC_J)
+#define HOME_K RCTL_T(KC_K)
+#define HOME_L LALT_T(KC_L)
+#define HOME_SCLN RGUI_T(KC_SCLN)
+
 enum custom_keycodes {
   RGB_SLD = ML_SAFE_RANGE,
   ST_MACRO_0,
@@ -140,6 +152,34 @@ void matrix_scan_user(void) {
   achordion_task();
 }
 
+bool achordion_chord(uint16_t tap_hold_keycode,
+                     keyrecord_t* tap_hold_record,
+                     uint16_t other_keycode,
+                     keyrecord_t* other_record) {
+  // Exceptionally consider the following chords as holds
+  switch (tap_hold_keycode) {
+    case HOME_D:
+      if (other_keycode == HOME_S || other_keycode == KC_W || other_keycode == KC_Q || other_keycode == HOME_A) { return true; }
+      break;
+    case HOME_F: 
+      if (other_keycode == HOME_D)  { return true; }
+      break;
+    case HOME_J: 
+      if (other_keycode == HOME_K)  { return true; }
+      break;
+    case HOME_A: 
+      if (other_keycode == KC_A)  { return true; }
+      break;
+  }
+
+  // Also allow same-hand holds when the other key is in the rows below the
+  // alphas. I need the `% (MATRIX_ROWS / 2)` because my keyboard is split.
+  if (other_record->event.key.row % (MATRIX_ROWS / 2) >= 4) { return true; }
+
+  // Otherwise, follow the opposite hands rule.
+  return achordion_opposite_hands(tap_hold_record, other_record);
+}
+
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   if (!process_achordion(keycode, record)) { return false; }
   
@@ -164,5 +204,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   return true;
 }
 
+uint16_t achordion_timeout(uint16_t tap_hold_keycode) {
+  switch (tap_hold_keycode) {
+    case KC_C:
+    case KC_V:
+      return 0;  // Bypass Achordion for these keys.
+  }
 
-
+  return 500;  // Otherwise use a timeout of 500 ms.
+}
