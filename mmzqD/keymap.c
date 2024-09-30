@@ -168,13 +168,13 @@ bool achordion_chord(uint16_t tap_hold_keycode,
       if (other_keycode == HOME_K) { return true; }
       break;
     case HOME_A:
-      if (other_keycode == KC_A) { return true; }
+      if (other_keycode == KC_C) { return true; }
       break;
   }
   
 
   // We want to ignore thumb clusters
-  if (other_record->event.key.row == 5 || other_record->event.key.row == 11) { return true; }
+  if (other_record->event.key.row % (MATRIX_ROWS / 2) >= 5) { return true; }
 
   // Otherwise, follow the opposite hands rule.
   return achordion_opposite_hands(tap_hold_record, other_record);
