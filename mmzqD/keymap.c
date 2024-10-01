@@ -199,7 +199,7 @@ bool achordion_chord(uint16_t tap_hold_keycode,
 
   // We want to ignore thumb clusters (except enter key)
   if (other_record->event.key.row == 5) { return true; }
-  if (other_record->event.key.row == 11 && other_keycode->event.key.col == 6) { return true; }
+  if (other_record->event.key.row == 11 && other_record->event.key.col == 6) { return true; }
 
   // Otherwise, follow the opposite hands rule.
   return achordion_opposite_hands(tap_hold_record, other_record);
