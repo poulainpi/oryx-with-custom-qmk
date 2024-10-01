@@ -4,13 +4,13 @@
 #define MOON_LED_LEVEL LED_LEVEL
 #define ML_SAFE_RANGE SAFE_RANGE
 
-// Left-hand home row mods
+// Left-hand home row mods - used with achordion
 #define HOME_A MT(MOD_LCTL, KC_A)
 #define HOME_S MT(MOD_LALT, KC_S)
 #define HOME_D MT(MOD_LGUI, KC_D)
 #define HOME_F MT(MOD_LSFT, KC_F)
 
-// Right-hand home row mods
+// Right-hand home row mods - used with achordion
 #define HOME_J MT(MOD_RSFT, KC_J)
 #define HOME_K MT(MOD_RGUI, KC_K)
 #define HOME_L MT(MOD_LALT, KC_L)
@@ -21,8 +21,6 @@ enum custom_keycodes {
   ST_MACRO_0,
   ST_MACRO_1,
 };
-
-
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [0] = LAYOUT_voyager(
@@ -136,51 +134,8 @@ bool rgb_matrix_indicators_user(void) {
   return true;
 }
 
-void matrix_scan_user(void) {
-  achordion_task();
-}
-
-bool achordion_eager_mod(uint8_t mod) {
-  switch (mod) {
-    case MOD_LSFT:
-    case MOD_RSFT:
-    case MOD_LGUI:
-    case MOD_RGUI:
-      return true;  // Eagerly apply Shift and Cmd mods.
-    default:
-      return false;
-  }
-}
-
-bool achordion_chord(uint16_t tap_hold_keycode,
-                     keyrecord_t* tap_hold_record,
-                     uint16_t other_keycode,
-                     keyrecord_t* other_record) {
-  // Exceptionally consider the following chords as holds
-  switch (tap_hold_keycode) {
-    case HOME_D:
-      if (other_keycode == HOME_S || other_keycode == KC_T || other_keycode == KC_W || other_keycode == KC_R || other_keycode == KC_Z || other_keycode == KC_V || other_keycode == KC_Q || other_keycode == HOME_A) { return true; }
-      break;
-    case HOME_F: 
-      if (other_keycode == HOME_D) { return true; }
-      break;
-    case HOME_J: 
-      if (other_keycode == HOME_K) { return true; }
-      break;
-    case HOME_A:
-      if (other_keycode == KC_C) { return true; }
-      break;
-  }
-  
-
-  // We want to ignore thumb clusters
-  if (other_record->event.key.row % (MATRIX_ROWS / 2) >= 5) { return true; }
-
-  // Otherwise, follow the opposite hands rule.
-  return achordion_opposite_hands(tap_hold_record, other_record);
-}
-
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+  // Achordion config
   if (!process_achordion(keycode, record)) { return false; }
   
   switch (keycode) {
@@ -204,6 +159,34 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   return true;
 }
 
+// Start: Achordion config
+void matrix_scan_user(void) {
+  achordion_task();
+}
+
+bool achordion_eager_mod(uint8_t mod) {
+  switch (mod) {
+    case MOD_LSFT:
+    case MOD_RSFT:
+    case MOD_LGUI:
+    case MOD_RGUI:
+      return true;  // Eagerly apply Shift and Cmd mods.
+    default:
+      return false;
+  }
+}
+
+bool achordion_chord(uint16_t tap_hold_keycode,
+                     keyrecord_t* tap_hold_record,
+                     uint16_t other_keycode,
+                     keyrecord_t* other_record) {
+  // We want to ignore thumb clusters
+  if (other_record->event.key.row % (MATRIX_ROWS / 2) >= 5) { return true; }
+
+  // Otherwise, follow the opposite hands rule.
+  return achordion_opposite_hands(tap_hold_record, other_record);
+}
+
 uint16_t achordion_timeout(uint16_t tap_hold_keycode) {
   switch (tap_hold_keycode) {
     // Thumb key for enter/layer
@@ -213,3 +196,4 @@ uint16_t achordion_timeout(uint16_t tap_hold_keycode) {
 
   return 500;  // Otherwise use a timeout of 500 ms.
 }
+// End: Achordion config
