@@ -184,14 +184,34 @@ bool achordion_chord(uint16_t tap_hold_keycode,
                      keyrecord_t* tap_hold_record,
                      uint16_t other_keycode,
                      keyrecord_t* other_record) {
-  // We want to ignore thumb clusters
-  if (other_record->event.key.row % (MATRIX_ROWS / 2) >= 5) { return true; }
+  // Exceptionally consider the following chords as holds
+  switch (tap_hold_keycode) {
+    case HOME_D:
+      if (other_keycode == HOME_S || other_keycode == KC_T || other_keycode == KC_W || other_keycode == KC_R || other_keycode == KC_Z || other_keycode == KC_V || other_keycode == KC_Q || other_keycode == HOME_A) { return true; }
+      break;
+    case HOME_A:
+      if (other_keycode == KC_C || other_keycode == HOME_D) { return true; }
+      break;
+    case HOME_SCLN:
+      if (other_keycode == KC_U) { return true; }
+      break;
+  }
+
+  // We want to ignore thumb clusters (except enter key)
+  if (other_record->event.key.row == 5) { return true; }
+  if (other_record->event.key.row == 11 && other_keycode->event.key.col == 6) { return true; }
 
   // Otherwise, follow the opposite hands rule.
   return achordion_opposite_hands(tap_hold_record, other_record);
 }
 
 uint16_t achordion_timeout(uint16_t tap_hold_keycode) {
+  switch (tap_hold_keycode) {
+    // Thumb key for enter/layer
+    case LT(1,KC_ENTER):
+      return 0;  // Bypass Achordion for these keys.
+  }
+
   return 500;  // Otherwise use a timeout of 500 ms.
 }
 // End: Achordion config
