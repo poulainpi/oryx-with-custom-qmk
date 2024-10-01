@@ -46,21 +46,21 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case MT(MOD_LALT, KC_S):
-            return TAPPING_TERM + 100;
+            return TAPPING_TERM + 80;
         case MT(MOD_LSFT, KC_F):
-            return TAPPING_TERM + 60;
+            return TAPPING_TERM + 40;
         case MT(MOD_RSFT, KC_J):
-            return TAPPING_TERM + 60;
+            return TAPPING_TERM + 40;
         case MT(MOD_LALT, KC_L):
-            return TAPPING_TERM + 100;
+            return TAPPING_TERM + 80;
         case MT(MOD_RCTL, KC_SCLN):
-            return TAPPING_TERM + 100;
+            return TAPPING_TERM + 80;
         case OSM(MOD_LCTL):
-            return TAPPING_TERM + 100;
+            return TAPPING_TERM + 80;
         case OSM(MOD_LALT):
-            return TAPPING_TERM + 100;
+            return TAPPING_TERM + 80;
         case OSM(MOD_LSFT):
-            return TAPPING_TERM + 60;
+            return TAPPING_TERM + 40;
         default:
             return TAPPING_TERM;
     }
