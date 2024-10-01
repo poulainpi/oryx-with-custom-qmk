@@ -192,12 +192,6 @@ bool achordion_chord(uint16_t tap_hold_keycode,
 }
 
 uint16_t achordion_timeout(uint16_t tap_hold_keycode) {
-  switch (tap_hold_keycode) {
-    // Thumb key for enter/layer
-    case LT(1,KC_ENTER):
-      return 0;  // Bypass Achordion for these keys.
-  }
-
   return 500;  // Otherwise use a timeout of 500 ms.
 }
 // End: Achordion config
