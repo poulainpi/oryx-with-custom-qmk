@@ -1,4 +1,6 @@
 #define DE_Y KC_Z
+#define DE_QUOT S(KC_NUHS)
+#define DE_DQOT S(KC_2)
 #define DE_CIRC KC_GRV
 #define DE_Z KC_Y
 #define DE_3 KC_3
@@ -34,7 +36,6 @@
 #define KC_MAC_PASTE LGUI(KC_V)
 #define KC_MAC_COPY LGUI(KC_C)
 #define KC_MAC_UNDO LGUI(KC_Z)
-#define DE_QUOT S(KC_NUHS)
 #define DE_TILD ALGR(KC_RBRC)
 #define KC_PC_CUT LCTL(KC_X)
 #define KC_PC_PASTE LCTL(KC_V)
@@ -44,4 +45,3 @@
 #define DE_EURO ALGR(KC_E)
 #define DE_ADIA KC_QUOT
 #define DE_ODIA KC_SCLN
-#define DE_DQOT S(KC_2)
