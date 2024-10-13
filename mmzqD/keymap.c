@@ -5,7 +5,7 @@
 #define ML_SAFE_RANGE SAFE_RANGE
 
 // Left-hand home row mods - used with achordion
-#define HOME_A MT(MOD_LCTL, KC_A)
+#define HOME_C MT(MOD_LCTL, KC_C)
 #define HOME_S MT(MOD_LALT, KC_S)
 #define HOME_D MT(MOD_LGUI, KC_D)
 #define HOME_F MT(MOD_LSFT, KC_F)
@@ -14,7 +14,7 @@
 #define HOME_J MT(MOD_RSFT, KC_J)
 #define HOME_K MT(MOD_RGUI, KC_K)
 #define HOME_L MT(MOD_LALT, KC_L)
-#define HOME_SCLN MT(MOD_RCTL, KC_SCLN)
+#define HOME_COMMA MT(MOD_RCTL, KC_COMMA)
 
 enum custom_keycodes {
   RGB_SLD = ML_SAFE_RANGE,
@@ -228,7 +228,9 @@ bool achordion_eager_mod(uint8_t mod) {
     case MOD_RSFT:
     case MOD_LGUI:
     case MOD_RGUI:
-      return true;  // Eagerly apply Shift and Cmd mods.
+    case MOD_LCTL:
+    case MOD_RCTL:
+      return true;  // Eagerly apply Shift, Ctrl and Cmd mods.
     default:
       return false;
   }
@@ -241,13 +243,8 @@ bool achordion_chord(uint16_t tap_hold_keycode,
   // Exceptionally consider the following chords as holds
   switch (tap_hold_keycode) {
     case HOME_D:
-      if (other_keycode == HOME_S || other_keycode == KC_T || other_keycode == KC_W || other_keycode == KC_R || other_keycode == KC_Z || other_keycode == KC_V || other_keycode == KC_Q || other_keycode == HOME_A) { return true; }
-      break;
-    case HOME_A:
-      if (other_keycode == KC_C || other_keycode == HOME_D) { return true; }
-      break;
-    case HOME_SCLN:
-      if (other_keycode == KC_U) { return true; }
+      // Close tab || Close window || Cut text || Undo || Paste || Refresh
+      if (other_keycode == KC_W || other_keycode == KC_Q || other_keycode == KC_X || other_keycode == KC_Z || other_keycode == KC_V || other_keycode == KC_R) { return true; }
       break;
   }
 
