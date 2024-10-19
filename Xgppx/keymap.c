@@ -156,7 +156,7 @@ bool rgb_matrix_indicators_user(void) {
   return true;
 }
 
-bool mac_mode = true
+bool mac_mode = true;
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   if ((keycode == LT(1, KC_BSPC) || keycode == LT(2, KC_ENTER)) && mac_mode == false) {
