@@ -1,4 +1,5 @@
 #include QMK_KEYBOARD_H
+#include "rgb_matrix.h"
 #include "version.h"
 #include "i18n.h"
 #define MOON_LED_LEVEL LED_LEVEL
@@ -15,8 +16,7 @@ enum custom_keycodes {
   MAC_SIRI,
   MAC_LOCK,
   MAC_WIN_TOGGLE
-  LAYER_SWITCH_1,
-  LAYER_SWITCH_2,
+  DYNAMIC_MACRO_RANGE
 };
 
 
@@ -45,7 +45,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TAB,         KC_Q,           KC_W,           KC_E,           KC_R,           KC_T,                                           CH_Z,           KC_U,           KC_I,           KC_O,           KC_P,           MAC_WIN_TOGGLE, 
     TD(DANCE_0),    KC_A,           MT(MOD_LCTL, KC_S),MT(MOD_LALT, KC_D),MT(MOD_LGUI, KC_F),KC_G,                                           KC_H,           MT(MOD_RGUI, KC_J),MT(MOD_RALT, KC_K),MT(MOD_RCTL, KC_L),ST_MACRO_0,     TD(DANCE_2),    
     KC_LEFT_SHIFT,  CH_Y,           KC_X,           KC_C,           KC_V,           KC_B,                                           KC_N,           KC_M,           TD(DANCE_3),    TD(DANCE_4),    TD(DANCE_5),    MT(MOD_RSFT, CH_QUOT),
-                                                    LT(LAYER_SWITCH_1,KC_BSPC),  LT(LAYER_SWITCH_2,KC_ENTER),                                 MO(2),          LT(1,KC_SPACE)
+                                                    LT(1,KC_BSPC),  LT(2,KC_ENTER),                                 MO(2),          LT(1,KC_SPACE)
   ),
   [1] = LAYOUT_voyager(
     KC_TRANSPARENT, KC_F1,          KC_F2,          KC_F3,          KC_F4,          KC_F5,                                          KC_F6,          KC_F7,          KC_F8,          KC_F9,          KC_F10,         KC_F11,         
@@ -159,6 +159,22 @@ bool rgb_matrix_indicators_user(void) {
 bool mac_mode = true
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+  if ((keycode == LT(1, KC_BSPC) || keycode == LT(2, KC_ENTER)) && mac_mode == false) {
+    if (record->event.pressed) {
+      if (record->tap.count > 0 && record->tap.interrupted == false) {
+        if (keycode == LT(1, KC_BSPC)) {
+          tap_code(KC_BSPC);
+        } else {
+          tap_code(KC_ENTER);
+        }
+      } else {
+        layer_on(keycode == LT(1, KC_BSPC) ? 4 : 5);
+      }
+    } else {
+      layer_off(keycode == LT(1, KC_BSPC) ? 4 : 5);
+    }
+    return false;
+  }
   switch (keycode) {
     case MAC_WIN_TOGGLE:
       if (record->event.pressed) {
@@ -168,43 +184,14 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
           layer_off(3);
           layer_off(4);
           layer_off(5);
-          rgb_matrix_sethsv(0, 255, 255);  // Set color to red (0° hue)
+          rgb_matrix_sethsv_noeeprom(0, 255, 255);  // Set color to red
         } else {
           default_layer_set(1UL << 3);  // Set layer 3 as default
           layer_off(1);
           layer_off(2);
-          rgb_matrix_sethsv(170, 255, 255);  // Set color to blue (170° hue)
+          rgb_matrix_sethsv_noeeprom(170, 255, 255);  // Set color to blue
         }
-        rgb_matrix_enable();  // Make sure RGB matrix is enabled
-      }
-    case LAYER_SWITCH_1:
-      if (record->event.pressed) {
-        if (mac_mode) {
-          layer_on(1);
-        } else {
-          layer_on(4);
-        }
-      } else {
-        if (mac_mode) {
-          layer_off(1);
-        } else {
-          layer_off(4);
-        }
-      }
-      return false;
-    case LAYER_SWITCH_2:
-      if (record->event.pressed) {
-        if (mac_mode) {
-          layer_on(2);
-        } else {
-          layer_on(5);
-        }
-      } else {
-        if (mac_mode) {
-          layer_off(2);
-        } else {
-          layer_off(5);
-        }
+        rgb_matrix_enable_noeeprom();
       }
     case ST_MACRO_0:
     if (record->event.pressed) {
