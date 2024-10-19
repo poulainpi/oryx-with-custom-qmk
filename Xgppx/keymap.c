@@ -15,7 +15,7 @@ enum custom_keycodes {
   MAC_SPOTLIGHT,
   MAC_SIRI,
   MAC_LOCK,
-  MAC_WIN_TOGGLE
+  MAC_WIN_TOGGLE,
   DYNAMIC_MACRO_RANGE
 };
 
