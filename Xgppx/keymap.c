@@ -161,7 +161,7 @@ bool mac_mode = true;
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   if ((keycode == LT(1, KC_BSPC) || keycode == LT(2, KC_ENTER)) && mac_mode == false) {
     if (record->event.pressed) {
-      if (record->tap.count > 0 && record->tap.interrupted == false) {
+      if (record->tap.count > 0 && !record->tap.interrupted) {
         if (keycode == LT(1, KC_BSPC)) {
           tap_code(KC_BSPC);
         } else {
@@ -180,15 +180,16 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       if (record->event.pressed) {
         mac_mode = !mac_mode;
         if (mac_mode) {
-          default_layer_set(1UL << 0);  // Set layer 0 as default
           layer_off(3);
           layer_off(4);
           layer_off(5);
+          layer_on(0);
           rgb_matrix_sethsv_noeeprom(0, 255, 255);  // Set color to red
         } else {
-          default_layer_set(1UL << 3);  // Set layer 3 as default
+          layer_off(0);
           layer_off(1);
           layer_off(2);
+          layer_on(3);
           rgb_matrix_sethsv_noeeprom(170, 255, 255);  // Set color to blue
         }
         rgb_matrix_enable_noeeprom();
