@@ -1,5 +1,4 @@
 #include QMK_KEYBOARD_H
-#include "keymap.h"
 #include "version.h"
 #include "i18n.h"
 #define MOON_LED_LEVEL LED_LEVEL
