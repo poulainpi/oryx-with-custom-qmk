@@ -1,4 +1,5 @@
 #include QMK_KEYBOARD_H
+#include "keymap.h"
 #include "version.h"
 #include "i18n.h"
 #define MOON_LED_LEVEL LED_LEVEL
@@ -105,6 +106,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 };
 
+const key_override_t dot_comma_override = ko_make_basic(MOD_MASK_SHIFT, KC_DOT, KC_COMM);
+const key_override_t quote_doublequote_override = ko_make_basic(MOD_MASK_SHIFT, DE_QUOT, DE_DQUO);
+
+const key_override_t *key_overrides[] = {
+    &dot_comma_override,
+    &quote_doublequote_override,
+    NULL // Null-terminated array
+};
+
+/*
 const uint16_t PROGMEM combo0[] = { OSM(MOD_LSFT), KC_DOT, COMBO_END};
 const uint16_t PROGMEM combo1[] = { OSM(MOD_LSFT), DE_QUOT, COMBO_END};
 const uint16_t PROGMEM combo2[] = { OSM(MOD_LSFT), KC_DOT, COMBO_END};
@@ -116,7 +127,7 @@ combo_t key_combos[COMBO_COUNT] = {
     COMBO(combo2, KC_COMMA),
     COMBO(combo3, DE_DQOT),
 };
-
+*/
 
 extern rgb_config_t rgb_matrix_config;
 
