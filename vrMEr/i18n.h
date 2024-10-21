@@ -1,6 +1,6 @@
+#define DE_DQOT S(KC_2)
 #define DE_Y KC_Z
 #define DE_QUOT S(KC_NUHS)
-#define DE_DQOT S(KC_2)
 #define DE_CIRC KC_GRV
 #define DE_Z KC_Y
 #define DE_3 KC_3
