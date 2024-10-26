@@ -32,6 +32,10 @@
 #define DE_DLR S(KC_4)
 #define DE_HASH KC_NUHS
 #define DE_SCLN S(KC_COMM)
+#define DE_UE KC_LBRC
+#define DE_EURO ALGR(KC_E)
+#define DE_AE KC_QUOT
+#define DE_OE KC_SCLN
 #define KC_MAC_CUT LGUI(KC_X)
 #define KC_MAC_PASTE LGUI(KC_V)
 #define KC_MAC_COPY LGUI(KC_C)
@@ -41,7 +45,3 @@
 #define KC_PC_PASTE LCTL(KC_V)
 #define KC_PC_COPY LCTL(KC_C)
 #define KC_PC_UNDO LCTL(KC_Z)
-#define DE_UDIA KC_LBRC
-#define DE_EURO ALGR(KC_E)
-#define DE_ADIA KC_QUOT
-#define DE_ODIA KC_SCLN
