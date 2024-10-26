@@ -5,7 +5,7 @@
 
 #define USB_SUSPEND_WAKEUP_DELAY 0
 #define USB_POLLING_INTERVAL_MS 10
-#define SERIAL_NUMBER "vrMEr/EX0P5"
+#define SERIAL_NUMBER "vrMEr/EX0Ov"
 #define LAYER_STATE_16BIT
 #define COMBO_COUNT 4
 #define HCS(report) host_consumer_send(record->event.pressed ? report : 0); return false
