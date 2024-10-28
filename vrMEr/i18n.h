@@ -1,13 +1,14 @@
 #define DE_DQOT S(KC_2)
+#define DE_MINS KC_SLSH
 #define DE_Y KC_Z
 #define DE_QUOT S(KC_NUHS)
-#define DE_CIRC KC_GRV
 #define DE_Z KC_Y
 #define DE_3 KC_3
 #define DE_SECT S(DE_3)
 #define DE_AMPR S(KC_6)
 #define DE_LBRC ALGR(KC_8)
 #define DE_RBRC ALGR(KC_9)
+#define DE_CIRC KC_GRV
 #define DE_AT ALGR(KC_Q)
 #define DE_SLSH S(KC_7)
 #define DE_LCBR ALGR(KC_7)
@@ -25,7 +26,6 @@
 #define DE_QUES S(DE_SS)
 #define DE_LPRN S(KC_8)
 #define DE_RPRN S(KC_9)
-#define DE_MINS KC_SLSH
 #define DE_COLN S(KC_DOT)
 #define DE_PLUS KC_RBRC
 #define DE_PERC S(KC_5)
