@@ -1,5 +1,6 @@
 #define DE_DQOT S(KC_2)
 #define DE_MINS KC_SLSH
+#define DE_PLUS KC_RBRC
 #define DE_Y KC_Z
 #define DE_QUOT S(KC_NUHS)
 #define DE_Z KC_Y
@@ -27,7 +28,6 @@
 #define DE_LPRN S(KC_8)
 #define DE_RPRN S(KC_9)
 #define DE_COLN S(KC_DOT)
-#define DE_PLUS KC_RBRC
 #define DE_PERC S(KC_5)
 #define DE_DLR S(KC_4)
 #define DE_HASH KC_NUHS
