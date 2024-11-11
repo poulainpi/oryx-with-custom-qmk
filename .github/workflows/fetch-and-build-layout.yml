@@ -8,7 +8,7 @@ on:
         required: true
         default: "g7jjw"
       layout_geometry:
-        description: "voyager|moonlander|ergodox_ez"
+        description: "voyager|moonlander|ergodox_ez|planck_ez"
         required: true
         default: "voyager"
 
