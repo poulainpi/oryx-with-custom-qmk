@@ -8,7 +8,7 @@ on:
         required: true
         default: "g7jjw"
       layout_geometry:
-        description: "voyager|moonlander|ergodox_ez|planck_ez"
+        description: "voyager | moonlander | ergodox_ez | planck_ez | planck_ez/glow"
         required: true
         default: "voyager"
 
@@ -98,10 +98,12 @@ jobs:
           "
           
           # Find and export built layout          
-          echo built_layout_file=$(find ./qmk_firmware -maxdepth 1 -type f -regex ".*${{ github.event.inputs.layout_geometry }}.*\.\(bin\|hex\)$") >> "$GITHUB_OUTPUT"
+          normalized_layout_geometry="$(echo "${{ github.event.inputs.layout_geometry }}" | sed 's/\//_/g')"
+          echo built_layout_file=$(find ./qmk_firmware -maxdepth 1 -type f -regex ".*${normalized_layout_geometry}.*\.bin$") >> "$GITHUB_OUTPUT"
+          echo normalized_layout_geometry=${normalized_layout_geometry} >> "$GITHUB_OUTPUT"
 
       - name: Upload layout
         uses: actions/upload-artifact@v4
         with:
-          name: ${{ github.event.inputs.layout_geometry }}_${{ github.event.inputs.layout_id }}
+          name: ${{ steps.build-layout.outputs.normalized_layout_geometry }}_${{ github.event.inputs.layout_id }}
           path: ${{ steps.build-layout.outputs.built_layout_file }}
