@@ -1,0 +1,13 @@
+#define DE_CIRC KC_GRV
+#define DE_PLUS KC_RBRC
+#define DE_Y KC_Z
+#define DE_ACUT KC_EQL
+#define DE_SS KC_MINS
+#define DE_Z KC_Y
+#define DE_UDIA KC_LBRC
+#define DE_ODIA KC_SCLN
+#define DE_ADIA KC_QUOT
+#define DE_HASH KC_NUHS
+#define DE_MINS KC_SLSH
+#define KC_PC_UNDO LCTL(KC_Z)
+#define DE_COLN S(KC_DOT)
