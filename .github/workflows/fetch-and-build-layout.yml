@@ -8,7 +8,7 @@ on:
         required: true
         default: "g7jjw"
       layout_geometry:
-        description: "voyager | moonlander | ergodox_ez | planck_ez | planck_ez/glow"
+        description: "voyager | moonlander | ergodox_ez | ergodox_ez/stm32/glow | planck_ez | planck_ez/glow"
         required: true
         default: "voyager"
 
