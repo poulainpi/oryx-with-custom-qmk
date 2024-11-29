@@ -8,7 +8,7 @@ on:
         required: true
         default: "g7jjw"
       layout_geometry:
-        description: "voyager | moonlander | ergodox_ez | ergodox_ez/stm32/glow | planck_ez | planck_ez/glow"
+        description: "voyager | moonlander | ergodox_ez | ergodox_ez/stm32/glow | ergodox_ez/stm32/shine | ergodox_ez/m32u4/glow | ergodox_ez/m32u4/shine | planck_ez | planck_ez/glow"
         required: true
         default: "voyager"
 
@@ -99,7 +99,7 @@ jobs:
           
           # Find and export built layout          
           normalized_layout_geometry="$(echo "${{ github.event.inputs.layout_geometry }}" | sed 's/\//_/g')"
-          echo built_layout_file=$(find ./qmk_firmware -maxdepth 1 -type f -regex ".*${normalized_layout_geometry}.*\.bin$") >> "$GITHUB_OUTPUT"
+          echo built_layout_file=$(find ./qmk_firmware -maxdepth 1 -type f -regex ".*${normalized_layout_geometry}.*\.\(bin\|hex\)$") >> "$GITHUB_OUTPUT"
           echo normalized_layout_geometry=${normalized_layout_geometry} >> "$GITHUB_OUTPUT"
 
       - name: Upload layout
