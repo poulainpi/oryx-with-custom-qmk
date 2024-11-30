@@ -2,6 +2,73 @@
 #include "version.h"
 #include "i18n.h"
 
+// DHB:
+/* specify which layer will be associated with which LED */
+#define LED_INDICATOR_RED_LAYER 3
+#define LED_INDICATOR_GREEN_LAYER 2
+#define LED_INDICATOR_BLUE_LAYER 1
+
+/* specify which USB Host Status will be associated with which LED */
+#define LED_INDICATOR_STATE_RED caps_lock
+#define LED_INDICATOR_STATE_GREEN num_lock
+#define LED_INDICATOR_STATE_BLUE scroll_lock
+
+/* specify the PWM values for each LED at each brightness */
+#define LED_INDICATOR_RED_DIM 8
+#define LED_INDICATOR_RED_HALF 96
+#define LED_INDICATOR_RED_FULL 228
+#define LED_INDICATOR_GREEN_DIM 2
+#define LED_INDICATOR_GREEN_HALF 48
+#define LED_INDICATOR_GREEN_FULL 160
+#define LED_INDICATOR_BLUE_DIM 16
+#define LED_INDICATOR_BLUE_HALF 172
+#define LED_INDICATOR_BLUE_FULL 255
+
+// DHB:
+bool led_update_user(led_t led_state) {
+    uint8_t layer = biton32(layer_state);
+    uint8_t red = 0, green = 0, blue = 0;
+
+    if (layer == LED_INDICATOR_RED_LAYER) red = LED_INDICATOR_RED_HALF;
+    if (led_state.LED_INDICATOR_STATE_RED) red = LED_INDICATOR_RED_DIM;
+    if ((led_state.LED_INDICATOR_STATE_RED) && layer == LED_INDICATOR_RED_LAYER) red = LED_INDICATOR_RED_FULL;
+
+    if (layer == LED_INDICATOR_GREEN_LAYER) green = LED_INDICATOR_GREEN_HALF;
+    if (led_state.LED_INDICATOR_STATE_GREEN) green = LED_INDICATOR_GREEN_DIM;
+    if (led_state.LED_INDICATOR_STATE_GREEN && layer == LED_INDICATOR_GREEN_LAYER) green = LED_INDICATOR_GREEN_FULL;
+
+    if (layer == LED_INDICATOR_BLUE_LAYER) blue = LED_INDICATOR_BLUE_HALF;
+    if (led_state.LED_INDICATOR_STATE.BLUE) blue = LED_INDICATOR_BLUE_DIM;
+    if (led_state.LED_INDICATOR_STATE.BLUE && layer == LED_INDICATOR_BLUE_LAYER) blue = LED_INDICATOR_BLUE_FULL;
+
+    if (red | green | blue) {
+        ergodox_board_led_on();
+    } else {
+        ergodox_board_led_off();
+    }
+    if (red) {
+        ergodox_right_led_1_on();
+        ergodox_right_led_1_set(red);
+    }
+    if (green) {
+        ergodox_right_led_2_on();
+        ergodox_right_led_2_set(green);
+    }
+    if (blue) {
+        ergodox_right_led_3_on();
+        ergodox_right_led_3_set(blue);
+    }
+    return true;
+};
+
+bool led_update_kb(led_t led_state) {
+    bool res = led_update_user(led_state);
+    if(res) {
+        ; // nothing more to do
+    }
+    return res;
+}
+
 enum custom_keycodes {
   RGB_SLD = EZ_SAFE_RANGE,
 };
@@ -77,40 +144,10 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
 uint8_t layer_state_set_user(uint8_t state) {
     uint8_t layer = biton(state);
-    ergodox_board_led_off();
-    ergodox_right_led_1_off();
-    ergodox_right_led_2_off();
-    ergodox_right_led_3_off();
-    switch (layer) {
-      case 1:
-        ergodox_right_led_1_on();
-        break;
-      case 2:
-        ergodox_right_led_2_on();
-        break;
-      case 3:
-        ergodox_right_led_3_on();
-        break;
-      case 4:
-        ergodox_right_led_1_on();
-        ergodox_right_led_2_on();
-        break;
-      case 5:
-        ergodox_right_led_1_on();
-        ergodox_right_led_3_on();
-        break;
-      case 6:
-        ergodox_right_led_2_on();
-        ergodox_right_led_3_on();
-        break;
-      case 7:
-        ergodox_right_led_1_on();
-        ergodox_right_led_2_on();
-        ergodox_right_led_3_on();
-        break;
-      default:
-        break;
-    }
+    
+    //not sure if the new layer_state will be available yet?
+    led_update_user(host_keyboard_led_state());
+
     switch (layer) {
       case 1:
         if(!disable_layer_color) {
