@@ -6,7 +6,7 @@ on:
       layout_id:
         description: "Layout id available in URL https://configure.zsa.io/voyager/layouts/[ID_IS_HERE]/latest"
         required: true
-        default: "g7jjw"
+        default: "wwe6q"
       layout_geometry:
         description: "voyager | moonlander | ergodox_ez | ergodox_ez/stm32/glow | ergodox_ez/stm32/shine | ergodox_ez/m32u4/glow | ergodox_ez/m32u4/shine | planck_ez | planck_ez/glow"
         required: true
