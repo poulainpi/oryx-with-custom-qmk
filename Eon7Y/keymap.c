@@ -6,7 +6,7 @@
 #include "os_detection.h"
 
 enum i2c_keycodes {
-  MOUSE_SCROLL_V,
+  MOUSE_SCROLL_V = QK_USER_10,
   MOUSE_SCROLL_VH,
 };
 
