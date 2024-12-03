@@ -1,5 +1,99 @@
 #include QMK_KEYBOARD_H
 #include "version.h"
+#include "print.h"
+#include "report.h"
+#include "i2c_master.h"
+#include "os_detection.h"
+
+enum i2c_keycodes {
+  MOUSE_SCROLL_V,
+  MOUSE_SCROLL_VH,
+};
+
+#define I2C_TRACKBALL_ADDRESS 0x0A << 1
+
+typedef struct __attribute__((packed)) {
+    int16_t dx;
+    int16_t dy;
+} mouse_data_t;
+
+void pointing_device_driver_init(void) {
+    i2c_init();
+}
+
+bool is_scrolling_v = false;
+bool is_scrolling_vh = false;
+#define SCROLL_CHUNK 50;
+int scroll_comp_v = 0;
+int scroll_comp_h = 0;
+
+report_mouse_t pointing_device_driver_get_report(report_mouse_t mouse_report) {
+    mouse_data_t mouse_data = {0};
+    i2c_status_t status = i2c_receive(I2C_TRACKBALL_ADDRESS, (uint8_t*)&mouse_data, sizeof(*&mouse_data), 100);
+    if (status == I2C_STATUS_SUCCESS) {
+        if (is_scrolling_v || is_scrolling_vh) {
+            if (is_scrolling_vh) {
+                scroll_comp_h -= mouse_data.dx;
+                mouse_report.h = scroll_comp_h/SCROLL_CHUNK;
+                scroll_comp_h = scroll_comp_h % SCROLL_CHUNK;
+            }
+            scroll_comp_v -= mouse_data.dy;
+            mouse_report.v = scroll_comp_v/SCROLL_CHUNK;
+            scroll_comp_v = scroll_comp_v % SCROLL_CHUNK
+        } else {
+            mouse_report.x = -mouse_data.dx;
+            mouse_report.y = mouse_data.dy;
+        }
+    }
+    #ifdef CONSOLE_ENABLE
+      xprintf("X: %d, Y: %d\n", mouse_report.x, mouse_report.y);
+    #endif
+    return mouse_report;
+}
+
+uint16_t pointing_device_driver_get_cpi(void) {
+    return 0;
+}
+
+void pointing_device_driver_set_cpi(uint16_t cpi) {
+
+}
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+  switch (keycode) {
+    case MOUSE_SCROLL_V:
+      if (record->event.pressed) {
+        is_scrolling_v = !is_scrolling_v;
+      }
+      return false;
+    case MOUSE_SCROLL_VH:
+      if (record->event.pressed) {
+        is_scrolling_vh = !is_scrolling_vh;
+      }
+      return false;
+  }
+  return true;
+}
+
+// Shift+Backspace == Delete
+const key_override_t delete_key_override = ko_make_basic(MOD_MASK_SHIFT, KC_BSPC, KC_DEL);
+
+// This globally defines all key overrides to be used
+const key_override_t **key_overrides = (const key_override_t *[]){
+	&delete_key_override,
+	NULL // Null terminate the array of overrides!
+};
+
+// "Remapping" keys 'cause ZSA won't let me put custom enums in Oryx -_-
+#define KC_F24 MOUSE_SCROLL_V
+#define KC_F23 MOUSE_SCROLL_VH
+#define KC_F22 CG_SWAP
+#define KC_F21 CG_NORM
+
+// ============================ END OVERRIDES ==================================
+
+#include QMK_KEYBOARD_H
+#include "version.h"
 #define MOON_LED_LEVEL LED_LEVEL
 #define ML_SAFE_RANGE SAFE_RANGE
 
@@ -131,30 +225,6 @@ bool rgb_matrix_indicators_user(void) {
   return true;
 }
 
-bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-  switch (keycode) {
-
-    case RGB_SLD:
-        if (rawhid_state.rgb_control) {
-            return false;
-        }
-        if (record->event.pressed) {
-            rgblight_mode(1);
-        }
-        return false;
-    case HSV_0_245_245:
-        if (rawhid_state.rgb_control) {
-            return false;
-        }
-        if (record->event.pressed) {
-            rgblight_mode(1);
-            rgblight_sethsv(0,245,245);
-        }
-        return false;
-  }
-  return true;
-}
-
 
 typedef struct {
     bool is_press_action;
@@ -228,3 +298,9 @@ void dance_0_reset(tap_dance_state_t *state, void *user_data) {
 tap_dance_action_t tap_dance_actions[] = {
         [DANCE_0] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_0, dance_0_finished, dance_0_reset),
 };
+
+// Remove keymaps
+#undef KC_F24
+#undef KC_F23
+#undef KC_F22
+#undef KC_F21
