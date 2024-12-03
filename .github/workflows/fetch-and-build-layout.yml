@@ -6,7 +6,7 @@ on:
       layout_id:
         description: "Layout id available in URL https://configure.zsa.io/voyager/layouts/[ID_IS_HERE]/latest"
         required: true
-        default: "g7jjw"
+        default: "Eon7Y"
       layout_geometry:
         description: "Keyboard type"
         type: choice
@@ -20,7 +20,7 @@ on:
           - ergodox_ez/m32u4/shine
           - planck_ez
           - planck_ez/glow
-        default: voyager
+        default: moonlander
 
 permissions:
   contents: write
