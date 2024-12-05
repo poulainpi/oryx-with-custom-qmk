@@ -1,3 +1,5 @@
+[![Fetch and build layout](https://github.com/nivekmai/oryx-with-custom-qmk/actions/workflows/fetch-and-build-layout.yml/badge.svg)](https://github.com/nivekmai/oryx-with-custom-qmk/actions/workflows/fetch-and-build-layout.yml)
+
 # Oryx with custom QMK
 
 This repository allows combining the convenience of [Oryx’s](https://www.zsa.io/oryx) graphical layout editing with the power of [QMK](https://qmk.fm), allowing you to customize your Oryx layout with advanced QMK features like Achordion and Repeat Key, while automating firmware builds through GitHub Actions.
