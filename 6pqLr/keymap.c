@@ -1,5 +1,6 @@
 #include QMK_KEYBOARD_H
 #include "version.h"
+#include "features/achordion.h"
 #define MOON_LED_LEVEL LED_LEVEL
 #define ML_SAFE_RANGE SAFE_RANGE
 
@@ -242,15 +243,13 @@ const key_override_t **key_overrides = (const key_override_t *[]){
 };
 
 //ACHORDION
-#include "features/achordion.h"
+void matrix_scan_user(void) {
+  achordion_task();
+}
 
 bool process_record_user(uint16_t keycode, keyrecord_t* record) {
   if (!process_achordion(keycode, record)) { return false; }
   // Your macros ...
 
   return true;
-}
-
-void matrix_scan_user(void) {
-  achordion_task();
 }
