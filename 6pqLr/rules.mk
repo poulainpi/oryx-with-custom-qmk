@@ -8,5 +8,5 @@ RGB_MATRIX_CUSTOM_KB = yes
 TAP_DANCE_ENABLE = yes
 SPACE_CADET_ENABLE = no
 COMBO_ENABLE = yes
-# Custom QMK here
+# Custom QMK Start
 KEY_OVERRIDE_ENABLE = yes
