@@ -232,10 +232,12 @@ tap_dance_action_t tap_dance_actions[] = {
         [DANCE_1] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, dance_1_finished, dance_1_reset),
 };
 
-// Custom QMK here
+// Define the custom key override
 const key_override_t delete_key_override = 
     ko_make_basic(MOD_MASK_SHIFT, KC_BSPC, KC_DEL);
 
+// Declare the key override array with a NULL terminator
 const key_override_t *key_overrides[] = {
-	&delete_key_override
+    &delete_key_override,
+    NULL
 };
