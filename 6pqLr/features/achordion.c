@@ -348,7 +348,7 @@ __attribute__((weak)) bool achordion_chord(uint16_t tap_hold_keycode,
 __attribute__((weak)) uint16_t achordion_timeout(uint16_t tap_hold_keycode) {
   //ADDED
    switch (tap_hold_keycode) {
-    case :MOD_LCTL
+    case MOD_LCTL:
       return 0;  // Bypass Achordion for these keys.
   }
 
