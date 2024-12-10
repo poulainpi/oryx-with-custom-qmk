@@ -337,7 +337,7 @@ __attribute__((weak)) bool achordion_chord(uint16_t tap_hold_keycode,
                                            keyrecord_t* other_record) {
 //ADDED
  switch (tap_hold_keycode) {
-    case KC_LCTL:  // D + C and D + V and D + A
+    case MT(MOD_LCTL):  // D + C and D + V and D + A
       if (other_keycode == KC_C || other_keycode == KC_V || other_keycode == KC_A || other_keycode == KC_Z) { return true; }
       break;
 
@@ -351,7 +351,7 @@ __attribute__((weak)) bool achordion_chord(uint16_t tap_hold_keycode,
 // By default, the timeout is 1000 ms for all keys.
 __attribute__((weak)) uint16_t achordion_timeout(uint16_t tap_hold_keycode) {
   switch (tap_hold_keycode) {
-    case KC_LCTL:
+    case MT(MOD_LCTL):
     case LT(1,KC_SPACE):
       return 0;  // Bypass Achordion for these keys.
   }
