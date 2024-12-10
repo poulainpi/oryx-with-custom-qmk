@@ -378,6 +378,19 @@ __attribute__((weak)) uint16_t
 achordion_streak_timeout(uint16_t tap_hold_keycode) {
   return 200;
 }
+//ADDEDED CODOE
+bool achordion_chord(uint16_t tap_hold_keycode,
+                     keyrecord_t* tap_hold_record,
+                     uint16_t other_keycode,
+                     keyrecord_t* other_record) {
+  // Exceptionally consider the following chords as holds, even though they
+  // are on the same hand in Dvorak.
+  switch (tap_hold_keycode) {
+    case HOME_D:  // D + C and D + V.
+      if (other_keycode == KC_C || other_keycode == KC_V) { return true; }
+      break;
+  }
+}
 #endif
 
 #endif  // version check
