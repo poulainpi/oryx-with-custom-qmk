@@ -335,6 +335,12 @@ __attribute__((weak)) bool achordion_chord(uint16_t tap_hold_keycode,
                                            keyrecord_t* tap_hold_record,
                                            uint16_t other_keycode,
                                            keyrecord_t* other_record) {
+//added
+ switch (tap_hold_keycode) {
+    case HOME_D:  // D + C and D + V and D + A
+      if (other_keycode == KC_C || other_keycode == KC_V || other_keycode == KC_A) { return true; }
+      break;
+    }                                     
   return achordion_opposite_hands(tap_hold_record, other_record);
 }
 
