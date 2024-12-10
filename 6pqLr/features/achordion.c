@@ -334,17 +334,7 @@ bool achordion_opposite_hands(const keyrecord_t* tap_hold_record,
 __attribute__((weak)) bool achordion_chord(uint16_t tap_hold_keycode,
                                            keyrecord_t* tap_hold_record,
                                            uint16_t other_keycode,
-                                           keyrecord_t* other_record) {
-//ADDED
- /*switch (tap_hold_keycode) {
-    case MT(MOD_LCTL, KC_D):  // D + C and D + V and D + A
-      if (other_keycode == KC_C || other_keycode == KC_V || other_keycode == KC_A || other_keycode == KC_Z) { return true; }
-      break;
-
-    case LT(1,KC_SPACE):  // IJKL
-      if (other_keycode == KC_DOWN || other_keycode == KC_DOWN || other_keycode == KC_DOWN || other_keycode == KC_DOWN) { return true; }
-      break;
-    }*/                                     
+                                           keyrecord_t* other_record) {                                    
   return achordion_opposite_hands(tap_hold_record, other_record);
 }
 
