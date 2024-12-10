@@ -3,6 +3,7 @@
 #define MOON_LED_LEVEL LED_LEVEL
 #define ML_SAFE_RANGE SAFE_RANGE
 #include "features/achordion.h"
+#define MT(mod, kc) (QK_MOD_TAP | (((mod)&0x1F) << 8) | ((kc)&0xFF))
 
 enum custom_keycodes {
   RGB_SLD = ML_SAFE_RANGE,
