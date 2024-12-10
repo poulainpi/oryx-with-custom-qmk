@@ -337,7 +337,7 @@ __attribute__((weak)) bool achordion_chord(uint16_t tap_hold_keycode,
                                            keyrecord_t* other_record) {
 //added
  switch (tap_hold_keycode) {
-    case MOD_LCTL:  // D + C and D + V and D + A
+    case MT(MOD_LCTL):  // D + C and D + V and D + A
       if (other_keycode == KC_C || other_keycode == KC_V || other_keycode == KC_A) { return true; }
       break;
     }                                     
