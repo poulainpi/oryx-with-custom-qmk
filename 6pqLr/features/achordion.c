@@ -335,10 +335,14 @@ __attribute__((weak)) bool achordion_chord(uint16_t tap_hold_keycode,
                                            keyrecord_t* tap_hold_record,
                                            uint16_t other_keycode,
                                            keyrecord_t* other_record) {
-//added
+//ADDED
  switch (tap_hold_keycode) {
     case MOD_LCTL:  // D + C and D + V and D + A
       if (other_keycode == KC_C || other_keycode == KC_V || other_keycode == KC_A) { return true; }
+      break;
+
+    case LT(1,KC_SPACE):  // IJKL
+      if (other_keycode == KC_I || other_keycode == KC_J || other_keycode == KC_K || other_keycode == KC_L ||) { return true; }
       break;
     }                                     
   return achordion_opposite_hands(tap_hold_record, other_record);
@@ -346,13 +350,7 @@ __attribute__((weak)) bool achordion_chord(uint16_t tap_hold_keycode,
 
 // By default, the timeout is 1000 ms for all keys.
 __attribute__((weak)) uint16_t achordion_timeout(uint16_t tap_hold_keycode) {
-  //ADDED
-   switch (tap_hold_keycode) {
-    case MOD_LCTL:
-      return 0;  // Bypass Achordion for these keys.
-  }
-
-  return 800;  // Otherwise use a timeout of 800 ms.
+  
 }
 
 // By default, Shift and Ctrl mods are eager, and Alt and GUI are not.
