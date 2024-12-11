@@ -84,7 +84,7 @@ combo_t key_combos[COMBO_COUNT] = {
     COMBO(combo13, KC_RIGHT_CTRL),
     COMBO(combo14, KC_RIGHT_GUI),
     COMBO(combo15, KC_RIGHT_GUI),
-    COMBO(combo16, OSL(1)),
+    COMBO(combo16, OSL(3)),
     COMBO(combo17, OSL(1)),
 };
 
