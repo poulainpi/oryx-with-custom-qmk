@@ -340,8 +340,8 @@ switch (tap_hold_keycode) {
       if (other_keycode == KC_C || other_keycode == KC_V || other_keycode == KC_A) { return true; }
       break;
 
-    case LT(1,KC_SPACE):  // ARROWS
-      if (other_keycode == KC_I || other_keycode == KC_J || other_keycode == KC_K || other_keycode == KC_L || other_keycode == KC_UP || other_keycode == KC_DOWN || other_keycode == KC_RIGHT || other_keycode == KC_LEFT) { return true; }
+    case LT(1,KC_SPACE):  // ARROWS + Function Keys
+      if (other_keycode == KC_I || other_keycode == KC_J || other_keycode == KC_K || other_keycode == KC_L || other_keycode == KC_UP || other_keycode == KC_DOWN || other_keycode == KC_RIGHT || other_keycode == KC_LEFT|| other_keycode == KC_6 || other_keycode == KC_7 || other_keycode == KC_8 || other_keycode == KC_9  || other_keycode == KC_0 || other_keycode == KC_MINUS || other_keycode == KC_BSLS) { return true; }
       break;
 }                               
   return achordion_opposite_hands(tap_hold_record, other_record);
