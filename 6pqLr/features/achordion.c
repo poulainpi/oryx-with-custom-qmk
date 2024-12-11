@@ -334,14 +334,19 @@ bool achordion_opposite_hands(const keyrecord_t* tap_hold_record,
 __attribute__((weak)) bool achordion_chord(uint16_t tap_hold_keycode,
                                            keyrecord_t* tap_hold_record,
                                            uint16_t other_keycode,
-                                           keyrecord_t* other_record) {                                    
+                                           keyrecord_t* other_record) { 
+switch (tap_hold_keycode) {
+    case MT(MOD_LCTL, KC_D):  // Ctrl Shortcuts on same hand
+      if (other_keycode == KC_C || other_keycode == KC_V) { return true; }
+      break;
+}                               
   return achordion_opposite_hands(tap_hold_record, other_record);
 }
 
 // By default, the timeout is 1000 ms for all keys.
 __attribute__((weak)) uint16_t achordion_timeout(uint16_t tap_hold_keycode) {
   switch (tap_hold_keycode) {
-    case MT(MOD_LCTL, KC_D):
+    //case MT(MOD_LCTL, KC_D):
     //case LT(1,KC_SPACE):
       return 100;  // Lower Achordion for these keys.
   }
