@@ -87,7 +87,7 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
         case TD(DANCE_1):
             return TAPPING_TERM + 50;
         case LT(1,KC_SPACE):
-            return TAPPING_TERM + 50;
+            return TAPPING_TERM -50;
         default:
             return TAPPING_TERM;
     }
