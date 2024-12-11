@@ -339,6 +339,10 @@ switch (tap_hold_keycode) {
     case MT(MOD_LCTL, KC_D):  // Ctrl Shortcuts on same hand
       if (other_keycode == KC_C || other_keycode == KC_V) { return true; }
       break;
+
+    case LT(1,KC_SPACE):  // ARROWS
+      if (other_keycode == KC_UP || other_keycode == KC_DOWN || other_keycode == KC_RIGHT || other_keycode == KC_LEFT) { return true; }
+      break;
 }                               
   return achordion_opposite_hands(tap_hold_record, other_record);
 }
