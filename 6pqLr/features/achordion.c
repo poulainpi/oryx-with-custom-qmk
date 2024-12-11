@@ -341,7 +341,7 @@ switch (tap_hold_keycode) {
       break;
 
     case LT(1,KC_SPACE):  // ARROWS
-      if (other_keycode == KC_I || other_keycode == KC_J || other_keycode == KC_K || other_keycode == KC_L) { return true; }
+      if (other_keycode == KC_I || other_keycode == KC_J || other_keycode == KC_K || other_keycode == KC_L || other_keycode == KC_UP || other_keycode == KC_DOWN || other_keycode == KC_RIGHT || other_keycode == KC_LEFT) { return true; }
       break;
 }                               
   return achordion_opposite_hands(tap_hold_record, other_record);
