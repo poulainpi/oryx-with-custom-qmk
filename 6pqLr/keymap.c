@@ -1,5 +1,6 @@
 #include QMK_KEYBOARD_H
 #include "version.h"
+#include "i18n.h"
 #define MOON_LED_LEVEL LED_LEVEL
 #define ML_SAFE_RANGE SAFE_RANGE
 #include "features/achordion.h"
@@ -21,11 +22,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_GRAVE,       KC_Q,           KC_W,           KC_E,           KC_R,           KC_T,                                           KC_Y,           KC_U,           KC_I,           KC_O,           KC_P,           KC_BSLS,        
     KC_NO,          MT(MOD_LGUI, KC_A),MT(MOD_LALT, KC_S),MT(MOD_LCTL, KC_D),MT(MOD_LSFT, KC_F),KC_G,                                           KC_H,           MT(MOD_RSFT, KC_J),MT(MOD_LCTL, KC_K),MT(MOD_LALT, KC_L),MT(MOD_RGUI, KC_SCLN),KC_QUOTE,       
     KC_NO,          KC_Z,           KC_X,           KC_C,           KC_V,           KC_B,                                           KC_N,           KC_M,           KC_COMMA,       KC_DOT,         KC_SLASH,       TD(DANCE_0),    
-                                                    KC_BSPC,        KC_TAB,                                         KC_ENTER,       LT(1,KC_SPACE)
+                                                    LT(1,KC_BSPC),  KC_TAB,                                         KC_ENTER,       LT(1,KC_SPACE)
   ),
   [1] = LAYOUT_voyager(
     KC_LBRC,        KC_F1,          KC_F2,          KC_F3,          KC_F4,          KC_F5,                                          KC_F6,          KC_F7,          KC_F8,          KC_F9,          KC_F10,         KC_F11,         
-    KC_RBRC,        KC_NO,          KC_ESCAPE,      KC_PAGE_UP,     KC_PSCR,        KC_NO,                                          KC_NO,          KC_NO,          KC_UP,          KC_DELETE,      KC_NO,          KC_F12,         
+    KC_RBRC,        KC_ESCAPE,      KC_PC_COPY,     KC_PAGE_UP,     KC_PC_PASTE,    KC_PSCR,                                        KC_NO,          KC_NO,          KC_UP,          KC_NO,          KC_NO,          KC_F12,         
     KC_LCBR,        KC_TRANSPARENT, MT(MOD_LALT, KC_HOME),MT(MOD_LCTL, KC_PGDN),MT(MOD_LSFT, KC_END),KC_NO,                                          KC_NO,          KC_LEFT,        KC_DOWN,        KC_RIGHT,       KC_NO,          KC_NO,          
     KC_RCBR,        KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,                                          KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_TRANSPARENT, 
                                                     KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT
