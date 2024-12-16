@@ -1,4 +1,4 @@
-name: Fetch and build layout
+name: Build layout
 
 on:
   workflow_dispatch:
@@ -26,60 +26,25 @@ permissions:
   contents: write
 
 jobs:
-  fetch-and-build-layout:
+  build-layout:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
-        with:
-          ref: oryx
 
       - name: Download the full history for the merge to work correctly
         run: git pull --unshallow
 
-      - name: Download layout source
-        id: download-layout-source
-        run: |
-          response=$(curl --location 'https://oryx.zsa.io/graphql' --header 'Content-Type: application/json' --data '{"query":"query getLayout($hashId: String!, $revisionId: String!, $geometry: String) {layout(hashId: $hashId, geometry: $geometry, revisionId: $revisionId) {  revision { hashId, qmkVersion, title }}}","variables":{"hashId":"${{ github.event.inputs.layout_id }}","geometry":"${{ github.event.inputs.layout_geometry }}","revisionId":"latest"}}' | jq '.data.layout.revision | [.hashId, .qmkVersion, .title]')
-          hash_id=$(echo "${response}" | jq -r '.[0]')
-          firmware_version=$(printf "%.0f" $(echo "${response}" | jq -r '.[1]'))
-          change_description=$(echo "${response}" | jq -r '.[2]')
-          if [[ -z "${change_description}" ]]; then
-            change_description="latest layout modification made with Oryx"
-          fi
-          
-          curl -L "https://oryx.zsa.io/source/${hash_id}" -o source.zip
-          
-          echo firmware_version=${firmware_version} >> "$GITHUB_OUTPUT"
-          echo change_description=${change_description} >> "$GITHUB_OUTPUT"
-
-      - name: Unzip the source file
-        run: |
-          unzip -oj source.zip '*_source/*' -d ${{ github.event.inputs.layout_id }}
-          rm source.zip
-
-      - name: Commit and Push changes
-        run: |
-          git config --local user.name "github-actions"
-          git config --local user.email "github-actions@github.com"
-          git add .
-          git commit -m "✨(oryx): ${{ steps.download-layout-source.outputs.change_description }}" || echo "No layout change"
-          git push
-
-      - name: Merge Oryx with custom QMK
-        run: |
-          git fetch origin main
-          git checkout -B main origin/main
-          git merge -Xignore-all-space oryx
-          git push
-
       - name: Checkout the right firmware branch
+        id: firmware
         run: |
+          firmware_version="$(cat ${{ github.event.inputs.layout_id }}/firmware_version)"
+          echo firmware_version=${firmware_version} >> "$GITHUB_OUTPUT"
           cd qmk_firmware
           git submodule update --init --remote
-          git fetch origin firmware${{ steps.download-layout-source.outputs.firmware_version }}
-          git checkout -B firmware${{ steps.download-layout-source.outputs.firmware_version }} origin/firmware${{ steps.download-layout-source.outputs.firmware_version }}
+          git fetch origin firmware${firmware_version}
+          git checkout -B firmware${firmware_version} origin/firmware${firmware_version}
           git submodule update --init --recursive
 
       - name: Build qmk docker image
@@ -89,24 +54,24 @@ jobs:
         id: build-layout
         run: |
           # Set keyboard directory and make prefix based on firmware version
-          if [ "${{ steps.download-layout-source.outputs.firmware_version }}" -ge 24 ]; then
+          if [ "${{ steps.firmware.outputs.firmware_version }}" -ge 24 ]; then
             keyboard_directory="qmk_firmware/keyboards/zsa"
             make_prefix="zsa/"
           else
             keyboard_directory="qmk_firmware/keyboards"
             make_prefix=""
           fi
-          
+
           # Copy layout files to the qmk folder
           rm -rf ${keyboard_directory}/${{ github.event.inputs.layout_geometry }}/keymaps/${{ github.event.inputs.layout_id }}
           mkdir -p ${keyboard_directory}/${{ github.event.inputs.layout_geometry }}/keymaps && cp -r ${{ github.event.inputs.layout_id }} "$_"
-          
+
           # Build the layout
           docker run -v ./qmk_firmware:/root --rm qmk /bin/sh -c "
-            qmk setup zsa/qmk_firmware -b firmware${{ steps.download-layout-source.outputs.firmware_version }} -y
+            qmk setup zsa/qmk_firmware -b firmware${{ steps.firmware.outputs.firmware_version }} -y
             make ${make_prefix}${{ github.event.inputs.layout_geometry }}:${{ github.event.inputs.layout_id }}
           "
-          
+
           # Find and export built layout          
           normalized_layout_geometry="$(echo "${{ github.event.inputs.layout_geometry }}" | sed 's/\//_/g')"
           echo built_layout_file=$(find ./qmk_firmware -maxdepth 1 -type f -regex ".*${normalized_layout_geometry}.*\.\(bin\|hex\)$") >> "$GITHUB_OUTPUT"

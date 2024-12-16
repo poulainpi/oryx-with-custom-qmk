@@ -1,0 +1,76 @@
+name: Fetch layout
+
+on:
+  workflow_dispatch:
+    inputs:
+      layout_id:
+        description: "Layout id available in URL https://configure.zsa.io/voyager/layouts/[ID_IS_HERE]/latest"
+        required: true
+        default: "g7jjw"
+      layout_geometry:
+        description: "Keyboard type"
+        type: choice
+        options:
+          - voyager
+          - moonlander
+          - ergodox_ez
+          - ergodox_ez/stm32/glow
+          - ergodox_ez/stm32/shine
+          - ergodox_ez/m32u4/glow
+          - ergodox_ez/m32u4/shine
+          - planck_ez
+          - planck_ez/glow
+        default: voyager
+
+permissions:
+  contents: write
+
+jobs:
+  fetch-layout:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          ref: oryx
+
+      - name: Download the full history for the merge to work correctly
+        run: git pull --unshallow
+
+      - name: Download layout source
+        id: download-layout-source
+        run: |
+          response=$(curl --location 'https://oryx.zsa.io/graphql' --header 'Content-Type: application/json' --data '{"query":"query getLayout($hashId: String!, $revisionId: String!, $geometry: String) {layout(hashId: $hashId, geometry: $geometry, revisionId: $revisionId) {  revision { hashId, qmkVersion, title }}}","variables":{"hashId":"${{ github.event.inputs.layout_id }}","geometry":"${{ github.event.inputs.layout_geometry }}","revisionId":"latest"}}' | jq '.data.layout.revision | [.hashId, .qmkVersion, .title]')
+          hash_id=$(echo "${response}" | jq -r '.[0]')
+          firmware_version=$(printf "%.0f" $(echo "${response}" | jq -r '.[1]'))
+          change_description=$(echo "${response}" | jq -r '.[2]')
+          if [[ -z "${change_description}" ]]; then
+            change_description="latest layout modification made with Oryx"
+          fi
+
+          curl -L "https://oryx.zsa.io/source/${hash_id}" -o source.zip
+
+          echo firmware_version=${firmware_version} >> "$GITHUB_OUTPUT"
+          echo change_description=${change_description} >> "$GITHUB_OUTPUT"
+
+      - name: Unzip the source file
+        run: |
+          unzip -oj source.zip '*_source/*' -d ${{ github.event.inputs.layout_id }}
+          rm source.zip
+          echo ${{ steps.download-layout-source.outputs.firmware_version }} > ${{ github.event.inputs.layout_id }}/firmware_version
+
+      - name: Commit and Push changes
+        run: |
+          git config --local user.name "github-actions"
+          git config --local user.email "github-actions@github.com"
+          git add .
+          git commit -m "✨(oryx): ${{ steps.download-layout-source.outputs.change_description }}" || echo "No layout change"
+          git push
+
+      - name: Merge Oryx with custom QMK
+        run: |
+          git fetch origin main
+          git checkout -B main origin/main
+          git merge -Xignore-all-space oryx
+          git push
