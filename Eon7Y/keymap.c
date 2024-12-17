@@ -3,7 +3,6 @@
 #include "print.h"
 #include "report.h"
 #include "i2c_master.h"
-#include "os_detection.h"
 
 enum i2c_keycodes {
   MOUSE_SCROLL_V = QK_USER_10,
