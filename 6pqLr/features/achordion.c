@@ -352,7 +352,7 @@ __attribute__((weak)) uint16_t achordion_timeout(uint16_t tap_hold_keycode) {
   switch (tap_hold_keycode) {
     //case MT(MOD_LCTL, KC_D):
     case LT(1,KC_SPACE):
-    case LT(2,KC_BSPC)
+    case LT(2,KC_BSPC):
     return 200;  // Lower Achordion for these keys.
   }
   return 1000;
