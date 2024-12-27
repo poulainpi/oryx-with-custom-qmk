@@ -4,6 +4,7 @@
 */
 
 #define PERMISSIVE_HOLD
+#define IGNORE_MOD_TAP_INTERRUPT
 
 #undef RGB_MATRIX_VAL_STEP
 #define RGB_MATRIX_VAL_STEP 4
@@ -18,5 +19,5 @@
 //
 #define MT(mod, kc) (QK_MOD_TAP | (((mod)&0x1F) << 8) | ((kc)&0xFF))
 #define LT(layer, kc) (QK_LAYER_TAP | (((layer)&0xF) << 8) | ((kc)&0xFF))
-//#define ACHORDION_STREAK
+#define ACHORDION_STREAK
 
