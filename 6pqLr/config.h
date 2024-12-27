@@ -4,7 +4,7 @@
 */
 
 #define PERMISSIVE_HOLD
-#define IGNORE_MOD_TAP_INTERRUPT
+//#define IGNORE_MOD_TAP_INTERRUPT no longer needed
 
 #undef RGB_MATRIX_VAL_STEP
 #define RGB_MATRIX_VAL_STEP 4
