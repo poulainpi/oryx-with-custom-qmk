@@ -4,6 +4,16 @@ bool caps_word_press_user_default(uint16_t keycode);
 #define MOON_LED_LEVEL LED_LEVEL
 #define ML_SAFE_RANGE SAFE_RANGE
 
+bool caps_word_press_user_default(uint16_t keycode) {
+    switch (keycode) {
+        case KC_A ... KC_Z:
+        case KC_MINS:
+            return true;
+        default:
+            return false;
+    }
+}
+
 enum custom_keycodes {
   RGB_SLD = ML_SAFE_RANGE,
   HSV_0_245_245,
