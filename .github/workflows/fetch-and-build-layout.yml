@@ -20,7 +20,7 @@ on:
           - ergodox_ez/m32u4/shine
           - planck_ez
           - planck_ez/glow
-        default: voyager
+        default: moonlander
 
 permissions:
   contents: write
