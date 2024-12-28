@@ -8,6 +8,15 @@ bool caps_word_press_user_default(uint16_t keycode) {
     switch (keycode) {
         case KC_A ... KC_Z:
         case KC_MINS:
+        case TD(DANCE_0):
+        case TD(DANCE_1):
+        case TD(DANCE_2):
+        case TD(DANCE_3):
+        case TD(DANCE_4):
+        case TD(DANCE_5):
+        case TD(DANCE_6):
+        case TD(DANCE_7):
+        case TD(DANCE_8):
             return true;
         default:
             return false;
@@ -119,22 +128,22 @@ bool rgb_matrix_indicators_user(void) {
   return true;
 }
 
-bool caps_word_press_user(uint16_t keycode) {
-    switch (keycode) {
-        // Manually added Tap Dance references to bypass the termination of CAPS Word function
-        case TD(DANCE_0):
-        case TD(DANCE_1):
-        case TD(DANCE_2):
-        case TD(DANCE_3):
-        case TD(DANCE_4):
-        case TD(DANCE_5):
-        case TD(DANCE_6):
-        case TD(DANCE_7):
-            return true;
-        default:
-            return caps_word_press_user_default(keycode);
-    }
-}
+// bool caps_word_press_user(uint16_t keycode) {
+//     switch (keycode) {
+//         // Manually added Tap Dance references to bypass the termination of CAPS Word function
+//         case TD(DANCE_0):
+//         case TD(DANCE_1):
+//         case TD(DANCE_2):
+//         case TD(DANCE_3):
+//         case TD(DANCE_4):
+//         case TD(DANCE_5):
+//         case TD(DANCE_6):
+//         case TD(DANCE_7):
+//             return true;
+//         default:
+//             return caps_word_press_user_default(keycode);
+//     }
+// }
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
