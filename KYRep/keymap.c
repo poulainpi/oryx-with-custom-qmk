@@ -1,6 +1,6 @@
 #include QMK_KEYBOARD_H
 #include "version.h"
-bool caps_word_press_user_default(uint16_t keycode);
+bool caps_word_press_user(uint16_t keycode);
 #define MOON_LED_LEVEL LED_LEVEL
 #define ML_SAFE_RANGE SAFE_RANGE
 
@@ -110,7 +110,7 @@ bool rgb_matrix_indicators_user(void) {
   return true;
 }
 
-bool caps_word_press_user_default(uint16_t keycode) {
+bool caps_word_press_user(uint16_t keycode) {
     switch (keycode) {
         case KC_A ... KC_Z:
         case KC_MINS:
