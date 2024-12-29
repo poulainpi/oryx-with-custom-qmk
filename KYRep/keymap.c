@@ -123,6 +123,7 @@ bool caps_word_press_user(uint16_t keycode) {
         case TD(DANCE_6):
         case TD(DANCE_7):
         case TD(DANCE_8):
+            add_weak_mods(MOD_BIT(KC_LSFT));  
             return true;
         default:
             return false;
