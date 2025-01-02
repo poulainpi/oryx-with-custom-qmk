@@ -12,8 +12,7 @@
 #define RGB_MATRIX_VAL_STEP 4
 
 #define USB_SUSPEND_WAKEUP_DELAY 0
-#define HOLD_ON_OTHER_KEY_PRESS
-#define SERIAL_NUMBER "6pqLr/e7o3W"
+#define SERIAL_NUMBER "6pqLr/xYwz0"
 #define LAYER_STATE_8BIT
 #define COMBO_COUNT 2
 
