@@ -82,7 +82,7 @@ jobs:
           git submodule update --init --recursive
           cd ..
           git add qmk_firmware
-          git commit -m "✨(qmk): Update firmware" || true
+          git commit -m "✨(qmk): Update firmware" || echo "No QMK change"
           git push
 
       - name: Build qmk docker image
