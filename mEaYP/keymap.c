@@ -9,7 +9,9 @@ enum custom_keycodes {
   ST_MACRO_0,
 };
 
-
+void matrix_scan_user(void) {
+  achordion_task();
+}
 
 enum tap_dance_codes {
   DANCE_0,
