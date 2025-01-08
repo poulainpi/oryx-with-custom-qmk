@@ -8,7 +8,9 @@ enum custom_keycodes {
   RGB_SLD = ML_SAFE_RANGE,
 };
 
-
+void matrix_scan_user(void) {
+  achordion_task();
+}
 
 enum tap_dance_codes {
   DANCE_0,
