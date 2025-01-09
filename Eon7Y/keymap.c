@@ -1,54 +1,181 @@
+#include <stdio.h>
 #include QMK_KEYBOARD_H
 #include "version.h"
 #include "print.h"
 #include "report.h"
 #include "i2c_master.h"
 
-enum i2c_keycodes {
-  MOUSE_SCROLL_V = QK_USER_10,
-  MOUSE_SCROLL_VH,
-  MOUSE_SCROLL_V_HOLD,
-};
+enum i2c_keycodes { MOUSE_SCROLL_V = QK_USER_10, MOUSE_SCROLL_VH, MOUSE_SCROLL_V_HOLD };
 
 #define I2C_TRACKBALL_ADDRESS 0x0A << 1
 
+// Gathered from using DEBUG_J and CALIB_J in Moonrover logging
+#define J1X_RESTING 456
+#define J1Y_RESTING 482
+#define J2X_RESTING 541
+#define J2Y_RESTING 517
+#define J3X_RESTING 493
+#define J3Y_RESTING 491
+
+#define J1X_MAX 778
+#define J1X_MIN 136
+#define J1Y_MAX 817
+#define J1Y_MIN 129
+#define J2X_MAX 848
+#define J2X_MIN 217
+#define J2Y_MAX 843
+#define J2Y_MIN 173
+#define J3X_MAX 810
+#define J3X_MIN 174
+#define J3Y_MAX 806
+#define J3Y_MIN 146
+
+// Per https://docs.qmk.fm/features/joystick#configuration 8 bit resolution
+#define AXIS_MAX 127
+#define DEAD_ZONE 10
+#define JOY_SCROLL_CHUNK 508;
+#define SCROLL_CHUNK 50;
+
+// Keep this in sync with the struct on the sender side (e.g. Moonrover)
 typedef struct __attribute__((packed)) {
     int16_t dx;
     int16_t dy;
-} mouse_data_t;
+    int16_t j1x;
+    int16_t j1y;
+    int16_t j1b;
+    int16_t j2x;
+    int16_t j2y;
+    int16_t j2b;
+    int16_t j3x;
+    int16_t j3y;
+    int16_t j3b;
+} moonrover_data;
+
+joystick_config_t joystick_axes[JOYSTICK_AXIS_COUNT] = {
+    JOYSTICK_AXIS_VIRTUAL, // x
+    JOYSTICK_AXIS_VIRTUAL, // y
+    JOYSTICK_AXIS_VIRTUAL, // z
+    JOYSTICK_AXIS_VIRTUAL, // rx
+    JOYSTICK_AXIS_VIRTUAL, // ry
+};
+
+int joystick_buttons[JOYSTICK_BUTTON_COUNT] = {
+  0,
+  0,
+  0
+};
+
+bool is_scrolling_v      = false;
+bool is_scrolling_vh     = false;
+bool is_hold_scrolling_v = false;
+
+int scroll_comp_v        = 0;
+int scroll_comp_h        = 0;
 
 void pointing_device_driver_init(void) {
     i2c_init();
 }
 
-bool is_scrolling_v = false;
-bool is_scrolling_vh = false;
-bool is_hold_scrolling_v = false;
-#define SCROLL_CHUNK 50;
-int scroll_comp_v = 0;
-int scroll_comp_h = 0;
+int16_t get_8_bit_val(int min, int max, int resting, int val) {
+    if (val < resting) {
+        int bounded_val  = val - min;
+        int bounded_rest = resting - min;
+        int scaled_val   = bounded_val * AXIS_MAX / bounded_rest;
+        return (int16_t) -AXIS_MAX + scaled_val;
+    } else if (val > resting) {
+        int bounded_val  = val - resting;
+        int bounded_rest = max - resting;
+        return (int16_t) bounded_val * AXIS_MAX / bounded_rest;
+    } else {
+        return 0;
+    }
+}
 
-report_mouse_t pointing_device_driver_get_report(report_mouse_t mouse_report) {
-    mouse_data_t mouse_data = {0};
-    i2c_status_t status = i2c_receive(I2C_TRACKBALL_ADDRESS, (uint8_t*)&mouse_data, sizeof(*&mouse_data), 100);
-    if (status == I2C_STATUS_SUCCESS) {
-        if (is_scrolling_v || is_scrolling_vh || is_hold_scrolling_v) {
-            if (is_scrolling_vh) {
-                scroll_comp_h -= mouse_data.dx;
-                mouse_report.h = scroll_comp_h/SCROLL_CHUNK;
-                scroll_comp_h = scroll_comp_h % SCROLL_CHUNK;
-            }
-            scroll_comp_v -= mouse_data.dy;
-            mouse_report.v = scroll_comp_v/SCROLL_CHUNK;
-            scroll_comp_v = scroll_comp_v % SCROLL_CHUNK
-        } else {
-            mouse_report.x = -mouse_data.dx;
-            mouse_report.y = mouse_data.dy;
+int dead_zone(int val) {
+    if (val < -DEAD_ZONE) {
+        return val + DEAD_ZONE;
+    } else if (val > DEAD_ZONE) {
+        return val - DEAD_ZONE;
+    } else {
+        return 0;
+    }
+}
+
+
+void handle_joy_scroll(moonrover_data moonrover_data, report_mouse_t *mouse_report) {
+    int moonroverJ1Y = dead_zone(get_8_bit_val(J1Y_MIN, J1Y_MAX, J1Y_RESTING, moonrover_data.j1y));
+    if (moonroverJ1Y != 0) {
+        scroll_comp_v -= moonroverJ1Y;
+        mouse_report->v = scroll_comp_v / JOY_SCROLL_CHUNK;
+        scroll_comp_v   = scroll_comp_v % JOY_SCROLL_CHUNK;
+    }
+    if (layer_state_is(1)) {
+        int moonroverJ1X = dead_zone(get_8_bit_val(J1X_MIN, J1X_MAX, J1X_RESTING, moonrover_data.j1x));
+        if (moonroverJ1X != 0) {
+            scroll_comp_h -= moonroverJ1X;
+            mouse_report->h = scroll_comp_h / JOY_SCROLL_CHUNK;
+            scroll_comp_h   = scroll_comp_h % JOY_SCROLL_CHUNK;
         }
     }
-    #ifdef CONSOLE_ENABLE
-      xprintf("X: %d, Y: %d\n", mouse_report.x, mouse_report.y);
-    #endif
+}
+
+void handle_mouse_scroll(moonrover_data moonrover_data, report_mouse_t *mouse_report) {
+    if (is_scrolling_v || is_scrolling_vh || is_hold_scrolling_v) {
+        if (is_scrolling_vh) {
+            scroll_comp_h -= moonrover_data.dx;
+            mouse_report->h = scroll_comp_h / SCROLL_CHUNK;
+            scroll_comp_h  = scroll_comp_h % SCROLL_CHUNK;
+        }
+        scroll_comp_v -= moonrover_data.dy;
+        mouse_report->v = scroll_comp_v / SCROLL_CHUNK;
+        scroll_comp_v  = scroll_comp_v % SCROLL_CHUNK
+    } else {
+        mouse_report->x = -moonrover_data.dx;
+        mouse_report->y = moonrover_data.dy;
+    }
+}
+
+
+void joystick_set_button(int button, int state) {
+  // Early return to avoid over-flushing the joystick
+  if (state == joystick_buttons[button]) {
+    return;
+  }
+  joystick_buttons[button] = state;
+  if (state == 0) {
+    xprintf("pressed: %d\n", button);
+    register_joystick_button(button);
+  } else {
+    unregister_joystick_button(button);
+  }
+}
+
+
+void update_joysticks(moonrover_data moonrover_data){
+    int moonroverJ1X = get_8_bit_val(J1X_MIN, J1X_MAX, J1X_RESTING, moonrover_data.j1x);
+    int moonroverJ2X = get_8_bit_val(J2X_MIN, J2X_MAX, J2X_RESTING, moonrover_data.j2x);
+    int moonroverJ2Y = get_8_bit_val(J2Y_MIN, J2Y_MAX, J2Y_RESTING, moonrover_data.j2y);
+    int moonroverJ3X = get_8_bit_val(J3X_MIN, J3X_MAX, J3X_RESTING, moonrover_data.j3x);
+    int moonroverJ3Y = get_8_bit_val(J3Y_MIN, J3Y_MAX, J3Y_RESTING, moonrover_data.j3y);
+    joystick_set_axis(2, moonroverJ1X);
+    joystick_set_axis(0, moonroverJ2X);
+    joystick_set_axis(1, moonroverJ2Y);
+    joystick_set_axis(3, moonroverJ3X);
+    joystick_set_axis(4, moonroverJ3Y);
+    joystick_set_button(0, moonrover_data.j1b);
+    joystick_set_button(1, moonrover_data.j2b);
+    joystick_set_button(2, moonrover_data.j3b);
+    joystick_flush();
+}
+
+report_mouse_t pointing_device_driver_get_report(report_mouse_t mouse_report) {
+    moonrover_data moonrover_data = {0};
+    i2c_status_t   status         = i2c_receive(I2C_TRACKBALL_ADDRESS, (uint8_t *)&moonrover_data, sizeof(*&moonrover_data), 100);
+    if (status == I2C_STATUS_SUCCESS) {
+        handle_joy_scroll(moonrover_data, &mouse_report);
+        handle_mouse_scroll(moonrover_data, &mouse_report);
+        update_joysticks(moonrover_data);
+    }
     return mouse_report;
 }
 
@@ -56,31 +183,29 @@ uint16_t pointing_device_driver_get_cpi(void) {
     return 0;
 }
 
-void pointing_device_driver_set_cpi(uint16_t cpi) {
-
-}
+void pointing_device_driver_set_cpi(uint16_t cpi) {}
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-  switch (keycode) {
-    case MOUSE_SCROLL_V:
-      if (record->event.pressed) {
-        is_scrolling_v = !is_scrolling_v;
-      }
-      return false;
-    case MOUSE_SCROLL_VH:
-      if (record->event.pressed) {
-        is_scrolling_vh = !is_scrolling_vh;
-      }
-      return false;
-    case MOUSE_SCROLL_V_HOLD:
-      if (record->event.pressed) {
-        is_hold_scrolling_v = true;
-      } else {
-        is_hold_scrolling_v = false;
-      }
-      return false;
-  }
-  return true;
+    switch (keycode) {
+        case MOUSE_SCROLL_V:
+            if (record->event.pressed) {
+                is_scrolling_v = !is_scrolling_v;
+            }
+            return false;
+        case MOUSE_SCROLL_VH:
+            if (record->event.pressed) {
+                is_scrolling_vh = !is_scrolling_vh;
+            }
+            return false;
+        case MOUSE_SCROLL_V_HOLD:
+            if (record->event.pressed) {
+                is_hold_scrolling_v = true;
+            } else {
+                is_hold_scrolling_v = false;
+            }
+            return false;
+    }
+    return true;
 }
 
 // Shift+Backspace == Delete
@@ -88,8 +213,8 @@ const key_override_t delete_key_override = ko_make_basic(MOD_MASK_SHIFT, KC_BSPC
 
 // This globally defines all key overrides to be used
 const key_override_t **key_overrides = (const key_override_t *[]){
-	&delete_key_override,
-	NULL // Null terminate the array of overrides!
+    &delete_key_override,
+    NULL // Null terminate the array of overrides!
 };
 
 // "Remapping" keys 'cause ZSA won't let me put custom enums in Oryx -_-
