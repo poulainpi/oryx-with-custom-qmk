@@ -37,7 +37,7 @@ enum custom_keycodes {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [0] = LAYOUT_moonlander(
     TOGGLE_LAYER_COLOR,RGB_MODE_FORWARD,RGB_TOG,        RGB_VAI,        RGB_VAD,        KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, 
-    KC_TRANSPARENT, OSL(6),         KC_U,           KC_O,           KC_F,           KC_Z,           KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_B,           KC_P,           KC_Y,           KC_L,           CW_TOGG,        KC_TRANSPARENT, 
+    QK_BOOT,        OSL(6),         KC_U,           KC_O,           KC_F,           KC_Z,           KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_B,           KC_P,           KC_Y,           KC_L,           CW_TOGG,        KC_TRANSPARENT, 
     KC_TRANSPARENT, MT(MOD_LALT, KC_A),MT(MOD_LCTL, KC_I),LT(2,KC_E),     MT(MOD_LSFT, KC_N),MT(MOD_LGUI, KC_M),KC_TRANSPARENT,                                                                 KC_TRANSPARENT, MT(MOD_LGUI, KC_G),MT(MOD_LSFT, KC_T),LT(2,KC_S),     MT(MOD_LCTL, KC_R),MT(MOD_LALT, KC_C),KC_TRANSPARENT, 
     KC_TRANSPARENT, KC_X,           KC_V,           KC_TRANSPARENT, KC_H,           KC_J,                                           KC_K,           KC_D,           KC_TRANSPARENT, KC_Q,           KC_W,           KC_TRANSPARENT, 
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, OSL(3),         OSL(2),                                                                                                         OSL(3),         TO(5),          KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, 
