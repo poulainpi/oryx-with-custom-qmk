@@ -7,6 +7,7 @@ on:
         description: "Layout id available in URL https://configure.zsa.io/voyager/layouts/[ID_IS_HERE]/latest"
         required: true
         default: "Eon7Y"
+        default: "Eon7Y"
       layout_geometry:
         description: "Keyboard type"
         type: choice
