@@ -3,9 +3,6 @@
   See config.h options at https://docs.qmk.fm/#/config_options?id=the-configh-file
 */
 
-#undef TAPPING_TERM
-#define TAPPING_TERM 500
-
 #undef ONESHOT_TIMEOUT
 #define ONESHOT_TIMEOUT 1000
 
@@ -23,8 +20,7 @@
 #define RGB_MATRIX_VAL_STEP 8
 
 #define USB_SUSPEND_WAKEUP_DELAY 0
-#define HOLD_ON_OTHER_KEY_PRESS
-#define SERIAL_NUMBER "34eXB/jZl40Z"
+#define SERIAL_NUMBER "34eXB/B4Xgbv"
 #define LAYER_STATE_8BIT
 
 #define RGB_MATRIX_STARTUP_SPD 60
