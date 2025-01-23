@@ -26,7 +26,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [1] = LAYOUT_voyager(
     KC_NO,          KC_F1,          KC_F2,          KC_F3,          KC_F4,          KC_F5,                                          KC_F6,          KC_F7,          KC_F8,          KC_F9,          KC_F10,         KC_F11,         
     KC_LBRC,        KC_EQUAL,       KC_ESCAPE,      KC_PAGE_UP,     KC_PSCR,        RGB_VAI,                                        KC_AUDIO_VOL_UP,KC_NO,          KC_UP,          KC_NO,          KC_MINUS,       KC_F12,         
-    KC_RBRC,        KC_NO,          KC_HOME,        KC_PGDN,        MT(MOD_LSFT, KC_END),RGB_VAD,                                        KC_AUDIO_VOL_DOWN,MT(MOD_RSFT, KC_LEFT),KC_DOWN,        KC_RIGHT,       KC_NO,          KC_NO,          
+    KC_RBRC,        KC_NO,          KC_HOME,        KC_PGDN,        KC_END,         RGB_VAD,                                        KC_AUDIO_VOL_DOWN,KC_LEFT,        KC_DOWN,        KC_RIGHT,       KC_NO,          KC_NO,          
     KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,                                          KC_NO,          KC_AUDIO_MUTE,  KC_MEDIA_PREV_TRACK,KC_MEDIA_NEXT_TRACK,KC_NO,          KC_TRANSPARENT, 
                                                     KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT
   ),
@@ -70,9 +70,9 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
             return TAPPING_TERM -50;
         case KC_SLASH:
             return TAPPING_TERM + 200;
-        case MT(MOD_LSFT, KC_END):
+        case KC_END:
             return TAPPING_TERM + 50;
-        case MT(MOD_RSFT, KC_LEFT):
+        case KC_LEFT:
             return TAPPING_TERM + 50;
         case TD(DANCE_1):
             return TAPPING_TERM + 50;
