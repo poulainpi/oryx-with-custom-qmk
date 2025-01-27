@@ -1,5 +1,3 @@
-#define RU_HA KC_LBRC
-#define RU_HARD KC_RBRC
 #define RU_SHTI KC_Q
 #define RU_TSE KC_W
 #define RU_U KC_E
@@ -22,6 +20,7 @@
 #define RU_SHCH KC_O
 #define RU_BE KC_COMM
 #define RU_ZE KC_P
+#define RU_HA KC_LBRC
 #define RU_ER KC_H
 #define RU_O KC_J
 #define RU_EL KC_K
@@ -30,6 +29,7 @@
 #define RU_E KC_QUOT
 #define RU_TE KC_N
 #define RU_SOFT KC_M
+#define RU_HARD KC_RBRC
 #define RU_COMM S(KC_SLSH)
 #define RU_DOT KC_SLSH
 #define RU_YU KC_DOT

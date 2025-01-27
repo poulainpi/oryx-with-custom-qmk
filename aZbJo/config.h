@@ -23,7 +23,7 @@
 
 #define CAPS_LOCK_STATUS
 #define HOLD_ON_OTHER_KEY_PRESS
-#define SERIAL_NUMBER "aZbJo/bvbAbV"
+#define SERIAL_NUMBER "aZbJo/ZPm36V"
 #define LAYER_STATE_8BIT
 
 #define RGB_MATRIX_STARTUP_SPD 60
