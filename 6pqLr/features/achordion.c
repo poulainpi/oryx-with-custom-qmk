@@ -336,9 +336,9 @@ __attribute__((weak)) bool achordion_chord(uint16_t tap_hold_keycode,
                                            uint16_t other_keycode,
                                            keyrecord_t* other_record) { 
 switch (tap_hold_keycode) {
-    case MT(MOD_LCTL, KC_D):  // Ctrl Shortcuts on same hand
-      if (other_keycode == KC_C || other_keycode == KC_V) { return true; }
-      break;
+    //case MT(MOD_LCTL, KC_D):  // Ctrl Shortcuts on same hand
+      //if (other_keycode == KC_C || other_keycode == KC_V) { return true; }
+      //break;
 
     case LT(1,KC_SPACE):  // ARROWS + Function Keys
       if (other_keycode == KC_I || other_keycode == KC_J || other_keycode == KC_K || other_keycode == KC_L || other_keycode == KC_UP || other_keycode == KC_DOWN || other_keycode == KC_RIGHT || other_keycode == KC_LEFT|| other_keycode == KC_6 || other_keycode == KC_7 || other_keycode == KC_8 || other_keycode == KC_9  || other_keycode == KC_0 || other_keycode == KC_MINUS || other_keycode == KC_BSLS|| other_keycode == KC_F6 || other_keycode == KC_F7 || other_keycode == KC_F8 || other_keycode == KC_F9  || other_keycode == KC_F10 || other_keycode == KC_F11 || other_keycode == F12) { return true; }
