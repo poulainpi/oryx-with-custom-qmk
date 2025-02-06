@@ -130,20 +130,27 @@ bool rgb_matrix_indicators_user(void) {
   return true;
 }
 
-
-
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-  if (!process_achordion(keycode, record)) { return false; }
-
-  switch (keycode) {
-
-    case RGB_SLD:
-      if (record->event.pressed) {
-        rgblight_mode(1);
-      }
+  // Handle sentence case processing
+  if (!process_sentence_case(keycode, record)) {
       return false;
   }
-  return true;
+
+  // Handle achordion processing
+  if (!process_achordion(keycode, record)) {
+      return false;
+  }
+
+  // Handle custom keycode logic
+  switch (keycode) {
+      case RGB_SLD:
+          if (record->event.pressed) {
+              rgblight_mode(1);
+          }
+          return false;
+  }
+
+  return true;  // Default behavior
 }
 
 void matrix_scan_user(void) {
@@ -236,13 +243,6 @@ tap_dance_action_t tap_dance_actions[] = {
         [DANCE_0] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, dance_0_finished, dance_0_reset),
         [DANCE_1] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_1, dance_1_finished, dance_1_reset),
 };
-
-bool process_record_user(uint16_t keycode, keyrecord_t* record) {
-  if (!process_sentence_case(keycode, record)) { return false; }
-  // Your macros ...
-
-  return true;
-}
 
 //BACKSPACE OVERRIDE 
 const key_override_t delete_key_override = ko_make_basic(MOD_MASK_SHIFT, KC_BSPC, KC_DEL);
