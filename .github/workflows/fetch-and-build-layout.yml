@@ -14,10 +14,11 @@ on:
           - voyager
           - moonlander
           - ergodox_ez
-          - ergodox_ez/stm32/glow
-          - ergodox_ez/stm32/shine
           - ergodox_ez/m32u4/glow
           - ergodox_ez/m32u4/shine
+          - ergodox_ez/stm32
+          - ergodox_ez/stm32/glow
+          - ergodox_ez/stm32/shine
           - planck_ez
           - planck_ez/glow
         default: voyager
