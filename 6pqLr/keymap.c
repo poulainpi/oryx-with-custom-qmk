@@ -257,7 +257,7 @@ tap_dance_action_t tap_dance_actions[] = {
 };
 
 //BACKSPACE OVERRIDE 
-const key_override_t delete_key_override = ko_make_basic(MOD_MASK_SHIFT, KC_TAB, KC_DEL);
+const key_override_t delete_key_override = ko_make_basic(MOD_MASK_SHIFT, KC_BSPC, KC_DEL);
 //const key_override_t delete_key_override = ko_make_with_layers(MOD_MASK_SHIFT, KC_BSPC, KC_DEL, 1 << 0);
 //const key_override_t delete_key_override = ko_make_basic(MOD_MASK_SHIFT,LT(2,KC_BSPC),KC_DEL);
 //Bracket Override
