@@ -58,44 +58,22 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 const uint16_t PROGMEM combo0[] = { KC_SPACE, KC_BSPC, COMBO_END};
 const uint16_t PROGMEM combo1[] = { MT(MOD_RGUI, KC_O), MT(MOD_LGUI, KC_A), COMBO_END};
-const uint16_t PROGMEM combo2[] = { KC_BSPC, KC_C, COMBO_END};
-const uint16_t PROGMEM combo3[] = { KC_BSPC, KC_V, COMBO_END};
-const uint16_t PROGMEM combo4[] = { KC_D, KC_BSPC, COMBO_END};
-const uint16_t PROGMEM combo5[] = { KC_BSPC, KC_Z, COMBO_END};
-const uint16_t PROGMEM combo6[] = { KC_BSPC, MT(MOD_LSFT, KC_T), COMBO_END};
-const uint16_t PROGMEM combo7[] = { KC_BSPC, MT(MOD_LGUI, KC_A), COMBO_END};
+const uint16_t PROGMEM combo2[] = { KC_BSPC, MT(MOD_LGUI, KC_A), COMBO_END};
 
 combo_t key_combos[COMBO_COUNT] = {
     COMBO(combo0, LGUI(KC_SPACE)),
     COMBO(combo1, LALT(LGUI(LCTL(LSFT(KC_SPACE))))),
-    COMBO(combo2, LGUI(KC_C)),
-    COMBO(combo3, LGUI(KC_V)),
-    COMBO(combo4, LALT(LGUI(LSFT(KC_V)))),
-    COMBO(combo5, LGUI(KC_Z)),
-    COMBO(combo6, LGUI(KC_T)),
-    COMBO(combo7, LGUI(KC_A)),
+    COMBO(combo2, LGUI(KC_A)),
 };
 
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
-        case MT(MOD_LGUI, KC_A):
-            return TAPPING_TERM + 100;
-        case MT(MOD_LALT, KC_R):
-            return TAPPING_TERM + 100;
-        case MT(MOD_LCTL, KC_S):
-            return TAPPING_TERM + 100;
         case MT(MOD_LSFT, KC_T):
-            return TAPPING_TERM -20;
+            return TAPPING_TERM -50;
         case TD(DANCE_7):
             return TAPPING_TERM -75;
         case MT(MOD_RSFT, KC_N):
-            return TAPPING_TERM -20;
-        case MT(MOD_RCTL, KC_E):
-            return TAPPING_TERM + 100;
-        case MT(MOD_RALT, KC_I):
-            return TAPPING_TERM + 100;
-        case MT(MOD_RGUI, KC_O):
-            return TAPPING_TERM + 100;
+            return TAPPING_TERM -50;
         case TD(DANCE_14):
             return TAPPING_TERM -75;
         default:
