@@ -11,3 +11,6 @@ CAPS_WORD_ENABLE = yes
 
 # Custom QMK here
 KEY_OVERRIDE_ENABLE = yes
+
+# Enable Achordion
+SRC += features/achordion.c
