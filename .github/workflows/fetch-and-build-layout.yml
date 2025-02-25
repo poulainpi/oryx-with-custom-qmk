@@ -6,7 +6,7 @@ on:
       layout_id:
         description: "Layout id available in URL https://configure.zsa.io/voyager/layouts/[ID_IS_HERE]/latest"
         required: true
-        default: "g7jjw"
+        default: "ldn5r"
       layout_geometry:
         description: "Keyboard type"
         type: choice
@@ -21,7 +21,7 @@ on:
           - ergodox_ez/stm32/shine
           - planck_ez
           - planck_ez/glow
-        default: voyager
+        default: moonlander
 
 permissions:
   contents: write
@@ -49,9 +49,9 @@ jobs:
           if [[ -z "${change_description}" ]]; then
             change_description="latest layout modification made with Oryx"
           fi
-          
+
           curl -L "https://oryx.zsa.io/source/${hash_id}" -o source.zip
-          
+
           echo firmware_version=${firmware_version} >> "$GITHUB_OUTPUT"
           echo change_description=${change_description} >> "$GITHUB_OUTPUT"
 
@@ -100,18 +100,18 @@ jobs:
             keyboard_directory="qmk_firmware/keyboards"
             make_prefix=""
           fi
-          
+
           # Copy layout files to the qmk folder
           rm -rf ${keyboard_directory}/${{ github.event.inputs.layout_geometry }}/keymaps/${{ github.event.inputs.layout_id }}
           mkdir -p ${keyboard_directory}/${{ github.event.inputs.layout_geometry }}/keymaps && cp -r ${{ github.event.inputs.layout_id }} "$_"
-          
+
           # Build the layout
           docker run -v ./qmk_firmware:/root --rm qmk /bin/sh -c "
             qmk setup zsa/qmk_firmware -b firmware${{ steps.download-layout-source.outputs.firmware_version }} -y
             make ${make_prefix}${{ github.event.inputs.layout_geometry }}:${{ github.event.inputs.layout_id }}
           "
-          
-          # Find and export built layout          
+
+          # Find and export built layout
           normalized_layout_geometry="$(echo "${{ github.event.inputs.layout_geometry }}" | sed 's/\//_/g')"
           echo built_layout_file=$(find ./qmk_firmware -maxdepth 1 -type f -regex ".*${normalized_layout_geometry}.*\.\(bin\|hex\)$") >> "$GITHUB_OUTPUT"
           echo normalized_layout_geometry=${normalized_layout_geometry} >> "$GITHUB_OUTPUT"
