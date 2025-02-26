@@ -5,7 +5,7 @@
 
 #define USB_SUSPEND_WAKEUP_DELAY 0
 #define USB_POLLING_INTERVAL_MS 10
-#define SERIAL_NUMBER "vrMEr/Mmygb"
+#define SERIAL_NUMBER "vrMEr/AzzjqG"
 #define LAYER_STATE_16BIT
 #define COMBO_COUNT 4
 
