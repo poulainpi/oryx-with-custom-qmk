@@ -23,6 +23,7 @@
 #define DE_LABK KC_NUBS
 #define DE_RABK S(DE_LABK)
 #define DE_EQL S(KC_0)
+#define DE_TILD ALGR(KC_RBRC)
 #define DE_SS KC_MINS
 #define DE_QUES S(DE_SS)
 #define DE_LPRN S(KC_8)
@@ -40,7 +41,6 @@
 #define KC_MAC_COPY LGUI(KC_C)
 #define KC_MAC_PASTE LGUI(KC_V)
 #define KC_MAC_CUT LGUI(KC_X)
-#define DE_TILD ALGR(KC_RBRC)
 #define KC_PC_UNDO LCTL(KC_Z)
 #define KC_PC_COPY LCTL(KC_C)
 #define KC_PC_PASTE LCTL(KC_V)
