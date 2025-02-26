@@ -135,11 +135,7 @@ bool rgb_matrix_indicators_user(void) {
 }
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-  // Handle sentence case processing
-  if (!process_sentence_case(keycode, record)) {
-      return false;
-  }
-
+  
   // Handle achordion processing
   if (!process_achordion(keycode, record)) {
       return false;
