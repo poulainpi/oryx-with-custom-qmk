@@ -2,7 +2,6 @@
 #include "version.h"
 #define MOON_LED_LEVEL LED_LEVEL
 #define ML_SAFE_RANGE SAFE_RANGE
-#include "features/sentence_case.h"
 #include "features/achordion.h"
 
 enum custom_keycodes {
