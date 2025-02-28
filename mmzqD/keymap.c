@@ -1,20 +1,7 @@
 #include QMK_KEYBOARD_H
 #include "version.h"
-#include "features/achordion.h"
 #define MOON_LED_LEVEL LED_LEVEL
 #define ML_SAFE_RANGE SAFE_RANGE
-
-// Left-hand home row mods - used with achordion
-#define HOME_C MT(MOD_LCTL, KC_C)
-#define HOME_S MT(MOD_LALT, KC_S)
-#define HOME_D MT(MOD_LGUI, KC_D)
-#define HOME_F MT(MOD_LSFT, KC_F)
-
-// Right-hand home row mods - used with achordion
-#define HOME_J MT(MOD_RSFT, KC_J)
-#define HOME_K MT(MOD_RGUI, KC_K)
-#define HOME_L MT(MOD_LALT, KC_L)
-#define HOME_COMMA MT(MOD_RCTL, KC_COMMA)
 
 enum custom_keycodes {
   RGB_SLD = ML_SAFE_RANGE,
@@ -151,9 +138,6 @@ bool rgb_matrix_indicators_user(void) {
 }
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-  // Achordion config
-  if (!process_achordion(keycode, record)) { return false; }
-  
   switch (keycode) {
     case ST_MACRO_0:
     if (record->event.pressed) {
@@ -175,52 +159,3 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   return true;
 }
 
-// Start: Achordion config
-void matrix_scan_user(void) {
-  achordion_task();
-}
-
-bool achordion_eager_mod(uint8_t mod) {
-  switch (mod) {
-    case MOD_LSFT:
-    case MOD_RSFT:
-    case MOD_LGUI:
-    case MOD_RGUI:
-    case MOD_LCTL:
-    case MOD_RCTL:
-      return true;  // Eagerly apply Shift, Ctrl and Cmd mods.
-    default:
-      return false;
-  }
-}
-
-bool achordion_chord(uint16_t tap_hold_keycode,
-                     keyrecord_t* tap_hold_record,
-                     uint16_t other_keycode,
-                     keyrecord_t* other_record) {
-  // Exceptionally consider the following chords as holds
-  switch (tap_hold_keycode) {
-    case HOME_D:
-      // Close tab || Close window || Cut text || Undo || Paste || Refresh
-      if (other_keycode == KC_W || other_keycode == KC_Q || other_keycode == KC_X || other_keycode == KC_Z || other_keycode == KC_V || other_keycode == KC_R) { return true; }
-      break;
-  }
-
-  // We want to ignore thumb clusters (except enter key)
-  if (other_record->event.key.row == 5) { return true; }
-  if (other_record->event.key.row == 11 && other_record->event.key.col == 6) { return true; }
-
-  // Otherwise, follow the opposite hands rule.
-  return achordion_opposite_hands(tap_hold_record, other_record);
-}
-
-uint16_t achordion_timeout(uint16_t tap_hold_keycode) {
-  switch (tap_hold_keycode) {
-    // Thumb key for enter/layer
-    case LT(1,KC_ENTER):
-      return 0;  // Bypass Achordion for these keys.
-  }
-
-  return 500;  // Otherwise use a timeout of 500 ms.
-}
-// End: Achordion config
