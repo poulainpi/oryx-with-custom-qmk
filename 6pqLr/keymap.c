@@ -2,7 +2,7 @@
 #include "version.h"
 #define MOON_LED_LEVEL LED_LEVEL
 #define ML_SAFE_RANGE SAFE_RANGE
-#include "features/achordion.h"
+//#include "features/achordion.h"
 
 enum custom_keycodes {
   RGB_SLD = ML_SAFE_RANGE,
@@ -135,10 +135,10 @@ bool rgb_matrix_indicators_user(void) {
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   
-  // Handle achordion processing
+  /* Handle achordion processing
   if (!process_achordion(keycode, record)) {
       return false;
-  }
+  }*/
 
   // Handle custom keycode logic
   switch (keycode) {
@@ -152,9 +152,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   return true;  // Default behavior
 }
 
-void matrix_scan_user(void) {
-  achordion_task();
-}
+//void matrix_scan_user(void) {
+  //achordion_task();
+//}
 
 typedef struct {
     bool is_press_action;
