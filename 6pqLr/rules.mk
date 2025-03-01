@@ -11,4 +11,3 @@ SPACE_CADET_ENABLE = no
 COMBO_ENABLE = yes
 # Custom QMK Start
 KEY_OVERRIDE_ENABLE = yes
-#SRC += features/achordion.c
