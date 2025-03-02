@@ -48,35 +48,6 @@ combo_t key_combos[COMBO_COUNT] = {
     COMBO(combo1, KC_CAPS),
 };
 
-uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
-    switch (keycode) {
-        case MT(MOD_LGUI, KC_A):
-            return 0;
-        case MT(MOD_LSFT, KC_F):
-            return TAPPING_TERM -100;
-        case KC_Z:
-            return TAPPING_TERM + 150;
-        case KC_P:
-            return TAPPING_TERM + 150;
-        case MT(MOD_RSFT, KC_J):
-            return TAPPING_TERM -100;
-        case MT(MOD_RGUI, KC_SCLN):
-            return 0;
-        case KC_SLASH:
-            return TAPPING_TERM + 150;
-        case MT(MOD_LGUI, KC_RBRC):
-            return 0;
-        case MT(MOD_LSFT, KC_END):
-            return TAPPING_TERM -100;
-        case KC_LEFT:
-            return 0;
-        case KC_BSLS:
-            return 0;
-        default:
-            return TAPPING_TERM;
-    }
-}
-
 extern rgb_config_t rgb_matrix_config;
 
 void keyboard_post_init_user(void) {
@@ -266,14 +237,12 @@ tap_dance_action_t tap_dance_actions[] = {
         [DANCE_3] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, dance_3_finished, dance_3_reset),
 };
 
+//Override
 //BACKSPACE OVERRIDE 
 const key_override_t delete_key_override = ko_make_basic(MOD_MASK_SHIFT, KC_BSPC, KC_DEL);
-//const key_override_t delete_key_override = ko_make_with_layers(MOD_MASK_SHIFT, KC_BSPC, KC_DEL, 1 << 0);
-//const key_override_t delete_key_override = ko_make_basic(MOD_MASK_SHIFT,LT(2,KC_BSPC),KC_DEL);
 //Bracket Override
 const key_override_t parenthesis1_override = ko_make_basic(MOD_MASK_SHIFT, KC_LBRC, KC_LCBR);
 const key_override_t parenthesis2_override = ko_make_basic(MOD_MASK_SHIFT, KC_RBRC, KC_LCBR);
-
 // This globally defines all key overrides to be used
 const key_override_t **key_overrides = (const key_override_t *[]){
 	&delete_key_override,
