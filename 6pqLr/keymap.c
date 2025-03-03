@@ -61,27 +61,14 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
             return TAPPING_TERM + 50;
         case KC_SLASH:
             return TAPPING_TERM + 150;
-        case LT(1, KC_SPACE):
-            return TAPPING_TERM - 50;
+        case LT(1,KC_SPACE):
+            return TAPPING_TERM -50;
         case MT(MOD_LGUI, KC_RBRC):
             return TAPPING_TERM + 50;
         case KC_LEFT:
             return 0;
         case KC_BSLS:
             return 0;
-        case MT(MOD_LCTL, KC_D):  // Special case for Ctrl+D
-            if (record && record->event.pressed) {  // Ensure record is valid
-                if (get_mods() & MOD_MASK_CTRL) {  // Check if Ctrl is active
-                    return 120;  // Lower tapping term for Ctrl+D
-                }
-            }
-            return TAPPING_TERM;
-        case KC_C:
-        case KC_V:
-            if (get_mods() & MOD_MASK_CTRL) {  // If Ctrl is active
-                return 100;  // Lower tapping term for Ctrl+C and Ctrl+V
-            }
-            return TAPPING_TERM;
         default:
             return TAPPING_TERM;
     }
@@ -284,7 +271,7 @@ tap_dance_action_t tap_dance_actions[] = {
         [DANCE_2] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_2, dance_2_finished, dance_2_reset),
         [DANCE_3] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, dance_3_finished, dance_3_reset),
 };
-//Chordal
+/*Chordal
 bool get_chordal_hold(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record,
                       uint16_t other_keycode, keyrecord_t* other_record) {
   
@@ -295,7 +282,7 @@ bool get_chordal_hold(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record,
   }
 
   return true;  // Default return value
-}
+}*/
 
 //OVERRIDE
 //BACKSPACE OVERRIDE 
