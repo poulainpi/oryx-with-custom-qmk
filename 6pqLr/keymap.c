@@ -72,10 +72,14 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
         case MT(MOD_LCTL, KC_D):  // Special case for Ctrl+D
             if (record && record->event.pressed) {  // Ensure record is valid
                 if (get_mods() & MOD_MASK_CTRL) {  // Check if Ctrl is active
-                    if (record->event.keycode == KC_C || record->event.keycode == KC_V) {
-                        return 120;  // Lower tapping term for Ctrl+C and Ctrl+V
-                    }
+                    return 120;  // Lower tapping term for Ctrl+D
                 }
+            }
+            return TAPPING_TERM;
+        case KC_C:
+        case KC_V:
+            if (get_mods() & MOD_MASK_CTRL) {  // If Ctrl is active
+                return 100;  // Lower tapping term for Ctrl+C and Ctrl+V
             }
             return TAPPING_TERM;
         default:
