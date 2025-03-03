@@ -271,19 +271,8 @@ tap_dance_action_t tap_dance_actions[] = {
         [DANCE_2] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_2, dance_2_finished, dance_2_reset),
         [DANCE_3] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, dance_3_finished, dance_3_reset),
 };
-/*Chordal
-bool get_chordal_hold(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record,
-                      uint16_t other_keycode, keyrecord_t* other_record) {
-  
-  // Ensure that MT(MOD_LCTL, KC_D) always acts as Control when pressing C or V
-  if (tap_hold_keycode == MT(MOD_LCTL, KC_D) && 
-      (other_keycode == KC_C || other_keycode == KC_V)) {
-      return false;  // Bypass hold, treat as Control
-  }
 
-  return true;  // Default return value
-}*/
-
+//CUSTOM QMK
 //OVERRIDE
 //BACKSPACE OVERRIDE 
 const key_override_t delete_key_override = ko_make_basic(MOD_MASK_SHIFT, KC_BSPC, KC_DEL);
