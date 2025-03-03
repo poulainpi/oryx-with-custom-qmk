@@ -43,10 +43,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 const uint16_t PROGMEM combo0[] = { KC_F, KC_J, COMBO_END};
 const uint16_t PROGMEM combo1[] = { MT(MOD_LSFT, KC_F), MT(MOD_RSFT, KC_J), COMBO_END};
+const uint16_t PROGMEM combo2[] = { MT(MOD_LCTL, KC_D), KC_C, COMBO_END};
+const uint16_t PROGMEM combo3[] = { MT(MOD_LCTL, KC_D), KC_V, COMBO_END};
 
 combo_t key_combos[COMBO_COUNT] = {
     COMBO(combo0, LALT(KC_TAB)),
     COMBO(combo1, KC_CAPS),
+    COMBO(combo2, LCTL(KC_C)),
+    COMBO(combo3, LCTL(KC_V)),
 };
 
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
