@@ -50,29 +50,41 @@ combo_t key_combos[COMBO_COUNT] = {
 };
 
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
-    switch (keycode) {
-        case MT(MOD_LGUI, KC_A):
-            return TAPPING_TERM + 50;
-        case KC_Z:
-            return TAPPING_TERM + 150;
-        case KC_P:
-            return TAPPING_TERM + 150;
-        case MT(MOD_RGUI, KC_SCLN):
-            return TAPPING_TERM + 50;
-        case KC_SLASH:
-            return TAPPING_TERM + 150;
-        case LT(1,KC_SPACE):
-            return TAPPING_TERM -50;
-        case MT(MOD_LGUI, KC_RBRC):
-            return TAPPING_TERM + 50;
-        case KC_LEFT:
-            return 0;
-        case KC_BSLS:
-            return 0;
-        default:
-            return TAPPING_TERM;
-    }
+  switch (keycode) {
+      case MT(MOD_LGUI, KC_A):
+          return TAPPING_TERM + 50;
+      case KC_Z:
+          return TAPPING_TERM + 150;
+      case KC_P:
+          return TAPPING_TERM + 150;
+      case MT(MOD_RGUI, KC_SCLN):
+          return TAPPING_TERM + 50;
+      case KC_SLASH:
+          return TAPPING_TERM + 150;
+      case LT(1, KC_SPACE):
+          return TAPPING_TERM - 50;
+      case MT(MOD_LGUI, KC_RBRC):
+          return TAPPING_TERM + 50;
+      case KC_LEFT:
+          return 0;
+      case KC_BSLS:
+          return 0;
+      case MT(MOD_LCTL, KC_D):  // Special case for Ctrl+D
+          if (record && record->event.pressed) {  // Ensure record is valid
+              uint8_t mod_state = get_mods();  // Check active mods
+              if (mod_state & MOD_MASK_CTRL) {  // If Ctrl is held
+                  uint16_t other_key = get_event_keycode(record);
+                  if (other_key == KC_C || other_key == KC_V) {
+                      return 100;  // Lower tapping term for Ctrl+C and Ctrl+V
+                  }
+              }
+          }
+          return TAPPING_TERM;
+      default:
+          return TAPPING_TERM;
+  }
 }
+
 
 extern rgb_config_t rgb_matrix_config;
 
