@@ -282,8 +282,7 @@ tap_dance_action_t tap_dance_actions[] = {
         [DANCE_3] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, dance_3_finished, dance_3_reset),
 };
 
-//CUSTOM QMK
-//OVERRIDE
+/////////////////////////////CUSTOM QMK/////////////////////////////
 //BACKSPACE OVERRIDE 
 const key_override_t delete_key_override = ko_make_basic(MOD_MASK_SHIFT, KC_BSPC, KC_DEL);
 //Bracket Override
