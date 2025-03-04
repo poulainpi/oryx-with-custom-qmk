@@ -1,10 +1,6 @@
-/*
-  Set any config.h overrides for your specific keymap here.
-  See config.h options at https://docs.qmk.fm/#/config_options?id=the-configh-file
-*/
-
+#define CHORDAL_HOLD
 #undef TAPPING_TERM
-#define TAPPING_TERM 225
+#define TAPPING_TERM 250
 
 #undef ONESHOT_TIMEOUT
 #define ONESHOT_TIMEOUT 5000
@@ -16,7 +12,7 @@
 
 #define USB_SUSPEND_WAKEUP_DELAY 0
 #define CAPS_LOCK_STATUS
-#define SERIAL_NUMBER "NY75B/WdzqP"
+#define SERIAL_NUMBER "NY75B/DBNbK"
 #define LAYER_STATE_16BIT
 #define COMBO_COUNT 4
 
