@@ -70,7 +70,7 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
         case KC_SLASH:
             return TAPPING_TERM + 150;
         case LT(1,KC_SPACE):
-            return TAPPING_TERM -50;
+            return TAPPING_TERM -100;
         case MT(MOD_LGUI, KC_RBRC):
             return TAPPING_TERM + 50;
         case MT(MOD_LSFT, KC_END):
