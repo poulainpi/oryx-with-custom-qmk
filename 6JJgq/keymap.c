@@ -859,11 +859,26 @@ tap_dance_action_t tap_dance_actions[] = {
 
 
 // custom
+bool process_detected_host_os_kb(os_variant_t detected_os) {
+    if (!process_detected_host_os_user(detected_os)) {
+        return false;
+    }
+    switch (detected_os) {
+        case OS_MACOS:
+        case OS_IOS:
+            const key_override_t macos_backspace_ctl_override = ko_make_basic(MOD_MASK_CTRL, KC_BSPC, LALT(KC_BSPC));
+            const key_override_t **key_overrides = (const key_override_t *[]) {
+                &macos_backspace_ctl_override,
+                NULL
+            };
+            break;
+        case OS_WINDOWS:
+            break;
+        case OS_LINUX:
+            break;
+        case OS_UNSURE:
+            break;
+    }
 
-const key_override_t macos_backspace_ctl_override = ko_make_basic(MOD_MASK_CTRL, KC_BSPC, LALT(KC_BSPC));
-
-// This globally defines all key overrides to be used
-const key_override_t **key_overrides = (const key_override_t *[]) {
-	&macos_backspace_ctl_override,
-    NULL
-};
+    return true;
+}
