@@ -237,7 +237,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             return false;
         }
         if (detected_os == OS_MACOS) {
-            SS_TAP(X_A);
+            SEND_STRING(SS_TAP(X_A));
         }
         break;
 
