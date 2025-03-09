@@ -232,16 +232,20 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
     // custom
     case OS_A:
-        os_variant_t detected_os = detected_host_os();
-        if (!process_detected_host_os_user(detected_os)) {
-            return false;
-        }
-        if (detected_os == OS_MACOS) {
-            SEND_STRING(SS_TAP(X_A));
-        } else if (detected_os == OS_LINUX) {
-            SEND_STRING(SS_TAP(X_B));
-        } else {
-            SEND_STRING(SS_TAP(X_C));
+        if (record->event.pressed) {
+            os_variant_t detected_os = detected_host_os();
+            if (!process_detected_host_os_user(detected_os)) {
+                return false;
+            }
+            if (detected_os == OS_MACOS || detected_os == OS_IOS) {
+                SEND_STRING(SS_TAP(X_A));
+            } else if (detected_os == OS_LINUX) {
+                SEND_STRING(SS_TAP(X_B));
+            } else if (detected_os == OS_UNSURE) {
+                SEND_STRING(SS_TAP(X_S));
+            } else {
+                SEND_STRING(SS_TAP(X_C));
+            }
         }
         break;
 
