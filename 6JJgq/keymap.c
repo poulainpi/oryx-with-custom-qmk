@@ -38,9 +38,9 @@ enum tap_dance_codes {
 };
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [0] = LAYOUT_moonlander(
-    KC_LEFT_SHIFT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
-    KC_BSPC, KC_Q,           KC_W,           KC_E,           KC_R,           KC_T,           KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_Y,           LT(6,KC_U),     KC_I,           LT(5,KC_O),     KC_P,           KC_TRANSPARENT,
-    OS_A, MT(MOD_LGUI, KC_A),MT(MOD_LALT, KC_S),MT(MOD_LSFT, KC_D),MT(MOD_LCTL, KC_F),KC_G,           KC_TRANSPARENT,                                                                 KC_TRANSPARENT, KC_H,           MT(MOD_LCTL, KC_J),MT(MOD_RSFT, KC_K),MT(MOD_LALT, KC_L), KC_BSPC, KC_TRANSPARENT,
+    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
+    KC_TRANSPARENT, KC_Q,           KC_W,           KC_E,           KC_R,           KC_T,           KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_Y,           LT(6,KC_U),     KC_I,           LT(5,KC_O),     KC_P,           KC_TRANSPARENT,
+    KC_TRANSPARENT, MT(MOD_LGUI, KC_A),MT(MOD_LALT, KC_S),MT(MOD_LSFT, KC_D),MT(MOD_LCTL, KC_F),KC_G,           KC_TRANSPARENT,                                                                 KC_TRANSPARENT, KC_H,           MT(MOD_LCTL, KC_J),MT(MOD_RSFT, KC_K),MT(MOD_LALT, KC_L), KC_BSPC, KC_TRANSPARENT,
     KC_TRANSPARENT, LT(8,KC_Z),     LT(3,KC_X),     KC_C,           MT(MOD_RALT, KC_V),KC_B,                                           KC_N,           MT(MOD_RALT, KC_M),KC_COMMA,       LT(3,KC_DOT),   TO(2),          KC_TRANSPARENT,
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, LT(7,KC_ESCAPE),KC_TRANSPARENT,                                                                                                 KC_TRANSPARENT, OSL(1),         KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
     LT(4,KC_SPACE), KC_TRANSPARENT, KC_TRANSPARENT,                 KC_TRANSPARENT, KC_TRANSPARENT, OSM(MOD_LSFT)
@@ -231,23 +231,23 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
 
     // custom
-    case OS_A:
-        if (record->event.pressed) {
-            os_variant_t detected_os = detected_host_os();
-            if (!process_detected_host_os_user(detected_os)) {
-                return false;
-            }
-            if (detected_os == OS_MACOS || detected_os == OS_IOS) {
-                SEND_STRING(SS_TAP(X_A));
-            } else if (detected_os == OS_LINUX) {
-                SEND_STRING(SS_TAP(X_B));
-            } else if (detected_os == OS_UNSURE) {
-                SEND_STRING(SS_TAP(X_S));
-            } else {
-                SEND_STRING(SS_TAP(X_C));
-            }
-        }
-        break;
+    // case OS_A:
+    //     if (record->event.pressed) {
+    //         os_variant_t detected_os = detected_host_os();
+    //         if (!process_detected_host_os_user(detected_os)) {
+    //             return false;
+    //         }
+    //         if (detected_os == OS_MACOS || detected_os == OS_IOS) {
+    //             SEND_STRING(SS_TAP(X_A));
+    //         } else if (detected_os == OS_LINUX) {
+    //             SEND_STRING(SS_TAP(X_B));
+    //         } else if (detected_os == OS_UNSURE) {
+    //             SEND_STRING(SS_TAP(X_S));
+    //         } else {
+    //             SEND_STRING(SS_TAP(X_C));
+    //         }
+    //     }
+    //     break;
 
   }
   return true;
@@ -864,48 +864,37 @@ bool process_detected_host_os_kb(os_variant_t detected_os) {
         return false;
     }
 
+    // Shift + Backspace → Delete (applies to all OS)
+    static const key_override_t shift_backspace_override =
+        ko_make_basic(MOD_MASK_SHIFT, KC_BSPC, KC_DEL);
+
+    // Ctrl + Backspace → Option + Backspace (only for macOS)
     static const key_override_t macos_backspace_ctl_override =
         ko_make_basic(MOD_MASK_CTRL, KC_BSPC, LALT(KC_BSPC));
 
+    // Default key overrides (applies to all OS)
+    static const key_override_t *default_key_overrides[] = {
+        &shift_backspace_override,
+        NULL
+    };
+
+    // macOS-specific key overrides (Shift + Backspace + Ctrl behavior)
     static const key_override_t *mac_key_overrides[] = {
+        &shift_backspace_override,
         &macos_backspace_ctl_override,
         NULL
     };
 
+    // Apply overrides based on OS
     switch (detected_os) {
         case OS_MACOS:
         case OS_IOS:
-            key_overrides = mac_key_overrides; // Assign the array here
+            key_overrides = mac_key_overrides;
             break;
-        case OS_WINDOWS:
-        case OS_LINUX:
-        case OS_UNSURE:
+        default:
+            key_overrides = default_key_overrides;
             break;
     }
 
     return true;
 }
-
-// bool process_detected_host_os_kb(os_variant_t detected_os) {
-//     if (!process_detected_host_os_user(detected_os)) {
-//         return false;
-//     }
-//     switch (detected_os) {
-//         case OS_MACOS:
-//         case OS_IOS:
-//             const key_override_t macos_backspace_ctl_override = ko_make_basic(MOD_MASK_CTRL, KC_BSPC, LALT(KC_BSPC));
-//             const key_override_t **key_overrides = (const key_override_t *[]) {
-//                 &macos_backspace_ctl_override,
-//                 NULL
-//             };
-//             break;
-//         case OS_WINDOWS:
-//             break;
-//         case OS_LINUX:
-//             break;
-//         case OS_UNSURE:
-//             break;
-//     }
-//
-//     return true;
-// }
