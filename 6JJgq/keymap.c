@@ -864,5 +864,5 @@ const key_override_t macos_backspace_ctl_override = ko_make_basic(MOD_MASK_CTRL,
 
 // This globally defines all key overrides to be used
 const key_override_t *key_overrides[] = {
-	&delete_key_override
+	&macos_backspace_ctl_override
 };
