@@ -1022,8 +1022,8 @@ bool process_detected_host_os_kb(os_variant_t detected_os) {
         &macos_right_alt_override,
         &macos_ctl_tab,
         &macos_gui_tab,
-        &macos_ctl_tab_shift,
-        &macos_gui_tab_shift,
+        // &macos_ctl_tab_shift,
+        // &macos_gui_tab_shift,
         NULL
     };
 
