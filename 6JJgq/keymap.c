@@ -860,10 +860,19 @@ tap_dance_action_t tap_dance_actions[] = {
 
 // custom
 
-const key_override_t macos_backspace_ctl_override = ko_make_basic(MOD_MASK_CTRL, KC_BSPC, LALT(KC_BSPC));
+const key_override_t delete_key_override =
+    ko_make_basic(MOD_MASK_SHIFT, KC_BSPC, KC_DEL);
+
+const key_override_t **key_overrides = (const key_override_t *[]){
+	&delete_key_override,
+	NULL
+};
+
+/*const key_override_t macos_backspace_ctl_override = ko_make_basic(MOD_MASK_CTRL, KC_BSPC, LALT(KC_BSPC));
 
 // This globally defines all key overrides to be used
 const key_override_t **key_overrides = (const key_override_t *[]) {
 	&macos_backspace_ctl_override,
     NULL
 };
+*/
