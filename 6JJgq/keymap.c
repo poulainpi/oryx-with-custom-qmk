@@ -863,22 +863,49 @@ bool process_detected_host_os_kb(os_variant_t detected_os) {
     if (!process_detected_host_os_user(detected_os)) {
         return false;
     }
+
+    static const key_override_t macos_backspace_ctl_override =
+        ko_make_basic(MOD_MASK_CTRL, KC_BSPC, LALT(KC_BSPC));
+
+    static const key_override_t *mac_key_overrides[] = {
+        &macos_backspace_ctl_override,
+        NULL
+    };
+
     switch (detected_os) {
         case OS_MACOS:
         case OS_IOS:
-            const key_override_t macos_backspace_ctl_override = ko_make_basic(MOD_MASK_CTRL, KC_BSPC, LALT(KC_BSPC));
-            const key_override_t **key_overrides = (const key_override_t *[]) {
-                &macos_backspace_ctl_override,
-                NULL
-            };
+            key_overrides = mac_key_overrides; // Assign the array here
             break;
         case OS_WINDOWS:
-            break;
         case OS_LINUX:
-            break;
         case OS_UNSURE:
             break;
     }
 
     return true;
 }
+
+// bool process_detected_host_os_kb(os_variant_t detected_os) {
+//     if (!process_detected_host_os_user(detected_os)) {
+//         return false;
+//     }
+//     switch (detected_os) {
+//         case OS_MACOS:
+//         case OS_IOS:
+//             const key_override_t macos_backspace_ctl_override = ko_make_basic(MOD_MASK_CTRL, KC_BSPC, LALT(KC_BSPC));
+//             const key_override_t **key_overrides = (const key_override_t *[]) {
+//                 &macos_backspace_ctl_override,
+//                 NULL
+//             };
+//             break;
+//         case OS_WINDOWS:
+//             break;
+//         case OS_LINUX:
+//             break;
+//         case OS_UNSURE:
+//             break;
+//     }
+//
+//     return true;
+// }
