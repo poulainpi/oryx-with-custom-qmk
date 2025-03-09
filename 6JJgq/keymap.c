@@ -240,8 +240,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             SEND_STRING(SS_TAP(X_A));
         } else if (detected_os == OS_LINUX) {
             SEND_STRING(SS_TAP(X_B));
+        } else {
+            SEND_STRING(SS_TAP(X_C));
         }
-        SEND_STRING(SS_TAP(X_C));
         break;
 
   }

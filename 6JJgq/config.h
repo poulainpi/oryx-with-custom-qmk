@@ -7,3 +7,6 @@
 
 #define RGB_MATRIX_STARTUP_SPD 60
 
+
+// custom
+#define OS_DETECTION_KEYBOARD_RESET
