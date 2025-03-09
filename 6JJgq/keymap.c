@@ -11,6 +11,8 @@ enum custom_keycodes {
   ST_MACRO_2,
   ST_MACRO_3,
   ST_MACRO_4,
+
+  OS_A,
 };
 
 
@@ -226,6 +228,19 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             rgblight_mode(1);
         }
         return false;
+
+
+    // custom
+    case OS_A:
+        os_variant_t detected_os = detected_host_os();
+        if (!process_detected_host_os_user(detected_os)) {
+            return false;
+        }
+        if (detected_os == OS_MACOS) {
+            SS_TAP(X_A);
+        }
+        break;
+
   }
   return true;
 }
