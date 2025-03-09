@@ -999,12 +999,6 @@ bool process_detected_host_os_kb(os_variant_t detected_os) {
     static const key_override_t macos_gui_tab =
         ko_make_basic(MOD_MASK_GUI, KC_TAB, LCTL(KC_TAB));
 
-    // static const key_override_t macos_ctl_tab_shift =
-    //     ko_make_basic(MOD_MASK_CS, KC_TAB, LGUI(LSFT(KC_TAB)));
-    // static const key_override_t macos_gui_tab_shift =
-    //     ko_make_basic(MOD_MASK_SG, KC_TAB, LCTL(LSFT(KC_TAB)));
-
-
     // Default key overrides (applies to all OS)
     static const key_override_t *default_key_overrides[] = {
         &shift_backspace_override,
@@ -1022,8 +1016,6 @@ bool process_detected_host_os_kb(os_variant_t detected_os) {
         &macos_right_alt_override,
         &macos_ctl_tab,
         &macos_gui_tab,
-        // &macos_ctl_tab_shift,
-        // &macos_gui_tab_shift,
         NULL
     };
 
