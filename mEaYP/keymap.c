@@ -54,13 +54,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case KC_GRAVE:
-            return TAPPING_TERM -50;
+            return TAPPING_TERM -70;
         case KC_SCLN:
-            return TAPPING_TERM + 50;
+            return TAPPING_TERM + 30;
         case KC_SLASH:
-            return TAPPING_TERM + 50;
+            return TAPPING_TERM + 30;
         case LGUI(LCTL(KC_B)):
-            return TAPPING_TERM + 20;
+            return 0;
         default:
             return TAPPING_TERM;
     }
