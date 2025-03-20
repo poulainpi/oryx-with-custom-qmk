@@ -1,3 +1,4 @@
+#define CHORDAL_HOLD
 #undef DEBOUNCE
 #define DEBOUNCE 5
 
@@ -9,7 +10,7 @@
 #define USB_SUSPEND_WAKEUP_DELAY 0
 #define NO_AUTO_SHIFT_TAB
 #define NO_AUTO_SHIFT_ALPHA
-#define SERIAL_NUMBER "mEaYP/WvvxVR"
+#define SERIAL_NUMBER "mEaYP/MaZJXJ"
 #define LAYER_STATE_8BIT
 
 #define TAPPING_TERM_PER_KEY
