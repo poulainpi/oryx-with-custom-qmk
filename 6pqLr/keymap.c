@@ -285,9 +285,11 @@ bool get_chordal_hold(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record,
 if (tap_hold_keycode == LT(1, KC_SPACE)) {
 return false; // Ensures it always acts as a normal tap key
 }
-}
+
 // Use default chordal hold logic for everything else
 return get_chordal_hold_default(tap_hold_record, other_record);
+}
+
 //////////////////////////////////////////////////////////
 /*bool get_permissive_hold(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record,
     uint16_t other_keycode, keyrecord_t* other_record) {
