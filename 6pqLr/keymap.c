@@ -283,11 +283,35 @@ tap_dance_action_t tap_dance_actions[] = {
 };
 
 /////////////////////////////CUSTOM QMK/////////////////////////////
+//CHORDAL SPECIAL HANDLING//
+bool get_chordal_hold(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record,
+    uint16_t other_keycode, keyrecord_t* other_record) {
+// Exclude LT(1, KC_SPACE) from Chordal Hold processing
+if (tap_hold_keycode == LT(1, KC_SPACE)) {
+return false; // Ensures it always acts as a normal tap key
+}
+}
+// Use default chordal hold logic for everything else
+return get_chordal_hold_default(tap_hold_record, other_record);
+//////////////////////////////////////////////////////////
+/*bool get_permissive_hold(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record,
+    uint16_t other_keycode, keyrecord_t* other_record) {
+// Disable Permissive Hold for LT(1, KC_SPACE)
+if (tap_hold_keycode == LT(1, KC_SPACE)) {
+return false; // Forces it to always behave as a standard layer tap
+}
+
+// Use default Permissive Hold behavior for all other keys
+return get_permissive_hold_default(tap_hold_record, other_record);
+}*/
+//////////////////////////////////////////////////////////
 //BACKSPACE OVERRIDE 
 const key_override_t delete_key_override = ko_make_basic(MOD_MASK_SHIFT, KC_BSPC, KC_DEL);
-//Bracket Override
+//////////////////////////////////////////////////////////
+//BRACKET OVERRIDE
 const key_override_t parenthesis1_override = ko_make_basic(MOD_MASK_SHIFT, KC_LBRC, KC_LCBR);
 const key_override_t parenthesis2_override = ko_make_basic(MOD_MASK_SHIFT, KC_RBRC, KC_LCBR);
+//////////////////////////////////////////////////////////
 // This globally defines all key overrides to be used
 const key_override_t **key_overrides = (const key_override_t *[]){
 	&delete_key_override,
