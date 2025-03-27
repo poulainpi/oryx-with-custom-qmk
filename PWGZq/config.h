@@ -1,16 +1,14 @@
-/*
-  Set any config.h overrides for your specific keymap here.
-  See config.h options at https://docs.qmk.fm/#/config_options?id=the-configh-file
-*/
-
+#define CHORDAL_HOLD
 #undef TAPPING_TERM
-#define TAPPING_TERM 149
+#define TAPPING_TERM 225
+
+#define PERMISSIVE_HOLD
 
 #undef RGB_MATRIX_TIMEOUT
 #define RGB_MATRIX_TIMEOUT 600000
 
 #define USB_SUSPEND_WAKEUP_DELAY 0
-#define SERIAL_NUMBER "PWGZq/x9neDx"
+#define SERIAL_NUMBER "PWGZq/nlmvjQ"
 #define LAYER_STATE_8BIT
 #define COMBO_COUNT 3
 #define HCS(report) host_consumer_send(record->event.pressed ? report : 0); return false
