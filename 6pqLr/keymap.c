@@ -5,7 +5,7 @@
 
 enum custom_keycodes {
   RGB_SLD = ML_SAFE_RANGE,
-  HSV_79_255_255,
+  HSV_62_153_255,
 };
 
 
@@ -28,7 +28,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [1] = LAYOUT_voyager(
     KC_NO,          KC_F1,          KC_F2,          KC_F3,          KC_F4,          KC_F5,                                          KC_F6,          KC_F7,          KC_F8,          KC_F9,          KC_F10,         RGB_TOG,        
     KC_NO,          KC_LBRC,        KC_ESCAPE,      KC_PAGE_UP,     KC_PSCR,        RGB_VAI,                                        KC_AUDIO_VOL_UP,KC_AUDIO_MUTE,  KC_UP,          KC_F11,         KC_F12,         TOGGLE_LAYER_COLOR,
-    KC_NO,          MT(MOD_LGUI, KC_RBRC),MT(MOD_LALT, KC_HOME),MT(MOD_LCTL, KC_PGDN),MT(MOD_LSFT, KC_END),RGB_VAD,                                        KC_AUDIO_VOL_DOWN,KC_LEFT,        KC_DOWN,        KC_RIGHT,       HSV_79_255_255, RGB_MODE_FORWARD,
+    KC_NO,          MT(MOD_LGUI, KC_RBRC),MT(MOD_LALT, KC_HOME),MT(MOD_LCTL, KC_PGDN),MT(MOD_LSFT, KC_END),RGB_VAD,                                        KC_AUDIO_VOL_DOWN,KC_LEFT,        KC_DOWN,        KC_RIGHT,       HSV_62_153_255, RGB_MODE_FORWARD,
     KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,                                          KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,          
                                                     KC_NO,          KC_NO,                                          KC_NO,          KC_TRANSPARENT
   ),
@@ -134,10 +134,10 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         rgblight_mode(1);
       }
       return false;
-    case HSV_79_255_255:
+    case HSV_62_153_255:
       if (record->event.pressed) {
         rgblight_mode(1);
-        rgblight_sethsv(79,255,255);
+        rgblight_sethsv(62,153,255);
       }
       return false;
   }
