@@ -5,7 +5,7 @@
 
 enum custom_keycodes {
   RGB_SLD = ML_SAFE_RANGE,
-  HSV_236_150_255,
+  HSV_86_255_255,
 };
 
 
@@ -28,7 +28,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [1] = LAYOUT_voyager(
     KC_NO,          KC_F1,          KC_F2,          KC_F3,          KC_F4,          KC_F5,                                          KC_F6,          KC_F7,          KC_F8,          KC_F9,          KC_F10,         RGB_TOG,        
     KC_NO,          KC_LBRC,        KC_ESCAPE,      KC_PAGE_UP,     KC_PSCR,        RGB_VAI,                                        KC_AUDIO_VOL_UP,KC_AUDIO_MUTE,  KC_UP,          KC_F11,         KC_F12,         TOGGLE_LAYER_COLOR,
-    KC_NO,          MT(MOD_LGUI, KC_RBRC),MT(MOD_LALT, KC_HOME),MT(MOD_LCTL, KC_PGDN),MT(MOD_LSFT, KC_END),RGB_VAD,                                        KC_AUDIO_VOL_DOWN,KC_LEFT,        KC_DOWN,        KC_RIGHT,       HSV_236_150_255,RGB_MODE_FORWARD,
+    KC_NO,          MT(MOD_LGUI, KC_RBRC),MT(MOD_LALT, KC_HOME),MT(MOD_LCTL, KC_PGDN),MT(MOD_LSFT, KC_END),RGB_VAD,                                        KC_AUDIO_VOL_DOWN,KC_LEFT,        KC_DOWN,        KC_RIGHT,       HSV_86_255_255, RGB_MODE_FORWARD,
     KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,                                          KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,          
                                                     KC_NO,          KC_NO,                                          KC_NO,          KC_TRANSPARENT
   ),
@@ -87,6 +87,8 @@ void keyboard_post_init_user(void) {
 const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
     [1] = { {0,0,0}, {0,255,255}, {0,255,255}, {0,255,255}, {0,255,255}, {0,255,255}, {0,0,0}, {86,255,152}, {215,255,128}, {129,255,255}, {215,255,128}, {27,255,255}, {0,0,0}, {86,255,152}, {129,255,255}, {129,255,255}, {129,255,255}, {27,255,255}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,255,255}, {0,255,255}, {0,255,255}, {0,255,255}, {0,255,255}, {27,255,255}, {236,150,255}, {236,150,255}, {172,255,255}, {0,255,255}, {0,255,255}, {27,255,255}, {236,150,255}, {172,255,255}, {172,255,255}, {172,255,255}, {27,255,255}, {27,255,255}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0} },
 
+    [2] = { {236,150,255}, {236,150,255}, {236,150,255}, {236,150,255}, {236,150,255}, {236,150,255}, {236,150,255}, {236,150,255}, {236,150,255}, {236,150,255}, {236,150,255}, {236,150,255}, {236,150,255}, {236,150,255}, {236,150,255}, {236,150,255}, {236,150,255}, {236,150,255}, {236,150,255}, {236,150,255}, {236,150,255}, {236,150,255}, {236,150,255}, {236,150,255}, {236,150,255}, {236,150,255}, {236,150,255}, {236,150,255}, {236,150,255}, {236,150,255}, {236,150,255}, {236,150,255}, {236,150,255}, {236,150,255}, {236,150,255}, {236,150,255}, {236,150,255}, {236,150,255}, {236,150,255}, {236,150,255}, {236,150,255}, {236,150,255}, {236,150,255}, {236,150,255}, {236,150,255}, {236,150,255}, {236,150,255}, {236,150,255}, {236,150,255}, {236,150,255}, {236,150,255}, {236,150,255} },
+
 };
 
 void set_layer_color(int layer) {
@@ -115,6 +117,9 @@ bool rgb_matrix_indicators_user(void) {
     case 1:
       set_layer_color(1);
       break;
+    case 2:
+      set_layer_color(2);
+      break;
    default:
     if (rgb_matrix_get_flags() == LED_FLAG_NONE)
       rgb_matrix_set_color_all(0, 0, 0);
@@ -132,10 +137,10 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         rgblight_mode(1);
       }
       return false;
-    case HSV_236_150_255:
+    case HSV_86_255_255:
       if (record->event.pressed) {
         rgblight_mode(1);
-        rgblight_sethsv(236,150,255);
+        rgblight_sethsv(86,255,255);
       }
       return false;
   }
