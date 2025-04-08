@@ -53,7 +53,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TRANSPARENT, KC_TAB,         DE_UE,          KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 LALT(KC_LEFT),  LGUI(KC_UP),    KC_TRANSPARENT, LALT(KC_RIGHT), KC_TRANSPARENT, KC_TRANSPARENT, 
     KC_TRANSPARENT, MT(MOD_LCTL, KC_ESCAPE),MT(MOD_LALT, DE_SS),TD(DANCE_7),    DE_AE,          DE_OE,                                          KC_LEFT,        KC_DOWN,        KC_UP,          KC_RIGHT,       KC_TRANSPARENT, KC_TRANSPARENT, 
     KC_TRANSPARENT, KC_ENTER,       KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, LGUI(KC_DOWN),  LGUI(KC_LEFT),  LGUI(KC_RIGHT), KC_TRANSPARENT, KC_TRANSPARENT, 
-                                                    OSL(8),         KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT
+                                                    KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT
   ),
   [3] = LAYOUT_voyager(
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, 
@@ -74,7 +74,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TRANSPARENT, KC_TAB,         DE_UE,          KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 LCTL(KC_LEFT),  KC_PAGE_UP,     KC_TRANSPARENT, LCTL(KC_RIGHT), KC_TRANSPARENT, KC_TRANSPARENT, 
     KC_TRANSPARENT, MT(MOD_LGUI, KC_ESCAPE),MT(MOD_LALT, DE_SS),TD(DANCE_9),    DE_AE,          DE_OE,                                          KC_LEFT,        KC_DOWN,        KC_UP,          KC_RIGHT,       KC_TRANSPARENT, KC_TRANSPARENT, 
     KC_ENTER,       KC_ENTER,       KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_PGDN,        KC_HOME,        KC_END,         KC_TRANSPARENT, KC_TRANSPARENT, 
-                                                    OSL(8),         KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT
+                                                    KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT
   ),
   [6] = LAYOUT_voyager(
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, 
@@ -110,12 +110,16 @@ const uint16_t PROGMEM combo0[] = { OSM(MOD_LSFT), KC_DOT, COMBO_END};
 const uint16_t PROGMEM combo1[] = { OSM(MOD_LSFT), DE_QUOT, COMBO_END};
 const uint16_t PROGMEM combo2[] = { OSM(MOD_LSFT), KC_DOT, COMBO_END};
 const uint16_t PROGMEM combo3[] = { OSM(MOD_LSFT), DE_QUOT, COMBO_END};
+const uint16_t PROGMEM combo4[] = { OSL(1), OSL(2), COMBO_END};
+const uint16_t PROGMEM combo5[] = { OSL(6), OSL(5), COMBO_END};
 
 combo_t key_combos[COMBO_COUNT] = {
     COMBO(combo0, KC_COMMA),
     COMBO(combo1, DE_DQOT),
     COMBO(combo2, KC_COMMA),
     COMBO(combo3, DE_DQOT),
+    COMBO(combo4, TO(8)),
+    COMBO(combo5, TO(8)),
 };
 
 
