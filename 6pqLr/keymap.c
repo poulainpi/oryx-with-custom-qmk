@@ -280,16 +280,19 @@ return false; // Ensures it always acts as a normal tap key
 return get_chordal_hold_default(tap_hold_record, other_record);
 }*/
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//Treat LT(1, KC_SPACE) as if it's on the left side
-handedness_t get_handedness(uint8_t row, uint8_t col) {
-  // Treat LT(1, KC_SPACE) as if it's on the left side
-  if (row == 2 && col == 5) {  // 👈 Replace with the actual matrix location of LT(1, KC_SPACE)
-      return HANDEDNESS_LEFT;
-  }
-
-  return is_keyboard_left() ? HANDEDNESS_LEFT : HANDEDNESS_RIGHT;
+//Treat LT(1, KC_SPACE) as a left-hand key
+bool get_chordal_hold(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record,
+  uint16_t other_keycode, keyrecord_t* other_record) {
+// Treat the upper right thumb key as if it's a left-side key (or any custom behavior)
+if ((tap_hold_record->event.key.row == 3 && tap_hold_record->event.key.col == 5) || 
+(other_record->event.key.row == 3 && other_record->event.key.col == 5)) {
+return true; // Force chordal behavior or custom behavior
 }
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+return true; // Default behavior for other keys
+}
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //BACKSPACE OVERRIDE 
 const key_override_t delete_key_override = ko_make_basic(MOD_MASK_SHIFT, KC_BSPC, KC_DEL);
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
