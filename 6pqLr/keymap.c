@@ -279,15 +279,16 @@ tap_dance_action_t tap_dance_actions[] = {
 /////////////////////////////CUSTOM QMK////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //CHORDAL SPECIAL HANDLING//
 bool get_chordal_hold(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record,
-    uint16_t other_keycode, keyrecord_t* other_record) {
-// Exclude LT(1, KC_SPACE) from Chordal Hold processing
+  uint16_t other_keycode, keyrecord_t* other_record) {
+// Always treat LT(1, KC_SPACE) as a chord (hold), regardless of context
 if (tap_hold_keycode == LT(1, KC_SPACE)) {
-return false; // Ensures it always acts as a normal tap key 
+return true;
 }
 
 // Use default chordal hold logic for everything else
 return get_chordal_hold_default(tap_hold_record, other_record);
 }
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /*/Treat LT(1, KC_SPACE) as a left-hand key
 bool get_chordal_hold(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record,
