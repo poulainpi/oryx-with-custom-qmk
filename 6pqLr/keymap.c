@@ -268,7 +268,7 @@ tap_dance_action_t tap_dance_actions[] = {
 };
 
 /////////////////////////////CUSTOM QMK////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/*//CHORDAL SPECIAL HANDLING//
+//CHORDAL SPECIAL HANDLING//
 bool get_chordal_hold(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record,
     uint16_t other_keycode, keyrecord_t* other_record) {
 // Exclude LT(1, KC_SPACE) from Chordal Hold processing
@@ -278,9 +278,9 @@ return false; // Ensures it always acts as a normal tap key
 
 // Use default chordal hold logic for everything else
 return get_chordal_hold_default(tap_hold_record, other_record);
-}*/
+}
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//Treat LT(1, KC_SPACE) as a left-hand key
+/*/Treat LT(1, KC_SPACE) as a left-hand key
 bool get_chordal_hold(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record,
   uint16_t other_keycode, keyrecord_t* other_record) {
 // Treat the upper right thumb key as if it's a left-side key (or any custom behavior)
@@ -291,7 +291,7 @@ return true; // Force chordal behavior or custom behavior
 
 return true; // Default behavior for other keys
 }
-
+*/
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //BACKSPACE OVERRIDE 
 const key_override_t delete_key_override = ko_make_basic(MOD_MASK_SHIFT, KC_BSPC, KC_DEL);
