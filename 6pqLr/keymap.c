@@ -153,16 +153,27 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         rgblight_mode(1);
       }
       return false;
+
     case HSV_86_255_255:
       if (record->event.pressed) {
         rgblight_mode(1);
-        rgblight_sethsv(86,255,255);
+        rgblight_sethsv(86, 255, 255);
       }
       return false;
+
+    case MT(MOD_LALT, KC_L):
+      if (record->event.pressed) {
+        // If LGUI is held (e.g., from MT(MOD_LGUI, KC_A)), suppress L tap
+        if (get_mods() & MOD_BIT(KC_LGUI)) {
+          return false;
+        }
+      }
+      break;
   }
 
   return true;  // Default behavior
 }
+
 
 typedef struct {
     bool is_press_action;
@@ -294,7 +305,7 @@ return true; // Default behavior for other keys
 */
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //Windows + L
-bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+/*bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
       case MT(MOD_LALT, KC_L):
           if (record->event.pressed) {
@@ -307,7 +318,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
           break;
   }
   return true;
-}
+}*/
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //BACKSPACE OVERRIDE 
 const key_override_t delete_key_override = ko_make_basic(MOD_MASK_SHIFT, KC_BSPC, KC_DEL);
