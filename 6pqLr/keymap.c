@@ -143,9 +143,24 @@ bool rgb_matrix_indicators_user(void) {
 }
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-  // Handle custom keycode logic
-  switch (keycode) {
+  // Suppress all key presses while LGUI is held, unless it's an arrow key
+  if (record->event.pressed) {
+    uint8_t mods = get_mods() | get_weak_mods() | get_oneshot_mods();
+    if (mods & MOD_BIT(KC_LGUI)) {
+      switch (keycode) {
+        case KC_LEFT:
+        case KC_DOWN:
+        case KC_RIGHT:
+        case KC_UP:
+          break; // allow arrow keys
+        default:
+          return false; // suppress everything else when LGUI is held
+      }
+    }
+  }
 
+  // Handle other custom keycode logic
+  switch (keycode) {
     case RGB_SLD:
       if (record->event.pressed) {
         rgblight_mode(1);
@@ -158,28 +173,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         rgblight_sethsv(86, 255, 255);
       }
       return false;
-
-    case MT(MOD_LALT, KC_L):
-      if (record->event.pressed) {
-        // If LGUI is held (e.g., from MT(MOD_LGUI, KC_A)), suppress L tap
-        if (get_mods() & MOD_BIT(KC_LGUI)) {
-          return false;
-        }
-      }
-
-    case KC_I:
-      if (record->event.pressed) {
-          // If LGUI is held (even via mod-tap), suppress the I tap
-          uint8_t mods = get_mods() | get_weak_mods() | get_oneshot_mods();
-          if (mods & MOD_BIT(KC_LGUI)) {
-              return false;
-          }
-      }
-      break;
   }
 
-  return true;  // Default behavior
+  return true; // Default behavior
 }
+
 
 
 typedef struct {
