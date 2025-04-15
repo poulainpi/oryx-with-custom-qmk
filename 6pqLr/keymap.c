@@ -166,6 +166,15 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
           return false;
         }
       }
+
+    case KC_I:
+      if (record->event.pressed) {
+          // If LGUI is held (even via mod-tap), suppress the I tap
+          uint8_t mods = get_mods() | get_weak_mods() | get_oneshot_mods();
+          if (mods & MOD_BIT(KC_LGUI)) {
+              return false;
+          }
+      }
       break;
   }
 
