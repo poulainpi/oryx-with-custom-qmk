@@ -97,7 +97,7 @@ combo_t key_combos[COMBO_COUNT] = {
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case KC_QUOTE:
-            return TAPPING_TERM -125;
+            return TAPPING_TERM -50;
         default:
             return TAPPING_TERM;
     }
@@ -172,17 +172,17 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
     case ST_MACRO_0:
     if (record->event.pressed) {
-      SEND_STRING(SS_LSFT(SS_TAP(X_P)) SS_DELAY(100) SS_TAP(X_U) SS_DELAY(100) SS_TAP(X_L) SS_DELAY(100) SS_TAP(X_P) SS_DELAY(100) SS_LSFT(SS_TAP(X_S)));
+      SEND_STRING(SS_LSFT(SS_TAP(X_P))SS_DELAY(100)  SS_TAP(X_U)SS_DELAY(100)  SS_TAP(X_L)SS_DELAY(100)  SS_TAP(X_P)SS_DELAY(100)  SS_LSFT(SS_TAP(X_S)));
     }
     break;
     case ST_MACRO_1:
     if (record->event.pressed) {
-      SEND_STRING(SS_TAP(X_G) SS_DELAY(100) SS_TAP(X_L) SS_DELAY(100) SS_TAP(X_Y) SS_DELAY(100) SS_LSFT(SS_TAP(X_MINUS)) SS_DELAY(100) SS_TAP(X_DOT));
+      SEND_STRING(SS_TAP(X_G)SS_DELAY(100)  SS_TAP(X_L)SS_DELAY(100)  SS_TAP(X_Y)SS_DELAY(100)  SS_LSFT(SS_TAP(X_MINUS))SS_DELAY(100)  SS_TAP(X_DOT));
     }
     break;
     case ST_MACRO_2:
     if (record->event.pressed) {
-      SEND_STRING(SS_TAP(X_P) SS_DELAY(100) SS_TAP(X_A) SS_DELAY(100) SS_TAP(X_S) SS_DELAY(100) SS_TAP(X_S));
+      SEND_STRING(SS_TAP(X_P)SS_DELAY(100)  SS_TAP(X_A)SS_DELAY(100)  SS_TAP(X_S)SS_DELAY(100)  SS_TAP(X_S));
     }
     break;
     case MAC_MISSION_CONTROL:
