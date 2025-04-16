@@ -1,12 +1,9 @@
 #define CHORDAL_HOLD
-#undef TAPPING_TERM
-#define TAPPING_TERM 250
-
 #define PERMISSIVE_HOLD
 
 #define USB_SUSPEND_WAKEUP_DELAY 0
 #define CAPS_LOCK_STATUS
-#define SERIAL_NUMBER "6pqLr/qmn5G4"
+#define SERIAL_NUMBER "6pqLr/EeWdYv"
 #define LAYER_STATE_8BIT
 #define COMBO_COUNT 4
 
