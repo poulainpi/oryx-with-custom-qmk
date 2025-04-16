@@ -60,7 +60,7 @@ combo_t key_combos[COMBO_COUNT] = {
     COMBO(combo3, LCTL(KC_V)),
 };
 
-/*uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
+uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case MT(MOD_LSFT, KC_F):
             return 0;
@@ -83,7 +83,7 @@ combo_t key_combos[COMBO_COUNT] = {
         default:
             return TAPPING_TERM;
     }
-}*/
+}
 
 
 
