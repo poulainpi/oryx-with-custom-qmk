@@ -203,19 +203,19 @@ void leader_end_user(void) {
         // Leader, d, d => Ctrl+A, Ctrl+C
       //SEND_STRING("\"");  
        tap_code16(KC_QUOT);
-        tap_code16(DE_ODIA);
+        tap_code16(DE_AE);
       //SEND_STRING(SS_LCTL("a") SS_LCTL("c"));
     } else if (leader_sequence_two_keys(KC_QUOT, KC_O)) {
         // Leader, d, d => Ctrl+A, Ctrl+C
       //SEND_STRING(";");
       tap_code16(KC_SCLN);
-      tap_code16(DE_ODIO);
+      tap_code16(DE_OE);
       //SEND_STRING(SS_LCTL("a") SS_LCTL("c"));
     } else if (leader_sequence_two_keys(KC_QUOT, KC_U)) {
         // Leader, d, d => Ctrl+A, Ctrl+C
       //SEND_STRING("["); 
         tap_code16(KC_LBRC);
-      tap_code16(DE_ODIU);
+      tap_code16(DE_UE);
         //END_STRING(""); 
       //SEND_STRING(SS_LCTL("a") SS_LCTL("c"));
     } else if (leader_sequence_two_keys(KC_S, KC_S)) {
