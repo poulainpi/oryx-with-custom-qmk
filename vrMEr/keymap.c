@@ -202,15 +202,15 @@ void leader_end_user(void) {
       //SEND_STRING(SS_LCTL("a") SS_LCTL("c"));
     } else if (leader_sequence_two_keys(DE_DQOT, KC_O)) {
         // Leader, d, d => Ctrl+A, Ctrl+C
-      SEND_STRING(";")
+      SEND_STRING(";");
       //SEND_STRING(SS_LCTL("a") SS_LCTL("c"));
     } else if (leader_sequence_two_keys(DE_DQOT, KC_U)) {
         // Leader, d, d => Ctrl+A, Ctrl+C
-      SEND_STRING("[")  
+      SEND_STRING("["); 
       //SEND_STRING(SS_LCTL("a") SS_LCTL("c"));
     } else if (leader_sequence_two_keys(KC_S, KC_S)) {
         // Leader, d, d => Ctrl+A, Ctrl+C
-      SEND_STRING("-")  
+      SEND_STRING("-"); 
       //SEND_STRING(SS_LCTL("a") SS_LCTL("c"));
     } else if (leader_sequence_three_keys(KC_D, KC_D, KC_S)) {
         // Leader, d, d, s => Types the below string
