@@ -38,7 +38,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     LGUI(DE_MINS),  LGUI(KC_0),     LGUI(DE_PLUS),  KC_LEFT_GUI,    KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, LSFT(KC_TAB),   KC_TRANSPARENT, KC_TAB,         KC_TRANSPARENT, TO(9),          
     KC_TRANSPARENT, KC_P,           KC_U,           QK_REPEAT_KEY,  QK_LEAD,        KC_Q,                                           KC_G,           KC_C,           KC_L,           KC_M,           KC_F,           KC_TRANSPARENT, 
     CW_TOGG,        MT(MOD_LCTL, KC_H),MT(MOD_LALT, KC_I),MT(MOD_LGUI, KC_E),KC_A,           KC_O,                                           KC_D,           KC_T,           MT(MOD_RGUI, KC_R),MT(MOD_LALT, KC_N),MT(MOD_RCTL, KC_S),KC_TRANSPARENT, 
-    KC_TRANSPARENT, KC_K,           DE_Y,           KC_DOT,         DE_QUOT,        KC_X,                                           KC_J,           KC_V,           KC_W,           KC_B,           DE_Z,           KC_TRANSPARENT, 
+    KC_TRANSPARENT, KC_K,           DE_Y,           KC_DOT,         DE_DQUOT,        KC_X,                                           KC_J,           KC_V,           KC_W,           KC_B,           DE_Z,           KC_TRANSPARENT, 
                                                     OSL(1),         OSM(MOD_LSFT),                                  OSL(2),         LT(3,KC_SPACE)
   ),
   [1] = LAYOUT_voyager(
@@ -66,7 +66,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     TD(DANCE_8),    KC_TRANSPARENT, KC_TRANSPARENT, KC_LEFT_ALT,    KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, LSFT(KC_TAB),   KC_TRANSPARENT, KC_TAB,         KC_TRANSPARENT, TO(9),          
     CW_TOGG,        KC_P,           KC_U,           QK_REPEAT_KEY,  QK_LEAD,        KC_Q,                                           KC_G,           KC_C,           KC_L,           KC_M,           KC_F,           KC_TRANSPARENT, 
     CW_TOGG,        MT(MOD_LGUI, KC_H),MT(MOD_LALT, KC_I),MT(MOD_LCTL, KC_E),KC_A,           KC_O,                                           KC_D,           KC_T,           MT(MOD_RCTL, KC_R),MT(MOD_LALT, KC_N),MT(MOD_RGUI, KC_S),LALT(KC_TAB),   
-    KC_TRANSPARENT, KC_K,           DE_Y,           KC_DOT,         DE_QUOT,        KC_X,                                           KC_J,           KC_V,           KC_W,           KC_B,           DE_Z,           LALT(LSFT(KC_TAB)),
+    KC_TRANSPARENT, KC_K,           DE_Y,           KC_DOT,         DE_DQUOT,        KC_X,                                           KC_J,           KC_V,           KC_W,           KC_B,           DE_Z,           LALT(LSFT(KC_TAB)),
                                                     OSL(6),         OSM(MOD_LSFT),                                  OSL(5),         LT(7,KC_SPACE)
   ),
   [5] = LAYOUT_voyager(
@@ -107,7 +107,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 };
 
 const key_override_t dot_comma_override = ko_make_basic(MOD_MASK_SHIFT, KC_DOT, KC_COMM);
-const key_override_t quote_doublequote_override = ko_make_basic(MOD_MASK_SHIFT, DE_QUOT, DE_DQOT);
+const key_override_t quote_doublequote_override = ko_make_basic(MOD_MASK_SHIFT, DE_DQUOT, DE_QOT);
 
 const key_override_t **key_overrides = (const key_override_t *[]){
     &dot_comma_override,
@@ -196,6 +196,9 @@ void leader_end_user(void) {
     if (leader_sequence_one_key(KC_F)) {
         // Leader, f => Types the below string
         SEND_STRING("QMK is awesome.");
+    } else if (leader_sequence_one_key(KC_A)) {
+        // Leader, f => Types the below string
+        SEND_STRING("\"");  
     } else if (leader_sequence_two_keys(DE_DQOT, KC_A)) {
         // Leader, d, d => Ctrl+A, Ctrl+C
       SEND_STRING("\"");  
