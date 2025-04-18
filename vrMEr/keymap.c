@@ -36,7 +36,7 @@ enum tap_dance_codes {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [0] = LAYOUT_voyager(
     LGUI(DE_MINS),  LGUI(KC_0),     LGUI(DE_PLUS),  KC_LEFT_GUI,    KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, LSFT(KC_TAB),   KC_TRANSPARENT, KC_TAB,         KC_TRANSPARENT, TO(9),          
-    KC_TRANSPARENT, KC_P,           KC_U,           QK_REPEAT_KEY,  DE_MINS,        KC_Q,                                           KC_G,           KC_C,           KC_L,           KC_M,           KC_F,           KC_TRANSPARENT, 
+    KC_TRANSPARENT, KC_P,           KC_U,           QK_REPEAT_KEY,  QK_LEAD,        KC_Q,                                           KC_G,           KC_C,           KC_L,           KC_M,           KC_F,           KC_TRANSPARENT, 
     CW_TOGG,        MT(MOD_LCTL, KC_H),MT(MOD_LALT, KC_I),MT(MOD_LGUI, KC_E),KC_A,           KC_O,                                           KC_D,           KC_T,           MT(MOD_RGUI, KC_R),MT(MOD_LALT, KC_N),MT(MOD_RCTL, KC_S),KC_TRANSPARENT, 
     KC_TRANSPARENT, KC_K,           DE_Y,           KC_DOT,         DE_QUOT,        KC_X,                                           KC_J,           KC_V,           KC_W,           KC_B,           DE_Z,           KC_TRANSPARENT, 
                                                     OSL(1),         OSM(MOD_LSFT),                                  OSL(2),         LT(3,KC_SPACE)
@@ -187,6 +187,40 @@ bool rgb_matrix_indicators_user(void) {
   }
   return true;
 }
+
+void leader_start_user(void) {
+    // Do something when the leader key is pressed
+}
+
+void leader_end_user(void) {
+    if (leader_sequence_one_key(KC_F)) {
+        // Leader, f => Types the below string
+        SEND_STRING("QMK is awesome.");
+    } else if (leader_sequence_two_keys(DE_DQOT, KC_A)) {
+        // Leader, d, d => Ctrl+A, Ctrl+C
+      SEND_STRING("\"");  
+      //SEND_STRING(SS_LCTL("a") SS_LCTL("c"));
+    } else if (leader_sequence_two_keys(DE_DQOT, KC_O)) {
+        // Leader, d, d => Ctrl+A, Ctrl+C
+      SEND_STRING(";")
+      //SEND_STRING(SS_LCTL("a") SS_LCTL("c"));
+    } else if (leader_sequence_two_keys(DE_DQOT, KC_U)) {
+        // Leader, d, d => Ctrl+A, Ctrl+C
+      SEND_STRING("[")  
+      //SEND_STRING(SS_LCTL("a") SS_LCTL("c"));
+    } else if (leader_sequence_two_keys(KC_S, KC_S)) {
+        // Leader, d, d => Ctrl+A, Ctrl+C
+      SEND_STRING("-")  
+      //SEND_STRING(SS_LCTL("a") SS_LCTL("c"));
+    } else if (leader_sequence_three_keys(KC_D, KC_D, KC_S)) {
+        // Leader, d, d, s => Types the below string
+        SEND_STRING("https://start.duckduckgo.com\n");
+    } else if (leader_sequence_two_keys(KC_A, KC_S)) {
+        // Leader, a, s => GUI+S
+        tap_code16(LGUI(KC_S));
+    }
+}
+
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
