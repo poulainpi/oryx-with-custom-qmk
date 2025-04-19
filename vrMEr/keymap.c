@@ -219,7 +219,25 @@ void leader_end_user(void) {
         }
     } else if (leader_sequence_one_key(KC_S)) {
         tap_code16(DE_SS); // ß
-    } else if (leader_sequence_two_keys(KC_S, KC_S)) {
+   } else if (leader_sequence_one_key(KC_A)) {
+        if (get_mods() & MOD_MASK_SHIFT) {
+            tap_code16(DE_AE | S(KC_NO)); // Ä
+        } else {
+            tap_code16(DE_AE); // ä
+        }
+   } else if (leader_sequence_one_key(KC_U)) {
+        if (get_mods() & MOD_MASK_SHIFT) {
+            tap_code16(DE_UE | S(KC_NO)); // Ü
+        } else {
+            tap_code16(DE_UE); // ü
+        }
+   } else if (leader_sequence_one_key(KC_O)) {
+        if (get_mods() & MOD_MASK_SHIFT) {
+            tap_code16(DE_OE | S(KC_NO)); // Ö
+        } else {
+            tap_code16(DE_OE); // ö
+        }
+   } else if (leader_sequence_two_keys(KC_S, KC_S)) {
       tap_code16(DE_SS); // ß
     } else if (leader_sequence_two_keys(KC_C, KC_E)) {
       tap_code16(DE_EURO); // €
