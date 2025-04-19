@@ -193,42 +193,44 @@ void leader_start_user(void) {
 }
 
 void leader_end_user(void) {
-    if (leader_sequence_one_key(KC_F)) {
+  /*
+  if (leader_sequence_one_key(KC_F)) {
         // Leader, f => Types the below string
         SEND_STRING("QMK is awesome.");
-    } else if (leader_sequence_one_key(KC_A)) {
-        // Leader, f => Types the below string
-        SEND_STRING("\"");  
-    } else if (leader_sequence_two_keys(LSFT(KC_2), KC_A)) {
-        // Leader, d, d => Ctrl+A, Ctrl+C
-      //SEND_STRING("\"");  
-       tap_code16(KC_QUOT);
-        tap_code16(DE_AE);
-      //SEND_STRING(SS_LCTL("a") SS_LCTL("c"));
+    }
+  */
+ if (leader_sequence_two_keys(LSFT(KC_2), KC_A)) {
+        if (get_mods() & MOD_MASK_SHIFT) {
+            tap_code16(DE_AE | S(KC_NO)); // Ä
+        } else {
+            tap_code16(DE_AE); // ä
+        }
     } else if (leader_sequence_two_keys(LSFT(KC_2), KC_O)) {
-        // Leader, d, d => Ctrl+A, Ctrl+C
-      //SEND_STRING(";");
-      tap_code16(KC_SCLN);
-      tap_code16(DE_OE);
-      //SEND_STRING(SS_LCTL("a") SS_LCTL("c"));
+        if (get_mods() & MOD_MASK_SHIFT) {
+            tap_code16(DE_OE | S(KC_NO)); // Ö
+        } else {
+            tap_code16(DE_OE); // ö
+        }
     } else if (leader_sequence_two_keys(LSFT(KC_2), KC_U)) {
-        // Leader, d, d => Ctrl+A, Ctrl+C
-      //SEND_STRING("["); 
-        tap_code16(KC_LBRC);
-      tap_code16(DE_UE);
-        //END_STRING(""); 
-      //SEND_STRING(SS_LCTL("a") SS_LCTL("c"));
+        if (get_mods() & MOD_MASK_SHIFT) {
+            tap_code16(DE_UE | S(KC_NO)); // Ü
+        } else {
+            tap_code16(DE_UE); // ü
+        }
+    } else if (leader_sequence_one_key(KC_S)) {
+        tap_code16(DE_SS); // ß
     } else if (leader_sequence_two_keys(KC_S, KC_S)) {
-        // Leader, d, d => Ctrl+A, Ctrl+C
-      SEND_STRING("-"); 
-      //SEND_STRING(SS_LCTL("a") SS_LCTL("c"));
-    } else if (leader_sequence_three_keys(KC_D, KC_D, KC_S)) {
+      tap_code16(DE_SS); // ß
+    } else if (leader_sequence_two_keys(KC_C, KC_E)) {
+      tap_code16(DE_EURO); // €
+    }
+
+    /*
+    else if (leader_sequence_three_keys(KC_D, KC_D, KC_S)) {
         // Leader, d, d, s => Types the below string
         SEND_STRING("https://start.duckduckgo.com\n");
-    } else if (leader_sequence_two_keys(KC_A, KC_S)) {
-        // Leader, a, s => GUI+S
-        tap_code16(LGUI(KC_S));
     }
+    */
 }
 
 
