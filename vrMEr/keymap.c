@@ -199,19 +199,19 @@ void leader_end_user(void) {
     } else if (leader_sequence_one_key(KC_A)) {
         // Leader, f => Types the below string
         SEND_STRING("\"");  
-    } else if (leader_sequence_two_keys(KC_QUOT, KC_A)) {
+    } else if (leader_sequence_two_keys(LSFT(KC_2), KC_A)) {
         // Leader, d, d => Ctrl+A, Ctrl+C
       //SEND_STRING("\"");  
        tap_code16(KC_QUOT);
         tap_code16(DE_AE);
       //SEND_STRING(SS_LCTL("a") SS_LCTL("c"));
-    } else if (leader_sequence_two_keys(KC_QUOT, KC_O)) {
+    } else if (leader_sequence_two_keys(LSFT(KC_2), KC_O)) {
         // Leader, d, d => Ctrl+A, Ctrl+C
       //SEND_STRING(";");
       tap_code16(KC_SCLN);
       tap_code16(DE_OE);
       //SEND_STRING(SS_LCTL("a") SS_LCTL("c"));
-    } else if (leader_sequence_two_keys(KC_QUOT, KC_U)) {
+    } else if (leader_sequence_two_keys(LSFT(KC_2), KC_U)) {
         // Leader, d, d => Ctrl+A, Ctrl+C
       //SEND_STRING("["); 
         tap_code16(KC_LBRC);
