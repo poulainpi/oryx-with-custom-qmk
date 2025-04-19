@@ -2,7 +2,7 @@
 #define USB_POLLING_INTERVAL_MS 10
 #define SERIAL_NUMBER "vrMEr/pjlPGD"
 #define LAYER_STATE_16BIT
-#define COMBO_COUNT 6
+#define COMBO_COUNT 2
 
 #define RGB_MATRIX_STARTUP_SPD 60
 
