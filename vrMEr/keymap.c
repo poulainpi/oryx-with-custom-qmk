@@ -131,8 +131,8 @@ combo_t key_combos[COMBO_COUNT] = {
     COMBO(combo2, KC_COMMA),
     COMBO(combo3, DE_DQOT),
   */
-    COMBO(combo0, TO(8)),
-    COMBO(combo1, TO(8)),
+    COMBO(combo0, OSL(8)),
+    COMBO(combo1, OSL(8)),
 };
 
 extern rgb_config_t rgb_matrix_config;
