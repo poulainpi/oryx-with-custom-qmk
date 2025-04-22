@@ -120,20 +120,21 @@ const uint16_t PROGMEM combo0[] = { OSM(MOD_LSFT), KC_DOT, COMBO_END};
 const uint16_t PROGMEM combo1[] = { OSM(MOD_LSFT), DE_QUOT, COMBO_END};
 const uint16_t PROGMEM combo2[] = { OSM(MOD_LSFT), KC_DOT, COMBO_END};
 const uint16_t PROGMEM combo3[] = { OSM(MOD_LSFT), DE_QUOT, COMBO_END};
-*/
+
 const uint16_t PROGMEM combo0[] = { OSL(1), OSL(2), COMBO_END};
 const uint16_t PROGMEM combo1[] = { OSL(6), OSL(5), COMBO_END};
-
+*/
 combo_t key_combos[COMBO_COUNT] = {
   /*
     COMBO(combo0, KC_COMMA),
     COMBO(combo1, DE_DQOT),
     COMBO(combo2, KC_COMMA),
     COMBO(combo3, DE_DQOT),
-  */
+    
     COMBO(combo0, OSL(8)),
     COMBO(combo1, OSL(8)),
 };
+*/
 
 extern rgb_config_t rgb_matrix_config;
 
