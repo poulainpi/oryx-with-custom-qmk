@@ -43,9 +43,9 @@ enum tap_dance_codes {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [0] = LAYOUT_moonlander(
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, 
-    KC_TRANSPARENT, MT(MOD_LGUI, KC_Q),KC_W,           ALL_T(KC_F),    LT(9,KC_P),     KC_G,           KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_J,           LT(6,KC_L),     ALL_T(KC_U),    LT(5,KC_Y),     KC_BSPC,        KC_TRANSPARENT, 
-    KC_TRANSPARENT, LT(10,KC_A),    MT(MOD_LALT, KC_R),MT(MOD_LSFT, KC_S),MT(MOD_LCTL, KC_T),LT(10,KC_D),    KC_TRANSPARENT,                                                                 KC_TRANSPARENT, KC_H,           MT(MOD_LCTL, KC_N),MT(MOD_RSFT, KC_E),MT(MOD_LALT, KC_I),MT(MOD_LGUI, KC_O),KC_TRANSPARENT, 
-    KC_TRANSPARENT, LT(8,KC_Z),     LT(3,KC_X),     KC_C,           MT(MOD_RALT, KC_V),KC_B,                                           KC_K,           MT(MOD_RALT, KC_M),KC_COMMA,       LT(3,KC_DOT),   OSL(2),         KC_TRANSPARENT, 
+    KC_TRANSPARENT, MT(MOD_LGUI, KC_Q),KC_W,           ALL_T(KC_F),    LT(9,KC_P),     KC_B,           KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_J,           LT(6,KC_L),     ALL_T(KC_U),    LT(5,KC_Y),     KC_BSPC,        KC_TRANSPARENT, 
+    KC_TRANSPARENT, LT(10,KC_A),    MT(MOD_LALT, KC_R),MT(MOD_LSFT, KC_S),MT(MOD_LCTL, KC_T),LT(10,KC_G),    KC_TRANSPARENT,                                                                 KC_TRANSPARENT, KC_M,           MT(MOD_LCTL, KC_N),MT(MOD_RSFT, KC_E),MT(MOD_LALT, KC_I),MT(MOD_LGUI, KC_O),KC_TRANSPARENT, 
+    KC_TRANSPARENT, LT(8,KC_Z),     LT(3,KC_X),     KC_C,           MT(MOD_RALT, KC_D),KC_V,                                           KC_K,           MT(MOD_RALT, KC_H),KC_COMMA,       LT(3,KC_DOT),   OSL(2),         KC_TRANSPARENT, 
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, LT(7,KC_ESCAPE),KC_TRANSPARENT,                                                                                                 KC_TRANSPARENT, OSL(1),         KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
     LT(4,KC_SPACE), KC_TRANSPARENT, KC_TRANSPARENT,                 KC_TRANSPARENT, KC_TRANSPARENT, OSM(MOD_LSFT)
   ),
