@@ -79,7 +79,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_LEFT_ALT,    LALT(LSFT(KC_KP_ASTERISK)),LCTL(LSFT(KC_TAB)),TD(DANCE_7),    LCTL(KC_TAB),   TD(DANCE_8),                                    LCTL(LSFT(KC_H)),LCTL(LSFT(KC_LEFT)),KC_UP,          LCTL(LSFT(KC_RIGHT)),TD(DANCE_10),   KC_AUDIO_MUTE,  
     KC_TRANSPARENT, LALT(LSFT(KC_KP_MINUS)),KC_MS_BTN2,     TD(DANCE_9),    KC_MS_BTN1,     KC_BSPC,                                        TD(DANCE_11),   KC_LEFT,        KC_DOWN,        KC_RIGHT,       KC_MEDIA_PLAY_PAUSE,KC_AUDIO_VOL_DOWN,
     KC_TRANSPARENT, LALT(LSFT(KC_KP_PLUS)),LGUI(KC_LBRC),  LGUI(KC_W),     LGUI(KC_RBRC),  ST_MACRO_0,                                     LGUI(LSFT(KC_S)),KC_PAGE_UP,     TD(DANCE_12),   KC_PGDN,        TD(DANCE_13),   KC_TRANSPARENT, 
-                                                    MO(3),          KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT
+                                                    LT(3,KC_SPACE), KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT
   ),
   [3] = LAYOUT_voyager(
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, LCTL(KC_CAPS),  KC_AUDIO_VOL_UP,
