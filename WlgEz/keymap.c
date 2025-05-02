@@ -688,6 +688,16 @@ void dance_24_reset(tap_dance_state_t *state, void *user_data) {
     dance_state[9].step = 0;
 }
 
+const char chordal_hold_layout[MATRIX_ROWS][MATRIX_COLS] PROGMEM =
+  LAYOUT(
+  'L', 'L', 'L', 'L', 'L', 'L',             'R', 'R', 'R', 'R', 'R', 'R',
+  'L', 'L', 'L', 'L', 'L', 'L',             'R', 'R', 'R', 'R', 'R', 'R',
+  'L', 'L', 'L', 'L', 'L', 'L',             'R', 'R', 'R', 'R', 'R', 'R',
+  'L', 'L', 'L', 'L', 'L', 'L',             'R', 'R', 'R', 'R', 'R', 'R',
+                           '*', '*',   '*', '*'
+  )
+);
+
 tap_dance_action_t tap_dance_actions[] = {
         [DANCE_1] = ACTION_TAP_DANCE_TAP_HOLD(KC_Q, LCTL(KC_CAPS)),
         [DANCE_6] = ACTION_TAP_DANCE_TAP_HOLD(KC_QUOTE, KC_TILD),
