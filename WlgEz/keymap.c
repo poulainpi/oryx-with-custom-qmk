@@ -88,9 +88,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
   [4] = LAYOUT_voyager(
     RGB_TOG,        TOGGLE_LAYER_COLOR,RGB_MODE_FORWARD,RGB_SLD,        HSV_86_255_170, HSV_151_145_255,                                TD(DANCE_19),   KC_TRANSPARENT, RGB_VAD,        RGB_VAI,        QK_BOOT,        KC_AUDIO_VOL_UP,
-    KC_TRANSPARENT, LCTL(KC_CAPS),  KC_AUDIO_VOL_UP,KC_TRANSPARENT, ST_MACRO_2,     TD(DANCE_18),                                   LCTL(LSFT(KC_H)),KC_TRANSPARENT, RGB_SPD,        RGB_SPI,        TD(DANCE_20),   KC_AUDIO_MUTE,  
-    KC_TRANSPARENT, RALT(KC_RIGHT_CTRL),KC_AUDIO_MUTE,  KC_TRANSPARENT, ST_MACRO_3,     KC_BSPC,                                        TD(DANCE_21),   KC_TRANSPARENT, RGB_HUD,        RGB_HUI,        KC_MEDIA_PLAY_PAUSE,KC_AUDIO_VOL_DOWN,
-    KC_TRANSPARENT, RCTL(KC_L),     KC_AUDIO_VOL_DOWN,KC_TRANSPARENT, LCTL(RSFT(KC_J)),ST_MACRO_4,                                     LGUI(LSFT(KC_S)),KC_TRANSPARENT, RGB_SAD,        RGB_SAI,        TD(DANCE_22),   KC_TRANSPARENT, 
+    KC_TRANSPARENT, LCTL(KC_CAPS),  KC_AUDIO_VOL_UP,KC_TRANSPARENT, ST_MACRO_2,     TD(DANCE_18),                                   LCTL(LSFT(KC_H)),   DM_REC1,        RGB_SPD,        RGB_SPI,        TD(DANCE_20),   KC_AUDIO_MUTE,  
+    KC_TRANSPARENT, RALT(KC_RIGHT_CTRL),KC_AUDIO_MUTE,  KC_TRANSPARENT, ST_MACRO_3,     KC_BSPC,                                        TD(DANCE_21),   DM_RSTP,        RGB_HUD,        RGB_HUI,        KC_MEDIA_PLAY_PAUSE,KC_AUDIO_VOL_DOWN,
+    KC_TRANSPARENT, RCTL(KC_L),     KC_AUDIO_VOL_DOWN,KC_TRANSPARENT, LCTL(RSFT(KC_J)),ST_MACRO_4,                                     LGUI(LSFT(KC_S)),DM_PLY1,        RGB_SAD,        RGB_SAI,        TD(DANCE_22),   KC_TRANSPARENT, 
                                                     KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT
   ),
   [5] = LAYOUT_voyager(
