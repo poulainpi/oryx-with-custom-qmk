@@ -974,7 +974,7 @@ const uint16_t PROGMEM combo3[] = { MT(MOD_RCTL, KC_J), MT(MOD_RSFT, KC_K), MT(M
 const uint16_t PROGMEM combo4[] = { MT(MOD_LSFT, KC_D), MT(MOD_LCTL, KC_F), KC_G, COMBO_END};
 const uint16_t PROGMEM combo5[] = { MT(MOD_LGUI, KC_A), MT(MOD_LALT, KC_S), MT(MOD_LSFT, KC_D), COMBO_END};
 
-combo_t key_combos[COMBO_COUNT] = {
+combo_t key_combos[] = {
     COMBO(combo0, KC_HOME),
     COMBO(combo1, KC_END),
     COMBO(combo2, LCTL(KC_LEFT_SHIFT)),
