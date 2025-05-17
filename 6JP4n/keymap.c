@@ -3,6 +3,9 @@
 #include "i18n.h"
 #define MOON_LED_LEVEL LED_LEVEL
 #define ML_SAFE_RANGE SAFE_RANGE
+#define QMK_LAYER_ENG 0
+#define QMK_LAYER_RUS 1
+
 
 enum custom_keycodes {
   RGB_SLD = ML_SAFE_RANGE,
@@ -19,6 +22,7 @@ enum custom_keycodes {
   ST_MACRO_7,
   ST_MACRO_8,
   MAC_SIRI,
+  LANG_SWITCH_COMBO_ACTION,
 };
 
 
@@ -104,6 +108,32 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
+        case LANG_SWITCH_COMBO_ACTION:
+            if (record->event.pressed) {
+                uint8_t current_highest_layer = get_highest_layer(layer_state);
+
+                if (current_highest_layer == QMK_LAYER_RUS) {
+                    layer_move(QMK_LAYER_ENG);
+                    register_code(KC_LCTL);
+                    register_code(KC_1);
+                    unregister_code(KC_1);
+                    unregister_code(KC_LCTL);
+                } else if (current_highest_layer == QMK_LAYER_ENG) {
+                    layer_move(QMK_LAYER_RUS);
+                    register_code(KC_LCTL);
+                    register_code(KC_2);
+                    unregister_code(KC_2);
+                    unregister_code(KC_LCTL);
+                } else {
+                    layer_move(QMK_LAYER_ENG);
+                    register_code(KC_LCTL);
+                    register_code(KC_1);
+                    unregister_code(KC_1);
+                    unregister_code(KC_LCTL);
+                }
+            }
+            return false; // Сообщаем QMK, что мы обработали этот кейкод
+    }    
     case ST_MACRO_0:
     if (record->event.pressed) {
       SEND_STRING(SS_TAP(X_1)SS_DELAY(1)  SS_TAP(X_0));
@@ -977,7 +1007,7 @@ const uint16_t PROGMEM combo5[] = { MT(MOD_LGUI, KC_A), MT(MOD_LALT, KC_S), MT(M
 combo_t key_combos[] = {
     COMBO(combo0, KC_HOME),
     COMBO(combo1, KC_END),
-    COMBO(combo2, LCTL(KC_LEFT_SHIFT)),
+    COMBO(combo2, LANG_SWITCH_COMBO_ACTION),
     COMBO(combo3, KC_ENTER),
     COMBO(combo4, CW_TOGG),
     COMBO(combo5, KC_CAPS),
