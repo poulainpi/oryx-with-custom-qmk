@@ -111,26 +111,22 @@ jobs:
             make ${make_prefix}${{ github.event.inputs.layout_geometry }}:${{ github.event.inputs.layout_id }}
           "
           
-          # --- START OF MODIFIED BLOCK for dating filename ---
-          BUILD_DATETIME=$(date +'%Y%m%d_%H%M') # Get current date and time (YYYYMMDD_HHMM format)
-          echo "build_datetime_for_artifact=${BUILD_DATETIME}" >> "$GITHUB_OUTPUT" # Save for artifact name
+          BUILD_DATETIME=$(date +'%Y%m%d%H%M')
+          echo "build_datetime_for_artifact=${BUILD_DATETIME}" >> "$GITHUB_OUTPUT"
 
           # Normalize geometry name for file search (replace / with _)
           normalized_layout_geometry_for_find="$(echo "${{ github.event.inputs.layout_geometry }}" | sed 's/\//_/g')"
 
-          # Determine expected base firmware filename
           if [ "${make_prefix}" = "zsa/" ]; then
             expected_filename_base="zsa_${normalized_layout_geometry_for_find}_${{ github.event.inputs.layout_id }}"
           else
             expected_filename_base="${normalized_layout_geometry_for_find}_${{ github.event.inputs.layout_id }}"
           fi
 
-          # Find the compiled file (.bin or .hex)
           original_firmware_path=$(find ./qmk_firmware -maxdepth 1 -type f -name "${expected_filename_base}.[bh][ie][nx]" -print -quit)
 
           if [ -z "$original_firmware_path" ]; then
             echo "Error: Compiled firmware file not found with pattern ${expected_filename_base}.[bin|hex]!"
-            # Attempt to find with a more generic pattern
             original_firmware_path_fallback=$(find ./qmk_firmware -maxdepth 1 -type f -regex ".*${normalized_layout_geometry_for_find}_${{ github.event.inputs.layout_id }}.*\.\(bin\|hex\)$" -print -quit)
             if [ -z "$original_firmware_path_fallback" ]; then
                 echo "Error: Compiled firmware file still not found!"
@@ -145,14 +141,11 @@ jobs:
           extension="${original_filename_basename##*.}"
           filename_no_ext="${original_filename_basename%.*}"
 
-          # Form new filename with date and time
           new_filename="${filename_no_ext}_${BUILD_DATETIME}.${extension}" # Use BUILD_DATETIME
           new_file_path_in_qmk_dir="./qmk_firmware/${new_filename}" 
 
-          # Rename the file
           mv "$original_firmware_path" "$new_file_path_in_qmk_dir"
           echo "Firmware file renamed to: $new_file_path_in_qmk_dir"
-          # --- END OF MODIFIED BLOCK ---
           
           # Set output variable with the NEW file path
           echo "built_layout_file=${new_file_path_in_qmk_dir}" >> "$GITHUB_OUTPUT"
