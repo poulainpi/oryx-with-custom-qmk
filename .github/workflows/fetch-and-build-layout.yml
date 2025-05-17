@@ -111,9 +111,9 @@ jobs:
             make ${make_prefix}${{ github.event.inputs.layout_geometry }}:${{ github.event.inputs.layout_id }}
           "
           
-          # --- START OF ADDED/MODIFIED BLOCK for dating filename ---
-          BUILD_DATE=$(date +'%Y-%m-%d') # Get current date (YYYY-MM-DD format)
-          echo "build_date_for_artifact=${BUILD_DATE}" >> "$GITHUB_OUTPUT" # Save for artifact name
+          # --- START OF MODIFIED BLOCK for dating filename ---
+          BUILD_DATETIME=$(date +'%Y%m%d_%H%M') # Get current date and time (YYYYMMDD_HHMM format)
+          echo "build_datetime_for_artifact=${BUILD_DATETIME}" >> "$GITHUB_OUTPUT" # Save for artifact name
 
           # Normalize geometry name for file search (replace / with _)
           normalized_layout_geometry_for_find="$(echo "${{ github.event.inputs.layout_geometry }}" | sed 's/\//_/g')"
@@ -145,22 +145,22 @@ jobs:
           extension="${original_filename_basename##*.}"
           filename_no_ext="${original_filename_basename%.*}"
 
-          # Form new filename with date
-          new_filename="${filename_no_ext}_${BUILD_DATE}.${extension}"
-          new_file_path_in_qmk_dir="./qmk_firmware/${new_filename}" # Path relative to workspace root for mv
+          # Form new filename with date and time
+          new_filename="${filename_no_ext}_${BUILD_DATETIME}.${extension}" # Use BUILD_DATETIME
+          new_file_path_in_qmk_dir="./qmk_firmware/${new_filename}" 
 
           # Rename the file
           mv "$original_firmware_path" "$new_file_path_in_qmk_dir"
           echo "Firmware file renamed to: $new_file_path_in_qmk_dir"
-          # --- END OF ADDED/MODIFIED BLOCK ---
+          # --- END OF MODIFIED BLOCK ---
           
           # Set output variable with the NEW file path
           echo "built_layout_file=${new_file_path_in_qmk_dir}" >> "$GITHUB_OUTPUT"
-          # Save normalized_layout_geometry for use in artifact name (it's already normalized above)
+          # Save normalized_layout_geometry for use in artifact name
           echo "normalized_layout_geometry=${normalized_layout_geometry_for_find}" >> "$GITHUB_OUTPUT"
 
       - name: Upload layout
         uses: actions/upload-artifact@v4
         with:
-          name: ${{ steps.build-layout.outputs.normalized_layout_geometry }}_${{ github.event.inputs.layout_id }}_${{ steps.build-layout.outputs.build_date_for_artifact }}
-          path: ${{ steps.build-layout.outputs.built_layout_file }} # This path now points to the file with the date in its name
+          name: ${{ steps.build-layout.outputs.normalized_layout_geometry }}_${{ github.event.inputs.layout_id }}_${{ steps.build-layout.outputs.build_datetime_for_artifact }}
+          path: ${{ steps.build-layout.outputs.built_layout_file }} # This path now points to the file with the date and time in its name
