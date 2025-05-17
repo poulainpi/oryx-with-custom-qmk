@@ -112,13 +112,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             if (record->event.pressed) {
                 uint8_t current_highest_layer = get_highest_layer(layer_state);
 
-                if (current_highest_layer == QMK_LAYER_RUS) {
-                    layer_move(QMK_LAYER_ENG);
-                    register_code(KC_LCTL);
-                    register_code(KC_1);
-                    unregister_code(KC_1);
-                    unregister_code(KC_LCTL);
-                } else if (current_highest_layer == QMK_LAYER_ENG) {
+                if (current_highest_layer == QMK_LAYER_ENG) {
                     layer_move(QMK_LAYER_RUS);
                     register_code(KC_LCTL);
                     register_code(KC_2);
