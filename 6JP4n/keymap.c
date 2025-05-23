@@ -28,25 +28,25 @@ enum tap_dance_codes {
   DANCE_1,
 };
 
-#define DUAL_FUNC_0 LT(18, KC_C)
-#define DUAL_FUNC_1 LT(30, KC_Q)
-#define DUAL_FUNC_2 LT(32, KC_G)
-#define DUAL_FUNC_3 LT(28, KC_R)
-#define DUAL_FUNC_4 LT(31, KC_F16)
-#define DUAL_FUNC_5 LT(25, KC_M)
-#define DUAL_FUNC_6 LT(23, KC_Y)
-#define DUAL_FUNC_7 LT(17, KC_W)
-#define DUAL_FUNC_8 LT(24, KC_F1)
-#define DUAL_FUNC_9 LT(18, KC_3)
-#define DUAL_FUNC_10 LT(27, KC_F8)
-#define DUAL_FUNC_11 LT(26, KC_E)
-#define DUAL_FUNC_12 LT(20, KC_S)
-#define DUAL_FUNC_13 LT(24, KC_2)
-#define DUAL_FUNC_14 LT(25, KC_A)
-#define DUAL_FUNC_15 LT(26, KC_F7)
-#define DUAL_FUNC_16 LT(30, KC_T)
-#define DUAL_FUNC_17 LT(32, KC_F19)
-#define DUAL_FUNC_18 LT(32, KC_J)
+#define DUAL_FUNC_0 LT(26, KC_9)
+#define DUAL_FUNC_1 LT(24, KC_F15)
+#define DUAL_FUNC_2 LT(32, KC_E)
+#define DUAL_FUNC_3 LT(25, KC_8)
+#define DUAL_FUNC_4 LT(31, KC_V)
+#define DUAL_FUNC_5 LT(20, KC_B)
+#define DUAL_FUNC_6 LT(17, KC_F19)
+#define DUAL_FUNC_7 LT(18, KC_F18)
+#define DUAL_FUNC_8 LT(18, KC_F23)
+#define DUAL_FUNC_9 LT(20, KC_F18)
+#define DUAL_FUNC_10 LT(28, KC_F18)
+#define DUAL_FUNC_11 LT(18, KC_F15)
+#define DUAL_FUNC_12 LT(19, KC_A)
+#define DUAL_FUNC_13 LT(26, KC_F24)
+#define DUAL_FUNC_14 LT(29, KC_A)
+#define DUAL_FUNC_15 LT(19, KC_E)
+#define DUAL_FUNC_16 LT(32, KC_4)
+#define DUAL_FUNC_17 LT(25, KC_F3)
+#define DUAL_FUNC_18 LT(19, KC_F18)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [0] = LAYOUT_voyager(
@@ -81,7 +81,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     RGB_TOG,        TOGGLE_LAYER_COLOR,RGB_MODE_FORWARD,RGB_SLD,        RGB_VAD,        RGB_VAI,                                        KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,          QK_BOOT,        
     KC_NO,          KC_TRANSPARENT, KC_AUDIO_VOL_DOWN,KC_AUDIO_VOL_UP,KC_AUDIO_MUTE,  KC_NO,                                          KC_PAGE_UP,     KC_HOME,        KC_UP,          KC_END,         KC_NO,          KC_NO,          
     KC_NO,          KC_MEDIA_PREV_TRACK,KC_MEDIA_NEXT_TRACK,KC_MEDIA_STOP,  KC_MEDIA_PLAY_PAUSE,KC_NO,                                          KC_PGDN,        KC_LEFT,        KC_DOWN,        KC_RIGHT,       KC_NO,          KC_NO,          
-    MAC_SIRI,       KC_NO,          KC_NO,          HSV_0_255_255,  HSV_74_255_255, HSV_169_255_255,                                KC_DELETE,      LCTL(LSFT(KC_TAB)),LCTL(KC_TAB),   KC_NO,          KC_NO,          KC_NO,          
+    MAC_SIRI,       KC_A,           KC_NO,          HSV_0_255_255,  HSV_74_255_255, HSV_169_255_255,                                KC_DELETE,      LCTL(LSFT(KC_TAB)),LCTL(KC_TAB),   KC_NO,          KC_NO,          KC_NO,          
                                                     KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT
   ),
   [5] = LAYOUT_voyager(
