@@ -72,8 +72,7 @@ jobs:
           git add .
           git commit -m "✨(oryx): ${{ steps.download-layout-source.outputs.change_description }}" || echo "No layout change"
           git push
-          pwd
-          ls -al
+          cat ./6JP4n/keymap.c
           
       - name: Merge Oryx with custom QMK
         if: github.event.inputs.proceed_to_build == true
