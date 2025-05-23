@@ -80,6 +80,8 @@ jobs:
           git checkout -B main origin/main
           git merge -Xignore-all-space oryx
           git push
+          pwd
+          ls -al
 
       - name: Update QMK firmware submodule to latest version (${{ steps.download-layout-source.outputs.firmware_version }})
         if: github.event.inputs.proceed_to_build == true
