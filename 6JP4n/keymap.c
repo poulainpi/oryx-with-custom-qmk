@@ -108,21 +108,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
-    case LANG_SWITCH_COMBO_ACTION:
-
-    if (record->event.pressed) {
-    	uint8_t current_highest_layer = get_highest_layer(layer_state);
-
-	if (current_highest_layer == QMK_LAYER_ENG) {
-	    layer_move(QMK_LAYER_RUS);
-	    SEND_STRING(SS_LCTL(SS_LSFT("2")));
-	} else {
-	    layer_move(QMK_LAYER_ENG);
-	    SEND_STRING(SS_LCTL(SS_LSFT("1")));
-	}
-    }
-
-    return false;
+    #include "./modules/switch_cases.c"
     case ST_MACRO_0:
     if (record->event.pressed) {
       SEND_STRING(SS_TAP(X_1)SS_DELAY(1)  SS_TAP(X_0));
