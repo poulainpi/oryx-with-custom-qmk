@@ -44,7 +44,3 @@
 #define RU_DOT KC_SLSH
 #define RU_YO KC_GRV
 #define RU_HARD KC_RBRC
-#define KC_PC_UNDO LCTL(KC_Z)
-#define KC_PC_CUT LCTL(KC_X)
-#define KC_PC_COPY LCTL(KC_C)
-#define KC_PC_PASTE LCTL(KC_V)
