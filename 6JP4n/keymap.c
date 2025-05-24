@@ -3,6 +3,7 @@
 #include "i18n.h"
 #define MOON_LED_LEVEL LED_LEVEL
 #define ML_SAFE_RANGE SAFE_RANGE
+#include "./modules/combo.c"
 
 enum custom_keycodes {
   RGB_SLD = ML_SAFE_RANGE,
@@ -19,6 +20,7 @@ enum custom_keycodes {
   ST_MACRO_7,
   ST_MACRO_8,
   MAC_SIRI,
+  #include "./modules/custom_keycodes.c"
 };
 
 
@@ -106,6 +108,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
+    #include "./modules/switch_cases.c"
     case ST_MACRO_0:
     if (record->event.pressed) {
       SEND_STRING(SS_TAP(X_1)SS_DELAY(1)  SS_TAP(X_0));
@@ -568,3 +571,5 @@ tap_dance_action_t tap_dance_actions[] = {
         [DANCE_0] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_0, dance_0_finished, dance_0_reset),
         [DANCE_1] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_1, dance_1_finished, dance_1_reset),
 };
+
+  #include "./modules/combos.c"
