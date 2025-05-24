@@ -3,7 +3,9 @@
 #include "i18n.h"
 #define MOON_LED_LEVEL LED_LEVEL
 #define ML_SAFE_RANGE SAFE_RANGE
-#include "./modules/combos.c"
+#define QMK_LAYER_ENG 0
+#define QMK_LAYER_RUS 1
+#define TAPPING_TERM 200
 
 enum custom_keycodes {
   RGB_SLD = ML_SAFE_RANGE,
