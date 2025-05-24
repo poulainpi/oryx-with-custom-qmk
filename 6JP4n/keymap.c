@@ -3,10 +3,6 @@
 #include "i18n.h"
 #define MOON_LED_LEVEL LED_LEVEL
 #define ML_SAFE_RANGE SAFE_RANGE
-#define QMK_LAYER_ENG 0
-#define QMK_LAYER_RUS 1
-#define TAPPING_TERM 200
-
 
 enum custom_keycodes {
   RGB_SLD = ML_SAFE_RANGE,
@@ -23,7 +19,6 @@ enum custom_keycodes {
   ST_MACRO_7,
   ST_MACRO_8,
   MAC_SIRI,
-  LANG_SWITCH_COMBO_ACTION,
 };
 
 
@@ -33,25 +28,25 @@ enum tap_dance_codes {
   DANCE_1,
 };
 
-#define DUAL_FUNC_0 LT(22, KC_B)
-#define DUAL_FUNC_1 LT(20, KC_7)
-#define DUAL_FUNC_2 LT(32, KC_4)
-#define DUAL_FUNC_3 LT(26, KC_F17)
-#define DUAL_FUNC_4 LT(20, KC_F16)
-#define DUAL_FUNC_5 LT(30, KC_F12)
-#define DUAL_FUNC_6 LT(28, KC_F11)
-#define DUAL_FUNC_7 LT(26, KC_W)
-#define DUAL_FUNC_8 LT(20, KC_F24)
-#define DUAL_FUNC_9 LT(23, KC_F3)
-#define DUAL_FUNC_10 LT(22, KC_6)
-#define DUAL_FUNC_11 LT(25, KC_B)
-#define DUAL_FUNC_12 LT(25, KC_H)
-#define DUAL_FUNC_13 LT(29, KC_N)
-#define DUAL_FUNC_14 LT(18, KC_F16)
-#define DUAL_FUNC_15 LT(19, KC_2)
-#define DUAL_FUNC_16 LT(22, KC_F21)
-#define DUAL_FUNC_17 LT(30, KC_U)
-#define DUAL_FUNC_18 LT(28, KC_T)
+#define DUAL_FUNC_0 LT(26, KC_9)
+#define DUAL_FUNC_1 LT(24, KC_F15)
+#define DUAL_FUNC_2 LT(32, KC_E)
+#define DUAL_FUNC_3 LT(25, KC_8)
+#define DUAL_FUNC_4 LT(31, KC_V)
+#define DUAL_FUNC_5 LT(20, KC_B)
+#define DUAL_FUNC_6 LT(17, KC_F19)
+#define DUAL_FUNC_7 LT(18, KC_F18)
+#define DUAL_FUNC_8 LT(18, KC_F23)
+#define DUAL_FUNC_9 LT(20, KC_F18)
+#define DUAL_FUNC_10 LT(28, KC_F18)
+#define DUAL_FUNC_11 LT(18, KC_F15)
+#define DUAL_FUNC_12 LT(19, KC_A)
+#define DUAL_FUNC_13 LT(26, KC_F24)
+#define DUAL_FUNC_14 LT(29, KC_A)
+#define DUAL_FUNC_15 LT(19, KC_E)
+#define DUAL_FUNC_16 LT(32, KC_4)
+#define DUAL_FUNC_17 LT(25, KC_F3)
+#define DUAL_FUNC_18 LT(19, KC_F18)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [0] = LAYOUT_voyager(
@@ -86,7 +81,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     RGB_TOG,        TOGGLE_LAYER_COLOR,RGB_MODE_FORWARD,RGB_SLD,        RGB_VAD,        RGB_VAI,                                        KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,          QK_BOOT,        
     KC_NO,          KC_TRANSPARENT, KC_AUDIO_VOL_DOWN,KC_AUDIO_VOL_UP,KC_AUDIO_MUTE,  KC_NO,                                          KC_PAGE_UP,     KC_HOME,        KC_UP,          KC_END,         KC_NO,          KC_NO,          
     KC_NO,          KC_MEDIA_PREV_TRACK,KC_MEDIA_NEXT_TRACK,KC_MEDIA_STOP,  KC_MEDIA_PLAY_PAUSE,KC_NO,                                          KC_PGDN,        KC_LEFT,        KC_DOWN,        KC_RIGHT,       KC_NO,          KC_NO,          
-    MAC_SIRI,       KC_NO,          KC_NO,          HSV_0_255_255,  HSV_74_255_255, HSV_169_255_255,                                KC_DELETE,      LCTL(LSFT(KC_TAB)),LCTL(KC_TAB),   KC_NO,          KC_NO,          KC_NO,          
+    MAC_SIRI,       KC_A,           KC_NO,          HSV_0_255_255,  HSV_74_255_255, HSV_169_255_255,                                KC_DELETE,      LCTL(LSFT(KC_TAB)),LCTL(KC_TAB),   KC_NO,          KC_NO,          KC_NO,          
                                                     KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT
   ),
   [5] = LAYOUT_voyager(
@@ -111,21 +106,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
-    case LANG_SWITCH_COMBO_ACTION:
-
-    if (record->event.pressed) {
-    	uint8_t current_highest_layer = get_highest_layer(layer_state);
-
-	if (current_highest_layer == QMK_LAYER_ENG) {
-	    layer_move(QMK_LAYER_RUS);
-	    SEND_STRING(SS_LCTL(SS_LSFT("2")));
-	} else {
-	    layer_move(QMK_LAYER_ENG);
-	    SEND_STRING(SS_LCTL(SS_LSFT("1")));
-	}
-    }
-
-    return false;
     case ST_MACRO_0:
     if (record->event.pressed) {
       SEND_STRING(SS_TAP(X_1)SS_DELAY(1)  SS_TAP(X_0));
@@ -587,20 +567,4 @@ void dance_1_reset(tap_dance_state_t *state, void *user_data) {
 tap_dance_action_t tap_dance_actions[] = {
         [DANCE_0] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_0, dance_0_finished, dance_0_reset),
         [DANCE_1] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_1, dance_1_finished, dance_1_reset),
-};
-
-const uint16_t PROGMEM combo0[] = { KC_Y, KC_U, KC_I, COMBO_END};
-const uint16_t PROGMEM combo1[] = { KC_I, KC_O, KC_P, COMBO_END};
-const uint16_t PROGMEM combo2[] = { KC_U, KC_I, KC_O, COMBO_END};
-const uint16_t PROGMEM combo3[] = { MT(MOD_RCTL, KC_J), MT(MOD_RSFT, KC_K), MT(MOD_RALT, KC_L), COMBO_END};
-const uint16_t PROGMEM combo4[] = { MT(MOD_LSFT, KC_D), MT(MOD_LCTL, KC_F), KC_G, COMBO_END};
-const uint16_t PROGMEM combo5[] = { MT(MOD_LGUI, KC_A), MT(MOD_LALT, KC_S), MT(MOD_LSFT, KC_D), COMBO_END};
-
-combo_t key_combos[] = {
-    COMBO(combo0, KC_HOME),
-    COMBO(combo1, KC_END),
-    COMBO(combo2, LANG_SWITCH_COMBO_ACTION),
-    COMBO(combo3, KC_ENTER),
-    COMBO(combo4, CW_TOGG),
-    COMBO(combo5, KC_CAPS),
 };
