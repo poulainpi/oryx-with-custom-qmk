@@ -26,7 +26,7 @@ on:
         description: "Proceed with merge, build, and upload after updating oryx branch? (true/false)"
         type: boolean
         required: true
-        default: false
+        default: true
 
 permissions:
   contents: write
