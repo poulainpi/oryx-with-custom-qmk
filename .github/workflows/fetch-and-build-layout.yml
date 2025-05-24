@@ -22,11 +22,11 @@ on:
           - planck_ez
           - planck_ez/glow
         default: voyager
-      proceed_to_build:
-        description: "Proceed with merge, build, and upload after updating oryx branch? (true/false)"
-        type: boolean
-        required: true
-        default: true
+      #proceed_to_build:
+      #  description: "Proceed with merge, build, and upload after updating oryx branch? (true/false)"
+      #  type: boolean
+      #  required: true
+      #  default: true
 
 permissions:
   contents: write
@@ -75,7 +75,7 @@ jobs:
           cat ./6JP4n/keymap.c
           
       - name: Merge Oryx with custom QMK
-        if: github.event.inputs.proceed_to_build == true
+        #if: github.event.inputs.proceed_to_build == true
         run: |
           git fetch origin main
           git checkout -B main origin/main
@@ -83,7 +83,7 @@ jobs:
           git push
 
       - name: Update QMK firmware submodule to latest version (${{ steps.download-layout-source.outputs.firmware_version }})
-        if: github.event.inputs.proceed_to_build == true
+        #if: github.event.inputs.proceed_to_build == true
         run: |
           git submodule update --init --remote --depth=1
           cd qmk_firmware
@@ -95,11 +95,11 @@ jobs:
           git push
 
       - name: Build qmk docker image
-        if: github.event.inputs.proceed_to_build == true
+        #if: github.event.inputs.proceed_to_build == true
         run: docker build -t qmk .
 
       - name: Build the layout
-        if: github.event.inputs.proceed_to_build == true
+        #if: github.event.inputs.proceed_to_build == true
         id: build-layout
         run: |
           # Set keyboard directory and make prefix based on firmware version
@@ -163,7 +163,7 @@ jobs:
           echo "normalized_layout_geometry=${normalized_layout_geometry_for_find}" >> "$GITHUB_OUTPUT"
 
       - name: Upload layout
-        if: github.event.inputs.proceed_to_build == true
+        #if: github.event.inputs.proceed_to_build == true
         uses: actions/upload-artifact@v4
         with:
           name: ${{ steps.build-layout.outputs.normalized_layout_geometry }}_${{ github.event.inputs.layout_id }}_${{ steps.build-layout.outputs.build_datetime_for_artifact }}
