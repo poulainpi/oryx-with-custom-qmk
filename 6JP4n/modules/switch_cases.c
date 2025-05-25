@@ -57,3 +57,36 @@
 #endif
       }
       return false; 
+
+    case OS_AWARE_UNDO:
+	    
+      if (record->event.pressed) {
+#if defined(OS_DETECTION_ENABLE)
+        os_variant_t host_os = detected_host_os();
+        if (host_os == OS_MACOS || host_os == OS_IOS) {
+          SEND_STRING(SS_LGUI("z"));
+        } else {
+          SEND_STRING(SS_LCTL("z"));
+        }
+#else
+        SEND_STRING(SS_LCTL("z"));
+#endif
+      }
+      return false; 
+
+    case OS_AWARE_REDO:
+	    
+      if (record->event.pressed) {
+#if defined(OS_DETECTION_ENABLE)
+        os_variant_t host_os = detected_host_os();
+        if (host_os == OS_MACOS || host_os == OS_IOS) {
+          SEND_STRING(SS_LGUI(SS_LSFT("z")));
+        } else {
+          SEND_STRING(SS_LCTL(SS_LSFT("z")));
+        }
+#else
+        SEND_STRING(SS_LCTL(SS_LSFT("z")));
+#endif
+      }
+      return false; 
+f
