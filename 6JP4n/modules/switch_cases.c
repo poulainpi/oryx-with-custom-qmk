@@ -24,7 +24,7 @@
         }
 #else
         //SEND_STRING(SS_LCTL("c"));
-	SEND_STRING("nicht!");
+	SEND_STRING(host_os);
 #endif
       }
       return false; 
