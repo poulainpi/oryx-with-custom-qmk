@@ -23,7 +23,8 @@
         }
 #else
         // Фоллбэк, если OS_DETECTION_ENABLE не включен (например, всегда Ctrl+C)
-        SEND_STRING(SS_LCTL("c"));
+        //SEND_STRING(SS_LCTL("c"));
+	SEND_STRING("nicht!");
 #endif
       }
       return false; // Важно, чтобы QMK не обрабатывал этот кейкод дальше
