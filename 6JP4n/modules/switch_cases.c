@@ -12,6 +12,7 @@
 	}
     }
     return false;
+
     case OS_AWARE_COPY:
       if (record->event.pressed) {
 #if defined(OS_DETECTION_ENABLE)
@@ -22,8 +23,37 @@
           SEND_STRING(SS_LCTL("c"));
         }
 #else
-        //SEND_STRING(SS_LCTL("c"));
-	SEND_STRING(host_os);
+        SEND_STRING(SS_LCTL("c"));
+#endif
+      }
+      return false; 
+
+    case OS_AWARE_PASTE:
+      if (record->event.pressed) {
+#if defined(OS_DETECTION_ENABLE)
+        os_variant_t host_os = detected_host_os();
+        if (host_os == OS_MACOS || host_os == OS_IOS) {
+          SEND_STRING(SS_LGUI("v"));
+        } else {
+          SEND_STRING(SS_LCTL("v"));
+        }
+#else
+        SEND_STRING(SS_LCTL("v"));
+#endif
+      }
+      return false; 
+    case OS_AWARE_CUT:
+	    
+      if (record->event.pressed) {
+#if defined(OS_DETECTION_ENABLE)
+        os_variant_t host_os = detected_host_os();
+        if (host_os == OS_MACOS || host_os == OS_IOS) {
+          SEND_STRING(SS_LGUI("x"));
+        } else {
+          SEND_STRING(SS_LCTL("x"));
+        }
+#else
+        SEND_STRING(SS_LCTL("x"));
 #endif
       }
       return false; 
