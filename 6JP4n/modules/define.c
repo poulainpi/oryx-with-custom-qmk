@@ -5,4 +5,5 @@
 #include "os_detection.h"
 #define OS_DETECTION_DEBOUNCE 250
 #define OS_DETECTION_KEYBOARD_RESET
+#define OS_DETECTION_SINGLE_REPORT
 #endif
