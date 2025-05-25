@@ -88,5 +88,4 @@
         SEND_STRING(SS_LCTL(SS_LSFT("z")));
 #endif
       }
-      return false; 
-f
+      return false;
