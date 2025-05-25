@@ -11,22 +11,20 @@
 	    SEND_STRING(SS_LCTL(SS_LSFT("1")));
 	}
     }
+    return false;
     case OS_AWARE_COPY:
       if (record->event.pressed) {
 #if defined(OS_DETECTION_ENABLE)
         os_variant_t host_os = detected_host_os();
         if (host_os == OS_MACOS |
 | host_os == OS_IOS) {
-          SEND_STRING(SS_LGUI("c")); // Cmd+C для macOS/iOS
+          SEND_STRING(SS_LGUI("c"));
         } else {
-          SEND_STRING(SS_LCTL("c")); // Ctrl+C для Windows/Linux/других
+          SEND_STRING(SS_LCTL("c"));
         }
 #else
-        // Фоллбэк, если OS_DETECTION_ENABLE не включен (например, всегда Ctrl+C)
         //SEND_STRING(SS_LCTL("c"));
 	SEND_STRING("nicht!");
 #endif
       }
-      return false; // Важно, чтобы QMK не обрабатывал этот кейкод дальше
-
-    return false;
+      return false; 
