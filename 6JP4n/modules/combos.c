@@ -17,6 +17,6 @@ combo_t key_combos[] = {
     COMBO(combo4, CW_TOGG),
     COMBO(combo5, KC_CAPS),
     COMBO(combo6, OS_AWARE_COPY),
-    COMBO(combo7, KC_PASTE),
-    COMBO(combo8, KC_CUT),
+    COMBO(combo7, OS_AWARE_PASTE),
+    COMBO(combo8, OS_AWARE_CUT),
 };
