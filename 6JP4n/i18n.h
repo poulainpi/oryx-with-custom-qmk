@@ -46,3 +46,4 @@
 #define RU_HARD KC_RBRC
 #define RU_BSLS KC_BSLS
 #define RU_SLSH S(KC_BSLS)
+#define RU_RUBL ALGR(KC_8)
