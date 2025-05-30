@@ -37,35 +37,35 @@ enum tap_dance_codes {
   DANCE_1,
 };
 
-#define DUAL_FUNC_0 LT(3, KC_6)
-#define DUAL_FUNC_1 LT(15, KC_V)
-#define DUAL_FUNC_2 LT(8, KC_F20)
-#define DUAL_FUNC_3 LT(12, KC_H)
-#define DUAL_FUNC_4 LT(9, KC_8)
-#define DUAL_FUNC_5 LT(4, KC_F17)
-#define DUAL_FUNC_6 LT(4, KC_M)
-#define DUAL_FUNC_7 LT(7, KC_A)
-#define DUAL_FUNC_8 LT(4, KC_F6)
-#define DUAL_FUNC_9 LT(1, KC_D)
-#define DUAL_FUNC_10 LT(6, KC_C)
-#define DUAL_FUNC_11 LT(15, KC_F8)
-#define DUAL_FUNC_12 LT(1, KC_E)
-#define DUAL_FUNC_13 LT(13, KC_C)
-#define DUAL_FUNC_14 LT(15, KC_F11)
+#define DUAL_FUNC_0 LT(6, KC_L)
+#define DUAL_FUNC_1 LT(6, KC_D)
+#define DUAL_FUNC_2 LT(10, KC_D)
+#define DUAL_FUNC_3 LT(14, KC_F9)
+#define DUAL_FUNC_4 LT(11, KC_N)
+#define DUAL_FUNC_5 LT(14, KC_I)
+#define DUAL_FUNC_6 LT(4, KC_F17)
+#define DUAL_FUNC_7 LT(4, KC_V)
+#define DUAL_FUNC_8 LT(8, KC_F23)
+#define DUAL_FUNC_9 LT(5, KC_F20)
+#define DUAL_FUNC_10 LT(9, KC_V)
+#define DUAL_FUNC_11 LT(9, KC_1)
+#define DUAL_FUNC_12 LT(8, KC_3)
+#define DUAL_FUNC_13 LT(9, KC_F9)
+#define DUAL_FUNC_14 LT(14, KC_F24)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [0] = LAYOUT_voyager(
     DUAL_FUNC_0,    KC_1,           KC_2,           KC_3,           KC_4,           TD(DANCE_0),                                    TD(DANCE_1),    KC_7,           KC_8,           KC_9,           KC_0,           DUAL_FUNC_1,    
     CW_TOGG,        KC_Q,           KC_W,           KC_E,           KC_R,           KC_T,                                           KC_Y,           KC_U,           KC_I,           KC_O,           KC_P,           KC_BSLS,        
     KC_CAPS,        MT(MOD_LGUI, KC_A),MT(MOD_LALT, KC_S),MT(MOD_LSFT, KC_D),MT(MOD_LCTL, KC_F),KC_G,                                           KC_H,           MT(MOD_RCTL, KC_J),MT(MOD_RSFT, KC_K),MT(MOD_RALT, KC_L),MT(MOD_RGUI, KC_SCLN),KC_QUOTE,       
-    TT(1),          KC_Z,           KC_X,           KC_C,           KC_V,           KC_B,                                           KC_N,           KC_M,           KC_COMMA,       KC_DOT,         KC_SLASH,       TT(2),          
+    TT(1),          KC_Z,           KC_X,           KC_C,           LT(7, KC_V),    KC_B,                                           KC_N,           KC_M,           KC_COMMA,       KC_DOT,         KC_SLASH,       TT(2),          
                                                     LT(3, KC_ENTER),LT(6, KC_TAB),                                  LT(5, KC_BSPC), LT(4, KC_SPACE)
   ),
   [1] = LAYOUT_voyager(
     KC_ESCAPE,      DUAL_FUNC_2,    DUAL_FUNC_3,    DUAL_FUNC_4,    DUAL_FUNC_5,    DUAL_FUNC_6,                                    DUAL_FUNC_7,    DUAL_FUNC_8,    DUAL_FUNC_9,    DUAL_FUNC_10,   DUAL_FUNC_11,   DUAL_FUNC_12,   
     KC_TRANSPARENT, RU_SHTI,        RU_TSE,         RU_U,           RU_KA,          RU_IE,                                          RU_EN,          RU_GHE,         RU_SHA,         RU_SHCH,        RU_ZE,          RU_HA,          
     KC_TRANSPARENT, MT(MOD_LGUI, RU_EF),MT(MOD_LALT, RU_YERU),MT(MOD_LSFT, RU_VE),MT(MOD_LCTL, RU_A),RU_PE,                                          RU_ER,          MT(MOD_RCTL, RU_O),MT(MOD_RSFT, RU_EL),MT(MOD_RALT, RU_DE),MT(MOD_RGUI, RU_ZHE),RU_E,           
-    KC_TRANSPARENT, RU_YA,          RU_CHE,         RU_ES,          RU_EM,          RU_I,                                           RU_TE,          RU_SOFT,        DUAL_FUNC_13,   DUAL_FUNC_14,   RU_YO,          RU_HARD,        
+    KC_TRANSPARENT, RU_YA,          RU_CHE,         RU_ES,          LT(8, RU_EM),   RU_I,                                           RU_TE,          RU_SOFT,        DUAL_FUNC_13,   DUAL_FUNC_14,   RU_YO,          RU_HARD,        
                                                     KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT
   ),
   [2] = LAYOUT_voyager(
@@ -101,6 +101,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_COLN,        ST_MACRO_11,    ST_MACRO_12,    ST_MACRO_13,    KC_NO,          KC_NO,                                          KC_NO,          KC_NO,          KC_K,           KC_TRANSPARENT, KC_NO,          KC_NO,          
     KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,                                          KC_NO,          KC_H,           KC_J,           KC_L,           KC_NO,          KC_NO,          
     KC_TRANSPARENT, KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,                                          KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_TRANSPARENT, 
+                                                    KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT
+  ),
+  [7] = LAYOUT_voyager(
+    KC_GRAVE,       KC_EXLM,        KC_AT,          KC_HASH,        KC_DLR,         KC_PERC,                                        KC_CIRC,        KC_AMPR,        KC_ASTR,        KC_LPRN,        KC_RPRN,        KC_UNDS,        
+    KC_TILD,        KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,                                          KC_LBRC,        KC_RBRC,        KC_QUES,        KC_NO,          KC_NO,          KC_PIPE,        
+    KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,                                          KC_LCBR,        KC_RCBR,        KC_SCLN,        KC_COLN,        KC_BSLS,        KC_QUOTE,       
+    KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,                                          KC_LABK,        KC_RABK,        KC_COMMA,       KC_DOT,         KC_SLASH,       KC_DQUO,        
+                                                    KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT
+  ),
+  [8] = LAYOUT_voyager(
+    KC_GRAVE,       RU_EXLM,        RU_DQUO,        RU_NUM,         RU_SCLN,        RU_PERC,                                        RU_COLN,        RU_QUES,        RU_ASTR,        RU_LPRN,        RU_RPRN,        RU_UNDS,        
+    KC_TILD,        KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,                                          KC_LBRC,        KC_RBRC,        RU_QUES,        KC_NO,          KC_NO,          KC_PIPE,        
+    KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,                                          KC_LCBR,        KC_RCBR,        RU_SCLN,        RU_COLN,        RU_BSLS,        KC_QUOTE,       
+    KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_TRANSPARENT, KC_NO,                                          KC_LABK,        KC_RABK,        RU_COMM,        RU_DOT,         RU_SLSH,        RU_DQUO,        
                                                     KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT
   ),
 };
