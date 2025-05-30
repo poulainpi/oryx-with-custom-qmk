@@ -44,3 +44,5 @@
 #define RU_DOT KC_SLSH
 #define RU_YO KC_GRV
 #define RU_HARD KC_RBRC
+#define RU_BSLS KC_BSLS
+#define RU_SLSH S(KC_BSLS)
