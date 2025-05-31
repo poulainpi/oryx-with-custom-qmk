@@ -1,6 +1,6 @@
 #define FLOW_TAP_TERM 100
 #define USB_SUSPEND_WAKEUP_DELAY 0
-#define SERIAL_NUMBER "6JP4n/7vBvzJ"
+#define SERIAL_NUMBER "6JP4n/GGWZKQ"
 #define LAYER_STATE_16BIT
 #define HCS(report) host_consumer_send(record->event.pressed ? report : 0); return false
 
