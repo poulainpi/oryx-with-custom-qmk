@@ -36,6 +36,7 @@ enum custom_keycodes {
   ST_MACRO_23,
   ST_MACRO_24,
   ST_MACRO_25,
+  ST_MACRO_26,
   MAC_SIRI,
   #include "./modules/custom_keycodes.c"
 };
@@ -47,21 +48,21 @@ enum tap_dance_codes {
   DANCE_1,
 };
 
-#define DUAL_FUNC_0 LT(5, KC_Z)
-#define DUAL_FUNC_1 LT(5, KC_S)
-#define DUAL_FUNC_2 LT(15, KC_F18)
-#define DUAL_FUNC_3 LT(3, KC_F)
-#define DUAL_FUNC_4 LT(15, KC_A)
-#define DUAL_FUNC_5 LT(9, KC_F20)
-#define DUAL_FUNC_6 LT(2, KC_G)
-#define DUAL_FUNC_7 LT(10, KC_F12)
-#define DUAL_FUNC_8 LT(1, KC_F20)
-#define DUAL_FUNC_9 LT(15, KC_8)
-#define DUAL_FUNC_10 LT(12, KC_0)
-#define DUAL_FUNC_11 LT(6, KC_K)
-#define DUAL_FUNC_12 LT(4, KC_N)
-#define DUAL_FUNC_13 LT(1, KC_6)
-#define DUAL_FUNC_14 LT(12, KC_F12)
+#define DUAL_FUNC_0 LT(11, KC_S)
+#define DUAL_FUNC_1 LT(15, KC_R)
+#define DUAL_FUNC_2 LT(6, KC_K)
+#define DUAL_FUNC_3 LT(12, KC_K)
+#define DUAL_FUNC_4 LT(11, KC_F10)
+#define DUAL_FUNC_5 LT(3, KC_2)
+#define DUAL_FUNC_6 LT(3, KC_F19)
+#define DUAL_FUNC_7 LT(5, KC_D)
+#define DUAL_FUNC_8 LT(12, KC_B)
+#define DUAL_FUNC_9 LT(5, KC_C)
+#define DUAL_FUNC_10 LT(3, KC_K)
+#define DUAL_FUNC_11 LT(8, KC_Y)
+#define DUAL_FUNC_12 LT(6, KC_H)
+#define DUAL_FUNC_13 LT(13, KC_F19)
+#define DUAL_FUNC_14 LT(5, KC_G)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [0] = LAYOUT_voyager(
@@ -114,10 +115,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                     KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT
   ),
   [7] = LAYOUT_voyager(
-    KC_GRAVE,       KC_EXLM,        KC_AT,          KC_HASH,        KC_DLR,         KC_PERC,                                        KC_CIRC,        KC_AMPR,        KC_ASTR,        KC_LPRN,        KC_RPRN,        KC_UNDS,        
-    KC_TILD,        KC_NO,          KC_NO,          KC_NO,          KC_TRANSPARENT, KC_NO,                                          KC_LBRC,        KC_TRANSPARENT, KC_QUES,        KC_NO,          KC_NO,          KC_PIPE,        
-    KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_RCBR,        KC_SCLN,        KC_COLN,        KC_BSLS,        KC_QUOTE,       
-    KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_TRANSPARENT, KC_NO,                                          KC_LABK,        KC_RABK,        KC_COMMA,       KC_DOT,         KC_SLASH,       KC_DQUO,        
+    KC_GRAVE,       KC_NO,          KC_LPRN,        KC_RPRN,        KC_LABK,        KC_RABK,                                        KC_CIRC,        KC_AMPR,        KC_ASTR,        KC_PERC,        KC_HASH,        KC_NO,          
+    KC_TILD,        KC_NO,          KC_LBRC,        KC_RBRC,        KC_TRANSPARENT, KC_RCBR,                                        KC_NO,          KC_TRANSPARENT, KC_BSLS,        KC_NO,          KC_NO,          KC_NO,          
+    KC_NO,          KC_NO,          ST_MACRO_18,    ST_MACRO_19,    KC_PIPE,        KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_COMMA,       KC_DOT,         KC_EXLM,        KC_QUES,        KC_NO,          
+    KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,                                          KC_QUOTE,       KC_DQUO,        KC_COLN,        KC_SCLN,        KC_NO,          KC_NO,          
                                                     KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT
   ),
   [8] = LAYOUT_voyager(
@@ -128,25 +129,32 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                     KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT
   ),
   [9] = LAYOUT_voyager(
-    KC_GRAVE,       KC_NO,          RU_LPRN,        RU_RPRN,        KC_LABK,        KC_RABK,                                        RU_SLSH,        RU_BSLS,        RU_ASTR,        RU_PERC,        RU_NUM,         RU_RUBL,        
-    KC_TILD,        KC_NO,          KC_LBRC,        KC_RBRC,        KC_LCBR,        KC_RCBR,                                        ST_MACRO_20,    RU_EXLM,        RU_QUES,        KC_NO,          KC_NO,          KC_NO,          
-    KC_NO,          KC_NO,          ST_MACRO_18,    ST_MACRO_19,    KC_PIPE,        KC_TRANSPARENT,                                 KC_TRANSPARENT, RU_COMM,        RU_DOT,         RU_QUES,        RU_EXLM,        KC_NO,          
-    KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,                                          KC_NO,          RU_DQUO,        KC_QUOTE,       KC_NO,          KC_NO,          KC_NO,          
+    KC_GRAVE,       KC_NO,          RU_LPRN,        RU_RPRN,        KC_LABK,        KC_RABK,                                        KC_NO,          KC_NO,          RU_ASTR,        RU_PERC,        RU_NUM,         RU_RUBL,        
+    KC_TILD,        KC_NO,          KC_LBRC,        KC_RBRC,        KC_LCBR,        KC_RCBR,                                        KC_NO,          RU_SLSH,        RU_BSLS,        KC_NO,          KC_NO,          KC_NO,          
+    KC_NO,          KC_NO,          ST_MACRO_20,    ST_MACRO_21,    KC_PIPE,        KC_TRANSPARENT,                                 KC_TRANSPARENT, RU_COMM,        RU_DOT,         RU_EXLM,        RU_QUES,        KC_NO,          
+    KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,                                          KC_NO,          RU_DQUO,        RU_COLN,        RU_SCLN,        KC_NO,          KC_NO,          
                                                     KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_BSPC,        KC_SPACE
   ),
   [10] = LAYOUT_voyager(
     KC_NO,          KC_NO,          KC_TRANSPARENT, KC_NO,          KC_NO,          KC_NO,                                          KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,          
     KC_NO,          KC_NO,          KC_TRANSPARENT, KC_NO,          KC_NO,          KC_NO,                                          KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,          
-    KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,                                          ST_MACRO_21,    ST_MACRO_22,    ST_MACRO_23,    KC_NO,          KC_NO,          KC_NO,          
+    KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,                                          ST_MACRO_22,    ST_MACRO_23,    ST_MACRO_24,    KC_NO,          KC_NO,          KC_NO,          
     KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,                                          KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,          
                                                     KC_NO,          KC_NO,                                          KC_NO,          KC_NO
   ),
   [11] = LAYOUT_voyager(
     KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,                                          KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,          
     KC_NO,          KC_NO,          KC_TRANSPARENT, KC_NO,          KC_NO,          KC_NO,                                          KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,          
-    KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,                                          KC_NO,          ST_MACRO_24,    ST_MACRO_25,    KC_NO,          KC_NO,          KC_NO,          
+    KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,                                          KC_NO,          ST_MACRO_25,    ST_MACRO_26,    KC_NO,          KC_NO,          KC_NO,          
     KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,                                          KC_NO,          KC_NO,          KC_NO,          KC_TRANSPARENT, KC_NO,          KC_NO,          
                                                     KC_NO,          KC_NO,                                          KC_NO,          KC_NO
+  ),
+  [12] = LAYOUT_voyager(
+    KC_GRAVE,       KC_EXLM,        KC_AT,          KC_HASH,        KC_DLR,         KC_PERC,                                        KC_CIRC,        KC_AMPR,        KC_ASTR,        KC_LPRN,        KC_RPRN,        KC_UNDS,        
+    KC_TILD,        KC_NO,          KC_NO,          KC_NO,          KC_TRANSPARENT, KC_NO,                                          KC_LBRC,        KC_TRANSPARENT, KC_QUES,        KC_NO,          KC_NO,          KC_PIPE,        
+    KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_RCBR,        KC_SCLN,        KC_COLN,        KC_BSLS,        KC_QUOTE,       
+    KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_TRANSPARENT, KC_NO,                                          KC_LABK,        KC_RABK,        KC_COMMA,       KC_DOT,         KC_SLASH,       KC_DQUO,        
+                                                    KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT
   ),
 };
 
@@ -318,30 +326,35 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     break;
     case ST_MACRO_20:
     if (record->event.pressed) {
-      SEND_STRING(SS_TAP(X_SLASH)SS_DELAY(10)  SS_TAP(X_SLASH)SS_DELAY(10)  SS_TAP(X_SLASH));
+      SEND_STRING(SS_TAP(X_DOT)SS_DELAY(10)  SS_TAP(X_DOT)SS_DELAY(10)  SS_TAP(X_SLASH));
     }
     break;
     case ST_MACRO_21:
     if (record->event.pressed) {
-      SEND_STRING(SS_LSFT(SS_TAP(X_SCLN))SS_DELAY(10)  SS_LSFT(SS_TAP(X_D)));
+      SEND_STRING(SS_TAP(X_DOT)SS_DELAY(10)  SS_TAP(X_SLASH));
     }
     break;
     case ST_MACRO_22:
     if (record->event.pressed) {
-      SEND_STRING(SS_LSFT(SS_TAP(X_SCLN))SS_DELAY(10)  SS_LSFT(SS_TAP(X_0)));
+      SEND_STRING(SS_LSFT(SS_TAP(X_SCLN))SS_DELAY(10)  SS_LSFT(SS_TAP(X_D)));
     }
     break;
     case ST_MACRO_23:
     if (record->event.pressed) {
-      SEND_STRING(SS_LSFT(SS_TAP(X_SCLN))SS_DELAY(10)  SS_LSFT(SS_TAP(X_9)));
+      SEND_STRING(SS_LSFT(SS_TAP(X_SCLN))SS_DELAY(10)  SS_LSFT(SS_TAP(X_0)));
     }
     break;
     case ST_MACRO_24:
     if (record->event.pressed) {
-      SEND_STRING(SS_LSFT(SS_TAP(X_6))SS_DELAY(10)  SS_LSFT(SS_TAP(X_0)));
+      SEND_STRING(SS_LSFT(SS_TAP(X_SCLN))SS_DELAY(10)  SS_LSFT(SS_TAP(X_9)));
     }
     break;
     case ST_MACRO_25:
+    if (record->event.pressed) {
+      SEND_STRING(SS_LSFT(SS_TAP(X_6))SS_DELAY(10)  SS_LSFT(SS_TAP(X_0)));
+    }
+    break;
+    case ST_MACRO_26:
     if (record->event.pressed) {
       SEND_STRING(SS_LSFT(SS_TAP(X_6))SS_DELAY(10)  SS_LSFT(SS_TAP(X_9)));
     }
