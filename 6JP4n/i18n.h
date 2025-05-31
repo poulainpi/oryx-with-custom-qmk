@@ -47,3 +47,4 @@
 #define RU_BSLS KC_BSLS
 #define RU_SLSH S(KC_BSLS)
 #define RU_RUBL ALGR(KC_8)
+#define RU_MINS KC_MINS
