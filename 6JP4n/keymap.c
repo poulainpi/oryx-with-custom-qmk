@@ -49,21 +49,21 @@ enum tap_dance_codes {
   DANCE_1,
 };
 
-#define DUAL_FUNC_0 LT(15, KC_D)
-#define DUAL_FUNC_1 LT(6, KC_F24)
-#define DUAL_FUNC_2 LT(3, KC_L)
-#define DUAL_FUNC_3 LT(9, KC_Y)
-#define DUAL_FUNC_4 LT(12, KC_K)
-#define DUAL_FUNC_5 LT(11, KC_3)
-#define DUAL_FUNC_6 LT(14, KC_7)
-#define DUAL_FUNC_7 LT(5, KC_F23)
-#define DUAL_FUNC_8 LT(11, KC_F20)
-#define DUAL_FUNC_9 LT(14, KC_F15)
-#define DUAL_FUNC_10 LT(12, KC_L)
-#define DUAL_FUNC_11 LT(3, KC_D)
-#define DUAL_FUNC_12 LT(11, KC_F3)
-#define DUAL_FUNC_13 LT(12, KC_F22)
-#define DUAL_FUNC_14 LT(2, KC_F3)
+#define DUAL_FUNC_0 LT(7, KC_U)
+#define DUAL_FUNC_1 LT(12, KC_F3)
+#define DUAL_FUNC_2 LT(7, KC_2)
+#define DUAL_FUNC_3 LT(15, KC_D)
+#define DUAL_FUNC_4 LT(7, KC_F15)
+#define DUAL_FUNC_5 LT(5, KC_I)
+#define DUAL_FUNC_6 LT(12, KC_F2)
+#define DUAL_FUNC_7 LT(7, KC_F9)
+#define DUAL_FUNC_8 LT(10, KC_8)
+#define DUAL_FUNC_9 LT(7, KC_Q)
+#define DUAL_FUNC_10 LT(10, KC_Z)
+#define DUAL_FUNC_11 LT(13, KC_F1)
+#define DUAL_FUNC_12 LT(12, KC_5)
+#define DUAL_FUNC_13 LT(10, KC_I)
+#define DUAL_FUNC_14 LT(6, KC_I)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [0] = LAYOUT_voyager(
@@ -131,7 +131,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
   [9] = LAYOUT_voyager(
     KC_GRAVE,       KC_NO,          RU_LPRN,        RU_RPRN,        KC_LABK,        KC_RABK,                                        KC_NO,          KC_NO,          RU_ASTR,        RU_PERC,        RU_NUM,         RU_RUBL,        
-    KC_TILD,        KC_NO,          KC_LBRC,        KC_RBRC,        KC_LCBR,        KC_RCBR,                                        KC_NO,          RU_SLSH,        RU_BSLS,        RU_MINS,        KC_NO,          KC_NO,          
+    KC_TILD,        KC_NO,          KC_LBRC,        KC_RBRC,        KC_LCBR,        KC_RCBR,                                        KC_NO,          RU_SLSH,        RU_BSLS,        RU_MINS,        RU_UNDS,        KC_NO,          
     KC_NO,          KC_NO,          ST_MACRO_21,    ST_MACRO_22,    KC_PIPE,        KC_TRANSPARENT,                                 KC_TRANSPARENT, RU_COMM,        RU_DOT,         RU_EXLM,        RU_QUES,        KC_NO,          
     KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,                                          KC_NO,          RU_DQUO,        RU_COLN,        RU_SCLN,        KC_NO,          KC_NO,          
                                                     KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_BSPC,        KC_SPACE
