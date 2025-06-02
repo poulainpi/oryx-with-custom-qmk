@@ -11,8 +11,10 @@ const uint16_t PROGMEM combo6_eng[] = { LT(10, KC_W), KC_E, KC_R, COMBO_END};
 const uint16_t PROGMEM combo6_rus[] = { LT(11, RU_TSE), RU_U, RU_KA, COMBO_END};
 const uint16_t PROGMEM combo7[] = { MT(MOD_LALT, KC_S), MT(MOD_LSFT, KC_D), MT(MOD_LCTL, KC_F), COMBO_END};
 const uint16_t PROGMEM combo8[] = { KC_X, KC_C, KC_V, COMBO_END};
-const uint16_t PROGMEM combo9[] = { KC_N, KC_M, KC_TRANSPARENT, COMBO_END};
-const uint16_t PROGMEM combo10[] = { KC_TRANSPARENT, KC_TRANSPARENT, KC_SLASH, COMBO_END};
+const uint16_t PROGMEM combo9_eng[] = { KC_N, KC_M, KC_NO, COMBO_END};
+const uint16_t PROGMEM combo9_rus[] = { RU_TE, RU_SOFT, RU_BE, COMBO_END};
+const uint16_t PROGMEM combo10_eng[] = { KC_NO, KC_TRANSPARENT, KC_NO, COMBO_END};
+const uint16_t PROGMEM combo10_rus[] = { RU_BE, RU_YU, RU_YO, COMBO_END};
 
 
 combo_t key_combos[] = {
@@ -29,6 +31,8 @@ combo_t key_combos[] = {
     COMBO(combo6_rus, OS_AWARE_COPY),
     COMBO(combo7, OS_AWARE_PASTE),
     COMBO(combo8, OS_AWARE_CUT),
-    COMBO(combo9, OS_AWARE_UNDO),
-    COMBO(combo10, OS_AWARE_REDO),
+    COMBO(combo9_eng, OS_AWARE_UNDO),
+    COMBO(combo9_rus, OS_AWARE_UNDO),
+    COMBO(combo10_eng, OS_AWARE_REDO),
+    COMBO(combo10_rus, OS_AWARE_REDO),
 };
