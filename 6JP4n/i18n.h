@@ -37,10 +37,10 @@
 #define RU_PERC S(KC_5)
 #define RU_NUM S(KC_3)
 #define RU_RUBL ALGR(KC_8)
-#define RU_SLSH S(KC_BSLS)
-#define RU_BSLS KC_BSLS
-#define RU_MINS KC_MINS
 #define RU_UNDS S(KC_MINS)
+#define RU_MINS KC_MINS
+#define RU_BSLS KC_BSLS
+#define RU_SLSH S(KC_BSLS)
 #define RU_DOT KC_SLSH
 #define RU_COMM S(KC_SLSH)
 #define RU_EXLM S(KC_1)
