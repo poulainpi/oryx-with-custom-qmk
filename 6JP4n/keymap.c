@@ -331,12 +331,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     break;
     case ST_MACRO_19:
     if (record->event.pressed) {
-      SEND_STRING(SS_TAP(X_DOT)SS_DELAY(10)  SS_TAP(X_SPACE)SS_DELAY(10)  SS_TAP(X_NONUS_HASH)SS_DELAY(10)  SS_TAP(X_SLASH));
+      SEND_STRING(SS_TAP(X_DOT)SS_DELAY(10)  SS_TAP(X_SPACE)SS_DELAY(10)  SS_LSFT(SS_TAP(X_GRAVE))SS_DELAY(10)  SS_TAP(X_SLASH));
     }
     break;
     case ST_MACRO_20:
     if (record->event.pressed) {
-      SEND_STRING(SS_TAP(X_NONUS_HASH)SS_DELAY(10)  SS_TAP(X_SLASH));
+      SEND_STRING(SS_LALT(SS_TAP(X_GRAVE) SS_TAP(X_SLASH) ));
     }
     break;
     case ST_MACRO_21:
