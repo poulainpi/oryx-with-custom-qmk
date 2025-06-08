@@ -154,6 +154,10 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
             return g_tapping_term + 250;
         case MT(MOD_RGUI, KC_NUM):
             return g_tapping_term + 250;
+        case MT(MOD_LGUI, KC_Q):
+            return g_tapping_term + 299;
+        case MT(MOD_RGUI, KC_F24):
+            return g_tapping_term + 299;
         default:
             return g_tapping_term;
     }
