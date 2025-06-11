@@ -9,6 +9,7 @@ const uint16_t PROGMEM combo2_grp[] = { KC_F, KC_O, KC_U, COMBO_END};
 const uint16_t PROGMEM combo3_eng[] = { MT(MOD_RCTL, KC_J), MT(MOD_RSFT, KC_K), MT(MOD_RALT, KC_L), COMBO_END};
 const uint16_t PROGMEM combo3_grp[] = { MT(MOD_RCTL, KC_H),MT(MOD_RSFT, KC_A),MT(MOD_RALT, KC_E), COMBO_END};
 const uint16_t PROGMEM combo4_eng[] = { MT(MOD_LGUI, KC_A), MT(MOD_LALT, KC_S), MT(MOD_LSFT, KC_D), COMBO_END};
+const uint16_t PROGMEM combo4_grp[] = { KC_N,           MT(MOD_LALT, KC_R),MT(MOD_LSFT, KC_T), COMBO_END};
 const uint16_t PROGMEM combo5_eng[] = { MT(MOD_LSFT, KC_D),MT(MOD_LCTL, KC_F), KC_G, COMBO_END};
 const uint16_t PROGMEM combo5_rus[] = { MT(MOD_LSFT, RU_VE), MT(MOD_LCTL, RU_A), RU_PE, COMBO_END};
 
@@ -42,6 +43,7 @@ combo_t key_combos[] = {
     COMBO(combo3_eng, KC_ENTER),
     COMBO(combo3_grp, KC_ENTER),
     COMBO(combo4_eng, CW_TOGG),
+    COMBO(combo4_grp, CW_TOGG),
     COMBO(combo5_eng, KC_CAPS),
     COMBO(combo5_rus, KC_CAPS),
 
