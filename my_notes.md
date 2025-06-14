@@ -27,11 +27,23 @@ If it's any other layer, then switch to English, and the system layout to Englis
 Ultimately, I had to resort to using third-party software to enable switching the system 
 language layout on macOS according to my desired scheme. This software is called Hammerspoon, 
 and it allows for quite flexible remapping and assignment of keys or combinations for various
-system functions. Here is the necessary configuration: [You would insert the configuration here]
+system functions. Here is the necessary configuration: 
 
-You can download the software and view the documentation if needed here: [You would insert the download/documentation link here]
+```
+hs.hotkey.bind({"ctrl", "shift"}, "1", function()
+    hs.keycodes.setLayout("U.S.")
+end)
 
+hs.hotkey.bind({"ctrl", "shift"}, "2", function()
+    hs.keycodes.setLayout("Russian – PC")
+end)
+```
 
+You can download the software and view the documentation if needed here: 
+
+```
+  https://www.hammerspoon.org/
+```
 
 Switch the remote to a different preconfigured SSH key:
 - `git remote set-url origin git@github.com-key2:tpaktop77/oryx-with-custom-qmk.git`
