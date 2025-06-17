@@ -39,6 +39,9 @@ const uint16_t PROGMEM combo10_eng[] = { KC_F22, KC_F23, KC_F24, COMBO_END};
 const uint16_t PROGMEM combo10_rus[] = { RU_BE, RU_YU, RU_YO, COMBO_END};
 const uint16_t PROGMEM combo10_grp[] = { KC_F22,         KC_F23,         MT(MOD_RGUI, KC_F24), COMBO_END};
 
+const uint16_t PROGMEM combo11_rus[] = { RU_ER,          MT(MOD_RCTL, RU_O),MT(MOD_RSFT, RU_EL), COMBO_END};
+const uint16_t PROGMEM combo11_grp[] = { KC_Y,           MT(MOD_RCTL, KC_H),MT(MOD_RSFT, KC_A), COMBO_END};
+
 
 combo_t key_combos[] = {
     COMBO(combo0_eng, KC_HOME),
@@ -75,4 +78,6 @@ combo_t key_combos[] = {
     COMBO(combo10_eng, OS_AWARE_REDO),
     COMBO(combo10_rus, OS_AWARE_REDO),
     COMBO(combo10_grp, OS_AWARE_REDO),
+    COMBO(combo11_rus, OS_AWARE_VOICE),
+    COMBO(combo11_grp, OS_AWARE_VOICE),
 };
