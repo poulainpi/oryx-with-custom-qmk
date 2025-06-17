@@ -93,9 +93,9 @@
         case OS_AWARE_VOICE:
             if (record->event.pressed) {
 #if defined(OS_DETECTION_ENABLE)
-                if (usb_os_is_macos() || usb_os_is_ios()) {
+                if (host_os == OS_MACOS || host_os == OS_IOS) {
                     tap_code16(MAC_SIRI);
-                } else if (usb_os_is_windows()) {
+                } else if (host_os == OS_WINDOWS) {
                     SEND_STRING(SS_LGUI("h"));
                 }
 #endif
