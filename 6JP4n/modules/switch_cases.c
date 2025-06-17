@@ -89,3 +89,15 @@
 #endif
       }
       return false;
+
+        case OS_AWARE_VOICE:
+            if (record->event.pressed) {
+#if defined(OS_DETECTION_ENABLE)
+                if (usb_os_is_macos() || usb_os_is_ios()) {
+                    tap_code16(MAC_SIRI);
+                } else if (usb_os_is_windows()) {
+                    SEND_STRING(SS_LGUI("h"));
+                }
+#endif
+            }
+            return false;
