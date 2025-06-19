@@ -18,8 +18,8 @@ const uint16_t PROGMEM combo5_rus[] = { MT(MOD_LSFT, RU_VE), MT(MOD_LCTL, RU_A),
 const uint16_t PROGMEM combo5_grp[] = { MT(MOD_LSFT, KC_T),MT(MOD_LCTL, KC_S),KC_G, COMBO_END};
 
 
-const uint16_t PROGMEM combo6_rus[] = { LT(11, RU_TSE), RU_U, RU_KA, COMBO_END};
-const uint16_t PROGMEM combo6_grp[] = { LT(10, KC_L), KC_D, KC_W, COMBO_END};
+const uint16_t PROGMEM combo6_rus[] = { LT(10, RU_TSE), RU_U, RU_KA, COMBO_END};
+const uint16_t PROGMEM combo6_grp[] = { LT(9, KC_L), KC_D, KC_W, COMBO_END};
 const uint16_t PROGMEM combo6_tbl[] = { ST_MACRO_1,     ST_MACRO_2,     KC_F22, COMBO_END};
 
 const uint16_t PROGMEM combo7_rus[] = { MT(MOD_LALT, RU_YERU),MT(MOD_LSFT, RU_VE),MT(MOD_LCTL, RU_A), COMBO_END};
@@ -33,7 +33,7 @@ const uint16_t PROGMEM combo8_grp[] = { KC_X, KC_M, KC_C, COMBO_END};
 const uint16_t PROGMEM combo9_rus[] = { RU_TE, RU_SOFT, RU_BE, COMBO_END};
 const uint16_t PROGMEM combo9_grp[] = { KC_K,           KC_P,           KC_F22, COMBO_END};
 
-const uint16_t PROGMEM combo10_rus[] = { RU_BE, RU_YU, RU_YO, COMBO_END};
+const uint16_t PROGMEM combo10_rus[] = { RU_BE,          RU_YU,          MT(MOD_RGUI, RU_YO), COMBO_END};
 const uint16_t PROGMEM combo10_grp[] = { KC_F22,         KC_F23,         MT(MOD_RGUI, KC_F24), COMBO_END};
 
 const uint16_t PROGMEM combo11_rus[] = { RU_ER,          MT(MOD_RCTL, RU_O),MT(MOD_RSFT, RU_EL), COMBO_END};
