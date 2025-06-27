@@ -1,9 +1,10 @@
 #define FLOW_TAP_TERM 100
+#define CHORDAL_HOLD
 #undef RGB_MATRIX_TIMEOUT
 #define RGB_MATRIX_TIMEOUT 600000
 
 #define USB_SUSPEND_WAKEUP_DELAY 0
-#define SERIAL_NUMBER "6JP4n/v64Y7O"
+#define SERIAL_NUMBER "6JP4n/x9MRM0"
 #define LAYER_STATE_16BIT
 #define HCS(report) host_consumer_send(record->event.pressed ? report : 0); return false
 
