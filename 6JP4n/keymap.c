@@ -49,6 +49,7 @@ enum custom_keycodes {
   ST_MACRO_34,
   ST_MACRO_35,
   MAC_SIRI,
+  #include "./modules/custom_keycodes.c"
 };
 
 
