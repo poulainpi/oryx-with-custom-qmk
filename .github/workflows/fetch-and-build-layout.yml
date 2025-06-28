@@ -77,9 +77,10 @@ jobs:
 
       - name: Update QMK firmware submodule to latest version (${{ steps.download-layout-source.outputs.firmware_version }})
         run: |
-          git submodule update --init --remote --depth=1
+          git submodule update --init --remote --depth=1 --no-single-branch
           cd qmk_firmware
           git checkout -B firmware${{ steps.download-layout-source.outputs.firmware_version }} origin/firmware${{ steps.download-layout-source.outputs.firmware_version }}
+          sed -ie 's!git@github.com:!https://github.com/!' .gitmodules
           git submodule update --init --recursive
           cd ..
           git add qmk_firmware
