@@ -9,7 +9,7 @@ const uint16_t PROGMEM cmb_lngsw_rus[] = { RU_GHE, RU_SHA, RU_SHCH, COMBO_END};
 
 const uint16_t PROGMEM cmb_enter_grp[] = { MT(MOD_RCTL, KC_H),MT(MOD_RSFT, KC_A),MT(MOD_RALT, KC_E), COMBO_END};
 const uint16_t PROGMEM cmb_enter_rus[] = { MT(MOD_RCTL, RU_O),MT(MOD_RSFT, RU_EL),MT(MOD_RALT, RU_DE), COMBO_END};
-const uint16_t PROGMEM cmb_enter_tbl[] = { KC_4,           KC_5,           KC_6, COMBO_END};
+const uint16_t PROGMEM cmb_enter_tbl[] = { KC_KP_4,        KC_KP_5,        KC_KP_6, COMBO_END};
 
 const uint16_t PROGMEM cmb_togg_grp[]  = { KC_N,           MT(MOD_LALT, KC_R),MT(MOD_LSFT, KC_T), COMBO_END};
 const uint16_t PROGMEM cmb_togg_rus[]  = { RU_EF,          MT(MOD_LALT, RU_YERU),MT(MOD_LSFT, RU_VE), COMBO_END};
@@ -28,7 +28,7 @@ const uint16_t PROGMEM cmb_paste_tbl[] = { ST_MACRO_4,     ST_MACRO_5,     KC_F2
 
 const uint16_t PROGMEM cmb_cut_grp[]   = { MT(MOD_LGUI, KC_N),MT(MOD_LALT, KC_R), COMBO_END};
 const uint16_t PROGMEM cmb_cut_rus[]   = { MT(MOD_LGUI, RU_EF),MT(MOD_LALT, RU_YERU), COMBO_END};
-
+                                                                                                                                   cmv
 
 const uint16_t PROGMEM cmb_undo_grp[]  = { KC_K,           KC_P,           KC_F22, COMBO_END};
 const uint16_t PROGMEM cmb_undo_rus[]  = { RU_TE,          RU_SOFT,        RU_BE, COMBO_END};
