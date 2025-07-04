@@ -103,7 +103,7 @@ jobs:
         id: build-layout
         run: |
           # Set keyboard directory and make prefix based on firmware version
-          if [ "${{ steps.download-layout-source.outputs.firmware_version }}" -ge 24 ]; then
+          if [ "${{ steps.download-layout-source.outputs.firmware_version }}" -ge 25 ]; then
             keyboard_directory="qmk_firmware/keyboards/zsa"
             make_prefix="zsa/"
           else
