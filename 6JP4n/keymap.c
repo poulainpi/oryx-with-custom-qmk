@@ -6,6 +6,8 @@
 #define ZSA_SAFE_RANGE SAFE_RANGE
 #endif
 #include "./modules/define.c"
+#include "./modules/oneshot.h"
+#include "./modules/swapper.h"
 
 enum custom_keycodes {
   RGB_SLD = ZSA_SAFE_RANGE,
