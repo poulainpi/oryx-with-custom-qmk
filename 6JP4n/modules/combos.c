@@ -28,7 +28,7 @@ const uint16_t PROGMEM cmb_paste_tbl[] = { ST_MACRO_4,     ST_MACRO_5,     KC_F2
 
 const uint16_t PROGMEM cmb_cut_grp[]   = { MT(MOD_LGUI, KC_N),MT(MOD_LALT, KC_R), COMBO_END};
 const uint16_t PROGMEM cmb_cut_rus[]   = { MT(MOD_LGUI, RU_EF),MT(MOD_LALT, RU_YERU), COMBO_END};
-                                                                                                                                   cmv
+
 
 const uint16_t PROGMEM cmb_undo_grp[]  = { KC_K,           KC_P,           KC_F22, COMBO_END};
 const uint16_t PROGMEM cmb_undo_rus[]  = { RU_TE,          RU_SOFT,        RU_BE, COMBO_END};
