@@ -22,7 +22,7 @@ const uint16_t PROGMEM cmb_copy_grp[]  = { MT(MOD_LALT, KC_R),MT(MOD_LSFT, KC_T)
 const uint16_t PROGMEM cmb_copy_rus[]  = { MT(MOD_LALT, RU_YERU),MT(MOD_LSFT, RU_VE), COMBO_END};
 const uint16_t PROGMEM cmb_copy_tbl[]  = { ST_MACRO_4,     ST_MACRO_5, COMBO_END};
 
-const uint16_t PROGMEM cmb_paste_grp[] = { MT(MOD_LSFT, KC_T),MT(MOD_LCTL, KC_S, COMBO_END};
+const uint16_t PROGMEM cmb_paste_grp[] = { MT(MOD_LSFT, KC_T),MT(MOD_LCTL, KC_S), COMBO_END};
 const uint16_t PROGMEM cmb_paste_rus[] = { MT(MOD_LSFT, RU_VE),MT(MOD_LCTL, RU_A), COMBO_END};
 const uint16_t PROGMEM cmb_paste_tbl[] = { ST_MACRO_4,     ST_MACRO_5,     KC_F23, COMBO_END};
 
@@ -40,7 +40,7 @@ const uint16_t PROGMEM cmb_voice_grp[] = { KC_Y,           MT(MOD_RCTL, KC_H),MT
 const uint16_t PROGMEM cmb_voice_rus[] = { RU_ER,          MT(MOD_RCTL, RU_O),MT(MOD_RSFT, RU_EL), COMBO_END};
 
 const uint16_t PROGMEM cmb_tab_grp[]   = { MT(MOD_LALT, KC_R),MT(MOD_LSFT, KC_T),MT(MOD_LCTL, KC_S), COMBO_END};
-const uint16_t PROGMEM cmb_tab_rus[]   = { MT(MOD_LALT, RU_YERU),MT(MOD_LSFT, RU_VE),MT(MOD_LCTL, RU_A)), COMBO_END};
+const uint16_t PROGMEM cmb_tab_rus[]   = { MT(MOD_LALT, RU_YERU),MT(MOD_LSFT, RU_VE),MT(MOD_LCTL, RU_A), COMBO_END};
 
 
 combo_t key_combos[] = {
