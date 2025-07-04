@@ -85,6 +85,6 @@ combo_t key_combos[] = {
     COMBO(c_voice_rus, OS_AWARE_VOICE),
     COMBO(c_voice_grp, OS_AWARE_VOICE),
 
-    COMBO(c_tab_rus, C_TAB),
-    COMBO(c_tab_grp, C_TAB),
+    COMBO(c_tab_rus, KC_TAB),
+    COMBO(c_tab_grp, KC_TAB),
 };
