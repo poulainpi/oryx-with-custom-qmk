@@ -240,10 +240,14 @@ bool rgb_matrix_indicators_user(void) {
 }
 
 
+
 bool is_oneshot_cancel_key(uint16_t keycode) {
     switch (keycode) {
-    case LA_SYM:
-    case LA_NAV:
+    case LT(7, KC_BSPC):
+    case LT(3, KC_DELETE):
+    case LT(6, KC_TAB):
+    case LT(4, KC_SPACE):
+    case TT(5):
         return true;
     default:
         return false;
@@ -252,8 +256,11 @@ bool is_oneshot_cancel_key(uint16_t keycode) {
 
 bool is_oneshot_ignored_key(uint16_t keycode) {
     switch (keycode) {
-    case LA_SYM:
-    case LA_NAV:
+    case LT(7, KC_BSPC):
+    case LT(3, KC_DELETE):
+    case LT(6, KC_TAB):
+    case LT(4, KC_SPACE):
+    case TT(5):
     case KC_LSFT:
     case OS_SHFT:
     case OS_CTRL:
