@@ -24,7 +24,6 @@
 #define RU_EL KC_K
 #define RU_DE KC_L
 #define RU_ZHE KC_SCLN
-#define RU_E KC_QUOT
 #define RU_TE KC_N
 #define RU_SOFT KC_M
 #define RU_BE KC_COMM
