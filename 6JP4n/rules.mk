@@ -12,5 +12,6 @@ USB_OS_DETECTION_ENABLE = yes
 OS_DETECTION_ENABLE = yes
 VIA_ENABLE = yes
 
-SRC += ./oneshot.c
-SRC += ./swapper.c
+SRC += ./modules/oneshot.c
+SRC += ./modules/swapper.c
+
