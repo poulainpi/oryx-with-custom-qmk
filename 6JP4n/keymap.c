@@ -51,10 +51,6 @@ enum custom_keycodes {
   ST_MACRO_35,
   ST_MACRO_36,
   MAC_SIRI,
-  OS_SHFT,
-  OS_CTRL,
-  OS_ALT,
-  OS_CMD,
   #include "./modules/custom_keycodes.c"
 };
 
