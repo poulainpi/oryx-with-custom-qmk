@@ -3,6 +3,8 @@
 #define TAPPING_TERM 200
 #include "./modules/oneshot.h"
 #include "./modules/swapper.h"
+#include "./modules/oneshot.c"
+#include "./modules/swapper.c"
 
 #if defined(OS_DETECTION_ENABLE)
 #include "os_detection.h"
