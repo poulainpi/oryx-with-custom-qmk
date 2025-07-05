@@ -1,7 +1,7 @@
 bool is_oneshot_cancel_key(uint16_t keycode) {
     switch (keycode) {
     case LT(3, KC_DELETE):
-    case TT(5):
+    case TD(DANCE_2):
         return true;
     default:
         return false;
@@ -12,10 +12,8 @@ bool is_oneshot_ignored_key(uint16_t keycode) {
     switch (keycode) {
     case LT(7, KC_BSPC):
     case LT(3, KC_DELETE):
-    case LT(6, KC_TAB):
+    case TD(DANCE_2):
     case LT(4, KC_SPACE):
-    case TT(5):
-    case KC_LSFT:
     case OS_SHFT:
     case OS_CTRL:
     case OS_ALT:
