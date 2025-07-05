@@ -5,6 +5,7 @@
 #ifndef ZSA_SAFE_RANGE
 #define ZSA_SAFE_RANGE SAFE_RANGE
 #endif
+#include "./modules/define.c"
 
 enum custom_keycodes {
   RGB_SLD = ZSA_SAFE_RANGE,
