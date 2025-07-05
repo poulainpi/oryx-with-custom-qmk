@@ -11,11 +11,11 @@ const uint16_t PROGMEM cmb_enter_grp[] = { KC_H,           KC_A,           KC_E,
 const uint16_t PROGMEM cmb_enter_rus[] = { RU_O,           RU_EL,          RU_DE, COMBO_END};
 const uint16_t PROGMEM cmb_enter_tbl[] = { KC_KP_4,        KC_KP_5,        KC_KP_6, COMBO_END};
 
-const uint16_t PROGMEM cmb_togg_grp[]  = { KC_N,           KC_R,           KC_T, COMBO_END};
-const uint16_t PROGMEM cmb_togg_rus[]  = { RU_EF,          RU_YERU,        RU_VE, COMBO_END};
+const uint16_t PROGMEM cmb_togg_grp[]  = { KC_N,           KC_S, COMBO_END};
+const uint16_t PROGMEM cmb_togg_rus[]  = { RU_EF,          RU_A, COMBO_END};
 
-const uint16_t PROGMEM cmb_caps_grp[]  = { KC_T,           KC_S,           KC_G, COMBO_END};
-const uint16_t PROGMEM cmb_caps_rus[]  = { RU_VE,          RU_A,           RU_PE, COMBO_END};
+const uint16_t PROGMEM cmb_caps_grp[]  = { KC_N,           KC_G, COMBO_END};
+const uint16_t PROGMEM cmb_caps_rus[]  = { RU_EF,          RU_PE, COMBO_END};
 
 
 const uint16_t PROGMEM cmb_copy_grp[]  = { KC_R,           KC_T, COMBO_END};
@@ -30,8 +30,8 @@ const uint16_t PROGMEM cmb_cut_grp[]   = { KC_N,           KC_R, COMBO_END};
 const uint16_t PROGMEM cmb_cut_rus[]   = { RU_EF,          RU_YERU, COMBO_END};
 
 
-const uint16_t PROGMEM cmb_undo_grp[]  = { KC_K,           KC_P,           KC_F22, COMBO_END};
-const uint16_t PROGMEM cmb_undo_rus[]  = { RU_TE,          RU_SOFT,        RU_BE, COMBO_END};
+const uint16_t PROGMEM cmb_undo_grp[]  = { KC_P,           KC_F22,         KC_F23, COMBO_END};
+const uint16_t PROGMEM cmb_undo_rus[]  = { RU_SOFT,        RU_BE,          RU_YU, COMBO_END};
 
 const uint16_t PROGMEM cmb_redo_grp[]  = { KC_F22,         KC_F23,         KC_F24, COMBO_END};
 const uint16_t PROGMEM cmb_redo_rus[]  = { RU_BE,          RU_YU,          RU_YO, COMBO_END};
@@ -41,6 +41,11 @@ const uint16_t PROGMEM cmb_voice_rus[] = { RU_ER,          RU_O,           RU_EL
 
 const uint16_t PROGMEM cmb_tab_grp[]   = { KC_R,           KC_T,           KC_S, COMBO_END};
 const uint16_t PROGMEM cmb_tab_rus[]   = { RU_YERU,        RU_VE,          RU_A, COMBO_END};
+
+const uint16_t PROGMEM cmb_shift_grp_left[]   = { KC_N,           KC_R,           KC_T, COMBO_END};
+const uint16_t PROGMEM cmb_shift_grp_right[]  = { KC_A,           KC_E,           KC_I, COMBO_END};
+const uint16_t PROGMEM cmb_shift_rus_left[]   = { RU_EF,          RU_YERU,        RU_VE, COMBO_END};
+const uint16_t PROGMEM cmb_shift_rus_right[]  = { RU_EL,          RU_DE,          RU_ZHE, COMBO_END};
 
 
 combo_t key_combos[] = {
@@ -87,4 +92,10 @@ combo_t key_combos[] = {
 
     COMBO(cmb_tab_grp, KC_TAB),
     COMBO(cmb_tab_rus, KC_TAB),
+
+    COMBO(cmb_shift_grp_left, KC_TAB),
+    COMBO(cmb_shift_grp_right, KC_TAB),
+    COMBO(cmb_shift_rus_left, KC_TAB),
+    COMBO(cmb_shift_rus_right, KC_TAB),
+
 };
