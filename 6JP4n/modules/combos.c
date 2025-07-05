@@ -47,6 +47,9 @@ const uint16_t PROGMEM cmb_shift_grp_right[]  = { KC_A,           KC_E,         
 const uint16_t PROGMEM cmb_shift_rus_left[]   = { RU_EF,          RU_YERU,        RU_VE, COMBO_END};
 const uint16_t PROGMEM cmb_shift_rus_right[]  = { RU_EL,          RU_DE,          RU_ZHE, COMBO_END};
 
+const uint16_t PROGMEM cmb_cshift_grp[] = { KC_N,           KC_R,           KC_T,           KC_S, COMBO_END};
+const uint16_t PROGMEM cmb_cshift_rus[] = { RU_EF,          RU_YERU,        RU_VE,          RU_A, COMBO_END};
+
 
 combo_t key_combos[] = {
     COMBO(cmb_home_grp, KC_HOME),
@@ -97,5 +100,8 @@ combo_t key_combos[] = {
     COMBO(cmb_shift_grp_right, KC_LEFT_SHIFT),
     COMBO(cmb_shift_rus_left, KC_LEFT_SHIFT),
     COMBO(cmb_shift_rus_right, KC_LEFT_SHIFT),
+
+    COMBO(cmb_cshift_grp, C(KC_LEFT_SHIFT)),
+    COMBO(cmb_cshift_rus, C(KC_LEFT_SHIFT)),
 
 };
