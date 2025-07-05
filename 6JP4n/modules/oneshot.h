@@ -22,7 +22,7 @@ void update_oneshot(
 );
 
 // To be implemented by the consumer. Defines keys to cancel oneshot mods.
-bool is_oneshot_cancel_key(uint16_t keycode);
+bool is_oneshot_cancel_key(uint16_t keycode, keyrecord_t *record);
 
 // To be implemented by the consumer. Defines keys to ignore when determining
 // whether a oneshot mod has been used. Setting this to modifiers and layer
