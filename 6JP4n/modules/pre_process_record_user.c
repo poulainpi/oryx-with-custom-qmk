@@ -2,10 +2,16 @@ bool is_oneshot_cancel_key(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
     case LT(3, KC_DELETE):
         if (record->event.pressed) return false;
-        return (record->tap.count == 0);
+        if (record->tap.count > 0 && record->tap.keycode == KC_DELETE) {
+            return false;
+        }
+        return true;
     case LT(4, KC_SPACE):
         if (record->event.pressed) return false;
-        return (record->tap.count == 0);
+        if (record->tap.count > 0 && record->tap.keycode == KC_SPACE) {
+            return false;
+        }
+        return true;
     case TD(DANCE_2):
         if (record->event.pressed) return false;
         return (record->tap.count == 0);
