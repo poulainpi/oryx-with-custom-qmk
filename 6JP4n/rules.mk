@@ -14,5 +14,3 @@ VIA_ENABLE = yes
 
 SRC += ./modules/oneshot.c
 SRC += ./modules/swapper.c
-
-INC += ./modules
