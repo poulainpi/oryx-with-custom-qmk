@@ -1,9 +1,6 @@
 bool is_oneshot_cancel_key(uint16_t keycode) {
     switch (keycode) {
-    case LT(7, KC_BSPC):
     case LT(3, KC_DELETE):
-    case LT(6, KC_TAB):
-    case LT(4, KC_SPACE):
     case TT(5):
         return true;
     default:
