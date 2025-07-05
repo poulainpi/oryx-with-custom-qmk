@@ -7,11 +7,7 @@ TAP_DANCE_ENABLE = yes
 SPACE_CADET_ENABLE = no
 REPEAT_KEY_ENABLE = yes
 DYNAMIC_TAPPING_TERM_ENABLE = yes
-
 COMBO_ENABLE = yes
 USB_OS_DETECTION_ENABLE = yes
 OS_DETECTION_ENABLE = yes
 VIA_ENABLE = yes
-
-SRC += ./modules/oneshot.c
-SRC += ./modules/swapper.c
