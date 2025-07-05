@@ -85,9 +85,10 @@ jobs:
       - name: Update QMK firmware submodule to latest version (${{ steps.download-layout-source.outputs.firmware_version }})
         #if: github.event.inputs.proceed_to_build == true
         run: |
-          git submodule update --init --remote --depth=1
+          git submodule update --init --remote --depth=1 --no-single-branch
           cd qmk_firmware
           git checkout -B firmware${{ steps.download-layout-source.outputs.firmware_version }} origin/firmware${{ steps.download-layout-source.outputs.firmware_version }}
+          sed -ie 's!git@github.com:!https://github.com/!' .gitmodules
           git submodule update --init --recursive
           cd ..
           git add qmk_firmware
@@ -103,7 +104,7 @@ jobs:
         id: build-layout
         run: |
           # Set keyboard directory and make prefix based on firmware version
-          if [ "${{ steps.download-layout-source.outputs.firmware_version }}" -ge 24 ]; then
+          if [ "${{ steps.download-layout-source.outputs.firmware_version }}" -ge 25 ]; then
             keyboard_directory="qmk_firmware/keyboards/zsa"
             make_prefix="zsa/"
           else
