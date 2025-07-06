@@ -1,3 +1,17 @@
+static char hex_digit(uint8_t v) {
+    return v < 10 ? '0' + v : 'A' + (v - 10);
+}
+
+static void send_hex16(uint16_t v) {
+    char buf[5] = {0};
+    for (int i = 0; i < 4; i++) {
+        buf[i] = hex_digit((v >> ((3 - i)*4)) & 0xF);
+    }
+    SEND_STRING(buf);
+}
+
+
+
 bool is_oneshot_cancel_key(uint16_t keycode, keyrecord_t *record) {
 
     if (record->event.pressed) {
