@@ -261,6 +261,9 @@ static void send_hex8(uint8_t v) {
 
 bool is_oneshot_cancel_key(uint16_t keycode, keyrecord_t *record) {
 
+  if (record->event.pressed) {
+    SEND_STRING("[DBG-ENTRY]\n");
+}
     if (!record->event.pressed) {
         SEND_STRING("RELEASE code=0x");
         send_hex16(keycode);
