@@ -262,26 +262,15 @@ static void send_hex8(uint8_t v) {
 bool is_oneshot_cancel_key(uint16_t keycode, keyrecord_t *record) {
 
 
-    if (record->event.pressed) {
-        SEND_STRING("RELEASE code=0x");
-        send_hex16(keycode);
-        SEND_STRING(" tc=");
-        send_hex8(record->tap.count);
-        SEND_STRING("\n");
-    }
+    //if (record->event.pressed) {
+    //    SEND_STRING("RELEASE code=0x");
+    //    send_hex16(keycode);
+   //     SEND_STRING(" tc=");
+    //    send_hex8(record->tap.count);
+    //    SEND_STRING("\n");
+    //}
 
 
-    if (record->event.pressed) return false;
-        if (record->event.pressed) {
-          SEND_STRING("[1]\n");
-        }
-  
-    if (keycode == TD(DANCE_2)) {
-        if (record->event.pressed) {
-          SEND_STRING("[2]\n");
-        }
-        return (record->tap.count == 0);
-    }
 
     if ((keycode & QK_LAYER_TAP) == QK_LAYER_TAP) {
         if (record->event.pressed) {
