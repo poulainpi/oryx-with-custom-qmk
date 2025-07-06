@@ -39,21 +39,21 @@ const uint16_t PROGMEM cmb_redo_rus[]  = { RU_BE,          RU_YU,          RU_YO
 const uint16_t PROGMEM cmb_voice_grp[] = { KC_Y,           KC_H,           KC_A, COMBO_END};
 const uint16_t PROGMEM cmb_voice_rus[] = { RU_ER,          RU_O,           RU_EL, COMBO_END};
 
-// const uint16_t PROGMEM cmb_tab_grp[]   = { KC_R,           KC_T,           KC_S, COMBO_END};
-// const uint16_t PROGMEM cmb_tab_rus[]   = { RU_YERU,        RU_VE,          RU_A, COMBO_END};
+const uint16_t PROGMEM cmb_tab_grp[]   = { KC_R,           KC_T,           KC_S, COMBO_END};
+const uint16_t PROGMEM cmb_tab_rus[]   = { RU_YERU,        RU_VE,          RU_A, COMBO_END};
 
-// const uint16_t PROGMEM cmb_shift_grp_left[]   = { KC_N,           KC_R,           KC_T, COMBO_END};
-// const uint16_t PROGMEM cmb_shift_grp_right[]  = { KC_A,           KC_E,           KC_I, COMBO_END};
-// const uint16_t PROGMEM cmb_shift_rus_left[]   = { RU_EF,          RU_YERU,        RU_VE, COMBO_END};
-// const uint16_t PROGMEM cmb_shift_rus_right[]  = { RU_EL,          RU_DE,          RU_ZHE, COMBO_END};
+const uint16_t PROGMEM cmb_shift_grp_left[]   = { KC_N,           KC_R,           KC_T, COMBO_END};
+const uint16_t PROGMEM cmb_shift_grp_right[]  = { KC_A,           KC_E,           KC_I, COMBO_END};
+const uint16_t PROGMEM cmb_shift_rus_left[]   = { RU_EF,          RU_YERU,        RU_VE, COMBO_END};
+const uint16_t PROGMEM cmb_shift_rus_right[]  = { RU_EL,          RU_DE,          RU_ZHE, COMBO_END};
 
-// const uint16_t PROGMEM cmb_cshift_grp[] = { KC_N,           KC_R,           KC_T,           KC_S, COMBO_END};
-// const uint16_t PROGMEM cmb_cshift_rus[] = { RU_EF,          RU_YERU,        RU_VE,          RU_A, COMBO_END};
+const uint16_t PROGMEM cmb_cshift_grp[] = { KC_N,           KC_R,           KC_T,           KC_S, COMBO_END};
+const uint16_t PROGMEM cmb_cshift_rus[] = { RU_EF,          RU_YERU,        RU_VE,          RU_A, COMBO_END};
 
-// const uint16_t PROGMEM cmb_smile_grp[] = { KC_B,            KC_Z, COMBO_END};
-// const uint16_t PROGMEM cmb_smile_rus[] = { RU_SHTI,         RU_IE, COMBO_END};
+const uint16_t PROGMEM cmb_smile_grp[] = { KC_B,            KC_Z, COMBO_END};
+const uint16_t PROGMEM cmb_smile_rus[] = { RU_SHTI,         RU_IE, COMBO_END};
 
-// const uint16_t PROGMEM cmb_vim_grp[] = { KC_Y,            KC_I, COMBO_END};
+const uint16_t PROGMEM cmb_vim_grp[] = { KC_Y,            KC_I, COMBO_END};
 
 // const uint16_t PROGMEM combo_alt_tab_grp[] = { KC_H,           KC_A,           KC_E,           KC_I, COMBO_END };
 // const uint16_t PROGMEM combo_alt_tab_eng[] = { RU_O,           RU_EL,          RU_DE,          RU_ZHE, COMBO_END };
@@ -100,21 +100,21 @@ combo_t key_combos[] = {
     COMBO(cmb_voice_grp, OS_AWARE_VOICE),
     COMBO(cmb_voice_rus, OS_AWARE_VOICE),
 
-    // COMBO(cmb_tab_grp, KC_TAB),
-    // COMBO(cmb_tab_rus, KC_TAB),
+    COMBO(cmb_tab_grp, KC_TAB),
+    COMBO(cmb_tab_rus, KC_TAB),
 
-    // COMBO(cmb_shift_grp_left, KC_LEFT_SHIFT),
-    // COMBO(cmb_shift_grp_right, KC_LEFT_SHIFT),
-    // COMBO(cmb_shift_rus_left, KC_LEFT_SHIFT),
-    // COMBO(cmb_shift_rus_right, KC_LEFT_SHIFT),
+    COMBO(cmb_shift_grp_left, KC_LEFT_SHIFT),
+    COMBO(cmb_shift_grp_right, KC_LEFT_SHIFT),
+    COMBO(cmb_shift_rus_left, KC_LEFT_SHIFT),
+    COMBO(cmb_shift_rus_right, KC_LEFT_SHIFT),
 
-    // COMBO(cmb_cshift_grp, C(KC_LEFT_SHIFT)),
-    // COMBO(cmb_cshift_rus, C(KC_LEFT_SHIFT)),
+    COMBO(cmb_cshift_grp, C(KC_LEFT_SHIFT)),
+    COMBO(cmb_cshift_rus, C(KC_LEFT_SHIFT)),
 
-    // COMBO(cmb_smile_grp, MO(9)),
-    // COMBO(cmb_smile_rus, MO(10)),
+    COMBO(cmb_smile_grp, MO(9)),
+    COMBO(cmb_smile_rus, MO(10)),
 
-    // COMBO(cmb_vim_grp, OSL(6)),
+    COMBO(cmb_vim_grp, OSL(6)),
 
     // COMBO(combo_alt_tab_grp, ALT_TAB),
     // COMBO(combo_alt_tab_eng, ALT_TAB),
