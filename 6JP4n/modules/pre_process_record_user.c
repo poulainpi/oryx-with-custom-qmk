@@ -5,7 +5,7 @@ bool is_oneshot_cancel_key(uint16_t keycode, keyrecord_t *record) {
       uint8_t kc    =  keycode        & 0xFF;
       if (record->tap.count > 0) return false;
        
-      if (kc == KC_DELETE || kc == KC_SPACE) {
+      if (kc == KC_DELETE || kc == KC_SPACE || kc == KC_TAB) {
         return true;
       }
     }
@@ -15,9 +15,8 @@ bool is_oneshot_cancel_key(uint16_t keycode, keyrecord_t *record) {
 
 bool is_oneshot_ignored_key(uint16_t keycode) {
     switch (keycode) {
-    case LT(7, KC_BSPC):
     case LT(3, KC_DELETE):
-    case TD(DANCE_2):
+    case LT(5, KC_TAB):
     case LT(4, KC_SPACE):
     case OS_SHFT:
     case OS_CTRL:
