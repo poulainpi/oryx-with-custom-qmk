@@ -1,23 +1,20 @@
 bool is_oneshot_cancel_key(uint16_t keycode, keyrecord_t *record) {
-    switch (keycode) {
-    case LT(3, KC_DELETE):
-        if (record->event.pressed) return false;
-        if (record->tap.count > 0 && record->tap.keycode == KC_DELETE) {
-            return false;
-        }
-        return true;
-    case LT(4, KC_SPACE):
-        if (record->event.pressed) return false;
-        if (record->tap.count > 0 && record->tap.keycode == KC_SPACE) {
-            return false;
-        }
-        return true;
-    case TD(DANCE_2):
-        if (record->event.pressed) return false;
+    if (record->event.pressed) return false;
+
+    if (keycode == TD(DANCE_2)) {
         return (record->tap.count == 0);
-    default:
-        return false;
     }
+
+    if ((keycode & QK_LAYER_TAP) == QK_LAYER_TAP) {
+        uint8_t layer = (keycode >> 8) & 0xFF;
+        uint8_t kc    =  keycode        & 0xFF;
+        if (record->tap.count > 0) return false;
+        if ((kc == KC_DELETE || kc == KC_SPACE) && layer_state_is(layer)) {
+            return true;
+        }
+    }
+
+    return false;
 }
 
 bool is_oneshot_ignored_key(uint16_t keycode) {
