@@ -7,6 +7,9 @@
 #endif
 #include "./modules/define.c"
 
+#include "quantum/console.h"
+#include "print.h"
+
 enum custom_keycodes {
   RGB_SLD = ZSA_SAFE_RANGE,
   HSV_0_255_255,
