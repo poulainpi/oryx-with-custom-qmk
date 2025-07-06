@@ -245,9 +245,6 @@ bool is_oneshot_cancel_key(uint16_t keycode, keyrecord_t *record) {
       if (record->tap.count > 0) return false;
        
       if (kc == KC_DELETE || kc == KC_SPACE) {
-        SEND_STRING("ooooooooooo");
-        SEND_STRING("\n");
-
         return true;
       }
     }
