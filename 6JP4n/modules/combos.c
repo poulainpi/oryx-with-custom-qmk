@@ -18,12 +18,12 @@ const uint16_t PROGMEM cmb_caps_grp[]  = { KC_N,           KC_G, COMBO_END};
 const uint16_t PROGMEM cmb_caps_rus[]  = { RU_EF,          RU_PE, COMBO_END};
 
 
-const uint16_t PROGMEM cmb_copy_grp[]  = { KC_B,           LT(9, KC_L),    KC_D, COMBO_END};
-const uint16_t PROGMEM cmb_copy_rus[]  = { RU_SHTI,        LT(10, RU_TSE), RU_U, COMBO_END};
+const uint16_t PROGMEM cmb_copy_grp[]  = { KC_B,           KC_L,    KC_D, COMBO_END};
+const uint16_t PROGMEM cmb_copy_rus[]  = { RU_SHTI,        RU_TSE, RU_U, COMBO_END};
 const uint16_t PROGMEM cmb_copy_tbl[]  = { ST_MACRO_0,     ST_MACRO_1,     ST_MACRO_2, COMBO_END};
 
-const uint16_t PROGMEM cmb_paste_grp[] = { LT(9, KC_L),    KC_D,           KC_W, COMBO_END};
-const uint16_t PROGMEM cmb_paste_rus[] = { LT(10, RU_TSE), RU_U,           RU_KA, COMBO_END};
+const uint16_t PROGMEM cmb_paste_grp[] = { KC_L,           KC_D,           KC_W, COMBO_END};
+const uint16_t PROGMEM cmb_paste_rus[] = { RU_TSE,         RU_U,           RU_KA, COMBO_END};
 const uint16_t PROGMEM cmb_paste_tbl[] = { ST_MACRO_1,     ST_MACRO_2,     KC_F22, COMBO_END};
 
 const uint16_t PROGMEM cmb_cut_grp[]   = { KC_B,           KC_W, COMBO_END};
