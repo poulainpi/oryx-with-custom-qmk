@@ -55,7 +55,8 @@ const uint16_t PROGMEM cmb_smile_rus[] = { RU_SHTI,         RU_IE, COMBO_END};
 
 const uint16_t PROGMEM cmb_vim_grp[] = { KC_Y,            KC_I, COMBO_END};
 
-
+const uint16_t PROGMEM combo_alt_tab_grp[] = { KC_H,           KC_A,           KC_E,           KC_I, COMBO_END };
+const uint16_t PROGMEM combo_alt_tab_eng[] = { RU_O,           RU_EL,          RU_DE,          RU_ZHE, COMBO_END };
 
 combo_t key_combos[] = {
     COMBO(cmb_home_grp, KC_HOME),
@@ -115,4 +116,6 @@ combo_t key_combos[] = {
 
     COMBO(cmb_vim_grp, OSL(6)),
 
+    COMBO(combo_alt_tab_grp, MO(9)),
+    COMBO(combo_alt_tab_eng, MO(10)),
 };
