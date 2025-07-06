@@ -240,7 +240,7 @@ bool rgb_matrix_indicators_user(void) {
 bool is_oneshot_cancel_key(uint16_t keycode, keyrecord_t *record) {
 
     if ((keycode & QK_LAYER_TAP) == QK_LAYER_TAP) {
-      uint8_t layer = (keycode >> 8) & 0xFF;
+      // uint8_t layer = (keycode >> 8) & 0xFF;
       uint8_t kc    =  keycode        & 0xFF;
       if (record->tap.count > 0) return false;
        
