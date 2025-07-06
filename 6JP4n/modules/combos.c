@@ -116,6 +116,6 @@ combo_t key_combos[] = {
 
     COMBO(cmb_vim_grp, OSL(6)),
 
-    COMBO(combo_alt_tab_grp, MO(9)),
-    COMBO(combo_alt_tab_eng, MO(10)),
+    COMBO(combo_alt_tab_grp, ALT_TAB),
+    COMBO(combo_alt_tab_eng, ALT_TAB),
 };
