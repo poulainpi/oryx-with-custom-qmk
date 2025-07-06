@@ -243,7 +243,6 @@ static char hex_digit(uint8_t v) {
    return v < 10 ? '0' + v : 'A' + (v - 10);
 }
 
-// Печатает 16-битное значение в виде 4-х HEX цифр
 static void send_hex16(uint16_t v) {
    char buf[5] = {0};
    for (int i = 0; i < 4; i++) {
@@ -252,23 +251,23 @@ static void send_hex16(uint16_t v) {
    SEND_STRING(buf);
 }
 
-// Печатает 8-битное значение (0–255) в виде двух HEX цифр
-static void send_hex8(uint8_t v) {
-   char buf[3] = { hex_digit((v>>4)&0xF), hex_digit(v&0xF), 0 };
-   SEND_STRING(buf);
-}
+// // Печатает 8-битное значение (0–255) в виде двух HEX цифр
+// static void send_hex8(uint8_t v) {
+//    char buf[3] = { hex_digit((v>>4)&0xF), hex_digit(v&0xF), 0 };
+//    SEND_STRING(buf);
+// }
 
 
 bool is_oneshot_cancel_key(uint16_t keycode, keyrecord_t *record) {
 
 
-    if (record->event.pressed) {
-       SEND_STRING("RELEASE code=0x");
-       send_hex16(keycode);
-       SEND_STRING(" tc=");
-       send_hex8(record->tap.count);
-       SEND_STRING("\n");
-    }
+    // if (record->event.pressed) {
+    //    SEND_STRING("RELEASE code=0x");
+    //    send_hex16(keycode);
+    //    SEND_STRING(" tc=");
+    //    send_hex8(record->tap.count);
+    //    SEND_STRING("\n");
+    // }
 
 
 
@@ -277,13 +276,11 @@ bool is_oneshot_cancel_key(uint16_t keycode, keyrecord_t *record) {
       uint8_t kc    =  keycode        & 0xFF;
       if (record->tap.count > 0) return false;
 
-
-
-      if ((kc == KC_DELETE || kc == KC_SPACE) && layer_state_is(layer)) {
- 
         send_hex16(kc);
 
         send_hex16(KC_DELETE);
+
+      if ((kc == KC_DELETE || kc == KC_SPACE) && layer_state_is(layer)) {
 
         return true;
       }
