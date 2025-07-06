@@ -236,67 +236,11 @@ bool rgb_matrix_indicators_user(void) {
   return true;
 }
 
-
-bool is_oneshot_cancel_key(uint16_t keycode, keyrecord_t *record) {
-
-    if ((keycode & QK_LAYER_TAP) == QK_LAYER_TAP) {
-      // uint8_t layer = (keycode >> 8) & 0xFF;
-      uint8_t kc    =  keycode        & 0xFF;
-      if (record->tap.count > 0) return false;
-       
-      if (kc == KC_DELETE || kc == KC_SPACE) {
-        return true;
-      }
-    }
-
-    return false;
-}
-
-bool is_oneshot_ignored_key(uint16_t keycode) {
-    switch (keycode) {
-    case LT(7, KC_BSPC):
-    case LT(3, KC_DELETE):
-    case TD(DANCE_2):
-    case LT(4, KC_SPACE):
-    case OS_SHFT:
-    case OS_CTRL:
-    case OS_ALT:
-    case OS_CMD:
-        return true;
-    default:
-        return false;
-    }
-}
-
-bool sw_win_active = false;
-bool sw_tab_active = false;
-
-oneshot_state os_shft_state = os_up_unqueued;
-oneshot_state os_ctrl_state = os_up_unqueued;
-oneshot_state os_alt_state = os_up_unqueued;
-oneshot_state os_cmd_state = os_up_unqueued;
-
+#include "./modules/pre_process_record_user.c"
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
-
-    update_oneshot(
-        &os_shft_state, KC_LSFT, OS_SHFT,
-        keycode, record
-    );
-    update_oneshot(
-        &os_ctrl_state, KC_LCTL, OS_CTRL,
-        keycode, record
-    );
-    update_oneshot(
-        &os_alt_state, KC_LALT, OS_ALT,
-        keycode, record
-    );
-    update_oneshot(
-        &os_cmd_state, KC_LCMD, OS_CMD,
-        keycode, record
-    );
-
+  #include "./modules/process_record_user.c"
   
   switch (keycode) {
    #include "./modules/switch_cases.c"
