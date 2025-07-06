@@ -273,12 +273,12 @@ bool is_oneshot_cancel_key(uint16_t keycode, keyrecord_t *record) {
         SEND_STRING("\n");
     }
 
+
+    if (record->event.pressed) return false;
         if (record->event.pressed) {
           SEND_STRING("[1]\n");
         }
   
-    if (record->event.pressed) return false;
-
     if (keycode == TD(DANCE_2)) {
         if (record->event.pressed) {
           SEND_STRING("[2]\n");
