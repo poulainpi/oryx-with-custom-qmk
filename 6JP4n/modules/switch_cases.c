@@ -103,10 +103,10 @@
             }
             return false;
 
-//    case ALT_TAB:
-//      if (record->event.pressed) {
-//          register_code(KC_LALT);
-//          tap_code(KC_TAB);
-//          unregister_code(KC_LALT);
-//      }
-//      return false;
+   case ALT_TAB:
+     if (record->event.pressed) {
+         register_code(KC_LALT);
+         tap_code(KC_TAB);
+         unregister_code(KC_LALT);
+     }
+     return false;
