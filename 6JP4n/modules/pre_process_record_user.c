@@ -1,9 +1,20 @@
 bool is_oneshot_cancel_key(uint16_t keycode, keyrecord_t *record) {
 
-    uprintf("DBG: code=0x%04X, pressed=%d, tap=%d\n",
-        keycode,
-        record->event.pressed,
-        record->tap.count);
+    if (record->event.pressed) {
+        // На даун: печатаем, например, "D:0xABCD\n"
+        SEND_STRING("D:");
+        send_hex_16(keycode);
+        SEND_STRING("\n");
+    } else {
+        // На релиз: печатаем "U:0xABCD tc=2 st=0x12\n"
+        SEND_STRING("U:");
+        send_hex_16(keycode);
+        SEND_STRING(" tc=");
+        send_hex(record->tap.count);
+        SEND_STRING(" st=");
+        send_hex_32(layer_state);
+        SEND_STRING("\n");
+    }
     
     if (record->event.pressed) return false;
 
