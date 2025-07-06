@@ -1,4 +1,10 @@
 bool is_oneshot_cancel_key(uint16_t keycode, keyrecord_t *record) {
+
+    uprintf("DBG: code=0x%04X, pressed=%d, tap=%d\n",
+        keycode,
+        record->event.pressed,
+        record->tap.count);
+    
     if (record->event.pressed) return false;
 
     if (keycode == TD(DANCE_2)) {
