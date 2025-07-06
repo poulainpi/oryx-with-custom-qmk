@@ -281,6 +281,10 @@ bool is_oneshot_cancel_key(uint16_t keycode, keyrecord_t *record) {
         send_hex16(KC_DELETE);
         SEND_STRING(" : ");
         send_hex16(KC_SPACE);
+        SEND_STRING(" : ");
+        send_hex16(layer);
+        SEND_STRING(" : ");
+        SEND_STRING(layer_state_is(layer) ? "1\n" : "0\n");
         SEND_STRING("\n");
 
         
