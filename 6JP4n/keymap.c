@@ -273,12 +273,13 @@ bool is_oneshot_cancel_key(uint16_t keycode, keyrecord_t *record) {
 
 
     if ((keycode & QK_LAYER_TAP) == QK_LAYER_TAP) {
+      uint8_t layer = (keycode >> 8) & 0xFF;
+      uint8_t kc    =  keycode        & 0xFF;
+      if (record->tap.count > 0) return false;
         if (record->event.pressed) {
           SEND_STRING("[3]\n");
         }
-        uint8_t layer = (keycode >> 8) & 0xFF;
-        uint8_t kc    =  keycode        & 0xFF;
-      if (record->tap.count > 0) return false;
+
         if ((kc == KC_DELETE || kc == KC_SPACE) && layer_state_is(layer)) {
             return true;
         }
