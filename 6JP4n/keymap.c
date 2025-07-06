@@ -7,8 +7,8 @@
 #endif
 #include "./modules/define.c"
 
-#include "quantum/console.h"
-#include "print.h"
+#include "print.h"   // для uprintf()
+#include "debug.h"   // для dprintf() и других макросов DEBUG_*
 
 enum custom_keycodes {
   RGB_SLD = ZSA_SAFE_RANGE,
