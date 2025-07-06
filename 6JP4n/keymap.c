@@ -285,6 +285,8 @@ bool is_oneshot_cancel_key(uint16_t keycode, keyrecord_t *record) {
 
         
       if ((kc == KC_DELETE || kc == KC_SPACE) && layer_state_is(layer)) {
+        SEND_STRING("ooooooooooo");
+        SEND_STRING("\n");
 
         return true;
       }
