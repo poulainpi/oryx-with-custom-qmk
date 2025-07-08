@@ -32,7 +32,7 @@ void update_oneshot(
         }
     } else {
         if (record->event.pressed) {
-            if (is_oneshot_cancel_key(keycode) && *state != os_up_unqueued) {
+            if (is_oneshot_cancel_key(keycode, record) && *state != os_up_unqueued) {
                 // Cancel oneshot on designated cancel keydown.
                 *state = os_up_unqueued;
                 unregister_code(mod);

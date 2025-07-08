@@ -1,7 +1,8 @@
 
-A few notes:
+### A few notes:
 
 
+### Intro:
 
 The overall goal of my changes to the keyboard layout configuration was to ensure an identical 
 set of characters for the most frequently used actions when working with text or code across 
@@ -10,6 +11,8 @@ which use different key combinations for Cut, Copy, Paste, Undo, and Redo operat
 create the typical Linux combination of LShift+LCtrl+FunctionKey because I very rarely work 
 with it outside of a shell, but this can easily be done by adding an ifelse condition to each 
 case.
+
+### The language:
 
 I also needed to implement switching between language layouts in the operating system 
 and layers on the keyboard. The second language I use is Russian, which has 33 characters, 
@@ -48,3 +51,8 @@ You can download the software and view the documentation if needed here:
 Switch the remote to a different preconfigured SSH key:
 - `git remote set-url origin git@github.com-key2:tpaktop77/oryx-with-custom-qmk.git`
 
+### The OSSM
+
+```
+  https://github.com/callum-oakley/qmk_firmware/tree/master/users/callum
+```

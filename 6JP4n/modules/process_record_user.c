@@ -1,3 +1,13 @@
+
+    // update_swapper(
+    //     &sw_win_active, KC_LALT, KC_TAB, SW_WIN, OS_SHFT,
+    //     keycode, record
+    // );
+    // update_swapper(
+    //     &sw_tab_active, KC_LCTL, KC_TAB, SW_TAB, OS_SHFT,
+    //     keycode, record
+    // ); 
+
     update_oneshot(
         &os_shft_state, KC_LSFT, OS_SHFT,
         keycode, record
