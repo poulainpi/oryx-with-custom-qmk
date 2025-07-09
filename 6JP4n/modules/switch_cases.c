@@ -108,7 +108,7 @@
         case ALT_TAB:
             if (record->event.pressed) {
 #if defined(OS_DETECTION_ENABLE)
-                host_system_t os = host_system_get();
+                os_variant_t host_os = detected_host_os();
                 if (host_os == OS_MACOS || host_os == OS_IOS) {
                     register_code(KC_LGUI);
                     tap_code(KC_TAB);
@@ -119,9 +119,9 @@
                     unregister_code(KC_LALT);
                 }
 #endif
-                    register_code(KC_LALT);
-                    tap_code(KC_TAB);
-                    unregister_code(KC_LALT);
+                register_code(KC_LALT);
+                tap_code(KC_TAB);
+                unregister_code(KC_LALT);
             }
             return false;
 
