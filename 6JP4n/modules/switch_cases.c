@@ -96,17 +96,40 @@
                 os_variant_t host_os = detected_host_os();
                 if (host_os == OS_MACOS || host_os == OS_IOS) {
                     tap_code16(MAC_SIRI);
-                } else if (host_os == OS_WINDOWS) {
+                } else  {
                     SEND_STRING(SS_LGUI("h"));
                 }
+#else
+            SEND_STRING(SS_LGUI("h"));
 #endif
             }
             return false;
 
-   case ALT_TAB:
-     if (record->event.pressed) {
-         register_code(KC_LALT);
-         tap_code(KC_TAB);
-         unregister_code(KC_LALT);
-     }
-     return false;
+        case ALT_TAB:
+            if (record->event.pressed) {
+#if defined(OS_DETECTION_ENABLE)
+                host_system_t os = host_system_get();
+                if (host_os == OS_MACOS || host_os == OS_IOS) {
+                    register_code(KC_LGUI);
+                    tap_code(KC_TAB);
+                    unregister_code(KC_LGUI);
+                } else {
+                    register_code(KC_LALT);
+                    tap_code(KC_TAB);
+                    unregister_code(KC_LALT);
+                }
+#endif
+                    register_code(KC_LALT);
+                    tap_code(KC_TAB);
+                    unregister_code(KC_LALT);
+            }
+            return false;
+
+
+//   case ALT_TAB:
+//     if (record->event.pressed) {
+//         register_code(KC_LALT);
+//         tap_code(KC_TAB);
+//         unregister_code(KC_LALT);
+//     }
+//     return false;
