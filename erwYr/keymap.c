@@ -47,7 +47,96 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 };
 
-
+// ************************************* key overrides: *************************************  
+// delete is shifted backspace  
+const key_override_t delete_key_override = ko_make_basic(MOD_MASK_SHIFT, KC_BSPC, KC_DEL);  
+// caps_lock is controlled caps_word  
+const key_override_t caps_lock_ctrl_override = ko_make_basic(MOD_MASK_CTRL, CW_TOGG, CL_TOGG);  
+// media control button  
+const key_override_t next_track_override =  
+    ko_make_with_layers_negmods_and_options(  
+       MOD_MASK_CTRL,       // Trigger modifiers: ctrl  
+        KC_MPLY,             // Trigger key: play/pause  
+        KC_MNXT,             // Replacement key  
+        ~0,                  // Activate on all layers  
+        MOD_MASK_SA,         // Do not activate when shift or alt are pressed  
+        ko_option_no_reregister_trigger); // Specifies that the play key is not registered again after lifting ctrl  
+const key_override_t prev_track_override    = ko_make_with_layers_negmods_and_options(MOD_MASK_CS, KC_MPLY,  
+                                      KC_MPRV, ~0, MOD_MASK_ALT, ko_option_no_reregister_trigger);  
+const key_override_t vol_up_override        = ko_make_with_layers_negmods_and_options(MOD_MASK_ALT, KC_MPLY,  
+                                      KC_VOLU, ~0, MOD_MASK_CS, ko_option_no_reregister_trigger);  
+const key_override_t vol_down_override      = ko_make_with_layers_negmods_and_options(MOD_MASK_SA, KC_MPLY,  
+                                      KC_VOLD, ~0, MOD_MASK_CTRL, ko_option_no_reregister_trigger);  
+const key_override_t brightness_up_override = ko_make_with_layers_negmods_and_options(MOD_MASK_CA, KC_MPLY,  
+                                      KC_BRIU, ~0, MOD_MASK_SHIFT, ko_option_no_reregister_trigger);  
+const key_override_t brightness_down_override = ko_make_basic(MOD_MASK_CSA, KC_MPLY, KC_BRID);  
+// Shifted symbols  
+const key_override_t comma_dot_override     = ko_make_basic(MOD_MASK_SHIFT, KC_COMM, KC_DOT);  
+const key_override_t lbrct_labk_override    = ko_make_basic(MOD_MASK_SHIFT, KC_LBRC, KC_LABK);  
+const key_override_t rbrct_rabk_override    = ko_make_basic(MOD_MASK_SHIFT, KC_RBRC, KC_RABK);  
+const key_override_t lcurly_lpar_override   = ko_make_basic(MOD_MASK_SHIFT, KC_LCBR, KC_LPRN);  
+const key_override_t rcurly_rpar_override   = ko_make_basic(MOD_MASK_SHIFT, KC_RCBR, KC_RPRN);  
+const key_override_t grave_tilde_override   = ko_make_basic(MOD_MASK_SHIFT, KC_GRV, KC_TILD);  
+const key_override_t slash_bslash_override  = ko_make_basic(MOD_MASK_SHIFT, KC_SLSH, KC_BSLS);  
+const key_override_t amp_pipe_override      = ko_make_basic(MOD_MASK_SHIFT, KC_AMPR, KC_PIPE);  
+const key_override_t ques_excl_override     = ko_make_basic(MOD_MASK_SHIFT, KC_QUES, KC_EXLM);  
+const key_override_t sc_col_override        = ko_make_basic(MOD_MASK_SHIFT, KC_SCLN, KC_COLN);  
+const key_override_t at_hash_override       = ko_make_basic(MOD_MASK_SHIFT, KC_AT, KC_HASH);  
+const key_override_t minus_plus_override    = ko_make_basic(MOD_MASK_SHIFT, KC_MINS, KC_PLUS);  
+const key_override_t under_dollar_override  = ko_make_basic(MOD_MASK_SHIFT, KC_UNDS, KC_DLR);  
+const key_override_t star_perc_override     = ko_make_basic(MOD_MASK_SHIFT, KC_ASTR, KC_PERC);  
+const key_override_t eq_circ_override       = ko_make_basic(MOD_MASK_SHIFT, KC_EQL, KC_CIRC);  
+const key_override_t quot_dquot_override    = ko_make_basic(MOD_MASK_SHIFT, KC_QUOT, KC_DQUO);  
+// Shifted numbers  
+const key_override_t kc_1_override          = ko_make_basic(MOD_MASK_SHIFT, KC_1, KC_F1);  
+const key_override_t kc_2_override          = ko_make_basic(MOD_MASK_SHIFT, KC_2, KC_F2);  
+const key_override_t kc_3_override          = ko_make_basic(MOD_MASK_SHIFT, KC_3, KC_F3);  
+const key_override_t kc_4_override          = ko_make_basic(MOD_MASK_SHIFT, KC_4, KC_F4);  
+const key_override_t kc_5_override          = ko_make_basic(MOD_MASK_SHIFT, KC_5, KC_F5);  
+const key_override_t kc_6_override          = ko_make_basic(MOD_MASK_SHIFT, KC_6, KC_F6);  
+const key_override_t kc_7_override          = ko_make_basic(MOD_MASK_SHIFT, KC_7, KC_F7);  
+const key_override_t kc_8_override          = ko_make_basic(MOD_MASK_SHIFT, KC_8, KC_F8);  
+const key_override_t kc_9_override          = ko_make_basic(MOD_MASK_SHIFT, KC_9, KC_F9);  
+const key_override_t kc_0_override          = ko_make_basic(MOD_MASK_SHIFT, KC_0, KC_F10);  
+  
+const key_override_t **key_overrides = (const key_override_t *[]) {  
+    &delete_key_override,  
+    &caps_lock_ctrl_override,  
+    &next_track_override,  
+    &prev_track_override,  
+    &vol_up_override,  
+    &vol_down_override,  
+    &brightness_up_override,  
+    &brightness_down_override,  
+    &comma_dot_override,  
+    &lbrct_labk_override,  
+    &rbrct_rabk_override,  
+    &lcurly_lpar_override,  
+    &rcurly_rpar_override,  
+    &grave_tilde_override,  
+    &slash_bslash_override,  
+    &amp_pipe_override,  
+    &ques_excl_override,  
+    &sc_col_override,  
+    &at_hash_override,  
+    &minus_plus_override,  
+    &under_dollar_override,  
+    &star_perc_override,  
+    &eq_circ_override,  
+    &quot_dquot_override,  
+    &kc_1_override,  
+    &kc_2_override,  
+    &kc_3_override,  
+    &kc_4_override,  
+    &kc_5_override,  
+    &kc_6_override,  
+    &kc_7_override,  
+    &kc_8_override,  
+    &kc_9_override,  
+    &kc_0_override,  
+    NULL  
+};  
+// ******************************************************************************************
 
 
 extern rgb_config_t rgb_matrix_config;
