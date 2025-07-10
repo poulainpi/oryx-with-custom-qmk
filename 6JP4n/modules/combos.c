@@ -19,7 +19,7 @@ const uint16_t PROGMEM cmb_caps_rus[]  = { RU_EF,          RU_PE, COMBO_END};
 
 
 const uint16_t PROGMEM cmb_copy_grp[]  = { KC_R,           KC_L,     COMBO_END};
-const uint16_t PROGMEM cmb_copy_rus[]  = { RU_YERU,        RU_TSE,   COMBO_END};
+const uint16_t PROGMEM cmb_copy_rus[]  = { RU_CHE,        RU_YERU,   COMBO_END};
 const uint16_t PROGMEM cmb_copy_tbl[]  = { ST_MACRO_4,     ST_MACRO_1, COMBO_END};
 
 const uint16_t PROGMEM cmb_paste_grp[] = { KC_T,           KC_D,       COMBO_END};
