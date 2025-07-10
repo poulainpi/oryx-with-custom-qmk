@@ -58,6 +58,9 @@ const uint16_t PROGMEM cmb_vim_grp[] = { KC_Y,            KC_I, COMBO_END};
 const uint16_t PROGMEM combo_alt_tab_grp[] = { KC_H,           KC_A,           KC_E,           KC_I, COMBO_END };
 const uint16_t PROGMEM combo_alt_tab_eng[] = { RU_O,           RU_EL,          RU_DE,          RU_ZHE, COMBO_END };
 
+const uint16_t PROGMEM combo_select_all_grp[] = { KC_N,           KC_B, COMBO_END };
+const uint16_t PROGMEM combo_select_all_eng[] = { RU_EF,           RU_SHTI, COMBO_END };
+
 combo_t key_combos[] = {
     COMBO(cmb_home_grp, KC_HOME),
     COMBO(cmb_home_rus, KC_HOME),
@@ -118,4 +121,7 @@ combo_t key_combos[] = {
 
     COMBO(combo_alt_tab_grp, ALT_TAB),
     COMBO(combo_alt_tab_eng, ALT_TAB),
+
+    COMBO(combo_select_all_grp, SELECT_ALL),
+    COMBO(combo_select_all_eng, SELECT_ALL),
 };
