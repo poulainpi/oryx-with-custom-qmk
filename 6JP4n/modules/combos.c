@@ -84,11 +84,11 @@ combo_t key_combos[] = {
 
     COMBO(cmb_copy_grp, OS_AWARE_COPY),  
     COMBO(cmb_copy_rus, OS_AWARE_COPY),
-    //COMBO(cmb_copy_tbl, OS_AWARE_COPY),  
+    COMBO(cmb_copy_tbl, OS_AWARE_COPY),  
 
     COMBO(cmb_paste_grp, OS_AWARE_PASTE),
     COMBO(cmb_paste_rus, OS_AWARE_PASTE),
-    COMBO(cmb_paste_tbl, OS_AWARE_PASTE),
+    //COMBO(cmb_paste_tbl, OS_AWARE_PASTE),
 
     COMBO(cmb_cut_grp, OS_AWARE_CUT),
     COMBO(cmb_cut_rus, OS_AWARE_CUT),
