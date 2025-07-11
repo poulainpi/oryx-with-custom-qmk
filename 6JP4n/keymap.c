@@ -150,20 +150,6 @@ const char chordal_hold_layout[MATRIX_ROWS][MATRIX_COLS] PROGMEM = LAYOUT(
 );
 
 
-uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
-    switch (keycode) {
-        case KC_Q:
-            return g_tapping_term + 299;
-        case KC_F24:
-            return g_tapping_term + 299;
-        case RU_YA:
-            return g_tapping_term + 299;
-        case RU_YO:
-            return g_tapping_term + 299;
-        default:
-            return g_tapping_term;
-    }
-}
 
 extern rgb_config_t rgb_matrix_config;
 
