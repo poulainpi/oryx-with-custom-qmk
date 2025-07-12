@@ -26,8 +26,8 @@ const uint16_t PROGMEM cmb_paste_grp[] = { KC_T,           KC_D,       COMBO_END
 const uint16_t PROGMEM cmb_paste_rus[] = { RU_VE,          RU_U,       COMBO_END};
 const uint16_t PROGMEM cmb_paste_tbl[] = { ST_MACRO_2,     ST_MACRO_5, COMBO_END};
 
-//const uint16_t PROGMEM cmb_cut_grp[]   = { KC_S,           KC_W, COMBO_END};
-//const uint16_t PROGMEM cmb_cut_rus[]   = { RU_A,           RU_KA, COMBO_END};
+const uint16_t PROGMEM cmb_cut_grp[]   = { KC_N,           KC_B, COMBO_END};
+const uint16_t PROGMEM cmb_cut_rus[]   = { RU_EF,           RU_SHTI, COMBO_END};
 
 
 const uint16_t PROGMEM cmb_undo_grp[]  = { KC_P,           KC_F22,         KC_F23, COMBO_END};
@@ -58,8 +58,8 @@ const uint16_t PROGMEM cmb_vim_grp[] = { KC_Y,            KC_I, COMBO_END};
 const uint16_t PROGMEM combo_alt_tab_grp[] = { KC_H,           KC_A,           KC_E,           KC_I, COMBO_END };
 const uint16_t PROGMEM combo_alt_tab_eng[] = { RU_O,           RU_EL,          RU_DE,          RU_ZHE, COMBO_END };
 
-const uint16_t PROGMEM combo_select_all_grp[] = { KC_N,           KC_B, COMBO_END };
-const uint16_t PROGMEM combo_select_all_eng[] = { RU_EF,           RU_SHTI, COMBO_END };
+const uint16_t PROGMEM combo_select_all_grp[] = { KC_G,           KC_Z, COMBO_END };
+const uint16_t PROGMEM combo_select_all_eng[] = { RU_PE,           RU_IE, COMBO_END };
 
 combo_t key_combos[] = {
     COMBO(cmb_home_grp, KC_HOME),
@@ -90,8 +90,8 @@ combo_t key_combos[] = {
     COMBO(cmb_paste_rus, OS_AWARE_PASTE),
     COMBO(cmb_paste_tbl, OS_AWARE_PASTE),
 
-    //COMBO(cmb_cut_grp, OS_AWARE_CUT),
-    //COMBO(cmb_cut_rus, OS_AWARE_CUT),
+    COMBO(cmb_cut_grp, OS_AWARE_CUT),
+    COMBO(cmb_cut_rus, OS_AWARE_CUT),
 
 
     COMBO(cmb_undo_grp, OS_AWARE_UNDO),
