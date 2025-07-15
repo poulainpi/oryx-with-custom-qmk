@@ -65,6 +65,10 @@ const uint16_t PROGMEM combo_em_dash_grp[] = { KC_UNDS,           KC_MINUS, COMB
 const uint16_t PROGMEM combo_em_dash_eng[] = { RU_UNDS,           RU_MINS, COMBO_END };
 
 
+enum combo_events {
+    COMBO_EM_DASH,
+    COMBO_EN_DASH,
+};
 
 
 combo_t key_combos[] = {
@@ -134,8 +138,21 @@ combo_t key_combos[] = {
 //   COMBO(combo_em_dash_grp, UC_EM_DASH),
 //   COMBO(combo_em_dash_eng, UC_EM_DASH),
 
-    COMBO(combo_em_dash_grp, register_unicode(0x03B1)),
-    COMBO(combo_em_dash_eng, register_unicode(0x03B1)),
+    [COMBO_EM_DASH] = COMBO_ACTION(combo_em_dash_grp),
+    [COMBO_EN_DASH] = COMBO_ACTION(combo_em_dash_eng),
 
 
 };
+
+bool process_combo_event(uint16_t combo_index, bool pressed) {
+    if (!pressed) return true;  // выполняем только на «press»
+    switch (combo_index) {
+        case COMBO_EM_DASH:
+            register_unicode(EM_DASH);
+            break;
+        case COMBO_EN_DASH:
+            register_unicode(EN_DASH);
+            break;
+    }
+    return true;
+}
