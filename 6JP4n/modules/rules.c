@@ -2,6 +2,5 @@ COMBO_ENABLE = yes
 USB_OS_DETECTION_ENABLE = yes
 OS_DETECTION_ENABLE = yes
 VIA_ENABLE = yes
-
-SRC += ./modules/oneshot.c
-SRC += ./modules/swapper.c
+UNICODE_ENABLE = yes
+UNICODEMAP_ENABLE = yes
