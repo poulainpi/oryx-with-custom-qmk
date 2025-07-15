@@ -61,7 +61,7 @@ const uint16_t PROGMEM combo_alt_tab_eng[] = { RU_O,           RU_EL,          R
 const uint16_t PROGMEM combo_select_all_grp[] = { KC_N,           KC_B, COMBO_END };
 const uint16_t PROGMEM combo_select_all_eng[] = { RU_EF,           RU_SHTI, COMBO_END };
 
-const uint16_t PROGMEM combo_em_dash__grp[] = { KC_UNDS,           KC_MINUS, COMBO_END };
+const uint16_t PROGMEM combo_em_dash_grp[] = { KC_UNDS,           KC_MINUS, COMBO_END };
 const uint16_t PROGMEM combo_em_dash_eng[] = { RU_UNDS,           RU_MINS, COMBO_END };
 
 
