@@ -140,8 +140,8 @@
       }
       return false;
 
-//    case COMBO_CHECK:
-//        if (record->event.pressed) {
-//            register_unicode(CHECK_THIN);
-//        }
-//        break;
+    case UC_EM_DASH:
+        if (record->event.pressed) {
+            register_unicode(0x2014);
+        }
+        return false;
