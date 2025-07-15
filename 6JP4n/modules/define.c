@@ -20,6 +20,7 @@ enum unicode_names {
     EN_DASH,        // ‒
     EM_DASH,        // —
     DAGGER,         // †
+    TRIPLE_DOT      // ...
     TRIPLE_PRIME,   // ‴
     DOUBLE_EXCL,    // ‼
     INFINITY,       // ∞
@@ -37,6 +38,7 @@ const uint32_t unicode_map[] PROGMEM = {
     [EN_DASH]       = 0x2012, // ‒ Figure Dash
     [EM_DASH]       = 0x2014, // — Em Dash
     [DAGGER]        = 0x2020, // †
+    [TRIPLE_DOT]    = 0x2026, // ...
     [TRIPLE_PRIME]  = 0x2034, // ‴
     [DOUBLE_EXCL]   = 0x203C, // ‼
     [INFINITY]      = 0x221E, // ∞
