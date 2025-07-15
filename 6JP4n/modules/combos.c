@@ -131,10 +131,11 @@ combo_t key_combos[] = {
     COMBO(combo_select_all_grp, SELECT_ALL),
     COMBO(combo_select_all_eng, SELECT_ALL),
 
-    COMBO(combo_em_dash_grp, UC_EM_DASH),
-    COMBO(combo_em_dash_eng, UC_EM_DASH),
+//   COMBO(combo_em_dash_grp, UC_EM_DASH),
+//   COMBO(combo_em_dash_eng, UC_EM_DASH),
 
-    COMBO(combo_em_dash_grp, UC_EM_DASH),
-    COMBO(combo_em_dash_eng, UC_EM_DASH),
+    COMBO(combo_em_dash_grp, register_unicode(0x03B1)),
+    COMBO(combo_em_dash_eng, register_unicode(0x03B1)),
+
 
 };
