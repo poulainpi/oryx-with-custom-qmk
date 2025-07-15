@@ -19,7 +19,7 @@ enum unicode_names {
     EN_DASH,        // ‒
     EM_DASH,        // —
     DAGGER,         // †
-    TRIPLE_DOT      // ...
+    TRIPLE_DOT,     // ...
     TRIPLE_PRIME,   // ‴
     DOUBLE_EXCL,    // ‼
     INFINITY,       // ∞
