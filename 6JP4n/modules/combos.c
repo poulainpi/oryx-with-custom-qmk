@@ -134,4 +134,7 @@ combo_t key_combos[] = {
     COMBO(combo_em_dash_grp, UC_EM_DASH),
     COMBO(combo_em_dash_eng, UC_EM_DASH),
 
+    COMBO(combo_em_dash_grp, UC(EM_DASH)),
+    COMBO(combo_em_dash_eng, UC(EM_DASH)),
+
 };
