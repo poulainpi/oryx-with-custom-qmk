@@ -139,3 +139,9 @@
 #endif
       }
       return false;
+
+//    case COMBO_CHECK:
+//        if (record->event.pressed) {
+//            register_unicode(CHECK_THIN);
+//        }
+//        break;
