@@ -13,6 +13,8 @@
 #define OS_DETECTION_SINGLE_REPORT
 #endif
 
+#define UNICODE_SELECTED_MODES UNICODE_MODE_MACOS
+
 
 enum unicode_names {
     EN_DASH,        // ‒
