@@ -144,8 +144,9 @@ combo_t key_combos[] = {
 
 };
 
-bool process_combo_event(uint16_t combo_index, bool pressed) {
-    if (!pressed) return true;  // выполняем только на «press»
+void process_combo_event(uint16_t combo_index, bool pressed) {
+    if (!pressed) return;
+
     switch (combo_index) {
         case COMBO_EM_DASH:
             register_unicode(EM_DASH);
@@ -154,5 +155,4 @@ bool process_combo_event(uint16_t combo_index, bool pressed) {
             register_unicode(EN_DASH);
             break;
     }
-    return true;
 }
