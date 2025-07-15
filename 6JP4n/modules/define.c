@@ -14,7 +14,7 @@
 #endif
 
 //#define UNICODE_SELECTED_MODES UNICODE_MODE_MACOS
-
+#include "unicode_defs.h"
 
 enum unicode_names {
     EN_DASH,        // ‒
