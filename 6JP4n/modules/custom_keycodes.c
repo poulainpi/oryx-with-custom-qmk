@@ -11,4 +11,3 @@
   OS_CMD,
   ALT_TAB,
   SELECT_ALL,
-  UC_EM_DASH,
