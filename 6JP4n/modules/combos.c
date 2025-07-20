@@ -167,6 +167,7 @@ void process_combo_event(uint16_t combo_index, bool pressed) {
             } else {
                 layer_move(QMK_LAYER_ENG);
                 SEND_STRING(SS_LCTL(SS_LSFT("1")));
-            }        
+            }
+            break;
     }
 }
