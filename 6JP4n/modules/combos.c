@@ -64,10 +64,13 @@ const uint16_t PROGMEM combo_select_all_eng[] = { RU_EF,           RU_SHTI, COMB
 const uint16_t PROGMEM combo_em_dash_grp[] = { KC_UNDS,           KC_MINUS, COMBO_END };
 const uint16_t PROGMEM combo_em_dash_eng[] = { RU_UNDS,           RU_MINS, COMBO_END };
 
+const uint16_t PROGMEM combo_enter_grp[] = { KC_N,           KC_R,           KC_T,           KC_S, COMBO_END };
+
 
 enum combo_events {
     COMBO_EM_DASH,
     COMBO_EN_DASH,
+    COMBO_ENTER,
 };
 
 
@@ -141,6 +144,7 @@ combo_t key_combos[] = {
     [COMBO_EM_DASH] = COMBO_ACTION(combo_em_dash_grp),
     [COMBO_EN_DASH] = COMBO_ACTION(combo_em_dash_eng),
 
+    [COMBO_ENTER]   = COMBO_ACTION(combo_enter_grp),
 
 };
 
