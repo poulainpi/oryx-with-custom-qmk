@@ -153,26 +153,20 @@ void process_combo_event(uint16_t combo_index, bool pressed) {
 
     switch (combo_index) {
         case COMBO_EM_DASH:
-            if (pressed) {
-                register_unicode(EM_DASH);
-            }
+            register_unicode(EM_DASH);
             break;
         case COMBO_EN_DASH:
-            if (pressed) {
-                register_unicode(EN_DASH);
+            register_unicode(EN_DASH);
             break;
         case COMBO_ENTER:
-            if (pressed) {
-                //SEND_STRING("john.doe@example.com");
-                uint8_t current_highest_layer = get_highest_layer(layer_state);
+            uint8_t current_highest_layer = get_highest_layer(layer_state);
     
-                if (current_highest_layer == QMK_LAYER_ENG) {
-                    layer_move(QMK_LAYER_RUS);
-                    SEND_STRING(SS_LCTL(SS_LSFT("2")));
-                } else {
-                    layer_move(QMK_LAYER_ENG);
-                    SEND_STRING(SS_LCTL(SS_LSFT("1")));
-                }      
+            if (current_highest_layer == QMK_LAYER_ENG) {
+                layer_move(QMK_LAYER_RUS);
+                SEND_STRING(SS_LCTL(SS_LSFT("2")));
+            } else {
+                layer_move(QMK_LAYER_ENG);
+                SEND_STRING(SS_LCTL(SS_LSFT("1")));
             }
             break;
     }
