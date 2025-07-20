@@ -163,7 +163,16 @@ void process_combo_event(uint16_t combo_index, bool pressed) {
             break;
         case COMBO_ENTER:
             if (pressed) {
-                SEND_STRING("john.doe@example.com");
+                //SEND_STRING("john.doe@example.com");
+                uint8_t current_highest_layer = get_highest_layer(layer_state);
+    
+                if (current_highest_layer == QMK_LAYER_ENG) {
+                    layer_move(QMK_LAYER_RUS);
+                    SEND_STRING(SS_LCTL(SS_LSFT("2")));
+                } else {
+                    layer_move(QMK_LAYER_ENG);
+                    SEND_STRING(SS_LCTL(SS_LSFT("1")));
+                }      
             }
             break;
     }
