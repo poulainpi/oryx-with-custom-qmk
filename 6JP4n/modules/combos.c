@@ -71,7 +71,8 @@ const uint16_t PROGMEM combo_enter_rus[] = { RU_YERU, RU_A, COMBO_END };
 enum combo_events {
     COMBO_EM_DASH,
     COMBO_EN_DASH,
-    COMBO_ENTER,
+    CMB_ENTER_GR,
+    CMB_ENTER_RU,
     CMB_LNG_SWCH_GR,
     CMB_LNG_SWCH_RU,
 };
