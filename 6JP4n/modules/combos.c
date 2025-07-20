@@ -148,8 +148,8 @@ combo_t key_combos[] = {
     [CMB_ENTER_GR]   = COMBO_ACTION(combo_enter_grp),
     [CMB_ENTER_RU]   = COMBO_ACTION(combo_enter_rus),
 
-    [CMB_LNG_SWCH_GR]    = COMBO_ACTION(cmb_lngsw_grp)
-    [CMB_LNG_SWCH_RU]    = COMBO_ACTION(cmb_lngsw_rus)
+    [CMB_LNG_SWCH_GR]    = COMBO_ACTION(cmb_lngsw_grp),
+    [CMB_LNG_SWCH_RU]    = COMBO_ACTION(cmb_lngsw_rus),
 
 };
 
