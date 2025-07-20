@@ -153,10 +153,14 @@ void process_combo_event(uint16_t combo_index, bool pressed) {
 
     switch (combo_index) {
         case COMBO_EM_DASH:
-            register_unicode(EM_DASH);
+            if (pressed) {
+                register_unicode(EM_DASH);
+            }
             break;
         case COMBO_EN_DASH:
-            register_unicode(EN_DASH);
+            if (pressed) {
+                register_unicode(EN_DASH);
+            }
             break;
         case COMBO_ENTER:
             if (pressed) {
