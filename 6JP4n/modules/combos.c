@@ -164,7 +164,7 @@ void process_combo_event(uint16_t combo_index, bool pressed) {
             break;
         case COMBO_ENTER:
             if (pressed) {
-                SEND_STRING("john.doe@example.com");
+                tap_code16(KC_ENTER);
             }
             break;
     }
