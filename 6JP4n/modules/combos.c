@@ -72,6 +72,8 @@ enum combo_events {
     COMBO_EM_DASH,
     COMBO_EN_DASH,
     COMBO_ENTER,
+    CMB_LNG_SWCH_GR,
+    CMB_LNG_SWCH_RU,
 };
 
 
@@ -82,8 +84,8 @@ combo_t key_combos[] = {
     COMBO(cmb_end_grp, KC_END),
     COMBO(cmb_end_rus, KC_END),
 
-    COMBO(cmb_lngsw_grp, LANG_SWITCH_COMBO_ACTION),
-    COMBO(cmb_lngsw_rus, LANG_SWITCH_COMBO_ACTION),
+    //COMBO(cmb_lngsw_grp, LANG_SWITCH_COMBO_ACTION),
+    //COMBO(cmb_lngsw_rus, LANG_SWITCH_COMBO_ACTION),
 
     COMBO(cmb_enter_grp, KC_ENTER),
     COMBO(cmb_enter_rus, KC_ENTER),
@@ -139,14 +141,14 @@ combo_t key_combos[] = {
     COMBO(combo_select_all_grp, SELECT_ALL),
     COMBO(combo_select_all_eng, SELECT_ALL),
 
-//   COMBO(combo_em_dash_grp, UC_EM_DASH),
-//   COMBO(combo_em_dash_eng, UC_EM_DASH),
-
     [COMBO_EM_DASH] = COMBO_ACTION(combo_em_dash_grp),
     [COMBO_EN_DASH] = COMBO_ACTION(combo_em_dash_eng),
 
-    [COMBO_ENTER]   = COMBO_ACTION(combo_enter_grp),
-    [COMBO_ENTER]   = COMBO_ACTION(combo_enter_rus),
+    [CMB_ENTER_GR]   = COMBO_ACTION(combo_enter_grp),
+    [CMB_ENTER_RU]   = COMBO_ACTION(combo_enter_rus),
+
+    [CMB_LNG_SWCH_GR]    = COMBO_ACTION(cmb_lngsw_grp)
+    [CMB_LNG_SWCH_RU]    = COMBO_ACTION(cmb_lngsw_rus)
 
 };
 
@@ -154,20 +156,39 @@ void process_combo_event(uint16_t combo_index, bool pressed) {
     if (!pressed) return;
 
     switch (combo_index) {
+        
         case COMBO_EM_DASH:
             if (pressed) {
                 register_unicode(EM_DASH);
             }
             break;
+        
         case COMBO_EN_DASH:
             if (pressed) {
                 register_unicode(EN_DASH);
             }
             break;
+        
         case COMBO_ENTER:
             if (pressed) {
                 tap_code16(KC_ENTER);
             }
             break;
+        
+        case CMB_LNG_SWCH_GR:
+        case CMB_LNG_SWCH_RU:
+            if (pressed) {
+                uint8_t current_highest_layer = get_highest_layer(layer_state);
+        
+                if (current_highest_layer == QMK_LAYER_ENG) {
+                    layer_move(QMK_LAYER_RUS);
+                    SEND_STRING(SS_LCTL(SS_LSFT("2")));
+                } else {
+                    layer_move(QMK_LAYER_ENG);
+                    SEND_STRING(SS_LCTL(SS_LSFT("1")));
+                }            
+            }
+            break;
+        
     }
 }
