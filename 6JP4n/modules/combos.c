@@ -143,32 +143,32 @@ combo_t key_combos[] = {
 
 
 
-    [CMB_COPY_GR] = COMBO(cmb_copy_grp),  
-    [CMB_COPY_RU] = COMBO(cmb_copy_rus),
-    [CMB_COPY_TB] = COMBO(cmb_copy_tbl),  
+    [CMB_COPY_GR] = COMBO_ACTION(cmb_copy_grp),  
+    [CMB_COPY_RU] = COMBO_ACTION(cmb_copy_rus),
+    [CMB_COPY_TB] = COMBO_ACTION(cmb_copy_tbl),  
 
-    [CMB_PASTE_GR] = COMBO(cmb_paste_grp),
-    [CMB_PASTE_RU] = COMBO(cmb_paste_rus),
-    [CMB_PASTE_TB] = COMBO(cmb_paste_tbl),
+    [CMB_PASTE_GR] = COMBO_ACTION(cmb_paste_grp),
+    [CMB_PASTE_RU] = COMBO_ACTION(cmb_paste_rus),
+    [CMB_PASTE_TB] = COMBO_ACTION(cmb_paste_tbl),
 
-    [CMB_CUT_GR] = COMBO(cmb_cut_grp),
-    [CMB_CUT_RU] = COMBO(cmb_cut_rus),
+    [CMB_CUT_GR] = COMBO_ACTION(cmb_cut_grp),
+    [CMB_CUT_RU] = COMBO_ACTION(cmb_cut_rus),
 
 
-    [CMB_UNDO_GR] = COMBO(cmb_undo_grp),
-    [CMB_UNDO_RU] = COMBO(cmb_undo_rus),
+    [CMB_UNDO_GR] = COMBO_ACTION(cmb_undo_grp),
+    [CMB_UNDO_RU] = COMBO_ACTION(cmb_undo_rus),
 
-    [CMB_REDO_GR] = COMBO(cmb_redo_grp),
-    [CMB_REDO_RU] = COMBO(cmb_redo_rus),
+    [CMB_REDO_GR] = COMBO_ACTION(cmb_redo_grp),
+    [CMB_REDO_RU] = COMBO_ACTION(cmb_redo_rus),
 
-    [CMB_VOICE_GR] = COMBO(cmb_voice_grp),
-    [CMB_VOICE_RU] = COMBO(cmb_voice_rus),
+    [CMB_VOICE_GR] = COMBO_ACTION(cmb_voice_grp),
+    [CMB_VOICE_RU] = COMBO_ACTION(cmb_voice_rus),
 
-    [CMB_ALT_TAB_GR] = COMBO(combo_alt_tab_grp),
-    [CMB_ALT_TAB_RU] = COMBO(combo_alt_tab_eng),
+    [CMB_ALT_TAB_GR] = COMBO_ACTION(combo_alt_tab_grp),
+    [CMB_ALT_TAB_RU] = COMBO_ACTION(combo_alt_tab_eng),
 
-    [CMB_SELECT_ALL_GR] = COMBO(combo_select_all_grpL),
-    [CMB_CSELECT_ALL_RU] = COMBO(combo_select_all_eng),
+    [CMB_SELECT_ALL_GR] = COMBO_ACTION(combo_select_all_grpL),
+    [CMB_CSELECT_ALL_RU] = COMBO_ACTION(combo_select_all_eng),
 
     [COMBO_EM_DASH] = COMBO_ACTION(combo_em_dash_grp),
     [COMBO_EN_DASH] = COMBO_ACTION(combo_em_dash_eng),
