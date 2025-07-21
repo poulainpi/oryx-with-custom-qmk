@@ -70,6 +70,10 @@ const uint16_t PROGMEM combo_enter_rus[] = { RU_YERU, RU_A, COMBO_END };
 
 enum combo_events {
 
+    CMB_ENTER_GR,
+    CMB_ENTER_RU,
+    CMB_ENTER_TB,
+
     CMB_COPY_GR,
     CMB_COPY_RU,
     CMB_COPY_TB,  
@@ -114,9 +118,9 @@ combo_t key_combos[] = {
     COMBO(cmb_end_grp, KC_END),
     COMBO(cmb_end_rus, KC_END),
 
-    COMBO(cmb_enter_grp, KC_ENTER),
-    COMBO(cmb_enter_rus, KC_ENTER),
-    COMBO(cmb_enter_tbl, KC_ENTER),
+    [CMB_ENTER_GR] = COMBO(cmb_enter_grp, KC_ENTER),
+    [CMB_ENTER_RU] = COMBO(cmb_enter_rus, KC_ENTER),
+    [CMB_ENTER_TB] = COMBO(cmb_enter_tbl, KC_ENTER),
 
     COMBO(cmb_togg_grp, CW_TOGG),
     COMBO(cmb_togg_rus, CW_TOGG),
@@ -142,72 +146,41 @@ combo_t key_combos[] = {
 
 
 
-    COMBO(cmb_copy_grp, CMB_COPY_GR),  
-    COMBO(cmb_copy_rus, CMB_COPY_RU),
-    COMBO(cmb_copy_tbl, CMB_COPY_TB),  
-
-    COMBO(cmb_paste_grp, CMB_PASTE_GR),
-    COMBO(cmb_paste_rus, CMB_PASTE_RU),
-    COMBO(cmb_paste_tbl, CMB_PASTE_TB),
-
-    COMBO(cmb_cut_grp, CMB_CUT_GR),
-    COMBO(cmb_cut_rus, CMB_CUT_RU),
 
 
-    COMBO(cmb_undo_grp, CMB_UNDO_GR),
-    COMBO(cmb_undo_rus, CMB_UNDO_RU),
 
-    COMBO(cmb_redo_grp, CMB_REDO_GR),
-    COMBO(cmb_redo_rus, CMB_REDO_RU),
+    [CMB_COPY_GR] = COMBO_ACTION(cmb_copy_grp),  
+    [CMB_COPY_RU] = COMBO_ACTION(cmb_copy_rus),
+    [CMB_COPY_TB] = COMBO_ACTION(cmb_copy_tbl),  
 
-    COMBO(cmb_voice_grp, CMB_VOICE_GR),
-    COMBO(cmb_voice_rus, CMB_VOICE_RU),
+    [CMB_PASTE_GR] = COMBO_ACTION(cmb_paste_grp),
+    [CMB_PASTE_RU] = COMBO_ACTION(cmb_paste_rus),
+    [CMB_PASTE_TB] = COMBO_ACTION(cmb_paste_tbl),
 
-    COMBO(combo_alt_tab_grp, CMB_ALT_TAB_GR),
-    COMBO(combo_alt_tab_eng, CMB_ALT_TAB_RU),
-
-    COMBO(combo_select_all_grp, CMB_SELECT_ALL_GR),
-    COMBO(combo_select_all_eng, CMB_SELECT_ALL_RU),
-
-    COMBO(combo_em_dash_grp, COMBO_EM_DASH),
-    COMBO(combo_em_dash_eng, COMBO_EN_DASH),
-
-    COMBO(cmb_lngsw_grp, CMB_LNG_SWCH_GR),
-    COMBO(cmb_lngsw_rus, CMB_LNG_SWCH_RU),
+    [CMB_CUT_GR] = COMBO_ACTION(cmb_cut_grp),
+    [CMB_CUT_RU] = COMBO_ACTION(cmb_cut_rus),
 
 
-    //[CMB_COPY_GR] = COMBO_ACTION(cmb_copy_grp),  
-    //[CMB_COPY_RU] = COMBO_ACTION(cmb_copy_rus),
-    //[CMB_COPY_TB] = COMBO_ACTION(cmb_copy_tbl),  
+    [CMB_UNDO_GR] = COMBO_ACTION(cmb_undo_grp),
+    [CMB_UNDO_RU] = COMBO_ACTION(cmb_undo_rus),
 
-    //[CMB_PASTE_GR] = COMBO_ACTION(cmb_paste_grp),
-    //[CMB_PASTE_RU] = COMBO_ACTION(cmb_paste_rus),
-    //[CMB_PASTE_TB] = COMBO_ACTION(cmb_paste_tbl),
+    [CMB_REDO_GR] = COMBO_ACTION(cmb_redo_grp),
+    [CMB_REDO_RU] = COMBO_ACTION(cmb_redo_rus),
 
-    //[CMB_CUT_GR] = COMBO_ACTION(cmb_cut_grp),
-    //[CMB_CUT_RU] = COMBO_ACTION(cmb_cut_rus),
+    [CMB_VOICE_GR] = COMBO_ACTION(cmb_voice_grp),
+    [CMB_VOICE_RU] = COMBO_ACTION(cmb_voice_rus),
 
+    [CMB_ALT_TAB_GR] = COMBO_ACTION(combo_alt_tab_grp),
+    [CMB_ALT_TAB_RU] = COMBO_ACTION(combo_alt_tab_eng),
 
-    //[CMB_UNDO_GR] = COMBO_ACTION(cmb_undo_grp),
-    //[CMB_UNDO_RU] = COMBO_ACTION(cmb_undo_rus),
+    [CMB_SELECT_ALL_GR] = COMBO_ACTION(combo_select_all_grp),
+    [CMB_SELECT_ALL_RU] = COMBO_ACTION(combo_select_all_eng),
 
-    //[CMB_REDO_GR] = COMBO_ACTION(cmb_redo_grp),
-    //[CMB_REDO_RU] = COMBO_ACTION(cmb_redo_rus),
+    [COMBO_EM_DASH] = COMBO_ACTION(combo_em_dash_grp),
+    [COMBO_EN_DASH] = COMBO_ACTION(combo_em_dash_eng),
 
-    //[CMB_VOICE_GR] = COMBO_ACTION(cmb_voice_grp),
-    //[CMB_VOICE_RU] = COMBO_ACTION(cmb_voice_rus),
-
-    //[CMB_ALT_TAB_GR] = COMBO_ACTION(combo_alt_tab_grp),
-    //[CMB_ALT_TAB_RU] = COMBO_ACTION(combo_alt_tab_eng),
-
-    //[CMB_SELECT_ALL_GR] = COMBO_ACTION(combo_select_all_grp),
-    //[CMB_SELECT_ALL_RU] = COMBO_ACTION(combo_select_all_eng),
-
-    //[COMBO_EM_DASH] = COMBO_ACTION(combo_em_dash_grp),
-    //[COMBO_EN_DASH] = COMBO_ACTION(combo_em_dash_eng),
-
-    //[CMB_LNG_SWCH_GR]    = COMBO_ACTION(cmb_lngsw_grp),
-    //[CMB_LNG_SWCH_RU]    = COMBO_ACTION(cmb_lngsw_rus),
+    [CMB_LNG_SWCH_GR]    = COMBO_ACTION(cmb_lngsw_grp),
+    [CMB_LNG_SWCH_RU]    = COMBO_ACTION(cmb_lngsw_rus),
 
 };
 
