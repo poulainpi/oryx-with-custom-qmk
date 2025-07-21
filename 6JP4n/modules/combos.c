@@ -172,7 +172,7 @@ combo_t key_combos[] = {
     COMBO(combo_em_dash_grp, COMBO_EM_DASH),
     COMBO(combo_em_dash_eng, COMBO_EN_DASH),
 
-    COMBO(cmb_lngsw_grp, CMB_LNG_SWCH_GR,
+    COMBO(cmb_lngsw_grp, CMB_LNG_SWCH_GR),
     COMBO(cmb_lngsw_rus, CMB_LNG_SWCH_RU),
 
 
