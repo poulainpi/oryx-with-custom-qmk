@@ -139,7 +139,7 @@ combo_t key_combos[] = {
 
     COMBO(cmb_win_gr_left, KC_LEFT_GUI),
     COMBO(cmb_alt_gr_left, KC_LEFT_ALT),
-    COMBO(cmb_shift_g_left, KC_LEFT_SHIFT),
+    COMBO(cmb_shift_gr_left, KC_LEFT_SHIFT),
     COMBO(cmb_ctrl_gr_left, KC_LEFT_CTRL),
 
     COMBO(cmb_ctrl_gr_right, KC_RIGHT_CTRL),
