@@ -64,69 +64,54 @@ const uint16_t PROGMEM combo_select_all_eng[] = { RU_EF,           RU_SHTI, COMB
 const uint16_t PROGMEM combo_em_dash_grp[] = { KC_UNDS,           KC_MINUS, COMBO_END };
 const uint16_t PROGMEM combo_em_dash_eng[] = { RU_UNDS,           RU_MINS, COMBO_END };
 
-const uint16_t PROGMEM combo_enter_grp[] = { KC_R, KC_S, COMBO_END };
-const uint16_t PROGMEM combo_enter_rus[] = { RU_YERU, RU_A, COMBO_END };
-
 
 enum combo_events {
-
-    CMB_ENTER_GR,
-    CMB_ENTER_RU,
-    CMB_ENTER_TB,
-
-    CMB_COPY_GR,
-    CMB_COPY_RU,
-    CMB_COPY_TB,  
-
-    CMB_PASTE_GR,
-    CMB_PASTE_RU,
-    CMB_PASTE_TB,
-
-    CMB_CUT_GR,
-    CMB_CUT_RU,
-
-
-    CMB_UNDO_GR,
-    CMB_UNDO_RU,
-
-    CMB_REDO_GR,
-    CMB_REDO_RU,
-
-    CMB_VOICE_GR,
-    CMB_VOICE_RU,
-
-    CMB_ALT_TAB_GR,
-    CMB_ALT_TAB_RU,
-
-    CMB_SELECT_ALL_GR,
-    CMB_SELECT_ALL_RU,
-
     COMBO_EM_DASH,
     COMBO_EN_DASH,
-
-    CMB_LNG_SWCH_GR,
-    CMB_LNG_SWCH_RU,
-
 };
 
 
 combo_t key_combos[] = {
-
     COMBO(cmb_home_grp, KC_HOME),
     COMBO(cmb_home_rus, KC_HOME),
 
     COMBO(cmb_end_grp, KC_END),
     COMBO(cmb_end_rus, KC_END),
 
-    [CMB_ENTER_GR] = COMBO(cmb_enter_grp, KC_ENTER),
-    [CMB_ENTER_RU] = COMBO(cmb_enter_rus, KC_ENTER),
-    [CMB_ENTER_TB] = COMBO(cmb_enter_tbl, KC_ENTER),
+    COMBO(cmb_lngsw_grp, LANG_SWITCH_COMBO_ACTION),
+    COMBO(cmb_lngsw_rus, LANG_SWITCH_COMBO_ACTION),
+
+    COMBO(cmb_enter_grp, KC_ENTER),
+    COMBO(cmb_enter_rus, KC_ENTER),
+    COMBO(cmb_enter_tbl, KC_ENTER),
 
     COMBO(cmb_togg_grp, CW_TOGG),
     COMBO(cmb_togg_rus, CW_TOGG),
 
     COMBO(cmb_caps_grp, KC_CAPS),
     COMBO(cmb_caps_rus, KC_CAPS),
+
+
+    COMBO(cmb_copy_grp, OS_AWARE_COPY),
+    COMBO(cmb_copy_rus, OS_AWARE_COPY),
+    COMBO(cmb_copy_tbl, OS_AWARE_COPY),
+
+    COMBO(cmb_paste_grp, OS_AWARE_PASTE),
+    COMBO(cmb_paste_rus, OS_AWARE_PASTE),
+    COMBO(cmb_paste_tbl, OS_AWARE_PASTE),
+
+    COMBO(cmb_cut_grp, OS_AWARE_CUT),
+    COMBO(cmb_cut_rus, OS_AWARE_CUT),
+
+
+    COMBO(cmb_undo_grp, OS_AWARE_UNDO),
+    COMBO(cmb_undo_rus, OS_AWARE_UNDO),
+
+    COMBO(cmb_redo_grp, OS_AWARE_REDO),
+    COMBO(cmb_redo_rus, OS_AWARE_REDO),
+
+    COMBO(cmb_voice_grp, OS_AWARE_VOICE),
+    COMBO(cmb_voice_rus, OS_AWARE_VOICE),
 
     COMBO(cmb_tab_grp, KC_TAB),
     COMBO(cmb_tab_rus, KC_TAB),
@@ -144,43 +129,18 @@ combo_t key_combos[] = {
 
     COMBO(cmb_vim_grp, OSL(6)),
 
+    COMBO(combo_alt_tab_grp, ALT_TAB),
+    COMBO(combo_alt_tab_eng, ALT_TAB),
 
+    COMBO(combo_select_all_grp, SELECT_ALL),
+    COMBO(combo_select_all_eng, SELECT_ALL),
 
-
-
-
-    [CMB_COPY_GR] = COMBO_ACTION(cmb_copy_grp),  
-    [CMB_COPY_RU] = COMBO_ACTION(cmb_copy_rus),
-    [CMB_COPY_TB] = COMBO_ACTION(cmb_copy_tbl),  
-
-    [CMB_PASTE_GR] = COMBO_ACTION(cmb_paste_grp),
-    [CMB_PASTE_RU] = COMBO_ACTION(cmb_paste_rus),
-    [CMB_PASTE_TB] = COMBO_ACTION(cmb_paste_tbl),
-
-    [CMB_CUT_GR] = COMBO_ACTION(cmb_cut_grp),
-    [CMB_CUT_RU] = COMBO_ACTION(cmb_cut_rus),
-
-
-    [CMB_UNDO_GR] = COMBO_ACTION(cmb_undo_grp),
-    [CMB_UNDO_RU] = COMBO_ACTION(cmb_undo_rus),
-
-    [CMB_REDO_GR] = COMBO_ACTION(cmb_redo_grp),
-    [CMB_REDO_RU] = COMBO_ACTION(cmb_redo_rus),
-
-    [CMB_VOICE_GR] = COMBO_ACTION(cmb_voice_grp),
-    [CMB_VOICE_RU] = COMBO_ACTION(cmb_voice_rus),
-
-    [CMB_ALT_TAB_GR] = COMBO_ACTION(combo_alt_tab_grp),
-    [CMB_ALT_TAB_RU] = COMBO_ACTION(combo_alt_tab_eng),
-
-    [CMB_SELECT_ALL_GR] = COMBO_ACTION(combo_select_all_grp),
-    [CMB_SELECT_ALL_RU] = COMBO_ACTION(combo_select_all_eng),
+//   COMBO(combo_em_dash_grp, UC_EM_DASH),
+//   COMBO(combo_em_dash_eng, UC_EM_DASH),
 
     [COMBO_EM_DASH] = COMBO_ACTION(combo_em_dash_grp),
     [COMBO_EN_DASH] = COMBO_ACTION(combo_em_dash_eng),
 
-    [CMB_LNG_SWCH_GR]    = COMBO_ACTION(cmb_lngsw_grp),
-    [CMB_LNG_SWCH_RU]    = COMBO_ACTION(cmb_lngsw_rus),
 
 };
 
@@ -188,146 +148,11 @@ void process_combo_event(uint16_t combo_index, bool pressed) {
     if (!pressed) return;
 
     switch (combo_index) {
-        
         case COMBO_EM_DASH:
-            if (pressed) {
-                register_unicode(EM_DASH);
-            }
+            register_unicode(EM_DASH);
             break;
-        
         case COMBO_EN_DASH:
-            if (pressed) {
-                register_unicode(EN_DASH);
-            }
+            register_unicode(EN_DASH);
             break;
-        
-        //case CMB_ENTER_GR:
-        //case CMB_ENTER_RU:
-        //    if (pressed) {
-        //        tap_code16(KC_ENTER);
-        //    }
-        //    break;
-
-        case CMB_LNG_SWCH_GR:
-        case CMB_LNG_SWCH_RU:
-            if (pressed) {
-                uint8_t current_highest_layer = get_highest_layer(layer_state);
-        
-                if (current_highest_layer == QMK_LAYER_ENG) {
-                    layer_move(QMK_LAYER_RUS);
-                    SEND_STRING(SS_LCTL(SS_LSFT("2")));
-                } else {
-                    layer_move(QMK_LAYER_ENG);
-                    SEND_STRING(SS_LCTL(SS_LSFT("1")));
-                }            
-            }
-            break;        
-
-        case CMB_COPY_GR:
-        case CMB_COPY_RU:
-            if (pressed) {
-                os_variant_t host_os = detected_host_os();
-                if (host_os == OS_MACOS || host_os == OS_IOS) {
-                  SEND_STRING(SS_LGUI("c"));
-                } else {
-                  SEND_STRING(SS_LCTL("c"));
-                }
-            }
-            break; 
-   
-        case CMB_PASTE_GR:
-        case CMB_PASTE_RU:
-            if (pressed) {
-                os_variant_t host_os = detected_host_os();
-                if (host_os == OS_MACOS || host_os == OS_IOS) {
-                  SEND_STRING(SS_LGUI("v"));
-                } else {
-                  SEND_STRING(SS_LCTL("v"));
-                }
-          }
-          break;
-    
-        case CMB_CUT_GR:
-        case CMB_CUT_RU:
-            if (pressed) {
-                os_variant_t host_os = detected_host_os();
-                if (host_os == OS_MACOS || host_os == OS_IOS) {
-                  SEND_STRING(SS_LGUI("x"));
-                } else {
-                  SEND_STRING(SS_LCTL("x"));
-                }
-          }
-          break;
-    
-        case CMB_UNDO_GR:
-        case CMB_UNDO_RU:
-            if (pressed) {
-                os_variant_t host_os = detected_host_os();
-                if (host_os == OS_MACOS || host_os == OS_IOS) {
-                  SEND_STRING(SS_LGUI("z"));
-                } else {
-                  SEND_STRING(SS_LCTL("z"));
-                }
-          }
-          break;
-    
-        case CMB_REDO_GR:
-        case CMB_REDO_RU:
-            if (pressed) {
-                os_variant_t host_os = detected_host_os();
-                if (host_os == OS_MACOS || host_os == OS_IOS) {
-                  SEND_STRING(SS_LGUI(SS_LSFT("z")));
-                } else {
-                  SEND_STRING(SS_LCTL(SS_LSFT("z")));
-                }    
-          }
-          break;
-    
-        case CMB_VOICE_GR:
-        case CMB_VOICE_RU:
-            if (pressed) {
-                os_variant_t host_os = detected_host_os();
-                if (host_os == OS_MACOS || host_os == OS_IOS) {
-                    tap_code16(MAC_SIRI);
-                } else  {
-                    SEND_STRING(SS_LGUI("h"));
-                }
-
-            }
-            break;
-
-        case CMB_ALT_TAB_GR:
-        case CMB_ALT_TAB_RU:
-            if (pressed) {
-                os_variant_t host_os = detected_host_os();
-                if (host_os == OS_MACOS || host_os == OS_IOS) {
-                    register_code(KC_LGUI);
-                    tap_code(KC_TAB);
-                    unregister_code(KC_LGUI);
-                } else {
-                    register_code(KC_LALT);
-                    tap_code(KC_TAB);
-                    unregister_code(KC_LALT);
-                }
-            }
-            break;
-    
-        case CMB_SELECT_ALL_GR:
-        case CMB_SELECT_ALL_RU:
-            if (pressed) {
-                os_variant_t host_os = detected_host_os();
-                if (host_os == OS_MACOS || host_os == OS_IOS) {
-                  SEND_STRING(SS_LGUI("a"));
-                } else {
-                  SEND_STRING(SS_LCTL("a"));
-                }    
-            }
-            break;       
-        
-        
-        
-        
-        
-        
     }
 }
