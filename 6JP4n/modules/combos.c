@@ -65,12 +65,6 @@ const uint16_t PROGMEM combo_em_dash_grp[] = { KC_UNDS,           KC_MINUS, COMB
 const uint16_t PROGMEM combo_em_dash_eng[] = { RU_UNDS,           RU_MINS, COMBO_END };
 
 
-enum combo_events {
-    COMBO_EM_DASH,
-    COMBO_EN_DASH,
-};
-
-
 combo_t key_combos[] = {
     COMBO(cmb_home_grp, KC_HOME),
     COMBO(cmb_home_rus, KC_HOME),
@@ -135,24 +129,7 @@ combo_t key_combos[] = {
     COMBO(combo_select_all_grp, SELECT_ALL),
     COMBO(combo_select_all_eng, SELECT_ALL),
 
-//   COMBO(combo_em_dash_grp, UC_EM_DASH),
-//   COMBO(combo_em_dash_eng, UC_EM_DASH),
-
-    [COMBO_EM_DASH] = COMBO_ACTION(combo_em_dash_grp),
-    [COMBO_EN_DASH] = COMBO_ACTION(combo_em_dash_eng),
-
-
+    COMBO(combo_em_dash_grp, UC_EM_DASH),
+    COMBO(combo_em_dash_eng, UC_EM_DASH),
+ 
 };
-
-void process_combo_event(uint16_t combo_index, bool pressed) {
-    if (!pressed) return;
-
-    switch (combo_index) {
-        case COMBO_EM_DASH:
-            register_unicode(EM_DASH);
-            break;
-        case COMBO_EN_DASH:
-            register_unicode(EN_DASH);
-            break;
-    }
-}
