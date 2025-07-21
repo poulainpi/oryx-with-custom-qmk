@@ -140,6 +140,12 @@
       }
       return false;
 
+    case UC_EM_DASH:  
+        if (record->event.pressed) {
+            send_unicode_string("—");
+        }
+        return false;
+
  //   case UC_EM_DASH:
  //       if (record->event.pressed) {
  //           register_unicode(0x2014);
