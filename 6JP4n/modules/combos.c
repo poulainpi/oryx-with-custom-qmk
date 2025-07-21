@@ -232,8 +232,8 @@ void process_combo_event(uint16_t combo_index, bool pressed) {
             }
             break; 
    
-        case CMB__PASTE_GR:
-        case CMB__PASTE_RU:
+        case CMB_PASTE_GR:
+        case CMB_PASTE_RU:
             if (pressed) {
                 os_variant_t host_os = detected_host_os();
                 if (host_os == OS_MACOS || host_os == OS_IOS) {
@@ -310,7 +310,7 @@ void process_combo_event(uint16_t combo_index, bool pressed) {
             break;
     
         case CMB_SELECT_ALL_GR:
-        case CMB_SELECT_RU:
+        case CMB_SELECT_ALL_RU:
             if (pressed) {
                 os_variant_t host_os = detected_host_os();
                 if (host_os == OS_MACOS || host_os == OS_IOS) {
