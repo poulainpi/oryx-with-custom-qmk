@@ -64,9 +64,6 @@ const uint16_t PROGMEM combo_select_all_eng[] = { RU_EF,           RU_SHTI, COMB
 const uint16_t PROGMEM combo_em_dash_grp[] = { KC_UNDS,           KC_MINUS, COMBO_END };
 const uint16_t PROGMEM combo_em_dash_eng[] = { RU_UNDS,           RU_MINS, COMBO_END };
 
-void keyboard_post_init_user(void) {
-    set_unicode_input_mode(UC_WIN);
-}
 
 combo_t key_combos[] = {
     COMBO(cmb_home_grp, KC_HOME),
