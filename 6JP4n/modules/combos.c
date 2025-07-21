@@ -99,8 +99,7 @@ enum combo_events {
 
     COMBO_EM_DASH,
     COMBO_EN_DASH,
-    //CMB_ENTER_GR,
-    //CMB_ENTER_RU,
+
     CMB_LNG_SWCH_GR,
     CMB_LNG_SWCH_RU,
 
@@ -172,9 +171,6 @@ combo_t key_combos[] = {
 
     [COMBO_EM_DASH] = COMBO_ACTION(combo_em_dash_grp),
     [COMBO_EN_DASH] = COMBO_ACTION(combo_em_dash_eng),
-
-    //[CMB_ENTER_GR]   = COMBO_ACTION(combo_enter_grp),
-    //[CMB_ENTER_RU]   = COMBO_ACTION(combo_enter_rus),
 
     [CMB_LNG_SWCH_GR]    = COMBO_ACTION(cmb_lngsw_grp),
     [CMB_LNG_SWCH_RU]    = COMBO_ACTION(cmb_lngsw_rus),
