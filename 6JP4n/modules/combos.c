@@ -85,9 +85,6 @@ combo_t key_combos[] = {
     COMBO(cmb_end_grp, KC_END),
     COMBO(cmb_end_rus, KC_END),
 
-    //COMBO(cmb_lngsw_grp, LANG_SWITCH_COMBO_ACTION),
-    //COMBO(cmb_lngsw_rus, LANG_SWITCH_COMBO_ACTION),
-
     COMBO(cmb_enter_grp, KC_ENTER),
     COMBO(cmb_enter_rus, KC_ENTER),
     COMBO(cmb_enter_tbl, KC_ENTER),
