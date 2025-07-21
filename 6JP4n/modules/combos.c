@@ -95,7 +95,7 @@ enum combo_events {
     CMB_ALT_TAB_RU,
 
     CMB_SELECT_ALL_GR,
-    CMB_CSELECT_ALL_RU,
+    CMB_SELECT_ALL_RU,
 
     COMBO_EM_DASH,
     COMBO_EN_DASH,
