@@ -228,7 +228,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   #include "./modules/process_record_user.c"
   
   switch (keycode) {
-   #include "./modules/switch_cases.c"
+   //#include "./modules/switch_cases.c"
     case ST_MACRO_0:
     if (record->event.pressed) {
       SEND_STRING(SS_TAP(X_1)SS_DELAY(1)  SS_TAP(X_0));
