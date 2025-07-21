@@ -170,7 +170,8 @@ void process_combo_event(uint16_t combo_index, bool pressed) {
             }
             break;
         
-        case COMBO_ENTER:
+        case CMB_ENTER_GR:
+        case CMB_ENTER_RU:
             if (pressed) {
                 tap_code16(KC_ENTER);
             }
