@@ -1,9 +1,3 @@
-const uint16_t PROGMEM cmb_home_grp[]  = { KC_NUM,         KC_F,           KC_O, COMBO_END};
-const uint16_t PROGMEM cmb_home_rus[]  = { RU_EN, RU_GHE, RU_SHA, COMBO_END};
-
-const uint16_t PROGMEM cmb_end_grp[]   = { KC_O,           KC_U,           KC_J, COMBO_END};
-const uint16_t PROGMEM cmb_end_rus[]   = { RU_SHA,         RU_SHCH,        RU_ZE, COMBO_END};
-
 const uint16_t PROGMEM cmb_lngsw_grp[] = { KC_F,           KC_O,           KC_U, COMBO_END};
 const uint16_t PROGMEM cmb_lngsw_rus[] = { RU_GHE,         RU_SHA,         RU_SHCH, COMBO_END};
 
@@ -83,11 +77,6 @@ const uint16_t PROGMEM cmb_win_ru_right[]   = { RU_YO,         RU_ZHE, COMBO_END
 
 
 combo_t key_combos[] = {
-    COMBO(cmb_home_grp, KC_HOME),
-    COMBO(cmb_home_rus, KC_HOME),
-
-    COMBO(cmb_end_grp, KC_END),
-    COMBO(cmb_end_rus, KC_END),
 
     COMBO(cmb_lngsw_grp, LANG_SWITCH_COMBO_ACTION),
     COMBO(cmb_lngsw_rus, LANG_SWITCH_COMBO_ACTION),
