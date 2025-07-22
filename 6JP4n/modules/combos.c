@@ -71,7 +71,7 @@ const uint16_t PROGMEM cmb_shift_gr_right[] = { KC_F22,        KC_A, COMBO_END};
 const uint16_t PROGMEM cmb_alt_gr_right[]   = { KC_F23,        KC_E, COMBO_END};
 const uint16_t PROGMEM cmb_win_gr_right[]   = { KC_F24,        KC_I, COMBO_END};
 
-const uint16_t PROGMEM cmb_win_ru_left[]   = { U_YA,           U_YA, COMBO_END};
+const uint16_t PROGMEM cmb_win_ru_left[]   = { RU_YA,          RU_EF, COMBO_END};
 const uint16_t PROGMEM cmb_alt_ru_left[]   = { RU_CHE,         RU_YERU, COMBO_END};
 const uint16_t PROGMEM cmb_shift_ru_left[] = { RU_ES,          RU_VE, COMBO_END};
 const uint16_t PROGMEM cmb_ctrl_ru_left[]  = { RU_EM,          RU_A, COMBO_END};
