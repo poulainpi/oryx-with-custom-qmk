@@ -36,13 +36,13 @@ const uint16_t PROGMEM cmb_voice_rus[] = { RU_ER,          RU_O,           RU_EL
 const uint16_t PROGMEM cmb_tab_grp[]   = { KC_R,           KC_T,           KC_S, COMBO_END};
 const uint16_t PROGMEM cmb_tab_rus[]   = { RU_YERU,        RU_VE,          RU_A, COMBO_END};
 
-const uint16_t PROGMEM cmb_shift_grp_left[]   = { KC_N,           KC_R,           KC_T, COMBO_END};
-const uint16_t PROGMEM cmb_shift_grp_right[]  = { KC_A,           KC_E,           KC_I, COMBO_END};
-const uint16_t PROGMEM cmb_shift_rus_left[]   = { RU_EF,          RU_YERU,        RU_VE, COMBO_END};
-const uint16_t PROGMEM cmb_shift_rus_right[]  = { RU_EL,          RU_DE,          RU_ZHE, COMBO_END};
+const uint16_t PROGMEM cmb_shift_grp_left[]   = { KC_N,    KC_R,           KC_T, COMBO_END};
+const uint16_t PROGMEM cmb_shift_grp_right[]  = { KC_A,    KC_E,           KC_I, COMBO_END};
+const uint16_t PROGMEM cmb_shift_rus_left[]   = { RU_EF,   RU_YERU,        RU_VE, COMBO_END};
+const uint16_t PROGMEM cmb_shift_rus_right[]  = { RU_EL,   RU_DE,          RU_ZHE, COMBO_END};
 
-const uint16_t PROGMEM cmb_cshift_grp[] = { KC_N,           KC_R,           KC_T,           KC_S, COMBO_END};
-const uint16_t PROGMEM cmb_cshift_rus[] = { RU_EF,          RU_YERU,        RU_VE,          RU_A, COMBO_END};
+const uint16_t PROGMEM cmb_worderase_grp[] = { KC_N,       KC_R,           KC_T,           KC_S, COMBO_END};
+const uint16_t PROGMEM cmb_worderase_rus[] = { RU_EF,      RU_YERU,        RU_VE,          RU_A, COMBO_END};
 
 const uint16_t PROGMEM cmb_smile_grp[] = { KC_B,            KC_Z, COMBO_END};
 const uint16_t PROGMEM cmb_smile_rus[] = { RU_SHTI,         RU_IE, COMBO_END};
@@ -121,8 +121,8 @@ combo_t key_combos[] = {
     COMBO(cmb_shift_rus_left, KC_LEFT_SHIFT),
     COMBO(cmb_shift_rus_right, KC_LEFT_SHIFT),
 
-    COMBO(cmb_cshift_grp, C(KC_LEFT_SHIFT)),
-    COMBO(cmb_cshift_rus, C(KC_LEFT_SHIFT)),
+    COMBO(cmb_worderase_grp, C(KC_BSPC)),
+    COMBO(cmb_worderase_rus, C(KC_BSPC)),
 
     COMBO(cmb_smile_grp, MO(9)),
     COMBO(cmb_smile_rus, MO(10)),
