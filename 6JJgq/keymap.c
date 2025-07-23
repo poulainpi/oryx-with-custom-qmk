@@ -490,6 +490,10 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
 
 // custom
+const key_override_t *key_overrides[] = {
+    NULL
+};
+
 bool process_detected_host_os_kb(os_variant_t detected_os) {
     if (!process_detected_host_os_user(detected_os)) {
         return false;
