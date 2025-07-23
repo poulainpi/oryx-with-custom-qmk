@@ -490,6 +490,14 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
 
 // custom
+#include <string.h>
+
+#define MAX_KEY_OVERRIDES 10
+const key_override_t *key_overrides[MAX_KEY_OVERRIDES] = { NULL };
+
+
+
+
 const key_override_t *key_overrides[] = {
     NULL
 };
@@ -544,15 +552,18 @@ bool process_detected_host_os_kb(os_variant_t detected_os) {
     };
 
     // Apply overrides based on OS
-    switch (detected_os) {
-        case OS_MACOS:
-        case OS_IOS:
-            key_overrides = mac_key_overrides;
-            break;
-        default:
-            key_overrides = default_key_overrides;
-            break;
-    }
+    // pick which source list to copy
+    const key_override_t * const *src = (detected_os == OS_MACOS || detected_os == OS_IOS)
+        ? mac_key_overrides
+        : default_key_overrides
+        ;
 
+    // copy pointers into the global array
+    // sizeof(src) doesn’t work (it's a pointer), so we compute element count manually:
+    size_t i = 0;
+    for (; src[i] && i < MAX_KEY_OVERRIDES-1; ++i) {
+        key_overrides[i] = src[i];
+    }
+    key_overrides[i] = NULL;
     return true;
 }
