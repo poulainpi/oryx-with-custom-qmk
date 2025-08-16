@@ -34,9 +34,9 @@ enum custom_keycodes {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [0] = LAYOUT_voyager(
-    KC_TRANSPARENT, KC_P,           KC_U,           KC_ESCAPE,      DE_MINS,        KC_Q,                                           KC_G,           KC_C,           KC_L,           KC_M,           KC_F,           TO(9),          
+    KC_TRANSPARENT, KC_P,           KC_U,           QK_REPEAT_KEY,      QK_LEAD,        KC_Q,                                           KC_G,           KC_C,           KC_L,           KC_M,           KC_F,           TO(9),          
     CW_TOGG,        MT(MOD_LCTL, KC_H),MT(MOD_LALT, KC_I),MT(MOD_LGUI, KC_E),KC_A,           KC_O,                                           KC_D,           KC_T,           MT(MOD_RGUI, KC_R),MT(MOD_LALT, KC_N),MT(MOD_RCTL, KC_S),KC_TRANSPARENT, 
-    KC_TRANSPARENT, KC_K,           DE_Y,           KC_DOT,         DE_QUOT,        KC_X,                                           KC_J,           KC_V,           KC_W,           KC_B,           DE_Z,           KC_TRANSPARENT, 
+    KC_TRANSPARENT, KC_K,           DE_Y,           KC_DOT,         DE_DQOT,        KC_X,                                           KC_J,           KC_V,           KC_W,           KC_B,           DE_Z,           KC_TRANSPARENT, 
     LGUI(DE_MINS),  LGUI(KC_0),     LGUI(DE_PLUS),  KC_LEFT_GUI,    KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, LSFT(KC_TAB),   KC_TRANSPARENT, KC_TAB,         KC_TRANSPARENT, KC_TRANSPARENT, 
                                                     OSL(1),         OSM(MOD_LSFT),                                  OSL(2),         LT(3, KC_SPACE)
   ),
@@ -62,9 +62,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                     KC_COMMA,       KC_DOT,                                         KC_TRANSPARENT, KC_TRANSPARENT
   ),
   [4] = LAYOUT_voyager(
-    CW_TOGG,        KC_P,           KC_U,           KC_ESCAPE,      DE_MINS,        KC_Q,                                           KC_G,           KC_C,           KC_L,           KC_M,           KC_F,           TO(9),          
+    CW_TOGG,        KC_P,           KC_U,           QK_REPEAT_KEY,      QK_LEAD,        KC_Q,                                           KC_G,           KC_C,           KC_L,           KC_M,           KC_F,           TO(9),          
     CW_TOGG,        MT(MOD_LGUI, KC_H),MT(MOD_LALT, KC_I),MT(MOD_LCTL, KC_E),KC_A,           KC_O,                                           KC_D,           KC_T,           MT(MOD_RCTL, KC_R),MT(MOD_LALT, KC_N),MT(MOD_RGUI, KC_S),LALT(KC_TAB),   
-    DUAL_FUNC_8,    KC_K,           DE_Y,           KC_DOT,         DE_QUOT,        KC_X,                                           KC_J,           KC_V,           KC_W,           KC_B,           DE_Z,           LALT(LSFT(KC_TAB)),
+    DUAL_FUNC_8,    KC_K,           DE_Y,           KC_DOT,         DE_DQOT,        KC_X,                                           KC_J,           KC_V,           KC_W,           KC_B,           DE_Z,           LALT(LSFT(KC_TAB)),
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_LEFT_ALT,    KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, LSFT(KC_TAB),   KC_TRANSPARENT, KC_TAB,         KC_TRANSPARENT, KC_TRANSPARENT, 
                                                     OSL(6),         OSM(MOD_LSFT),                                  OSL(5),         LT(7, KC_SPACE)
   ),
@@ -103,6 +103,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, HSV_0_255_255,  HSV_74_255_255, HSV_169_255_255,                                KC_TRANSPARENT, LCTL(LSFT(KC_TAB)),LCTL(KC_TAB),   KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, 
                                                     KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT
   ),
+};
+
+const key_override_t dot_comma_override = ko_make_basic(MOD_MASK_SHIFT, KC_DOT, KC_COMM);
+const key_override_t quote_doublequote_override = ko_make_basic(MOD_MASK_SHIFT, DE_DQOT, DE_QUOT);
+
+const key_override_t **key_overrides = (const key_override_t *[]){
+    &dot_comma_override,
+    &quote_doublequote_override,
+    NULL
 };
 
 
