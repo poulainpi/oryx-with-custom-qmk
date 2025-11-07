@@ -1,0 +1,29 @@
+# Git
+.git
+.gitignore
+.gitmodules
+
+# Documentation
+*.md
+specs/
+.github/
+
+# Build artifacts
+qmk_firmware/
+*.bin
+*.hex
+*.uf2
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.log
+*.tmp

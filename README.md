@@ -28,6 +28,94 @@ Each time you run the GitHub Action, the workflow will:
 7. Flash your downloaded firmware using [Keymapp](https://www.zsa.io/flash#flash-keymap).
 8. Enjoy!
 
+## Building Firmware Locally (Docker)
+
+Instead of using GitHub Actions, you can build the firmware locally using Docker. This is useful for testing changes quickly without pushing to GitHub.
+
+### Prerequisites
+
+- [Docker Desktop](https://www.docker.com/products/docker-desktop) installed and running
+- At least 2GB of free disk space (for QMK firmware repository)
+
+### Quick Start
+
+**Windows (PowerShell):**
+```powershell
+.\build-local.ps1
+```
+
+**Linux/macOS:**
+```bash
+chmod +x build-local.sh
+./build-local.sh
+```
+
+### Build Options
+
+**Clean build** (removes previous Docker images and build artifacts):
+```powershell
+# Windows
+.\build-local.ps1 -Clean
+
+# Linux/macOS
+./build-local.sh --clean
+```
+
+**Rebuild firmware only** (skip Docker image rebuild):
+```powershell
+# Windows
+.\build-local.ps1 -NoBuild
+
+# Linux/macOS
+./build-local.sh --no-build
+```
+
+### What the Build Script Does
+
+1. **Builds Docker image** with QMK dependencies (ARM/AVR compilers, QMK CLI)
+2. **Clones QMK firmware** repository (if not already present)
+3. **Copies your custom keymap** from `JRaem/` folder
+4. **Compiles firmware** using `qmk compile`
+5. **Reports firmware size** and location
+
+### Output
+
+The compiled firmware will be located at:
+```
+qmk_firmware/voyager_JRaem.bin
+```
+
+The script will display:
+- Firmware file path
+- Size in KB and percentage of 256KB flash
+- ✅/⚠️/❌ status based on constitutional size target (<230KB = 90%)
+
+### Flashing
+
+After successful compilation:
+1. Connect your ZSA Voyager
+2. Put it in bootloader mode (press reset button)
+3. Use [Keymapp](https://www.zsa.io/flash) or QMK Toolbox to flash the `.bin` file
+
+### Troubleshooting Local Builds
+
+**Docker not found:**
+- Install [Docker Desktop](https://www.docker.com/products/docker-desktop)
+- Ensure Docker is running (check system tray/menu bar)
+
+**Build fails with "permission denied":**
+- Windows: Run PowerShell as Administrator
+- Linux/macOS: Make script executable: `chmod +x build-local.sh`
+
+**QMK clone fails:**
+- Check internet connection
+- Try with `--clean` flag to remove partial downloads
+
+**Compilation errors:**
+- Check `JRaem/keymap.c` for syntax errors
+- Verify `JRaem/config.h` and `JRaem/rules.mk` are valid
+- Review error output for specific line numbers
+
 ## Layer Architecture (Feature: Minimize Layers)
 
 This layout uses an optimized **6-layer architecture** (reduced from the original 10 layers) for improved muscle memory and reduced cognitive load:
