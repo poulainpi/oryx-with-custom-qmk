@@ -156,6 +156,17 @@
 
 **Purpose**: Execute comprehensive testing from quickstart.md
 
+**⚠️ IMPORTANT**: All Phase 8 tasks require physical ZSA Voyager keyboard hardware, firmware flashed to device, and access to both macOS and Windows systems. These tests cannot be automated and must be performed manually.
+
+**Testing Prerequisites**:
+- [ ] Firmware compiled via GitHub Actions
+- [ ] Firmware flashed to ZSA Voyager using Keymapp
+- [ ] Access to macOS system (or VM)
+- [ ] Access to Windows system (or VM)
+- [ ] quickstart.md test guide reviewed
+
+**Manual Test Execution** (perform with physical hardware):
+
 - [ ] T045 Execute 5-minute smoke test from quickstart.md (layer switching, basic typing, layer access, home row mods, symbols)
 - [ ] T046 Test Base Layer scenarios from quickstart.md: macOS typing (Test 1), Windows typing (Test 2), layer returns (Test 3), home row mods (Test 4)
 - [ ] T047 Test Symbol Layer scenarios from quickstart.md: symbol access (Test 5), rapid symbol entry (Test 6)
@@ -166,6 +177,8 @@
 - [ ] T052 Test Edge Cases from quickstart.md: layer stacking (Test 18), dual-function during layer switch (Test 19), rapid layer switching (Test 20)
 - [ ] T053 Test Performance scenarios from quickstart.md: typing speed consistency (Test 21), firmware size verification (Test 22)
 - [ ] T054 Execute Regression Testing from quickstart.md: verify preserved features (Test 23) - CAPS_WORD, COMBO (4 combos), KEY_OVERRIDE (2 overrides), LEADER, QK_REPEAT_KEY
+
+**Testing Status**: ⏸️ DEFERRED - Awaiting physical hardware availability and firmware build
 
 **Checkpoint**: All 23 test scenarios passed, layout fully functional on both Windows and macOS
 
