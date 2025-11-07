@@ -1,2 +1,41 @@
+# IDE
 .idea
 *.iml
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+*.tmp
+
+# C/QMK Firmware Build Artifacts
+*.o
+*.a
+*.so
+*.exe
+*.elf
+*.bin
+*.hex
+*.map
+build/
+.build/
+*.d
+*.lst
+
+# QMK specific
+.build/
+*.bin
+*.hex
+*.elf
+*.map
+
+# Environment
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
