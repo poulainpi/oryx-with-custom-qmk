@@ -75,25 +75,25 @@
 
 ### Implementation for User Story 2 - Symbol Layer
 
-- [ ] T016 [US2] Implement LAYER_SYMBOLS (layer 2) in JRaem/keymap.c with unified programming symbols: brackets ([]{}<>()), operators (+-*/=!?%$#), special chars (@&|\~^§¶), backtick/grave
-- [ ] T017 [US2] Add dual-function keys to LAYER_SYMBOLS in JRaem/keymap.c: DF_AT_CTRL (@ tap, Ctrl hold), DF_SLASH_ALT (/ tap, Alt hold), DF_RPRN_CMD () tap, Cmd hold), DF_COLN_CTRL (: tap, Ctrl hold)
-- [ ] T018 [US2] Add OS-specific dual-function to LAYER_SYMBOLS in JRaem/keymap.c: DF_LCBR_MAC ({ tap, Cmd hold for Mac context), ensure proper process_record_user handling
+- [X] T016 [US2] Implement LAYER_SYMBOLS (layer 2) in JRaem/keymap.c with unified programming symbols: brackets ([]{}<>()), operators (+-*/=!?%$#), special chars (@&|\~^§¶), backtick/grave
+- [X] T017 [US2] Add dual-function keys to LAYER_SYMBOLS in JRaem/keymap.c: DF_AT_CTRL (@ tap, Ctrl hold), DF_SLASH_ALT (/ tap, Alt hold), DF_RPRN_CMD () tap, Cmd hold), DF_COLN_CTRL (: tap, Ctrl hold)
+- [X] T018 [US2] Add OS-specific dual-function to LAYER_SYMBOLS in JRaem/keymap.c: DF_LCBR_MAC ({ tap, Cmd hold for Mac context), ensure proper process_record_user handling
 
 ### Implementation for User Story 2 - Function/Navigation Layer
 
-- [ ] T019 [US2] Implement LAYER_FUNCTION (layer 3) in JRaem/keymap.c with function keys (F1-F12), arrow keys (←↓↑→), Page Up/Down, Home, End
-- [ ] T020 [US2] Add German umlauts to LAYER_FUNCTION in JRaem/keymap.c: ä (DE_ADIA), ö (DE_ODIA), ü (DE_UDIA), ß (DE_SS), € (DE_EURO)
-- [ ] T021 [US2] Add editing keys to LAYER_FUNCTION in JRaem/keymap.c: Escape, Tab, Enter
-- [ ] T022 [US2] Implement window management shortcuts on LAYER_FUNCTION in JRaem/keymap.c using conditional OS detection (Cmd+arrow for Mac, Ctrl+arrow for Win)
-- [ ] T023 [US2] Add dual-function keys to LAYER_FUNCTION in JRaem/keymap.c: DF_BSPC_MAC (Backspace tap, Ctrl+Backspace hold for Mac), DF_DEL_MAC (Delete tap, Ctrl+Delete hold for Mac)
-- [ ] T024 [US2] Add Windows-specific dual-function to LAYER_FUNCTION in JRaem/keymap.c: DF_BSPC_WIN (Backspace tap, Alt+Backspace hold), DF_DEL_WIN (Delete tap, Alt+Delete hold), DF_EURO_WIN (€ tap, Ctrl hold)
+- [X] T019 [US2] Implement LAYER_FUNCTION (layer 3) in JRaem/keymap.c with function keys (F1-F12), arrow keys (←↓↑→), Page Up/Down, Home, End
+- [X] T020 [US2] Add German umlauts to LAYER_FUNCTION in JRaem/keymap.c: ä (DE_ADIA), ö (DE_ODIA), ü (DE_UDIA), ß (DE_SS), € (DE_EURO)
+- [X] T021 [US2] Add editing keys to LAYER_FUNCTION in JRaem/keymap.c: Escape, Tab, Enter
+- [X] T022 [US2] Implement window management shortcuts on LAYER_FUNCTION in JRaem/keymap.c using conditional OS detection (Cmd+arrow for Mac, Ctrl+arrow for Win)
+- [X] T023 [US2] Add dual-function keys to LAYER_FUNCTION in JRaem/keymap.c: DF_BSPC_MAC (Backspace tap, Ctrl+Backspace hold for Mac), DF_DEL_MAC (Delete tap, Ctrl+Delete hold for Mac)
+- [X] T024 [US2] Add Windows-specific dual-function to LAYER_FUNCTION in JRaem/keymap.c: DF_BSPC_WIN (Backspace tap, Alt+Backspace hold), DF_DEL_WIN (Delete tap, Alt+Delete hold), DF_EURO_WIN (€ tap, Ctrl hold)
 
 ### Implementation for User Story 2 - Number Layer
 
-- [ ] T025 [US2] Implement LAYER_NUMBERS (layer 4) in JRaem/keymap.c with number pad layout (0-9), operators (+, -, *, /, :), comma/period for decimal entry
-- [ ] T026 [US2] Add clipboard shortcuts to LAYER_NUMBERS in JRaem/keymap.c using OS detection: Undo (Cmd+Z/Ctrl+Z), Copy (Cmd+C/Ctrl+C), Paste (Cmd+V/Ctrl+V), Cut (Cmd+X/Ctrl+X)
-- [ ] T027 [US2] Add utility keys to LAYER_NUMBERS in JRaem/keymap.c: Print Screen, App Menu key
-- [ ] T028 [US2] Implement process_record_user cases for OS-specific clipboard operations in JRaem/keymap.c using is_macos_base() helper
+- [X] T025 [US2] Implement LAYER_NUMBERS (layer 4) in JRaem/keymap.c with number pad layout (0-9), operators (+, -, *, /, :), comma/period for decimal entry
+- [X] T026 [US2] Add clipboard shortcuts to LAYER_NUMBERS in JRaem/keymap.c using OS detection: Undo (Cmd+Z/Ctrl+Z), Copy (Cmd+C/Ctrl+C), Paste (Cmd+V/Ctrl+V), Cut (Cmd+X/Ctrl+X)
+- [X] T027 [US2] Add utility keys to LAYER_NUMBERS in JRaem/keymap.c: Print Screen, App Menu key
+- [X] T028 [US2] Implement process_record_user cases for OS-specific clipboard operations in JRaem/keymap.c using is_macos_base() helper
 
 **Checkpoint**: All three shared utility layers (symbols, function/nav, numbers) accessible from both base layers with appropriate OS-specific behavior
 
