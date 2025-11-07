@@ -57,7 +57,7 @@ fi
 # Build Docker image
 if [ "$NO_BUILD" = false ]; then
     echo -e "${CYAN}🐳 Building Docker image...${NC}"
-    docker build -t $IMAGE_NAME .
+    docker build --load -t $IMAGE_NAME .
     echo -e "${GREEN}✅ Docker image built successfully${NC}"
     echo ""
 fi

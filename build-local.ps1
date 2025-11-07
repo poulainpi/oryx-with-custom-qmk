@@ -40,7 +40,7 @@ if ($Clean) {
 # Build Docker image
 if (-not $NoBuild) {
     Write-Host "🐳 Building Docker image..." -ForegroundColor Cyan
-    docker build -t $ImageName .
+    docker build --load -t $ImageName .
     if ($LASTEXITCODE -ne 0) {
         Write-Host "❌ Docker build failed" -ForegroundColor Red
         exit 1
