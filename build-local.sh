@@ -57,7 +57,10 @@ fi
 # Build Docker image
 if [ "$NO_BUILD" = false ]; then
     echo -e "${CYAN}🐳 Building Docker image...${NC}"
-    docker build --load -t $IMAGE_NAME .
+    echo -e "${YELLOW}   (This may take 2-3 minutes on first build)${NC}"
+    
+    # Use docker buildx with --output=type=docker for faster loading
+    docker buildx build --output=type=docker -t $IMAGE_NAME .
     echo -e "${GREEN}✅ Docker image built successfully${NC}"
     echo ""
 fi

@@ -40,7 +40,10 @@ if ($Clean) {
 # Build Docker image
 if (-not $NoBuild) {
     Write-Host "🐳 Building Docker image..." -ForegroundColor Cyan
-    docker build --load -t $ImageName .
+    Write-Host "   (This may take 2-3 minutes on first build)" -ForegroundColor Yellow
+    
+    # Use docker buildx with --output=type=docker for faster loading
+    docker buildx build --output=type=docker -t $ImageName .
     if ($LASTEXITCODE -ne 0) {
         Write-Host "❌ Docker build failed" -ForegroundColor Red
         exit 1
