@@ -55,13 +55,13 @@
 
 ### Implementation for User Story 1
 
-- [ ] T009 [P] [US1] Implement LAYER_MAC_BASE (layer 0) in JRaem/keymap.c with alpha keys (HIEA O / DTRNS layout), macOS home row mods (H=Ctrl, I=Alt, E=Cmd, T=Cmd, R=Alt, N=Ctrl)
-- [ ] T010 [P] [US1] Implement LAYER_WIN_BASE (layer 1) in JRaem/keymap.c with identical alpha keys, Windows home row mods (H=Win, I=Alt, E=Ctrl, T=Ctrl, R=Alt, N=Win)
-- [ ] T011 [US1] Configure thumb cluster on LAYER_MAC_BASE in JRaem/keymap.c: left inner=OSL(LAYER_SYMBOLS), left outer=OSM(MOD_LSFT), right inner=OSL(LAYER_FUNCTION), right outer=LT(LAYER_NUMBERS, KC_SPACE)
-- [ ] T012 [US1] Configure thumb cluster on LAYER_WIN_BASE in JRaem/keymap.c with same layer access pattern as LAYER_MAC_BASE
-- [ ] T013 [US1] Add navigation/utility keys to both base layers in JRaem/keymap.c: CW_TOGG (caps word), QK_REPEAT_KEY, QK_LEAD (leader key)
-- [ ] T014 [US1] Update RGB LED configuration for LAYER_MAC_BASE in JRaem/keymap.c (existing blue/teal pattern)
-- [ ] T015 [US1] Update RGB LED configuration for LAYER_WIN_BASE in JRaem/keymap.c (existing green pattern)
+- [X] T009 [P] [US1] Implement LAYER_MAC_BASE (layer 0) in JRaem/keymap.c with alpha keys (HIEA O / DTRNS layout), macOS home row mods (H=Ctrl, I=Alt, E=Cmd, T=Cmd, R=Alt, N=Ctrl)
+- [X] T010 [P] [US1] Implement LAYER_WIN_BASE (layer 1) in JRaem/keymap.c with identical alpha keys, Windows home row mods (H=Win, I=Alt, E=Ctrl, T=Ctrl, R=Alt, N=Win)
+- [X] T011 [US1] Configure thumb cluster on LAYER_MAC_BASE in JRaem/keymap.c: left inner=OSL(LAYER_SYMBOLS), left outer=OSM(MOD_LSFT), right inner=OSL(LAYER_FUNCTION), right outer=LT(LAYER_NUMBERS, KC_SPACE)
+- [X] T012 [US1] Configure thumb cluster on LAYER_WIN_BASE in JRaem/keymap.c with same layer access pattern as LAYER_MAC_BASE
+- [X] T013 [US1] Add navigation/utility keys to both base layers in JRaem/keymap.c: CW_TOGG (caps word), QK_REPEAT_KEY, QK_LEAD (leader key)
+- [X] T014 [US1] Update RGB LED configuration for LAYER_MAC_BASE in JRaem/keymap.c (existing blue/teal pattern)
+- [X] T015 [US1] Update RGB LED configuration for LAYER_WIN_BASE in JRaem/keymap.c (existing green pattern)
 
 **Checkpoint**: Both base layers fully functional with OS-appropriate modifiers, consistent alpha layout, and layer access via thumb cluster
 
