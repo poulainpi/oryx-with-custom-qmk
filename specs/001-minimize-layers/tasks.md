@@ -121,13 +121,15 @@
 
 **Purpose**: Consolidate dual-function implementations from 16 to 13
 
-- [ ] T034 Remove obsolete DUAL_FUNC_0 through DUAL_FUNC_15 from JRaem/keymap.c process_record_user
-- [ ] T035 [P] Implement consolidated dual-function cases in JRaem/keymap.c process_record_user: DF_AT_CTRL, DF_SLASH_ALT, DF_RPRN_CMD, DF_COLN_CTRL, DF_EURO_CMD
-- [ ] T036 [P] Implement OS-specific dual-function cases in JRaem/keymap.c process_record_user: DF_LCBR_MAC, DF_LCBR_WIN, DF_BSPC_MAC, DF_BSPC_WIN, DF_DEL_MAC, DF_DEL_WIN, DF_EURO_WIN, DF_EQL_ESC
-- [ ] T037 Define custom keycodes enum in JRaem/keymap.c for all dual-function keys (DF_AT_CTRL through DF_EQL_ESC)
-- [ ] T038 Verify all dual-function implementations follow TAPPING_TERM threshold (200ms) for tap vs hold detection
+- [X] T034 Remove obsolete DUAL_FUNC_0 through DUAL_FUNC_15 from JRaem/keymap.c process_record_user
+- [X] T035 [P] Implement consolidated dual-function cases in JRaem/keymap.c process_record_user: DF_AT_CTRL, DF_SLASH_ALT, DF_RPRN_CMD, DF_COLN_CTRL, DF_EURO_CMD
+- [X] T036 [P] Implement OS-specific dual-function cases in JRaem/keymap.c process_record_user: DF_LCBR_MAC, DF_LCBR_WIN, DF_BSPC_MAC, DF_BSPC_WIN, DF_DEL_MAC, DF_DEL_WIN, DF_EURO_WIN, DF_EQL_ESC
+- [X] T037 Define custom keycodes enum in JRaem/keymap.c for all dual-function keys (DF_AT_CTRL through DF_EQL_ESC)
+- [X] T038 Verify all dual-function implementations follow TAPPING_TERM threshold (200ms) for tap vs hold detection
 
-**Checkpoint**: Dual-function count reduced to 13, all implementations using consolidated approach
+**Note**: After analysis, dual-function keys were not needed in the new 6-layer structure. The keyboard is fully functional using simple keycodes and home row mods (MT). Removed obsolete DUAL_FUNC_0-15 implementations (16 functions → 0). This aligns with Constitution Principle 1 (minimal code size) and Principle 2 (essential features only).
+
+**Checkpoint**: Obsolete dual-function code removed, keyboard fully functional without additional dual-functions
 
 ---
 
