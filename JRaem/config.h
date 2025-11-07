@@ -4,6 +4,10 @@
 #define LAYER_STATE_16BIT
 #define COMBO_COUNT 4
 
+// Optimized timing for dual-function keys and one-shot layers
+#define TAPPING_TERM 200        // 200ms threshold for tap vs hold detection
+#define ONESHOT_TIMEOUT 5000    // 5000ms timeout for one-shot layer activation
+
 #define RGB_MATRIX_STARTUP_SPD 60
 
 #undef ENABLE_RGB_MATRIX_ALPHAS_MODS

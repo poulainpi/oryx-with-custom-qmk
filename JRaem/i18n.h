@@ -37,6 +37,10 @@
 #define DE_EURO ALGR(KC_E)
 #define DE_AE KC_QUOT
 #define DE_OE KC_SCLN
+// Additional German character aliases for clarity
+#define DE_ADIA DE_AE    // ä
+#define DE_ODIA DE_OE    // ö
+#define DE_UDIA DE_UE    // ü
 #define KC_MAC_UNDO LGUI(KC_Z)
 #define KC_MAC_COPY LGUI(KC_C)
 #define KC_MAC_PASTE LGUI(KC_V)

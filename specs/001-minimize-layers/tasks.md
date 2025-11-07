@@ -37,11 +37,11 @@
 
 **⚠️ CRITICAL**: No user story work can begin until this phase is complete
 
-- [ ] T004 Update layer enum definitions in JRaem/keymap.c (LAYER_MAC_BASE=0, LAYER_WIN_BASE=1, LAYER_SYMBOLS=2, LAYER_FUNCTION=3, LAYER_NUMBERS=4, LAYER_CONFIG=5)
-- [ ] T005 Create OS detection helper function in JRaem/keymap.c (is_macos_base() to check active base layer)
-- [ ] T006 [P] Update RGB layer indicators array in JRaem/keymap.c to support 6-layer structure
-- [ ] T007 [P] Update config.h with optimized TAPPING_TERM (200ms) and ONESHOT_TIMEOUT (5000ms) if not already set
-- [ ] T008 Verify German keyboard layout includes in JRaem/i18n.h are complete (DE_AT, DE_SLSH, DE_LCBR, DE_EURO, etc.)
+- [X] T004 Update layer enum definitions in JRaem/keymap.c (LAYER_MAC_BASE=0, LAYER_WIN_BASE=1, LAYER_SYMBOLS=2, LAYER_FUNCTION=3, LAYER_NUMBERS=4, LAYER_CONFIG=5)
+- [X] T005 Create OS detection helper function in JRaem/keymap.c (is_macos_base() to check active base layer)
+- [X] T006 [P] Update RGB layer indicators array in JRaem/keymap.c to support 6-layer structure
+- [X] T007 [P] Update config.h with optimized TAPPING_TERM (200ms) and ONESHOT_TIMEOUT (5000ms) if not already set
+- [X] T008 Verify German keyboard layout includes in JRaem/i18n.h are complete (DE_AT, DE_SLSH, DE_LCBR, DE_EURO, etc.)
 
 **Checkpoint**: Foundation ready - layer architecture defined, helper functions available
 
