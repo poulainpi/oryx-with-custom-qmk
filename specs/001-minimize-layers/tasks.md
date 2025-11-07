@@ -107,11 +107,11 @@
 
 ### Implementation for User Story 3
 
-- [ ] T029 [US3] Implement LAYER_CONFIG (layer 5) in JRaem/keymap.c with RGB controls: RGB_TOG (toggle), RGB_MOD (mode), RGB_HUI/RGB_HUD (hue), RGB_SAI/RGB_SAD (saturation), RGB_VAI/RGB_VAD (brightness), RGB_SPI/RGB_SPD (speed)
-- [ ] T030 [US3] Add layer switching keys to LAYER_CONFIG in JRaem/keymap.c: TO(LAYER_MAC_BASE), TO(LAYER_WIN_BASE)
-- [ ] T031 [US3] Add system functions to LAYER_CONFIG in JRaem/keymap.c: QK_BOOT (bootloader mode for firmware flashing)
-- [ ] T032 [US3] Configure access to LAYER_CONFIG via TO(5) from designated keys on base layers in JRaem/keymap.c
-- [ ] T033 [US3] Update RGB LED configuration for LAYER_CONFIG in JRaem/keymap.c (preserve existing RGB control visualization)
+- [X] T029 [US3] Implement LAYER_CONFIG (layer 5) in JRaem/keymap.c with RGB controls: RGB_TOG (toggle), RGB_MOD (mode), RGB_HUI/RGB_HUD (hue), RGB_SAI/RGB_SAD (saturation), RGB_VAI/RGB_VAD (brightness), RGB_SPI/RGB_SPD (speed)
+- [X] T030 [US3] Add layer switching keys to LAYER_CONFIG in JRaem/keymap.c: TO(LAYER_MAC_BASE), TO(LAYER_WIN_BASE)
+- [X] T031 [US3] Add system functions to LAYER_CONFIG in JRaem/keymap.c: QK_BOOT (bootloader mode for firmware flashing)
+- [X] T032 [US3] Configure access to LAYER_CONFIG via TO(5) from designated keys on base layers in JRaem/keymap.c
+- [X] T033 [US3] Update RGB LED configuration for LAYER_CONFIG in JRaem/keymap.c (preserve existing RGB control visualization)
 
 **Checkpoint**: Configuration layer fully functional with RGB controls, OS switching, and system functions
 
