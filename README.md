@@ -81,3 +81,114 @@ For detailed implementation documentation, see:
 - **Implementation Plan**: `specs/001-minimize-layers/plan.md`
 - **Layer Contracts**: `specs/001-minimize-layers/contracts/layer-structure.md`
 - **Original Layout Backup**: `specs/001-minimize-layers/CURRENT_LAYOUT.md`
+- **Testing Checklist**: `specs/001-minimize-layers/TESTING_CHECKLIST.md`
+
+## Troubleshooting
+
+### Layer Access Issues
+
+**Problem**: Cannot access symbol/function/number layer  
+**Solution**: 
+- Verify you're using the correct thumb key (OSL for symbols/function, LT+space for numbers)
+- Check if you're stuck on another layer - press TO(LAYER_MAC_BASE) or TO(LAYER_WIN_BASE) to reset
+- Ensure firmware is up to date (recompile and reflash)
+
+**Problem**: Layer doesn't return to base after one-shot  
+**Solution**:
+- OSL (one-shot layer) should auto-return after one keypress
+- If stuck, manually return by accessing config layer and switching to desired base
+- Check ONESHOT_TIMEOUT setting in config.h (default: 5000ms)
+
+**Problem**: Wrong base layer active (macOS vs Windows)  
+**Solution**:
+- Access LAYER_CONFIG (top-right key on any layer)
+- Press TO(LAYER_MAC_BASE) or TO(LAYER_WIN_BASE) to switch
+- LED color will change to indicate active base (blue/teal for Mac, green for Windows)
+
+### Home Row Mod Issues
+
+**Problem**: Home row mods trigger accidentally during fast typing  
+**Solution**:
+- Increase TAPPING_TERM in config.h (currently 200ms, try 250ms)
+- Practice keeping fingers light when typing quickly
+- Consider disabling home row mods on less-used keys
+
+**Problem**: Home row mods don't activate when held  
+**Solution**:
+- Hold key longer than TAPPING_TERM (>200ms)
+- Ensure you're pressing the correct home row key (H, I, E, T, R, N)
+- Check if you're on the correct base layer (Mac vs Windows have different mods)
+
+**Problem**: Wrong modifier activates  
+**Solution**:
+- Verify you're on the correct OS base layer
+- macOS: H=Ctrl, I=Alt, E=Cmd, T=Cmd, R=Alt, N=Ctrl
+- Windows: H=Win, I=Alt, E=Ctrl, T=Ctrl, R=Alt, N=Win
+- Use TO() keys in config layer to switch base layers
+
+### Clipboard Operation Issues
+
+**Problem**: OS_COPY/PASTE/CUT doesn't work  
+**Solution**:
+- Verify you're on the correct OS base layer (detection based on LAYER_MAC_BASE vs LAYER_WIN_BASE)
+- Access number layer (hold space) to find clipboard keys
+- macOS uses Cmd+C/V/X, Windows uses Ctrl+C/V/X automatically
+- Ensure is_macos_base() helper is working (check layer state with LED colors)
+
+**Problem**: Wrong modifier used for clipboard shortcuts  
+**Solution**:
+- Switch to correct base layer using config layer
+- OS detection is based on active base layer, not actual OS
+- Use TO(LAYER_MAC_BASE) when on macOS, TO(LAYER_WIN_BASE) when on Windows
+
+### RGB/LED Issues
+
+**Problem**: LEDs don't change color per layer  
+**Solution**:
+- Access LAYER_CONFIG and press RGB_TOG to ensure LEDs are enabled
+- Only 3 layers have custom LED colors (MAC_BASE, WIN_BASE, CONFIG)
+- Symbol/Function/Number layers use default matrix colors
+- Adjust brightness with RGB_VAI/VAD if LEDs are too dim
+
+**Problem**: Cannot access config layer  
+**Solution**:
+- Press TO(LAYER_CONFIG) on top-right key (works from any layer)
+- If unresponsive, try pressing from base layer first
+- Check if key is mapped correctly in keymap.c
+
+### Build/Flash Issues
+
+**Problem**: Firmware won't compile in GitHub Actions  
+**Solution**:
+- Check GitHub Actions log for specific error messages
+- Verify all syntax in keymap.c, config.h, rules.mk is correct
+- Ensure firmware size is <256KB (check build log output)
+- Review recent code changes for syntax errors
+
+**Problem**: Firmware won't flash to keyboard  
+**Solution**:
+- Use Keymapp application (not QMK Toolbox)
+- Enter bootloader mode: Access LAYER_CONFIG, press QK_BOOT (top-right key)
+- Keyboard should be detected by Keymapp
+- Ensure you downloaded the correct .bin file from GitHub Actions artifacts
+
+**Problem**: Keyboard behaves unexpectedly after flash  
+**Solution**:
+- Verify you flashed the correct firmware file (check filename matches keyboard model)
+- Reset EEPROM: Unplug keyboard, press QK_BOOT while plugging back in
+- Reflash known-good firmware version
+- Check TESTING_CHECKLIST.md to systematically validate all features
+
+### Getting Help
+
+If issues persist:
+1. Review detailed documentation in `specs/001-minimize-layers/`
+2. Check quickstart.md for testing procedures
+3. Validate implementation against contracts in `contracts/` folder
+4. Create GitHub issue with:
+   - Description of problem
+   - Steps to reproduce
+   - Expected vs actual behavior
+   - Firmware version/commit hash
+   - OS (macOS/Windows) and keyboard model
+
