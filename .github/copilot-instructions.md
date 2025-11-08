@@ -3,6 +3,7 @@
 Auto-generated from all feature plans. Last updated: 2025-11-07
 
 ## Active Technologies
+- N/A (keyboard firmware stored in flash memory) (002-minimize-layers)
 
 - C (QMK Firmware compatible with AVR-GCC compiler) + QMK Firmware (qmk_firmware submodule), Oryx layout API, German keyboard layout definitions (keymap_german.h) (001-minimize-layers)
 
@@ -83,6 +84,7 @@ All code changes MUST comply with .specify/memory/constitution.md:
 5. **Code Maintainability**: Clear structure, enum constants, no magic numbers
 
 ## Recent Changes
+- 002-minimize-layers: Added C (QMK Firmware compatible with AVR-GCC compiler) + QMK Firmware (qmk_firmware submodule), Oryx layout API, German keyboard layout definitions (keymap_german.h)
 
 - 001-minimize-layers: Implemented 6-layer architecture with OS-aware clipboard, removed 16 dual-functions, reduced code by 48%
 
