@@ -25,10 +25,10 @@
 
 **Purpose**: Preparation and foundation work before layer implementation
 
-- [ ] T001 Create backup of current vrMEr/keymap.c (copy to specs/002-minimize-layers/CURRENT_LAYOUT_BACKUP.c)
-- [ ] T002 Document all 17 tap dance functions in contracts/tap-dance-elimination.md by analyzing vrMEr/keymap.c lines 400-930
-- [ ] T003 [P] Verify GitHub Actions build workflow supports vrMEr folder (check .github/workflows/)
-- [ ] T004 [P] Verify Docker build scripts include vrMEr in build targets (build-local.ps1, build-local.sh)
+- [X] T001 Create backup of current vrMEr/keymap.c (copy to specs/002-minimize-layers/CURRENT_LAYOUT_BACKUP.c)
+- [X] T002 Document all 17 tap dance functions in contracts/tap-dance-elimination.md by analyzing vrMEr/keymap.c lines 400-930
+- [X] T003 [P] Verify GitHub Actions build workflow supports vrMEr folder (check .github/workflows/) - See BUILD_INFRASTRUCTURE_ASSESSMENT.md
+- [X] T004 [P] Verify Docker build scripts include vrMEr in build targets (build-local.ps1, build-local.sh) - See BUILD_INFRASTRUCTURE_ASSESSMENT.md
 
 ---
 

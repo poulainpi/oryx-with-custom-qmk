@@ -138,175 +138,243 @@ For each DANCE_X, document:
 
 ---
 
-## Placeholder Mappings (To Be Completed During Implementation)
+## Complete Tap Dance Analysis and Replacement Strategy
 
-### DANCE_0
+### DANCE_0 (Layer 1 - macOS Symbols)
 
-**Current Function**: [TO BE ANALYZED from vrMEr/keymap.c]  
-**Usage**: [TO BE DETERMINED]  
-**Replacement**: [TO BE DESIGNED based on function analysis]  
-**Code Change**: [TO BE IMPLEMENTED]  
-**Testing**: [TO BE DEFINED]
-
----
-
-### DANCE_1
-
-**Current Function**: [TO BE ANALYZED from vrMEr/keymap.c]  
-**Usage**: [TO BE DETERMINED]  
-**Replacement**: [TO BE DESIGNED based on function analysis]  
-**Code Change**: [TO BE IMPLEMENTED]  
-**Testing**: [TO BE DEFINED]
+**Current Function**: Tap=@ (DE_AT), Hold=Ctrl, Double-Tap=@@  
+**Usage**: Layer 1 (macOS symbols layer), home row position  
+**Replacement**: Direct keycode `DE_AT` or `MT(MOD_LCTL, DE_AT)` if modifier needed  
+**Code Change**:
+```c
+// BEFORE: TD(DANCE_0)
+// AFTER: DE_AT (direct symbol) or MT(MOD_LCTL, DE_AT) if Ctrl needed on hold
+```
+**Testing**: Type @ symbol on symbol layer, verify no accidental modifiers
 
 ---
 
-### DANCE_2
+### DANCE_1 (Layer 1 - macOS Symbols)
 
-**Current Function**: [TO BE ANALYZED from vrMEr/keymap.c]  
-**Usage**: [TO BE DETERMINED]  
-**Replacement**: [TO BE DESIGNED based on function analysis]  
-**Code Change**: [TO BE IMPLEMENTED]  
-**Testing**: [TO BE DEFINED]
-
----
-
-### DANCE_3
-
-**Current Function**: [TO BE ANALYZED from vrMEr/keymap.c]  
-**Usage**: [TO BE DETERMINED]  
-**Replacement**: [TO BE DESIGNED based on function analysis]  
-**Code Change**: [TO BE IMPLEMENTED]  
-**Testing**: [TO BE DEFINED]
+**Current Function**: Tap=/ (DE_SLSH), Hold=Alt, Double-Tap=//  
+**Usage**: Layer 1 (macOS symbols layer), home row position  
+**Replacement**: Direct keycode `DE_SLSH` or `MT(MOD_LALT, DE_SLSH)` if modifier needed  
+**Code Change**:
+```c
+// BEFORE: TD(DANCE_1)
+// AFTER: DE_SLSH (direct symbol) or MT(MOD_LALT, DE_SLSH) if Alt needed
+```
+**Testing**: Type / symbol on symbol layer
 
 ---
 
-### DANCE_4
+### DANCE_2 (Layer 1 - macOS Symbols)
 
-**Current Function**: [TO BE ANALYZED from vrMEr/keymap.c]  
-**Usage**: [TO BE DETERMINED]  
-**Replacement**: [TO BE DESIGNED based on function analysis]  
-**Code Change**: [TO BE IMPLEMENTED]  
-**Testing**: [TO BE DEFINED]
-
----
-
-### DANCE_5
-
-**Current Function**: [TO BE ANALYZED from vrMEr/keymap.c]  
-**Usage**: [TO BE DETERMINED]  
-**Replacement**: [TO BE DESIGNED based on function analysis]  
-**Code Change**: [TO BE IMPLEMENTED]  
-**Testing**: [TO BE DEFINED]
+**Current Function**: Tap={ (DE_LCBR), Hold=Cmd, Double-Tap={{  
+**Usage**: Layer 1 (macOS symbols layer), home row position  
+**Replacement**: Direct keycode `DE_LCBR` or `MT(MOD_LGUI, DE_LCBR)` if modifier needed  
+**Code Change**:
+```c
+// BEFORE: TD(DANCE_2)
+// AFTER: DE_LCBR (direct symbol) or MT(MOD_LGUI, DE_LCBR) if Cmd needed
+```
+**Testing**: Type { symbol on symbol layer
 
 ---
 
-### DANCE_6
+### DANCE_3 (Layer 1 - macOS Symbols)
 
-**Current Function**: [TO BE ANALYZED from vrMEr/keymap.c]  
-**Usage**: [TO BE DETERMINED]  
-**Replacement**: [TO BE DESIGNED based on function analysis]  
-**Code Change**: [TO BE IMPLEMENTED]  
-**Testing**: [TO BE DEFINED]
-
----
-
-### DANCE_7
-
-**Current Function**: [TO BE ANALYZED from vrMEr/keymap.c]  
-**Usage**: [TO BE DETERMINED]  
-**Replacement**: [TO BE DESIGNED based on function analysis]  
-**Code Change**: [TO BE IMPLEMENTED]  
-**Testing**: [TO BE DEFINED]
+**Current Function**: Tap=) (DE_RPRN), Hold=Cmd, Double-Tap=))  
+**Usage**: Layer 1 (macOS symbols layer), home row position  
+**Replacement**: Direct keycode `DE_RPRN` or `MT(MOD_RGUI, DE_RPRN)` if modifier needed  
+**Code Change**:
+```c
+// BEFORE: TD(DANCE_3)
+// AFTER: DE_RPRN (direct symbol) or MT(MOD_RGUI, DE_RPRN) if Cmd needed
+```
+**Testing**: Type ) symbol on symbol layer
 
 ---
 
-### DANCE_8
+### DANCE_4 (Layer 1 - macOS Symbols)
 
-**Current Function**: [TO BE ANALYZED from vrMEr/keymap.c]  
-**Usage**: [TO BE DETERMINED]  
-**Replacement**: [TO BE DESIGNED based on function analysis]  
-**Code Change**: [TO BE IMPLEMENTED]  
-**Testing**: [TO BE DEFINED]
-
----
-
-### DANCE_9
-
-**Current Function**: [TO BE ANALYZED from vrMEr/keymap.c]  
-**Usage**: [TO BE DETERMINED]  
-**Replacement**: [TO BE DESIGNED based on function analysis]  
-**Code Change**: [TO BE IMPLEMENTED]  
-**Testing**: [TO BE DEFINED]
+**Current Function**: Tap=: (DE_COLN), Hold=Ctrl, Double-Tap=::  
+**Usage**: Layer 1 (macOS symbols layer), home row position  
+**Replacement**: Direct keycode `DE_COLN` or `MT(MOD_RCTL, DE_COLN)` if modifier needed  
+**Code Change**:
+```c
+// BEFORE: TD(DANCE_4)
+// AFTER: DE_COLN (direct symbol) or MT(MOD_RCTL, DE_COLN) if Ctrl needed
+```
+**Testing**: Type : symbol on symbol layer
 
 ---
 
-### DANCE_10
+### DANCE_5 (Layer 1 - macOS Symbols, Thumb)
 
-**Current Function**: [TO BE ANALYZED from vrMEr/keymap.c]  
-**Usage**: [TO BE DETERMINED]  
-**Replacement**: [TO BE DESIGNED based on function analysis]  
-**Code Change**: [TO BE IMPLEMENTED]  
-**Testing**: [TO BE DEFINED]
-
----
-
-### DANCE_11
-
-**Current Function**: [TO BE ANALYZED from vrMEr/keymap.c]  
-**Usage**: [TO BE DETERMINED]  
-**Replacement**: [TO BE DESIGNED based on function analysis]  
-**Code Change**: [TO BE IMPLEMENTED]  
-**Testing**: [TO BE DEFINED]
+**Current Function**: Tap=Backspace, Hold=Ctrl+Backspace (delete word), Double-Tap=Backspace×2  
+**Usage**: Layer 1 thumb cluster  
+**Replacement**: `KC_BSPC` (direct) - word deletion moved to explicit key or eliminated  
+**Code Change**:
+```c
+// BEFORE: TD(DANCE_5)
+// AFTER: KC_BSPC (simple backspace on symbol layer)
+```
+**Testing**: Backspace on symbol layer deletes one character
 
 ---
 
-### DANCE_12
+### DANCE_6 (Layer 1 - macOS Symbols, Thumb)
 
-**Current Function**: [TO BE ANALYZED from vrMEr/keymap.c]  
-**Usage**: [TO BE DETERMINED]  
-**Replacement**: [TO BE DESIGNED based on function analysis]  
-**Code Change**: [TO BE IMPLEMENTED]  
-**Testing**: [TO BE DEFINED]
-
----
-
-### DANCE_13
-
-**Current Function**: [TO BE ANALYZED from vrMEr/keymap.c]  
-**Usage**: [TO BE DETERMINED]  
-**Replacement**: [TO BE DESIGNED based on function analysis]  
-**Code Change**: [TO BE IMPLEMENTED]  
-**Testing**: [TO BE DEFINED]
+**Current Function**: Tap=Delete, Hold=Ctrl+Delete (delete word forward), Double-Tap=Delete×2  
+**Usage**: Layer 1 thumb cluster  
+**Replacement**: `KC_DEL` (direct) - word deletion moved to explicit key or eliminated  
+**Code Change**:
+```c
+// BEFORE: TD(DANCE_6)
+// AFTER: KC_DEL (simple delete on symbol layer)
+```
+**Testing**: Delete on symbol layer deletes one character
 
 ---
 
-### DANCE_14
+### DANCE_7 (Layer 2 - macOS Function)
 
-**Current Function**: [TO BE ANALYZED from vrMEr/keymap.c]  
-**Usage**: [TO BE DETERMINED]  
-**Replacement**: [TO BE DESIGNED based on function analysis]  
-**Code Change**: [TO BE IMPLEMENTED]  
-**Testing**: [TO BE DEFINED]
-
----
-
-### DANCE_15
-
-**Current Function**: [TO BE ANALYZED from vrMEr/keymap.c]  
-**Usage**: [TO BE DETERMINED]  
-**Replacement**: [TO BE DESIGNED based on function analysis]  
-**Code Change**: [TO BE IMPLEMENTED]  
-**Testing**: [TO BE DEFINED]
+**Current Function**: Tap=€ (DE_EURO), Hold=Cmd, Double-Tap=€€  
+**Usage**: Layer 2 (macOS function layer), home row position  
+**Replacement**: Direct keycode `DE_EURO` (modifier not needed on function layer)  
+**Code Change**:
+```c
+// BEFORE: TD(DANCE_7)
+// AFTER: DE_EURO (direct € symbol)
+```
+**Testing**: Type € on function layer
 
 ---
 
-### DANCE_16
+### DANCE_8 (Layer 4 - Windows Base)
 
-**Current Function**: [TO BE ANALYZED from vrMEr/keymap.c]  
-**Usage**: [TO BE DETERMINED]  
-**Replacement**: [TO BE DESIGNED based on function analysis]  
-**Code Change**: [TO BE IMPLEMENTED]  
-**Testing**: [TO BE DEFINED]
+**Current Function**: Tap== (KC_EQUAL), Hold=Escape, Double-Tap===  
+**Usage**: Layer 4 (Windows base layer), top row position  
+**Replacement**: Direct keycode `KC_ESC` moved to dedicated position, = to appropriate layer  
+**Code Change**:
+```c
+// BEFORE: TD(DANCE_8)
+// AFTER: KC_TRANSPARENT or dedicated Escape key position
+```
+**Testing**: Verify Escape accessible on Windows base
+
+---
+
+### DANCE_9 (Layer 5 - Windows Function)
+
+**Current Function**: Tap=€ (DE_EURO), Hold=Ctrl, Double-Tap=€€  
+**Usage**: Layer 5 (Windows function layer), home row position  
+**Replacement**: Direct keycode `DE_EURO` (modifier not needed on function layer)  
+**Code Change**:
+```c
+// BEFORE: TD(DANCE_9)
+// AFTER: DE_EURO (direct € symbol)
+```
+**Testing**: Type € on function layer
+
+---
+
+### DANCE_10 (Layer 6 - Windows Symbols)
+
+**Current Function**: Tap=@ (DE_AT), Hold=Win, Double-Tap=@@  
+**Usage**: Layer 6 (Windows symbols layer), home row position  
+**Replacement**: Direct keycode `DE_AT` or `MT(MOD_LGUI, DE_AT)` if modifier needed  
+**Code Change**:
+```c
+// BEFORE: TD(DANCE_10)
+// AFTER: DE_AT (direct symbol) or MT(MOD_LGUI, DE_AT) if Win needed
+```
+**Testing**: Type @ symbol on symbol layer
+
+---
+
+### DANCE_11 (Layer 6 - Windows Symbols)
+
+**Current Function**: Tap=/ (DE_SLSH), Hold=Alt, Double-Tap=//  
+**Usage**: Layer 6 (Windows symbols layer), home row position  
+**Replacement**: Direct keycode `DE_SLSH` or `MT(MOD_LALT, DE_SLSH)` if modifier needed  
+**Code Change**:
+```c
+// BEFORE: TD(DANCE_11)
+// AFTER: DE_SLSH (direct symbol) or MT(MOD_LALT, DE_SLSH) if Alt needed
+```
+**Testing**: Type / symbol on symbol layer
+
+---
+
+### DANCE_12 (Layer 6 - Windows Symbols)
+
+**Current Function**: Tap={ (DE_LCBR), Hold=Ctrl, Double-Tap={{  
+**Usage**: Layer 6 (Windows symbols layer), home row position  
+**Replacement**: Direct keycode `DE_LCBR` or `MT(MOD_LCTL, DE_LCBR)` if modifier needed  
+**Code Change**:
+```c
+// BEFORE: TD(DANCE_12)
+// AFTER: DE_LCBR (direct symbol) or MT(MOD_LCTL, DE_LCBR) if Ctrl needed
+```
+**Testing**: Type { symbol on symbol layer
+
+---
+
+### DANCE_13 (Layer 6 - Windows Symbols)
+
+**Current Function**: Tap=) (DE_RPRN), Hold=Ctrl, Double-Tap=))  
+**Usage**: Layer 6 (Windows symbols layer), home row position  
+**Replacement**: Direct keycode `DE_RPRN` or `MT(MOD_RCTL, DE_RPRN)` if modifier needed  
+**Code Change**:
+```c
+// BEFORE: TD(DANCE_13)
+// AFTER: DE_RPRN (direct symbol) or MT(MOD_RCTL, DE_RPRN) if Ctrl needed
+```
+**Testing**: Type ) symbol on symbol layer
+
+---
+
+### DANCE_14 (Layer 6 - Windows Symbols)
+
+**Current Function**: Tap=: (DE_COLN), Hold=Win, Double-Tap=::  
+**Usage**: Layer 6 (Windows symbols layer), home row position  
+**Replacement**: Direct keycode `DE_COLN` or `MT(MOD_RGUI, DE_COLN)` if modifier needed  
+**Code Change**:
+```c
+// BEFORE: TD(DANCE_14)
+// AFTER: DE_COLN (direct symbol) or MT(MOD_RGUI, DE_COLN) if Win needed
+```
+**Testing**: Type : symbol on symbol layer
+
+---
+
+### DANCE_15 (Layer 6 - Windows Symbols, Thumb)
+
+**Current Function**: Tap=Backspace, Hold=Alt+Backspace (delete word macOS-style on Windows), Double-Tap=Backspace×2  
+**Usage**: Layer 6 thumb cluster  
+**Replacement**: `KC_BSPC` (direct) - word deletion moved to explicit key or eliminated  
+**Code Change**:
+```c
+// BEFORE: TD(DANCE_15)
+// AFTER: KC_BSPC (simple backspace on symbol layer)
+```
+**Testing**: Backspace on symbol layer deletes one character
+
+---
+
+### DANCE_16 (Layer 6 - Windows Symbols, Thumb)
+
+**Current Function**: Tap=Delete, Hold=Alt+Delete (delete word forward), Double-Tap=Delete×2  
+**Usage**: Layer 6 thumb cluster  
+**Replacement**: `KC_DEL` (direct) - word deletion moved to explicit key or eliminated  
+**Code Change**:
+```c
+// BEFORE: TD(DANCE_16)
+// AFTER: KC_DEL (simple delete on symbol layer)
+```
+**Testing**: Delete on symbol layer deletes one character
 
 ---
 
