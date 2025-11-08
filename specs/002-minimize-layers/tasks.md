@@ -38,12 +38,12 @@
 
 **⚠️ CRITICAL**: No user story work can begin until this phase is complete
 
-- [ ] T005 Define layer enum constants in vrMEr/keymap.c (LAYER_MAC_BASE=0, LAYER_WIN_BASE=1, LAYER_SYMBOLS=2, LAYER_FUNCTION=3, LAYER_NUMBERS=4, LAYER_CONFIG=5)
-- [ ] T006 Define custom keycode enum in vrMEr/keymap.c (OS_UNDO, OS_COPY, OS_PASTE, OS_CUT starting at SAFE_RANGE)
-- [ ] T007 Implement is_macos_base() helper function in vrMEr/keymap.c before process_record_user()
-- [ ] T008 Update vrMEr/config.h with timing constants (TAPPING_TERM 200, ONESHOT_TIMEOUT 5000, PERMISSIVE_HOLD)
-- [ ] T009 Remove TAP_DANCE_ENABLE from vrMEr/rules.mk
-- [ ] T010 Delete all tap dance enum definitions from vrMEr/keymap.c (enum tap_dance_codes section)
+- [X] T005 Define layer enum constants in vrMEr/keymap.c (LAYER_MAC_BASE=0, LAYER_WIN_BASE=1, LAYER_SYMBOLS=2, LAYER_FUNCTION=3, LAYER_NUMBERS=4, LAYER_CONFIG=5)
+- [X] T006 Define custom keycode enum in vrMEr/keymap.c (OS_UNDO, OS_COPY, OS_PASTE, OS_CUT starting at SAFE_RANGE)
+- [X] T007 Implement is_macos_base() helper function in vrMEr/keymap.c before process_record_user()
+- [X] T008 Update vrMEr/config.h with timing constants (TAPPING_TERM 200, ONESHOT_TIMEOUT 5000, PERMISSIVE_HOLD)
+- [X] T009 Remove TAP_DANCE_ENABLE from vrMEr/rules.mk
+- [X] T010 Delete all tap dance enum definitions from vrMEr/keymap.c (enum tap_dance_codes section)
 
 **Checkpoint**: Foundation ready - user story implementation can now begin in parallel
 

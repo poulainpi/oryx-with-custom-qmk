@@ -4,33 +4,26 @@
 #define MOON_LED_LEVEL LED_LEVEL
 #define ML_SAFE_RANGE SAFE_RANGE
 
+// Layer definitions for 6-layer architecture
+enum layer_names {
+  LAYER_MAC_BASE = 0,    // macOS base layer with Cmd-optimized home row mods
+  LAYER_WIN_BASE = 1,    // Windows base layer with Ctrl/Win-optimized home row mods
+  LAYER_SYMBOLS = 2,     // Unified symbols layer (consolidates old layers 1 and 6)
+  LAYER_FUNCTION = 3,    // Function/navigation layer (consolidates old layers 2, 5, 8)
+  LAYER_NUMBERS = 4,     // Numbers/numpad layer (consolidates old layers 3 and 7)
+  LAYER_CONFIG = 5,      // Configuration layer (RGB, layer switching, bootloader)
+};
+
 enum custom_keycodes {
   RGB_SLD = ML_SAFE_RANGE,
   HSV_0_255_255,
   HSV_74_255_255,
   HSV_169_255_255,
-};
-
-
-
-enum tap_dance_codes {
-  DANCE_0,
-  DANCE_1,
-  DANCE_2,
-  DANCE_3,
-  DANCE_4,
-  DANCE_5,
-  DANCE_6,
-  DANCE_7,
-  DANCE_8,
-  DANCE_9,
-  DANCE_10,
-  DANCE_11,
-  DANCE_12,
-  DANCE_13,
-  DANCE_14,
-  DANCE_15,
-  DANCE_16,
+  // OS-aware clipboard operations (auto-detect macOS vs Windows base layer)
+  OS_UNDO,    // Cmd+Z on macOS, Ctrl+Z on Windows
+  OS_COPY,    // Cmd+C on macOS, Ctrl+C on Windows
+  OS_PASTE,   // Cmd+V on macOS, Ctrl+V on Windows
+  OS_CUT,     // Cmd+X on macOS, Ctrl+X on Windows
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -249,6 +242,11 @@ void leader_end_user(void) {
     */
 }
 
+// Helper function to detect if currently on macOS base layer
+// Returns true if on LAYER_MAC_BASE (layer 0), false otherwise
+bool is_macos_base(void) {
+    return get_highest_layer(layer_state) == LAYER_MAC_BASE;
+}
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
@@ -274,6 +272,44 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       if (record->event.pressed) {
         rgblight_mode(1);
         rgblight_sethsv(169,255,255);
+      }
+      return false;
+
+    // OS-aware clipboard operations
+    case OS_UNDO:
+      if (record->event.pressed) {
+        if (is_macos_base()) {
+          tap_code16(LGUI(KC_Z));  // Cmd+Z on macOS
+        } else {
+          tap_code16(LCTL(KC_Z));  // Ctrl+Z on Windows
+        }
+      }
+      return false;
+    case OS_COPY:
+      if (record->event.pressed) {
+        if (is_macos_base()) {
+          tap_code16(LGUI(KC_C));  // Cmd+C on macOS
+        } else {
+          tap_code16(LCTL(KC_C));  // Ctrl+C on Windows
+        }
+      }
+      return false;
+    case OS_PASTE:
+      if (record->event.pressed) {
+        if (is_macos_base()) {
+          tap_code16(LGUI(KC_V));  // Cmd+V on macOS
+        } else {
+          tap_code16(LCTL(KC_V));  // Ctrl+V on Windows
+        }
+      }
+      return false;
+    case OS_CUT:
+      if (record->event.pressed) {
+        if (is_macos_base()) {
+          tap_code16(LGUI(KC_X));  // Cmd+X on macOS
+        } else {
+          tap_code16(LCTL(KC_X));  // Ctrl+X on Windows
+        }
       }
       return false;
   }

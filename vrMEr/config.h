@@ -4,6 +4,12 @@
 #define LAYER_STATE_16BIT
 #define COMBO_COUNT 4
 
+// Layer optimization timing configuration
+// Based on proven values from JRaem (001-minimize-layers)
+#define TAPPING_TERM 200           // 200ms tap window for home row mods and layer taps
+#define ONESHOT_TIMEOUT 5000       // 5000ms timeout for one-shot modifiers (OSM)
+#define PERMISSIVE_HOLD            // Enables faster modifier activation during rapid typing
+
 #define RGB_MATRIX_STARTUP_SPD 60
 
 #undef ENABLE_RGB_MATRIX_ALPHAS_MODS
