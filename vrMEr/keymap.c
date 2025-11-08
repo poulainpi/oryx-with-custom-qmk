@@ -74,8 +74,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   // Layer 5: LAYER_CONFIG - Configuration layer (RGB, layer switching, bootloader)
   [LAYER_CONFIG] = LAYOUT_voyager(
-  // Layer 5: LAYER_CONFIG - Configuration layer (RGB, layer switching, bootloader)
-  [LAYER_CONFIG] = LAYOUT_voyager(
     RGB_TOG,        TOGGLE_LAYER_COLOR, RGB_MODE_FORWARD, RGB_SLD,    RGB_VAD,        RGB_VAI,                                        TO(LAYER_WIN_BASE), KC_TRANSPARENT, TO(LAYER_MAC_BASE), KC_TRANSPARENT, QK_BOOT,    KC_TRANSPARENT,
     KC_TRANSPARENT, KC_TRANSPARENT, RGB_SAD,        RGB_SAI,        RGB_SPD,        RGB_SPI,                                        KC_PAGE_UP,     KC_HOME,        KC_UP,          KC_END,         KC_TRANSPARENT, KC_TRANSPARENT,
     KC_TRANSPARENT, KC_MEDIA_PREV_TRACK, KC_MEDIA_NEXT_TRACK, KC_MEDIA_STOP, RGB_HUD,    RGB_HUI,                                 KC_PGDN,        KC_LEFT,        KC_DOWN,        KC_RIGHT,       KC_TRANSPARENT, KC_TRANSPARENT,
