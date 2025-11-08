@@ -1,10 +1,10 @@
 #!/usr/bin/env pwsh
 # Local Docker-based QMK firmware build script for ZSA Voyager
-# Usage: .\build-local.ps1
+# Usage: .\build-local.ps1 [-Keymap vrMEr] [-Clean]
 
 param(
-    [switch]$Clean,
-    [switch]$NoBuild
+    [string]$Keymap = "vrMEr",
+    [switch]$Clean
 )
 
 $ErrorActionPreference = "Stop"
@@ -15,93 +15,91 @@ Write-Host ""
 
 # Configuration
 $ImageName = "qmk-builder"
-$ContainerName = "qmk-build-temp"
-$Keyboard = "voyager"
-$Keymap = "JRaem"
+$Keyboard = "zsa/voyager"
 
-# Check if Docker is available
-try {
-    docker --version | Out-Null
-} catch {
-    Write-Host "❌ Error: Docker is not installed or not in PATH" -ForegroundColor Red
-    Write-Host "Please install Docker Desktop: https://www.docker.com/products/docker-desktop" -ForegroundColor Yellow
+# Configuration
+$ImageName = "qmk-builder"
+$Keyboard = "zsa/voyager"
+
+# Check if keymap directory exists
+if (-not (Test-Path $Keymap)) {
+    Write-Host "❌ Error: Keymap directory '$Keymap' not found" -ForegroundColor Red
     exit 1
 }
 
-# Clean up previous containers/images if requested
+Write-Host "✅ Keymap: $Keymap" -ForegroundColor Green
+
+# Clear DOCKER_HOST for compatibility
+$env:DOCKER_HOST = $null
+
+# Check if Docker is available
+try {
+    $dockerVersion = docker version --format '{{.Server.Version}}' 2>$null
+    if ($LASTEXITCODE -ne 0) {
+        throw "Docker not running"
+    }
+    Write-Host "✅ Docker: $dockerVersion" -ForegroundColor Green
+} catch {
+    Write-Host "❌ Error: Docker is not available or not running" -ForegroundColor Red
+    Write-Host "   Please start Docker Desktop and try again." -ForegroundColor Yellow
+    exit 1
+}
+
+# Clean up previous artifacts if requested
 if ($Clean) {
+    Write-Host ""
     Write-Host "🧹 Cleaning previous build artifacts..." -ForegroundColor Yellow
-    docker rm -f $ContainerName 2>$null | Out-Null
-    docker rmi -f $ImageName 2>$null | Out-Null
+    Remove-Item -Path "*.bin" -ErrorAction SilentlyContinue
+    Remove-Item -Path "build.log" -ErrorAction SilentlyContinue
     Write-Host "✅ Cleanup complete" -ForegroundColor Green
     Write-Host ""
 }
 
-# Build Docker image
-if (-not $NoBuild) {
+# Check/Build Docker image
+$imageExists = docker images -q $ImageName 2>$null
+if (-not $imageExists) {
+    Write-Host ""
     Write-Host "🐳 Building Docker image..." -ForegroundColor Cyan
     Write-Host "   (This may take 2-3 minutes on first build)" -ForegroundColor Yellow
-    
-    # Use docker buildx with --output=type=docker for faster loading
-    docker buildx build --output=type=docker -t $ImageName .
+    Write-Host ""
+    docker build -t $ImageName .
     if ($LASTEXITCODE -ne 0) {
         Write-Host "❌ Docker build failed" -ForegroundColor Red
         exit 1
     }
     Write-Host "✅ Docker image built successfully" -ForegroundColor Green
     Write-Host ""
+} else {
+    Write-Host "✅ Docker image: $ImageName" -ForegroundColor Green
 }
 
-# Initialize QMK firmware in container
-Write-Host "📦 Initializing QMK firmware..." -ForegroundColor Cyan
-docker run --rm `
-    --name "${ContainerName}-init" `
-    -v "${PWD}:/workspace" `
-    -w /workspace `
-    $ImageName `
-    bash -c @"
-# Clone QMK if qmk_firmware doesn't exist or is empty
-if [ ! -d qmk_firmware/.git ]; then
-    echo '📥 Cloning QMK firmware repository...'
-    git clone --recurse-submodules https://github.com/qmk/qmk_firmware.git
-    cd qmk_firmware
-    qmk setup -y
-else
-    echo '✅ QMK firmware already initialized'
-    cd qmk_firmware
-    git pull
-fi
-
-# Copy custom keymap to QMK directory
-echo '📋 Copying custom keymap...'
-mkdir -p keyboards/$Keyboard/keymaps/$Keymap
-cp -r /workspace/JRaem/* keyboards/$Keyboard/keymaps/$Keymap/
-echo '✅ Keymap copied'
-"@
-
-if ($LASTEXITCODE -ne 0) {
-    Write-Host "❌ QMK initialization failed" -ForegroundColor Red
-    exit 1
-}
-Write-Host "✅ QMK firmware initialized" -ForegroundColor Green
+Write-Host ""
+Write-Host "⚙️  Compiling firmware..." -ForegroundColor Cyan
+Write-Host "   Keyboard: $Keyboard" -ForegroundColor Gray
+Write-Host "   Keymap: $Keymap" -ForegroundColor Gray
+Write-Host "   (This may take a few minutes on first run)" -ForegroundColor Yellow
 Write-Host ""
 
-# Compile firmware
-Write-Host "⚙️  Compiling firmware for $Keyboard ($Keymap)..." -ForegroundColor Cyan
-docker run --rm `
-    --name "${ContainerName}-compile" `
-    -v "${PWD}:/workspace" `
-    -w /workspace/qmk_firmware `
-    $ImageName `
-    qmk compile -kb $Keyboard -km $Keymap
+# Build firmware using the proven working method from ZSA fork
+$buildCommand = @"
+git clone --depth=1 --recurse-submodules https://github.com/zsa/qmk_firmware.git /qmk && \
+cd /qmk && \
+cp -r /workspace/$Keymap keyboards/zsa/voyager/keymaps/ && \
+make zsa/voyager:$Keymap 2>&1 | tee /workspace/build.log && \
+cp *.bin /workspace/ 2>/dev/null || true
+"@
+
+docker run --rm -v "${PWD}:/workspace" $ImageName bash -c $buildCommand
 
 if ($LASTEXITCODE -ne 0) {
+    Write-Host ""
     Write-Host "❌ Firmware compilation failed" -ForegroundColor Red
+    Write-Host "   Check build.log for details" -ForegroundColor Yellow
     exit 1
 }
 
 # Find and display the compiled firmware
-$FirmwareFile = Get-ChildItem -Path "qmk_firmware" -Filter "${Keyboard}_${Keymap}.bin" -Recurse -ErrorAction SilentlyContinue | Select-Object -First 1
+$FirmwareFile = Get-ChildItem -Path . -Filter "*.bin" | Select-Object -First 1
 
 if ($FirmwareFile) {
     $SizeKB = [math]::Round($FirmwareFile.Length / 1KB, 2)
@@ -111,7 +109,7 @@ if ($FirmwareFile) {
     Write-Host "✅ Firmware compiled successfully!" -ForegroundColor Green
     Write-Host ""
     Write-Host "📊 Firmware Details:" -ForegroundColor Cyan
-    Write-Host "   File: $($FirmwareFile.FullName)" -ForegroundColor White
+    Write-Host "   File: $($FirmwareFile.Name)" -ForegroundColor White
     Write-Host "   Size: $SizeKB KB / 256 KB ($SizePercent%)" -ForegroundColor White
     
     if ($SizeKB -lt 230) {
@@ -124,14 +122,14 @@ if ($FirmwareFile) {
     
     Write-Host ""
     Write-Host "📝 Next Steps:" -ForegroundColor Cyan
-    Write-Host "   1. Connect your ZSA Voyager" -ForegroundColor White
-    Write-Host "   2. Put it in bootloader mode (press reset button)" -ForegroundColor White
-    Write-Host "   3. Use Keymapp or QMK Toolbox to flash:" -ForegroundColor White
-    Write-Host "      $($FirmwareFile.FullName)" -ForegroundColor Yellow
+    Write-Host "   1. Flash using Keymapp: https://www.zsa.io/flash" -ForegroundColor White
+    Write-Host "   2. Build log saved to: build.log" -ForegroundColor Gray
 } else {
+    Write-Host ""
     Write-Host "⚠️  Warning: Firmware file not found" -ForegroundColor Yellow
-    Write-Host "Expected: qmk_firmware/${Keyboard}_${Keymap}.bin" -ForegroundColor Yellow
+    Write-Host "   Check build.log for details" -ForegroundColor Gray
 }
 
 Write-Host ""
 Write-Host "🎉 Build complete!" -ForegroundColor Green
+Write-Host ""
