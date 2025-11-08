@@ -1,0 +1,80 @@
+name: Build vrMEr firmware
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - 002-minimize-layers
+    paths:
+      - 'vrMEr/**'
+
+permissions:
+  contents: write
+
+jobs:
+  build-vrmer:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Setup QMK
+        run: |
+          cd qmk_firmware
+          git submodule update --init --recursive
+
+      - name: Build Docker image
+        run: docker build -t qmk-builder .
+
+      - name: Copy vrMEr keymap
+        run: |
+          mkdir -p qmk_firmware/keyboards/zsa/voyager/keymaps
+          cp -r vrMEr qmk_firmware/keyboards/zsa/voyager/keymaps/
+
+      - name: Build vrMEr firmware
+        id: build
+        run: |
+          docker run -v ./qmk_firmware:/qmk --rm qmk-builder /bin/sh -c "
+            cd /qmk
+            make zsa/voyager:vrMEr
+          "
+          
+          # Find the built firmware file
+          firmware_file=$(find ./qmk_firmware -maxdepth 1 -type f -name "*voyager*vrMEr*.bin" | head -1)
+          echo "firmware_file=${firmware_file}" >> "$GITHUB_OUTPUT"
+          
+          # Get file size
+          if [ -f "${firmware_file}" ]; then
+            size=$(stat -f%z "${firmware_file}" 2>/dev/null || stat -c%s "${firmware_file}")
+            size_kb=$((size / 1024))
+            echo "firmware_size_kb=${size_kb}" >> "$GITHUB_OUTPUT"
+            echo "✅ Firmware built: ${firmware_file} (${size_kb} KB)"
+            
+            # Check if under 230KB target
+            if [ ${size_kb} -lt 230 ]; then
+              echo "✅ Size target met: ${size_kb} KB < 230 KB"
+            else
+              echo "⚠️ Size over target: ${size_kb} KB >= 230 KB"
+            fi
+          fi
+
+      - name: Upload firmware artifact
+        if: steps.build.outputs.firmware_file
+        uses: actions/upload-artifact@v4
+        with:
+          name: voyager_vrMEr_firmware
+          path: ${{ steps.build.outputs.firmware_file }}
+
+      - name: Comment firmware size
+        if: steps.build.outputs.firmware_size_kb
+        run: |
+          echo "📦 Firmware Size: ${{ steps.build.outputs.firmware_size_kb }} KB" >> $GITHUB_STEP_SUMMARY
+          echo "🎯 Target: < 230 KB" >> $GITHUB_STEP_SUMMARY
+          if [ ${{ steps.build.outputs.firmware_size_kb }} -lt 230 ]; then
+            echo "✅ Size target MET!" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "⚠️ Size EXCEEDS target by $((${{ steps.build.outputs.firmware_size_kb }} - 230)) KB" >> $GITHUB_STEP_SUMMARY
+          fi
