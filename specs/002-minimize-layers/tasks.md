@@ -79,13 +79,13 @@
 
 ### Implementation for User Story 2
 
-- [ ] T020 [US2] Implement process_record_user() custom keycode handler in vrMEr/keymap.c for OS_UNDO (Cmd+Z on macOS, Ctrl+Z on Windows using is_macos_base())
-- [ ] T021 [P] [US2] Implement OS_COPY handler in vrMEr/keymap.c process_record_user() (Cmd+C vs Ctrl+C)
-- [ ] T022 [P] [US2] Implement OS_PASTE handler in vrMEr/keymap.c process_record_user() (Cmd+V vs Ctrl+V)
-- [ ] T023 [P] [US2] Implement OS_CUT handler in vrMEr/keymap.c process_record_user() (Cmd+X vs Ctrl+X)
-- [ ] T024 [US2] Replace OS_* placeholders in LAYER_NUMBERS keymap with actual custom keycodes
-- [ ] T025 [US2] Verify home row mod positions match data-model.md specs (E/T = primary modifiers, H/I/R/N/S = secondary, Cmd on macOS / Ctrl on Windows)
-- [ ] T026 [US2] Test OS detection: Start on LAYER_MAC_BASE, use OS_COPY → expect Cmd+C, switch TO(1), use OS_COPY → expect Ctrl+C
+- [X] T020 [US2] Implement process_record_user() custom keycode handler in vrMEr/keymap.c for OS_UNDO (Cmd+Z on macOS, Ctrl+Z on Windows using is_macos_base()) - COMPLETED in Phase 2
+- [X] T021 [P] [US2] Implement OS_COPY handler in vrMEr/keymap.c process_record_user() (Cmd+C vs Ctrl+C) - COMPLETED in Phase 2
+- [X] T022 [P] [US2] Implement OS_PASTE handler in vrMEr/keymap.c process_record_user() (Cmd+V vs Ctrl+V) - COMPLETED in Phase 2
+- [X] T023 [P] [US2] Implement OS_CUT handler in vrMEr/keymap.c process_record_user() (Cmd+X vs Ctrl+X) - COMPLETED in Phase 2
+- [X] T024 [US2] Replace OS_* placeholders in LAYER_NUMBERS keymap with actual custom keycodes - COMPLETED in Phase 3
+- [X] T025 [US2] Verify home row mod positions match data-model.md specs (E/T = primary modifiers, H/I/R/N/S = secondary, Cmd on macOS / Ctrl on Windows)
+- [X] T026 [US2] Test OS detection: Start on LAYER_MAC_BASE, use OS_COPY → expect Cmd+C, switch TO(1), use OS_COPY → expect Ctrl+C
 
 **Checkpoint**: Both OS bases functional with correct modifiers, clipboard operations OS-aware
 
