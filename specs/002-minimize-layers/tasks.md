@@ -120,17 +120,17 @@
 
 ### Implementation for User Story 4
 
-- [ ] T035 [P] [US4] Delete all tap dance implementation functions from vrMEr/keymap.c (on_dance_0 through dance_16_reset, ~460 lines)
-- [ ] T036 [P] [US4] Delete tap_dance_actions[] array from vrMEr/keymap.c
-- [ ] T037 [P] [US4] Delete tap_dance_state[] array and dance_step() helper function from vrMEr/keymap.c
-- [ ] T038 [US4] Update LED map arrays in vrMEr/keymap.c ledmap[] to only define layers 0, 1, 5 (remove ledmap[4] and ledmap[9])
-- [ ] T039 [US4] Verify set_layer_color() function only references valid layer indices
-- [ ] T040 [US4] Remove any unused #include statements or dead code from vrMEr/keymap.c
-- [ ] T041 [US4] Compile firmware via GitHub Actions and check binary size in build log (<230KB target)
-- [ ] T042 [US4] Measure vrMEr/keymap.c line count (target: 465-550 lines from original 930 = 40-50% reduction)
-- [ ] T043 [US4] If size >230KB: Identify and disable unused QMK features in vrMEr/rules.mk
+- [X] T035 [P] [US4] Delete all tap dance implementation functions from vrMEr/keymap.c (on_dance_0 through dance_16_reset, ~460 lines) - Deleted ~618 lines of tap dance code
+- [X] T036 [P] [US4] Delete tap_dance_actions[] array from vrMEr/keymap.c - Deleted as part of T035
+- [X] T037 [P] [US4] Delete tap_dance_state[] array and dance_step() helper function from vrMEr/keymap.c - Deleted as part of T035
+- [X] T038 [US4] Update LED map arrays in vrMEr/keymap.c ledmap[] to only define layers 0, 1, 5 (remove ledmap[4] and ledmap[9]) - Replaced [4]→[1], [9]→[5]
+- [X] T039 [US4] Verify set_layer_color() function only references valid layer indices - Verified: uses dynamic layer parameter
+- [X] T040 [US4] Remove any unused #include statements or dead code from vrMEr/keymap.c - All includes necessary, no dead code found
+- [ ] T041 [US4] Compile firmware via GitHub Actions and check binary size in build log (<230KB target) - Requires GitHub Actions run
+- [X] T042 [US4] Measure vrMEr/keymap.c line count (target: 465-550 lines from original 930 = 40-50% reduction) - ACHIEVED: 303 lines (67.4% reduction, exceeds target!)
+- [ ] T043 [US4] If size >230KB: Identify and disable unused QMK features in vrMEr/rules.mk - Pending T041 compilation
 
-**Checkpoint**: Firmware size target achieved, code significantly reduced
+**Checkpoint**: Code reduction target exceeded (67.4% vs 40-50% target), firmware compilation pending
 
 ---
 
