@@ -57,15 +57,15 @@
 
 ### Implementation for User Story 1
 
-- [ ] T011 [P] [US1] Implement LAYER_MAC_BASE keymap in vrMEr/keymap.c keymaps[0] with HIEA O/DTRNS alpha layout, MT() home row mods (Ctrl/Alt/Cmd positioning), thumb cluster (OSL(2), OSM(Shift), OSL(3), LT(4,Space))
-- [ ] T012 [P] [US1] Implement LAYER_WIN_BASE keymap in vrMEr/keymap.c keymaps[1] with identical alpha layout, swapped MT() home row mods (Win/Alt/Ctrl positioning), same thumb cluster
-- [ ] T013 [US1] Implement LAYER_SYMBOLS keymap in vrMEr/keymap.c keymaps[2] consolidating layers 1 and 6 symbols (§&[]^!<>=~@€{}*?()_\|`+%$#;'")
-- [ ] T014 [US1] Implement LAYER_FUNCTION keymap in vrMEr/keymap.c keymaps[3] consolidating layers 2/5/8 (F1-F12, arrows, Tab/Esc/Enter, German umlauts ä/ö/ü/ß/€, window navigation)
-- [ ] T015 [US1] Implement LAYER_NUMBERS keymap in vrMEr/keymap.c keymaps[4] consolidating layers 3 and 7 (numpad 0-9, operators -:+*/,., OS_UNDO/COPY/PASTE/CUT placeholders)
-- [ ] T016 [US1] Implement LAYER_CONFIG keymap in vrMEr/keymap.c keymaps[5] preserving layer 9 functionality (RGB controls, TO(0)/TO(1) layer switches, QK_BOOT)
-- [ ] T017 [US1] Delete old layer definitions from vrMEr/keymap.c (layers 6-9 no longer needed)
-- [ ] T018 [US1] Update keymaps array size in vrMEr/keymap.c from [10] to [6]
-- [ ] T019 [US1] Test layer access patterns: OSL(2) symbols auto-return, OSL(3) function auto-return, LT(4,Space) numbers on hold/space on tap, TO(5) config persistent
+- [X] T011 [P] [US1] Implement LAYER_MAC_BASE keymap in vrMEr/keymap.c keymaps[0] with HIEA O/DTRNS alpha layout, MT() home row mods (Ctrl/Alt/Cmd positioning), thumb cluster (OSL(2), OSM(Shift), OSL(3), LT(4,Space))
+- [X] T012 [P] [US1] Implement LAYER_WIN_BASE keymap in vrMEr/keymap.c keymaps[1] with identical alpha layout, swapped MT() home row mods (Win/Alt/Ctrl positioning), same thumb cluster
+- [X] T013 [US1] Implement LAYER_SYMBOLS keymap in vrMEr/keymap.c keymaps[2] consolidating layers 1 and 6 symbols (§&[]^!<>=~@€{}*?()_\|`+%$#;'")
+- [X] T014 [US1] Implement LAYER_FUNCTION keymap in vrMEr/keymap.c keymaps[3] consolidating layers 2/5/8 (F1-F12, arrows, Tab/Esc/Enter, German umlauts ä/ö/ü/ß/€, window navigation)
+- [X] T015 [US1] Implement LAYER_NUMBERS keymap in vrMEr/keymap.c keymaps[4] consolidating layers 3 and 7 (numpad 0-9, operators -:+*/,., OS_UNDO/COPY/PASTE/CUT placeholders)
+- [X] T016 [US1] Implement LAYER_CONFIG keymap in vrMEr/keymap.c keymaps[5] preserving layer 9 functionality (RGB controls, TO(0)/TO(1) layer switches, QK_BOOT)
+- [X] T017 [US1] Delete old layer definitions from vrMEr/keymap.c (layers 6-9 no longer needed)
+- [X] T018 [US1] Update keymaps array size in vrMEr/keymap.c from [10] to [6]
+- [X] T019 [US1] Test layer access patterns: OSL(2) symbols auto-return, OSL(3) function auto-return, LT(4,Space) numbers on hold/space on tap, TO(5) config persistent
 
 **Checkpoint**: At this point, all 6 layers should be defined and basic layer switching should work
 
