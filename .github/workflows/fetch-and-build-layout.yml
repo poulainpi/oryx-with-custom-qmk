@@ -8,9 +8,20 @@ on:
         required: true
         default: "g7jjw"
       layout_geometry:
-        description: "voyager|moonlander|ergodox_ez"
-        required: true
-        default: "voyager"
+        description: "Keyboard type"
+        type: choice
+        options:
+          - voyager
+          - moonlander
+          - ergodox_ez
+          - ergodox_ez/m32u4/glow
+          - ergodox_ez/m32u4/shine
+          - ergodox_ez/stm32
+          - ergodox_ez/stm32/glow
+          - ergodox_ez/stm32/shine
+          - planck_ez
+          - planck_ez/glow
+        default: voyager
 
 permissions:
   contents: write
@@ -31,13 +42,18 @@ jobs:
       - name: Download layout source
         id: download-layout-source
         run: |
-          response=$(curl --location 'https://oryx.zsa.io/graphql' --header 'Content-Type: application/json' --data '{"query":"query getLayout($hashId: String!, $revisionId: String!, $geometry: String) {layout(hashId: $hashId, geometry: $geometry, revisionId: $revisionId) {  revision { hashId, qmkVersion }}}","variables":{"hashId":"${{ github.event.inputs.layout_id }}","geometry":"${{ github.event.inputs.layout_geometry }}","revisionId":"latest"}}' | jq '.data.layout.revision | [.hashId, .qmkVersion]')
+          response=$(curl --location 'https://oryx.zsa.io/graphql' --header 'Content-Type: application/json' --data '{"query":"query getLayout($hashId: String!, $revisionId: String!, $geometry: String) {layout(hashId: $hashId, geometry: $geometry, revisionId: $revisionId) {  revision { hashId, qmkVersion, title }}}","variables":{"hashId":"${{ github.event.inputs.layout_id }}","geometry":"${{ github.event.inputs.layout_geometry }}","revisionId":"latest"}}' | jq '.data.layout.revision | [.hashId, .qmkVersion, .title]')
           hash_id=$(echo "${response}" | jq -r '.[0]')
           firmware_version=$(printf "%.0f" $(echo "${response}" | jq -r '.[1]'))
+          change_description=$(echo "${response}" | jq -r '.[2]')
+          if [[ -z "${change_description}" ]]; then
+            change_description="latest layout modification made with Oryx"
+          fi
           
           curl -L "https://oryx.zsa.io/source/${hash_id}" -o source.zip
           
           echo firmware_version=${firmware_version} >> "$GITHUB_OUTPUT"
+          echo change_description=${change_description} >> "$GITHUB_OUTPUT"
 
       - name: Unzip the source file
         run: |
@@ -45,11 +61,13 @@ jobs:
           rm source.zip
 
       - name: Commit and Push changes
+        env:
+          CHANGE_DESCRIPTION: ${{ steps.download-layout-source.outputs.change_description }}
         run: |
           git config --local user.name "github-actions"
           git config --local user.email "github-actions@github.com"
           git add .
-          git commit -m "✨ latest layout modification made with Oryx" || echo "No layout change"
+          printf "✨(oryx): %s\n" "$CHANGE_DESCRIPTION" | git commit -F - || echo "No layout change"
           git push
 
       - name: Merge Oryx with custom QMK
@@ -59,13 +77,16 @@ jobs:
           git merge -Xignore-all-space oryx
           git push
 
-      - name: Checkout the right firmware branch
+      - name: Update QMK firmware submodule to latest version (${{ steps.download-layout-source.outputs.firmware_version }})
         run: |
+          git submodule update --init --remote --depth=1 --no-single-branch
           cd qmk_firmware
-          git submodule update --init --remote
-          git fetch origin firmware${{ steps.download-layout-source.outputs.firmware_version }}
           git checkout -B firmware${{ steps.download-layout-source.outputs.firmware_version }} origin/firmware${{ steps.download-layout-source.outputs.firmware_version }}
           git submodule update --init --recursive
+          cd ..
+          git add qmk_firmware
+          git commit -m "✨(qmk): Update firmware" || echo "No QMK change"
+          git push
 
       - name: Build qmk docker image
         run: docker build -t qmk .
@@ -93,10 +114,12 @@ jobs:
           "
           
           # Find and export built layout          
-          echo built_layout_file=$(find ./qmk_firmware -maxdepth 1 -type f -regex ".*${{ github.event.inputs.layout_geometry }}.*\.\(bin\|hex\)$") >> "$GITHUB_OUTPUT"
+          normalized_layout_geometry="$(echo "${{ github.event.inputs.layout_geometry }}" | sed 's/\//_/g')"
+          echo built_layout_file=$(find ./qmk_firmware -maxdepth 1 -type f -regex ".*${normalized_layout_geometry}.*\.\(bin\|hex\)$") >> "$GITHUB_OUTPUT"
+          echo normalized_layout_geometry=${normalized_layout_geometry} >> "$GITHUB_OUTPUT"
 
       - name: Upload layout
         uses: actions/upload-artifact@v4
         with:
-          name: ${{ github.event.inputs.layout_geometry }}_${{ github.event.inputs.layout_id }}
+          name: ${{ steps.build-layout.outputs.normalized_layout_geometry }}_${{ github.event.inputs.layout_id }}
           path: ${{ steps.build-layout.outputs.built_layout_file }}
