@@ -18,37 +18,26 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
-        with:
-          submodules: recursive
-
-      - name: Setup QMK
-        run: |
-          cd qmk_firmware
-          git submodule update --init --recursive
 
       - name: Build Docker image
         run: docker build -t qmk-builder .
 
-      - name: Copy vrMEr keymap
-        run: |
-          mkdir -p qmk_firmware/keyboards/zsa/voyager/keymaps
-          cp -r vrMEr qmk_firmware/keyboards/zsa/voyager/keymaps/
-
-      - name: Build vrMEr firmware
+      - name: Clone QMK Firmware and Build
         id: build
         run: |
-          docker run -v ./qmk_firmware:/qmk --rm qmk-builder /bin/sh -c "
+          docker run -v $PWD:/workspace --rm qmk-builder /bin/sh -c "
+            git clone --depth=1 --recurse-submodules https://github.com/zsa/qmk_firmware.git /qmk
+            cp -r /workspace/vrMEr /qmk/keyboards/zsa/voyager/keymaps/
             cd /qmk
             make zsa/voyager:vrMEr
+            cp *.bin /workspace/ 2>/dev/null || true
           "
           
           # Find the built firmware file
-          firmware_file=$(find ./qmk_firmware -maxdepth 1 -type f -name "*voyager*vrMEr*.bin" | head -1)
-          echo "firmware_file=${firmware_file}" >> "$GITHUB_OUTPUT"
-          
-          # Get file size
+          firmware_file=$(find . -maxdepth 1 -type f -name "*voyager*vrMEr*.bin" | head -1)
           if [ -f "${firmware_file}" ]; then
-            size=$(stat -f%z "${firmware_file}" 2>/dev/null || stat -c%s "${firmware_file}")
+            echo "firmware_file=${firmware_file}" >> "$GITHUB_OUTPUT"
+            size=$(stat -c%s "${firmware_file}")
             size_kb=$((size / 1024))
             echo "firmware_size_kb=${size_kb}" >> "$GITHUB_OUTPUT"
             echo "✅ Firmware built: ${firmware_file} (${size_kb} KB)"
@@ -59,6 +48,9 @@ jobs:
             else
               echo "⚠️ Size over target: ${size_kb} KB >= 230 KB"
             fi
+          else
+            echo "❌ No firmware file found"
+            exit 1
           fi
 
       - name: Upload firmware artifact
