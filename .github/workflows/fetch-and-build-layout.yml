@@ -12,7 +12,8 @@ on:
         type: choice
         options:
           - voyager
-          - moonlander
+          - moonlander/reva
+          - moonlander/revb
           - ergodox_ez
           - ergodox_ez/m32u4/glow
           - ergodox_ez/m32u4/shine
