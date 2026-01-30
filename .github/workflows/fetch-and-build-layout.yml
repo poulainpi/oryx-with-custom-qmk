@@ -12,7 +12,8 @@ on:
         type: choice
         options:
           - voyager
-          - moonlander
+          - moonlander/reva
+          - moonlander/revb
           - ergodox_ez
           - ergodox_ez/m32u4/glow
           - ergodox_ez/m32u4/shine
@@ -62,11 +63,14 @@ jobs:
           rm source.zip
 
       - name: Commit and Push changes
+        env:
+          CHANGE_DESCRIPTION: ${{ steps.download-layout-source.outputs.change_description }}
+          HASH_ID: ${{steps.download-layout-source.outputs.hash_id}}
         run: |
           git config --local user.name "github-actions"
           git config --local user.email "github-actions@github.com"
           git add .
-          git commit -m "✨ [oryx]: ${{ steps.download-layout-source.outputs.change_description }}" -m "hash_id: ${{steps.download-layout-source.outputs.hash_id}}" || echo "No layout change"
+          printf "✨(oryx): %s\n\n%s\n" "$CHANGE_DESCRIPTION" "$HASH_ID" | git commit -F - || echo "No layout change"
           git push
 
       - name: Merge Oryx with custom QMK
@@ -78,7 +82,7 @@ jobs:
 
       - name: Update QMK firmware submodule to latest version (${{ steps.download-layout-source.outputs.firmware_version }})
         run: |
-          git submodule update --init --remote --depth=1
+          git submodule update --init --remote --depth=1 --no-single-branch
           cd qmk_firmware
           git checkout -B firmware${{ steps.download-layout-source.outputs.firmware_version }} origin/firmware${{ steps.download-layout-source.outputs.firmware_version }}
           git submodule update --init --recursive
