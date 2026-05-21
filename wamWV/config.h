@@ -15,7 +15,7 @@
 #define NO_AUTO_SHIFT_TAB
 #define NO_AUTO_SHIFT_SPECIAL
 #define NO_AUTO_SHIFT_NUMERIC
-#define SERIAL_NUMBER "wamWV/DzrqK0"
+#define SERIAL_NUMBER "wamWV/rbGdan"
 #define LAYER_STATE_8BIT
 
 #define RGB_MATRIX_STARTUP_SPD 60

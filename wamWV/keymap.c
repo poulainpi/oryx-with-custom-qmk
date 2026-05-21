@@ -27,16 +27,16 @@ enum tap_dance_codes {
   DANCE_2,
 };
 
-#define DUAL_FUNC_0 LT(14, KC_F11)
-#define DUAL_FUNC_1 LT(4, KC_F24)
-#define DUAL_FUNC_2 LT(3, KC_S)
-#define DUAL_FUNC_3 LT(15, KC_F8)
+#define DUAL_FUNC_0 LT(9, KC_F20)
+#define DUAL_FUNC_1 LT(3, KC_8)
+#define DUAL_FUNC_2 LT(2, KC_D)
+#define DUAL_FUNC_3 LT(5, KC_E)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [0] = LAYOUT_moonlander(
-    TD(DANCE_0),    KC_1,           KC_2,           KC_3,           KC_4,           KC_5,           KC_LEFT_ALT,                                    KC_RIGHT_ALT,   KC_6,           KC_7,           KC_8,           KC_9,           KC_0,           KC_BSPC,        
-    KC_TAB,         KC_Q,           KC_W,           KC_F,           KC_P,           KC_B,           KC_LEFT_CTRL,                                   KC_RIGHT_CTRL,  KC_J,           KC_L,           KC_U,           KC_Y,           LALT(LCTL(KC_TAB)),LSFT(KC_TAB),   
-    KC_LEFT,        KC_A,           KC_R,           KC_S,           KC_T,           KC_G,           KC_LEFT_SHIFT,                                                                  KC_RIGHT_SHIFT, KC_M,           KC_N,           KC_E,           KC_I,           KC_O,           LCTL(KC_TAB),   
+    TD(DANCE_0),    KC_1,           KC_2,           KC_3,           KC_4,           KC_5,           KC_LEFT_ALT,                                    KC_LEFT_ALT,    KC_6,           KC_7,           KC_8,           KC_9,           KC_0,           KC_BSPC,        
+    KC_TAB,         KC_Q,           KC_W,           KC_F,           KC_P,           KC_B,           KC_LEFT_CTRL,                                   KC_LEFT_CTRL,   KC_J,           KC_L,           KC_U,           KC_Y,           LALT(LCTL(KC_TAB)),LSFT(KC_TAB),   
+    KC_LEFT,        KC_A,           KC_R,           KC_S,           KC_T,           KC_G,           KC_LEFT_SHIFT,                                                                  KC_LEFT_SHIFT,  KC_M,           KC_N,           KC_E,           KC_I,           KC_O,           LCTL(KC_TAB),   
     KC_TRANSPARENT, KC_Z,           KC_X,           KC_C,           KC_D,           KC_V,                                           KC_K,           KC_H,           DUAL_FUNC_0,    DUAL_FUNC_1,    TD(DANCE_1),    KC_RIGHT,       
     KC_ENTER,       KC_TRANSPARENT, KC_TRANSPARENT, LGUI(KC_E),     KC_UP,          OSL(3),                                                                                                         KC_ENTER,       KC_DOWN,        LGUI(KC_T),     KC_TRANSPARENT, KC_LEFT_GUI,    TG(1),          
     KC_SPACE,       KC_LEFT_CTRL,   LSFT(KC_LEFT_CTRL),                KC_APPLICATION, KC_LEFT_ALT,    OSL(2)
