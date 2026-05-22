@@ -1,6 +1,0 @@
-{
-    "modules": [
-        "zsa/oryx",
-        "zsa/defaults"
-    ]
-}
