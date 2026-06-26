@@ -1,0 +1,7 @@
+{
+    "modules": [
+        "zsa/oryx",
+        "zsa/mousejiggler",
+        "zsa/defaults"
+    ]
+}
