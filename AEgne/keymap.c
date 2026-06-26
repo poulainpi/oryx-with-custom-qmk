@@ -175,9 +175,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case DUAL_FUNC_2:
       if (record->tap.count > 0) {
         if (record->event.pressed) {
-          register_code16(KC_LBRC);
+          register_code16(host_keyboard_led_state().caps_lock ? KC_7 : KC_LBRC);
         } else {
-          unregister_code16(KC_LBRC);
+          unregister_code16(host_keyboard_led_state().caps_lock ? KC_7 : KC_LBRC);
         }
       } else {
         if (record->event.pressed) {
@@ -190,9 +190,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case DUAL_FUNC_3:
       if (record->tap.count > 0) {
         if (record->event.pressed) {
-          register_code16(KC_LCBR);
+          register_code16(host_keyboard_led_state().caps_lock ? KC_5 : KC_LCBR);
         } else {
-          unregister_code16(KC_LCBR);
+          unregister_code16(host_keyboard_led_state().caps_lock ? KC_5 : KC_LCBR);
         }
       } else {
         if (record->event.pressed) {
@@ -205,9 +205,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case DUAL_FUNC_4:
       if (record->tap.count > 0) {
         if (record->event.pressed) {
-          register_code16(KC_RCBR);
+          register_code16(host_keyboard_led_state().caps_lock ? KC_3 : KC_RCBR);
         } else {
-          unregister_code16(KC_RCBR);
+          unregister_code16(host_keyboard_led_state().caps_lock ? KC_3 : KC_RCBR);
         }
       } else {
         if (record->event.pressed) {
@@ -220,9 +220,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case DUAL_FUNC_5:
       if (record->tap.count > 0) {
         if (record->event.pressed) {
-          register_code16(KC_LPRN);
+          register_code16(host_keyboard_led_state().caps_lock ? KC_1 : KC_LPRN);
         } else {
-          unregister_code16(KC_LPRN);
+          unregister_code16(host_keyboard_led_state().caps_lock ? KC_1 : KC_LPRN);
         }
       } else {
         if (record->event.pressed) {
@@ -235,9 +235,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case DUAL_FUNC_6:
       if (record->tap.count > 0) {
         if (record->event.pressed) {
-          register_code16(KC_EQUAL);
+          register_code16(host_keyboard_led_state().caps_lock ? KC_9 : KC_EQUAL);
         } else {
-          unregister_code16(KC_EQUAL);
+          unregister_code16(host_keyboard_led_state().caps_lock ? KC_9 : KC_EQUAL);
         }
       } else {
         if (record->event.pressed) {
@@ -310,9 +310,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case DUAL_FUNC_11:
       if (record->tap.count > 0) {
         if (record->event.pressed) {
-          register_code16(KC_ASTR);
+          register_code16(host_keyboard_led_state().caps_lock ? KC_0 : KC_ASTR);
         } else {
-          unregister_code16(KC_ASTR);
+          unregister_code16(host_keyboard_led_state().caps_lock ? KC_0 : KC_ASTR);
         }
       } else {
         if (record->event.pressed) {
@@ -325,9 +325,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case DUAL_FUNC_12:
       if (record->tap.count > 0) {
         if (record->event.pressed) {
-          register_code16(KC_RPRN);
+          register_code16(host_keyboard_led_state().caps_lock ? KC_2 : KC_RPRN);
         } else {
-          unregister_code16(KC_RPRN);
+          unregister_code16(host_keyboard_led_state().caps_lock ? KC_2 : KC_RPRN);
         }
       } else {
         if (record->event.pressed) {
@@ -340,9 +340,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case DUAL_FUNC_13:
       if (record->tap.count > 0) {
         if (record->event.pressed) {
-          register_code16(KC_PLUS);
+          register_code16(host_keyboard_led_state().caps_lock ? KC_4 : KC_PLUS);
         } else {
-          unregister_code16(KC_PLUS);
+          unregister_code16(host_keyboard_led_state().caps_lock ? KC_4 : KC_PLUS);
         }
       } else {
         if (record->event.pressed) {
@@ -355,9 +355,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case DUAL_FUNC_14:
       if (record->tap.count > 0) {
         if (record->event.pressed) {
-          register_code16(KC_RBRC);
+          register_code16(host_keyboard_led_state().caps_lock ? KC_6 : KC_RBRC);
         } else {
-          unregister_code16(KC_RBRC);
+          unregister_code16(host_keyboard_led_state().caps_lock ? KC_6 : KC_RBRC);
         }
       } else {
         if (record->event.pressed) {
@@ -370,9 +370,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case DUAL_FUNC_15:
       if (record->tap.count > 0) {
         if (record->event.pressed) {
-          register_code16(KC_EXLM);
+          register_code16(host_keyboard_led_state().caps_lock ? KC_8 : KC_EXLM);
         } else {
-          unregister_code16(KC_EXLM);
+          unregister_code16(host_keyboard_led_state().caps_lock ? KC_8 : KC_EXLM);
         }
       } else {
         if (record->event.pressed) {
